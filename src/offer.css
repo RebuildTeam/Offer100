@@ -1,0 +1,23 @@
+body,html,nav{
+	padding:0;
+	margin:0;
+}
+body{
+	width: 100%;
+	overflow-x: hidden;
+}
+#offer-100-label{
+	height: 3.6em;
+	line-height: 3.6em;
+	padding-left: 3em;
+	border-top: 1px solid rgba(0,0,0,0.3);
+	border-bottom: 1px solid rgba(0,0,0,0.3);
+}
+#recommend-label{
+	background-color: #33bb93;color: white;margin:0;height: 3em;line-height: 3em;width: 100%;
+}
+#Filter{
+	left: 0;
+	right: 0;
+	margin: 0 auto;
+}

@@ -28,6 +28,9 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 {
 	color:white;
 }
+*{
+		transition: 0.5s all;
+}
 #Recommend/*recommend这个最大的块的属性*/
 {
 	background-color: #33bb93;

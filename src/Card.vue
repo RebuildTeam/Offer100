@@ -24,10 +24,10 @@
 			    </div>
 			    <div><!-- 这是下层div -->
 			    	    <div><!-- 下层div的介绍 -->
-
+			    	    <br>
 			    	    	<p class="intro">{{item.label}}</p>
 			    	    </div>
-			    	    <div><!-- 三个按钮那一层 -->
+			    	    <div class="btn-group"><!-- 三个按钮那一层 -->
 			    	    	<button>
 			    	    		<img v-bind:src="'./src/menu.png'">&nbsp;移动互联网
 			    	    	</button>
@@ -48,6 +48,9 @@
 </template>
 
 <style type="text/css" scoped>
+*{
+	transition: 0.5s all;
+}
 #Card
 {
 	margin: 0 auto ;
@@ -63,14 +66,16 @@
 	width: 34em;
 	height: 21em;
 	font-size: 14px;
-	border:1px solid #eeeeee;
+	/*border:1px solid rgba(0,0,0,0);*/
 	float: left;
 	margin: 0.5em;
+	box-shadow: 1px 1px 2px 1px #efefef;
 	box-sizing: border-box;
 }
 .Card-info:hover
 {
-	border: 1px solid #33bb93;
+	/*border: 1px solid #33bb93;*/
+	box-shadow: 1px 1px 15px 1px #33bb93;
 }
 .Card-info>div:nth-child(1)
 {
@@ -101,6 +106,7 @@ h3{
 .Card-info>div:nth-child(1)>div:nth-child(1)>img
 {
 	margin: 1.5em;
+	margin-bottom: 0;
 	width: 9.6em;
 	height: 9.6em;
 }
@@ -108,6 +114,7 @@ h3{
 {
     
     margin:1.5em;
+    margin-top:0;
 }
 p{
 	font-size: 16px;
@@ -121,8 +128,13 @@ p.intro
 	line-height: 1.2;
 	text-align: left;
 }
+.btn-group{
+	height: 100%;
+	overflow:hidden;
+}
 button
 {
+	height: 100%;
 	width: 33.3%;
 	float: left;
 	height: 3em;

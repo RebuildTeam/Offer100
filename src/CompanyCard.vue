@@ -1,8 +1,8 @@
 <template>
-<div  id="Card">
+<div  id="CompanyCard">
     
-	    <div v-for="item in cardList">
-	        <div class="Card-info">
+	    <div v-for="item in CompanyCardList">
+	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
                     <!-- 这是上层div -->
                     <div >
@@ -24,10 +24,10 @@
 			    </div>
 			    <div><!-- 这是下层div -->
 			    	    <div><!-- 下层div的介绍 -->
-			    	    <br>
+
 			    	    	<p class="intro">{{item.label}}</p>
 			    	    </div>
-			    	    <div class="btn-group"><!-- 三个按钮那一层 -->
+			    	    <div><!-- 三个按钮那一层 -->
 			    	    	<button>
 			    	    		<img v-bind:src="'./src/menu.png'">&nbsp;移动互联网
 			    	    	</button>
@@ -48,10 +48,7 @@
 </template>
 
 <style type="text/css" scoped>
-*{
-	transition: 0.5s all;
-}
-#Card
+#CompanyCard
 {
 	margin: 0 auto ;
 	position: absolute;
@@ -61,39 +58,37 @@
 	width: 70em;
 	font-size: 14px;
 }
-.Card-info
+.CompanyCard-info
 {
 	width: 34em;
 	height: 21em;
 	font-size: 14px;
-	/*border:1px solid rgba(0,0,0,0);*/
+	border:1px solid #eeeeee;
 	float: left;
 	margin: 0.5em;
-	box-shadow: 1px 1px 2px 1px #efefef;
 	box-sizing: border-box;
 }
-.Card-info:hover
+.CompanyCard-info:hover
 {
-	/*border: 1px solid #33bb93;*/
-	box-shadow: 1px 1px 15px 1px #33bb93;
+	border: 1px solid #33bb93;
 }
-.Card-info>div:nth-child(1)
+.CompanyCard-info>div:nth-child(1)
 {
 	height: 60%;
 	
 }
-.Card-info>div:nth-child(2)
+.CompanyCard-info>div:nth-child(2)
 {
 	height: 40%;
 	
 }
-.Card-info>div:nth-child(1)>div:nth-child(1)
+.CompanyCard-info>div:nth-child(1)>div:nth-child(1)
 {
 	width: 12.6em;
 	
 	float: left;
 }
-.Card-info>div:nth-child(1)>div:nth-child(2)
+.CompanyCard-info>div:nth-child(1)>div:nth-child(2)
 {
 	
 	
@@ -103,18 +98,16 @@
 h3{
 	font-size: 24px;
 }
-.Card-info>div:nth-child(1)>div:nth-child(1)>img
+.CompanyCard-info>div:nth-child(1)>div:nth-child(1)>img
 {
 	margin: 1.5em;
-	margin-bottom: 0;
 	width: 9.6em;
 	height: 9.6em;
 }
-.Card-info>div:nth-child(2)>div:nth-child(1)
+.CompanyCard-info>div:nth-child(2)>div:nth-child(1)
 {
     
     margin:1.5em;
-    margin-top:0;
 }
 p{
 	font-size: 16px;
@@ -128,13 +121,8 @@ p.intro
 	line-height: 1.2;
 	text-align: left;
 }
-.btn-group{
-	height: 100%;
-	overflow:hidden;
-}
 button
 {
-	height: 100%;
 	width: 33.3%;
 	float: left;
 	height: 3em;
@@ -149,14 +137,17 @@ button>img
     vertical-align: text-top;
     margin-top: -1px;
 }
-
+#CompanyCard >div >div >div >div >div >p:hover
+{
+ color: green;
+}
 </style>
 <script type="text/javascript">
 export default{
-	name:'Card',
+	name:'CompanyCard',
 	data(){
 		return{
-			cardList:[
+			CompanyCardList:[
 			{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
 			{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
 			{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},

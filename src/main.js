@@ -5,7 +5,7 @@ import Filter from './Filter.vue'
 import CompanyCard from './CompanyCard.vue'
 import Test from './test.vue'
 import PositionCard from './PositionCard.vue'
-
+import Login from './Login.vue'
 var navbar=new Vue({
 	el:'#Navbar',
 	render:h=>h(Navbar)
@@ -23,7 +23,11 @@ var filter=new Vue({
 	el:'#CompanyCard',
 	render:h=>h(CompanyCard)
 })*/
-var positionCard=new Vue({
+/*var positionCard=new Vue({
 	el:'#PositionCard',
 	render:h=>h(PositionCard)
+})*/
+var login=new Vue({
+	el:'#Login',
+	render:h=>h(Login)
 })

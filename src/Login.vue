@@ -2,28 +2,31 @@
 <div  id="Login">
 	    <div v-for="item in LoginList">
 	        <div class="Login-info">
-	    	    <div  align="center"> <!-- 这是左层div</div> -->
+	    	    <div  align="center" > <!-- 这是左层div</div> -->
 	    		    <div><!-- 这是左边最上面写offer100那个块 -->
 	    		    	<div class="paslog" align="center" v-on:click="trianglePos=0">密码登录
 	    		    	    
 	                    </div>
 
-	    		    	<div class="validate " align="center" v-on:click="trianglePos=1">验证码登录
+	    		    	<div class="sign " align="center" v-on:click="trianglePos=1" >注册
 	    		    	</div>
 
 	    		    	<div class="triangle-up" > </div>
 	    		    </div>
-	    		    <div><!-- 这是左边输入用户名的那一个块 -->
-	    		    	<input type="text" name="username" placeholder="请输入用户名" />
+	    		    <div style="position: relative;"><!-- 这是左边输入用户名的那一个块 -->
+	    		    	<input type="text"  placeholder="请输入用户名" v-on:focus="hrwidth=1" v-on:blur="hrwidth=0" />
+	    		    	<hr id="hr1">
 	    		    </div>
-	    		    <div><!-- 这是左边输入密码的那一个块 -->
-	    		    	<input type="password" placeholder="请输入密码" />
+
+	    		    <div style="position: relative;"><!-- 这是左边输入密码的那一个块 -->
+	    		    	<input type="password" placeholder="请输入密码" v-on:focus="hrwidth2=1" v-on:blur="hrwidth2=0" />
+	    		    	<hr id="hr2">
 	    		    </div>
 	    		    <div><!-- 忘记密码那个块 -->
 	    		    	<span class="forget">忘记密码？</span>
 	    		    </div>
 	    		    <div><!-- 登录按钮 -->
-	    		    	<button align='center'>登录</button>
+	    		    	<button align='center' id="logbutton">登录</button>
 	    		    </div>
 	            </div>
 	            <div><!-- 这是右层div -->
@@ -31,7 +34,7 @@
 	            	<span>还没有账号？</span>
 	            	</div>
 	            	<div>
-	            	<span class="sign">立即注册</span>
+	            	<span class="gosign">立即注册</span>
 	            	<img v-bind:src="''+item.imgurl" >
 	            	</div>
 	            </div>
@@ -85,15 +88,15 @@ span
 {
 	color: #00b38a;
 }
-.validate:hover
+.sign:hover
 {
 	color: #00b38a;
 }
-.sign:hover
+.gosign:hover
 {
 	border-bottom: 1px solid #00b38a;
 }
-.validate
+.sign
 {
 	width: 6em;
 	height: 2em;
@@ -144,6 +147,29 @@ input
 	font-size: 20px;
 	width: 70%;
 	font-family: 'MingLiU'
+}
+#hr1
+{
+	position: absolute;
+	transition: all 0.5s;
+	width: 0em;
+	left: 4em;
+	top: 1.2em;
+	background-color: #00b38a;
+	height: 1px;
+	border: none;
+	
+}
+#hr2
+{
+	position: absolute;
+	width: 0em;
+	top: 1.2em;
+	left: 4em;
+	background-color: #00b38a;
+	height: 1px;
+	border: none;
+	transition: 0.5s;
 }
 .Login-info >div:nth-child(1) >div:nth-child(3)
 {
@@ -223,7 +249,7 @@ img
 	float: left;
 	margin-top: -0.5em;
 }
-.sign
+.gosign
 {
 	font-size: 22px;
 }
@@ -234,7 +260,7 @@ export default{
 	data(){
 		
 		return{
-			trianglePos:0,
+			trianglePos:0,hrwidth:0,hrwidth2:0,
 			LoginList:[
 			{imgurl:"./src/Arrow-right.png",hover:false}]
 		}
@@ -245,16 +271,39 @@ export default{
                 if (this.trianglePos == 0){
                     document.getElementsByClassName('triangle-up')[0].style.left='25%';
                     document.getElementsByClassName('paslog')[0].style.color='#00b38a';
-                    document.getElementsByClassName('validate')[0].style.color='black';
+                    document.getElementsByClassName('sign')[0].style.color='black';
+                    document.getElementsByClassName('forget')[0].style.display='block';
+                    document.getElementById("logbutton").innerHTML="登录";
+                   
                 }
                 else{
                     document.getElementsByClassName('triangle-up')[0].style.left='75%';
-                     document.getElementsByClassName('validate')[0].style.color='#00b38a';
+                     document.getElementsByClassName('sign')[0].style.color='#00b38a';
                      document.getElementsByClassName('paslog')[0].style.color='black';
+                     document.getElementsByClassName('forget')[0].style.display='none';
+                     document.getElementById("logbutton").innerHTML="注册";
                 }
-            }   
+            },   
+            hrwidth:function(){
+            	if(this.hrwidth == 1){
+            		document.getElementById('hr1').style.width='19.25em';
+                    
+            	}
+            	else{
+            		document.getElementById('hr1').style.width='0em';
 
-            
+            	}
+            },
+            hrwidth2:function(){
+            	if(this.hrwidth2 == 1){
+            		document.getElementById('hr2').style.width='19.25em';
+                    
+            	}
+            	else{
+            		document.getElementById('hr2').style.width='0em';
+
+            	}
+            },
 
 
            },

@@ -19,15 +19,15 @@ var filter=new Vue({
 	render:h=>h(Filter)
 })
 
-/*var companyCard=new Vue({
-	el:'#CompanyCard',
-	render:h=>h(CompanyCard)
-})*/
+// var companyCard=new Vue({
+// 	el:'#CompanyCard',
+// 	render:h=>h(CompanyCard)
+// })
 /*var positionCard=new Vue({
 	el:'#PositionCard',
 	render:h=>h(PositionCard)
 })*/
-var login=new Vue({
-	el:'#Login',
-	render:h=>h(Login)
-})
+// var login=new Vue({
+// 	el:'#Login',
+// 	render:h=>h(Login)
+// })

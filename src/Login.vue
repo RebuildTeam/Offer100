@@ -4,12 +4,14 @@
 	        <div class="Login-info">
 	    	    <div  align="center"> <!-- 这是左层div</div> -->
 	    		    <div><!-- 这是左边最上面写offer100那个块 -->
-	    		    	<div class="paslog" align="center">密码登录
+	    		    	<div class="paslog" align="center" v-on:click="trianglePos=0">密码登录
 	    		    	    
 	                    </div>
-	    		    	<div class="validate " align="center">验证码登录
+
+	    		    	<div class="validate " align="center" v-on:click="trianglePos=1">验证码登录
 	    		    	</div>
-	    		    	<div class="triangle-up"> </div>
+
+	    		    	<div class="triangle-up" > </div>
 	    		    </div>
 	    		    <div><!-- 这是左边输入用户名的那一个块 -->
 	    		    	<input type="text" name="username" placeholder="请输入用户名" />
@@ -76,6 +78,8 @@ span
 	font-size: 24px;
 	font-family:'方正兰亭超细黑简体';
 	text-align: center;
+	color: #00b38a;
+	transition: color 0.5s;
 }
 .paslog:hover
 {
@@ -97,6 +101,7 @@ span
 	font-size: 24px;
 	font-family:'方正兰亭超细黑简体';
 	text-align: center;
+	transition: color 0.5s;
 }
 .triangle-up { 
     position: absolute;
@@ -108,6 +113,7 @@ span
     margin-left: -6px ;
     left:25%;
     bottom: 0px;
+    transition:left 0.5s;
 }
 .Login-info >div:nth-child(1) >div:nth-child(1)
 {
@@ -226,11 +232,32 @@ img
 export default{
 	name:'Login',
 	data(){
+		
 		return{
+			trianglePos:0,
 			LoginList:[
-			/*{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"产品经理",salary:"17-35万",hiringJob:"3",CompanyName:"北京北大公学有限公司"，duty:"教育/培训/学术/科研"dealingRate:"99%",hover:false},*/
 			{imgurl:"./src/Arrow-right.png",hover:false}]
 		}
-	}
-}
+		
+	},
+	watch:{
+            trianglePos:function (){
+                if (this.trianglePos == 0){
+                    document.getElementsByClassName('triangle-up')[0].style.left='25%';
+                    document.getElementsByClassName('paslog')[0].style.color='#00b38a';
+                    document.getElementsByClassName('validate')[0].style.color='black';
+                }
+                else{
+                    document.getElementsByClassName('triangle-up')[0].style.left='75%';
+                     document.getElementsByClassName('validate')[0].style.color='#00b38a';
+                     document.getElementsByClassName('paslog')[0].style.color='black';
+                }
+            }   
+
+            
+
+
+           },
+                
+    }
 </script>

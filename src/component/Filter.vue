@@ -174,7 +174,7 @@ export default{
 					keyword:"",
 				}
 				$.ajax({
-					url:'./php/PositionManager/getCompanyBrief',
+					url:'./src/api/getCompanyBrief',
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',

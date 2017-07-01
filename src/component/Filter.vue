@@ -179,8 +179,8 @@ export default{
 					dataType:'json',
 					type:'post',
 					success:function(result){
-						this.CompanyCardListMsg=result;
-						console.log(this.CompanyCardListMsg);
+						this.CompanyCardListMsg=result.data;
+						console.log(this.CompanyCardListMsg.data);
 					},
 					error:function(){
 

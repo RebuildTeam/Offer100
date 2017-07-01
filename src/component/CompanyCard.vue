@@ -28,13 +28,13 @@
 			    	    </div>
 			    	    <div><!-- 三个按钮那一层 -->
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/menu.png'">&nbsp;移动互联网
+			    	    		<img v-bind:src="'./src/menu.png'">&nbsp;{{item.type}}
 			    	    	</button>
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/tongji.png'">&nbsp;成长型(b)轮
+			    	    		<img v-bind:src="'./src/tongji.png'">&nbsp;{{item.financing}}
 			    	    	</button>
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/address.png'">&nbsp;深圳
+			    	    		<img v-bind:src="'./src/address.png'">&nbsp;{{item.province}}
 			    	    	</button>
 			    	    </div>
 			    </div>

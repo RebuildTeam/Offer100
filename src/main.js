@@ -1,11 +1,10 @@
-import Vue from 'vue'
-import Navbar from './Navbar.vue'
-import Recommend from './Recommend.vue'
-import Filter from './Filter.vue'
-import CompanyCard from './CompanyCard.vue'
-import Test from './test.vue'
-import PositionCard from './PositionCard.vue'
-import Login from './Login.vue'
+import Vue from './js/vue'
+import Navbar from './component/Navbar.vue'
+import Recommend from './component/Recommend.vue'
+import Filter from './component/Filter.vue'
+import CompanyCard from './component/CompanyCard.vue'
+import PositionCard from './component/PositionCard.vue'
+import Login from './component/Login.vue'
 var navbar=new Vue({
 	el:'#Navbar',
 	render:h=>h(Navbar)
@@ -19,10 +18,6 @@ var filter=new Vue({
 	render:h=>h(Filter)
 })
 
-// var companyCard=new Vue({
-// 	el:'#CompanyCard',
-// 	render:h=>h(CompanyCard)
-// })
 /*var positionCard=new Vue({
 	el:'#PositionCard',
 	render:h=>h(PositionCard)

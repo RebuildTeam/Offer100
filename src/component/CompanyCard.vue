@@ -11,20 +11,20 @@
                     </div>
                     <div ><!-- 这图片右边的div -->
                         <div><!-- 这是公司标题div -->
-                        	<h3>{{item.title}}</h3>
+                        	<h3>{{item.companyName}}</h3>
 
                         </div>
                         <div><!-- 这是三行字div -->
-                        	<p>{{item.evaluate}}&nbsp;&nbsp;条面试评价</p>
-                        	<p>{{item.hiringJob}}&nbsp;&nbsp;个在招职位</p>
-                        	<p>{{item.dealingRate}}&nbsp;&nbsp;简历处理率</p>
+                        	<p>33&nbsp;&nbsp;条面试评价</p>
+                        	<p>{{item.position.length}}&nbsp;&nbsp;个在招职位</p>
+                        	<p>96%&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>
 			    </div>
 			    <div><!-- 这是下层div -->
 			    	    <div><!-- 下层div的介绍 -->
 
-			    	    	<p class="intro">{{item.label}}</p>
+			    	    	<p class="intro">{{item.companyInfoBrief}}</p>
 			    	    </div>
 			    	    <div><!-- 三个按钮那一层 -->
 			    	    	<button>

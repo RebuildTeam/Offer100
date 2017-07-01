@@ -16,7 +16,7 @@
                         </div>
                         <div><!-- 这是三行字div -->
                         	<p>33&nbsp;&nbsp;条面试评价</p>
-                        	<p>{{item.position.length}}&nbsp;&nbsp;个在招职位</p>
+                        	<p>{{}}&nbsp;&nbsp;个在招职位</p>
                         	<p>96%&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>

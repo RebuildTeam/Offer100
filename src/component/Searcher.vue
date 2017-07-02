@@ -1,7 +1,7 @@
 <template>
 <div align="center" id="Searcher">
 	<div class="Searcher">
-		<div><input v-model="searchContent" /><button v-bind:click="isSearching=1">寻找Offer</button></div>
+		<div><input v-model="searchContent" /><button v-on:click="searchPosition()">寻找Offer</button></div>
 	</div>
 	<br>
 	<div>
@@ -79,32 +79,27 @@ export default{
 				searchContent:"",
 			}
 	},
-	watch:{
-		'isSearching':{
-			handler:function(){
-				if(this.isSearching==1){
-					var jsonObj={
-						'id':"",
-						'keyword':this.searchContent,
-					}
-					$.ajax({
-						url:'./src/api/getPositionBrief',
-						data:JSON.stringify(jsonObj),
-						dataType:'json',
-						type:'post',
-						success:(result)=>{
-							this.positionCardListMsg=result.data;
-							console.log(JSON.stringify(this.positionCardListMsg));
-							this.isSearching=0;
-						},
-						error:function(){
-							this.isSearching=0;
-						}
-					})
-				}	
-			},
-			// deep:true
-		}
+	methods:{
+		searchPosition:function(){
+			var jsonObj={
+				'id':"",
+				'keyword':this.searchContent,
+			}
+			$.ajax({
+				url:'./src/api/getPositionBrief',
+				data:JSON.stringify(jsonObj),
+				dataType:'json',
+				type:'post',
+				success:(result)=>{
+					this.positionCardListMsg=result.data;
+					console.log(JSON.stringify(this.positionCardListMsg));
+					this.isSearching=0;
+				},
+				error:function(){
+					this.isSearching=0;
+				}
+			})
+		}	
 	}
 }
 </script>

@@ -83,6 +83,9 @@ require_once 'tools.php';
       $tempArr['type'] = $re['type'];
       $tempArr['financing'] = $re['financing'];
       $tempArr['province'] = $re['province'];
+      $tempArr['logo'] = $re['logo'];
+      $tempArr['dealingRate'] = $re['dealingRate'];
+      $tempArr['evaluateNum'] = $re['evaluateNum'];
       array_push($companyList,$tempArr);
     }
     //var_dump($companyList);

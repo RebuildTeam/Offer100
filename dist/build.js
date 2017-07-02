@@ -9696,6 +9696,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'CompanyCard',
@@ -10670,7 +10672,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n#CompanyCard[data-v-a834de78]\n{\n\tmargin: 0 auto ;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\toverflow: hidden;\n\twidth: 70em;\n\tfont-size: 14px;\n}\n.CompanyCard-info[data-v-a834de78]\n{\n\twidth: 34em;\n\theight: 21em;\n\tfont-size: 14px;\n\tborder:1px solid #eeeeee;\n\tfloat: left;\n\tmargin: 0.5em;\n\tbox-sizing: border-box;\n}\n.CompanyCard-info[data-v-a834de78]:hover\n{\n\tborder: 1px solid #33bb93;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(1)\n{\n\theight: 60%;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(2)\n{\n\theight: 40%;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(1)\n{\n\twidth: 12.6em;\n\t\n\tfloat: left;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(2)\n{\n\t\n\t\n\tmargin-left: 12.6em;\n\ttext-align: left;\n}\nh3[data-v-a834de78]{\n\tfont-size: 24px;\n}\n.CompanyCard-info>div:nth-child(1)>div:nth-child(1)>img[data-v-a834de78]\n{\n\tmargin: 1.5em;\n\twidth: 9.6em;\n\theight: 9.6em;\n}\n.CompanyCard-info>div:nth-child(2)>div[data-v-a834de78]:nth-child(1)\n{\n    \n    margin:1.5em;\n}\np[data-v-a834de78]{\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tline-height: 0.7;\n}\np.intro[data-v-a834de78]\n{\n\tfont-size: 14px;\n\tfont-weight: lighter;\n\tline-height: 1.2;\n\ttext-align: left;\n}\nbutton[data-v-a834de78]\n{\n\twidth: 33.3%;\n\tfloat: left;\n\theight: 3em;\n\tborder:0;\n\tbackground-color: #fffffa;\n}\nbutton>img[data-v-a834de78]\n{\n    width: 15px;\n    height: 15px;\n    display: inline-block;\n    vertical-align: text-top;\n    margin-top: -1px;\n}\n#CompanyCard >div >div >div >div >div >p[data-v-a834de78]:hover\n{\n color: green;\n}\n", ""]);
+exports.push([module.i, "\n#CompanyCard[data-v-a834de78]\n{\n\tmargin: 0 auto ;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\toverflow: hidden;\n\twidth: 70em;\n\tfont-size: 14px;\n}\n.CompanyCard-info[data-v-a834de78]\n{\n\twidth: 34em;\n\theight: 21em;\n\tfont-size: 14px;\n\tborder:1px solid #eeeeee;\n\tfloat: left;\n\tmargin: 0.5em;\n\tbox-sizing: border-box;\n}\n.CompanyCard-info[data-v-a834de78]:hover\n{\n\tborder: 1px solid #33bb93;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(1)\n{\n\theight: 60%;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(2)\n{\n\theight: 40%;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(1)\n{\n\twidth: 12.6em;\n\t\n\tfloat: left;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(2)\n{\n\t\n\t\n\tmargin-left: 12.6em;\n\ttext-align: left;\n}\nh3[data-v-a834de78]{\n\tfont-size: 24px;\n}\n.CompanyCard-info>div:nth-child(1)>div:nth-child(1)>img[data-v-a834de78]\n{\n\tmargin: 1.5em;\n\twidth: 9.6em;\n\theight: 9.6em;\n}\n.CompanyCard-info>div:nth-child(2)>div[data-v-a834de78]:nth-child(1)\n{\n    \n    \tmargin-left:1.5em;\n\tmargin-right:1.5em;\n}\np[data-v-a834de78]{\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tline-height: 0.7;\n}\np.intro[data-v-a834de78]{\n\n\tfont-size: 14px;\n\tfont-weight: lighter;\n\tline-height: 1.2;\n\theight:3.5em;\n\ttext-align: left;\n}\nbutton[data-v-a834de78]\n{\n\twidth: 33.3%;\n\tfloat: left;\n\theight: 3em;\n\tborder:0;\n\tbackground-color: #fffffa;\n}\nbutton>img[data-v-a834de78]\n{\n    width: 15px;\n    height: 15px;\n    display: inline-block;\n    vertical-align: text-top;\n    margin-top: -1px;\n}\n#CompanyCard >div >div >div >div >div >p[data-v-a834de78]:hover\n{\n color: green;\n}\n", ""]);
 
 // exports
 
@@ -10915,9 +10917,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('div', [_c('img', {
       attrs: {
-        "src": '' + item.imgurl
+        "src": './src/img/' + item.logo
       }
-    })]), _vm._v(" "), _c('div', [_c('div', [_c('h3', [_vm._v(_vm._s(item.companyName))])]), _vm._v(" "), _vm._m(0, true)])]), _vm._v(" "), _c('div', [_c('div', [_c('p', {
+    })]), _vm._v(" "), _c('div', [_c('div', [_c('h3', [_vm._v(_vm._s(item.companyName))])]), _vm._v(" "), _c('div', [_c('p', [_vm._v(_vm._s(item.evaluateNum) + "  条面试评价")]), _vm._v(" "), _c('p', [_vm._v("{{}}  个在招职位")]), _vm._v(" "), _c('p', [_vm._v(_vm._s(item.dealingRate) + "  简历处理率")])])])]), _vm._v(" "), _c('div', [_c('div', [_c('p', {
       staticClass: "intro"
     }, [_vm._v(_vm._s(item.companyInfoBrief))])]), _vm._v(" "), _c('div', [_c('button', [_c('img', {
       attrs: {
@@ -10933,9 +10935,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }), _vm._v(" " + _vm._s(item.province) + "\n\t\t\t    \t    \t")])])])])])
   }))
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('p', [_vm._v("33  条面试评价")]), _vm._v(" "), _c('p', [_vm._v("{{}}  个在招职位")]), _vm._v(" "), _c('p', [_vm._v("96%  简历处理率")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()

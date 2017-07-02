@@ -6,7 +6,7 @@
                     <!-- 这是上层div -->
                     <div >
                    	<!-- 这是图片div -->
-                   	   <img v-bind:src="''+item.imgurl" >
+                   	   <img v-bind:src="'./src/img/'+item.logo" >
 
                     </div>
                     <div ><!-- 这图片右边的div -->
@@ -15,9 +15,9 @@
 
                         </div>
                         <div><!-- 这是三行字div -->
-                        	<p>33&nbsp;&nbsp;条面试评价</p>
+                        	<p>{{item.evaluateNum}}&nbsp;&nbsp;条面试评价</p>
                         	<p>{{}}&nbsp;&nbsp;个在招职位</p>
-                        	<p>96%&nbsp;&nbsp;简历处理率</p>
+                        	<p>{{item.dealingRate}}&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>
 			    </div>
@@ -106,18 +106,20 @@ h3{
 .CompanyCard-info>div:nth-child(2)>div:nth-child(1)
 {
     
-    margin:1.5em;
+    	margin-left:1.5em;
+	margin-right:1.5em;
 }
 p{
 	font-size: 16px;
 	font-weight: bold;
 	line-height: 0.7;
 }
-p.intro
-{
+p.intro{
+
 	font-size: 14px;
 	font-weight: lighter;
 	line-height: 1.2;
+	height:3.5em;
 	text-align: left;
 }
 button

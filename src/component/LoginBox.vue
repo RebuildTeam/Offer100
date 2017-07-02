@@ -27,7 +27,7 @@
 	    <br>
 	    <div class="btn-group"><!-- 登录按钮 -->
 	    	<button align='center' v-if="trianglePos==0" v-on:click="login()">登录</button>
-	    	<button align='center' v-if="trianglePos==1" v-on:click="">注册</button>
+	    	<button align='center' v-if="trianglePos==1" v-on:click="register()">注册</button>
 	    </div>
 	</div>
 <!-- 	   <div>
@@ -253,6 +253,34 @@ export default{
 						alert(result.message);
 					}
 	
+    			})
+    		}else{
+    			alert("请输入用户名密码");
+    		}
+    	},
+    	register:function(){
+    		if(this.username!=""||this.applicantName||this.password!=""){
+    			console.log(this.username,this.password)
+    			var jsonObj={
+    				'username':this.username,
+    				'password':this.password,
+    				'applicantName':this.applicantName
+    			}
+    			$.ajax({
+    				url:'./src/api/applicantRegister',
+    				data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						if(result.code==0){
+							router.push('/Index');
+						}else{
+							alert(result.message);
+						}
+					},
+					error:(result)=>{
+						alert(result.message);
+					}
     			})
     		}else{
     			alert("请输入用户名密码");

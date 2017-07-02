@@ -99,7 +99,7 @@ export default{
 	},
 	methods:{
 		linkToPosition:function(){
-			router.push("/Position");
+			router.push({ path: '/Position', params: { 'companyName': this.companyName,'positionName':this.positionName }})
 		},
 		linkeToCompany:function(){
 

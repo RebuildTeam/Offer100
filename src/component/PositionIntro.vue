@@ -1,6 +1,6 @@
 <template>
-<div align="center" id="PositionBrief">
-	<div align="left" class="PositionBrief">
+<div align="center" id="PositionIntro">
+	<div align="left" class="PositionIntro">
 		<div class="container">
 		<div class="left-panel">
 			<h3>职位诱惑</h3>
@@ -38,7 +38,7 @@
 .container{
 	padding:0;
 }
-.PositionBrief{
+.PositionIntro{
 	font-size: 10pt;
 	width: 100%;
 	background-color: #dfdfdf;
@@ -76,7 +76,7 @@
 <script type="text/javascript">
 
 export default{
-	name:'PositionBrief',
+	name:'PositionIntro',
 	props:['positionDetail'],
 	data(){
 		return{

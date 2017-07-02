@@ -16,7 +16,7 @@
                         </div>
                         <div><!-- 这是三行字div -->
                         	<p>{{item.evaluateNum}}&nbsp;&nbsp;条面试评价</p>
-                        	<p>{{}}&nbsp;&nbsp;个在招职位</p>
+                        	<p>{{''+0}}&nbsp;&nbsp;个在招职位</p>
                         	<p>{{item.dealingRate}}&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>

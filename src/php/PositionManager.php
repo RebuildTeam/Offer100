@@ -266,6 +266,6 @@ require_once 'tools.php';
   }
   // getCompanyDetailF("轻松筹");
   // getCompanyBriefF("区");
-  getPositionBriefF("设计师");
+  //getPositionBriefF("设计师");
   // sendResumeF("S.T.A.R","欧德蒙","文案策划");
  ?>

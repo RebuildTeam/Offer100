@@ -1,5 +1,5 @@
 <template>
-	<div id="Position" v-on:load="initPositionData()">
+	<div id="Position">
 		<Navbar></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<PositionBrief v-bind:positionDetail="positionDetailMsg"></PositionBrief>
@@ -22,15 +22,14 @@ import PositionBrief from '../component/PositionBrief.vue'
 			}
 		},
 		created:function(){
-			console.log(this.$router)
-		}
-		,
+			initPositionData();
+		},
 		methods:{
 			initPositionData:function(){
 				var jsonObj={
 					'id':"",
-					'companyName':this.companyName,
-					'positionName':this.positionName
+					'companyName':"DataHunter",
+					'positionName':"web前端工程师"
 				};
 				$.ajax({
 					url:'./src/api/getPositionDetail',

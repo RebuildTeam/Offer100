@@ -1,7 +1,7 @@
 <template>
 <div align="center" id="Searcher">
 	<div class="Searcher">
-		<div><input /><button v-bind:click="isSearching=1">寻找Offer</button></div>
+		<div><input v-model="keyword" /><button v-bind:click="isSearching=1">寻找Offer</button></div>
 	</div>
 	<br>
 	<div>
@@ -75,7 +75,8 @@ export default{
 	data(){
 		return{
 				isSearching:0,
-				positionCardListMsg:[]
+				positionCardListMsg:[],
+				keyword:"",
 			}
 	},
 	watch:{
@@ -84,7 +85,7 @@ export default{
 				if(this.isSearching==1){
 					var jsonObj={
 						id:"",
-						keyword:"",
+						keyword:keyword,
 					}
 					$.ajax({
 						url:'./src/api/getPositionBrief',

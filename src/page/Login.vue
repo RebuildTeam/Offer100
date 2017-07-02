@@ -1,13 +1,13 @@
 <template>
-	<div id="App">
+	<div id="Login">
 		<div class="panel"></div>
 		<div class="panel"></div>
 		<LoginBox></LoginBox>
-	<div>
+	</div>
 
 </template>
 <style type="text/css" scoped>
-#App{
+#Login{
 	height: 100%;
 	width: 100%;
 }

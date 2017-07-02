@@ -1,17 +1,17 @@
 import Vue from './js/vue'
 import VueRouter from 'vue-router'
-// import Login from './page/login.vue'
-import routers from './routers.js'
-import Index from './page/index-php.vue'
+import App from './App.vue'
+import routes from './routes.js'
+// import Index from './page/index-php.vue'
 
 Vue.use(VueRouter)
 
 const router=new VueRouter({
 	mode:'history',
-	routers:routers
+	routes	
 })
 
 new Vue({
-	el:'#MountPoint',
-	render:h=>h(Index)
-})
+	router,
+	render:h=>h(App)
+}).$mount("#MountPoint")

@@ -28,13 +28,13 @@
 			    	    </div>
 			    	    <div><!-- 三个按钮那一层 -->
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/menu.png'">&nbsp;{{item.type}}
+			    	    		<img v-bind:src="'./src/img/menu.png'">&nbsp;{{item.type}}
 			    	    	</button>
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/tongji.png'">&nbsp;{{item.financing}}
+			    	    		<img v-bind:src="'./src/img/tongji.png'">&nbsp;{{item.financing}}
 			    	    	</button>
 			    	    	<button>
-			    	    		<img v-bind:src="'./src/address.png'">&nbsp;{{item.province}}
+			    	    		<img v-bind:src="'./src/img/address.png'">&nbsp;{{item.province}}
 			    	    	</button>
 			    	    </div>
 			    </div>

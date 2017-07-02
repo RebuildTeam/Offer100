@@ -34,6 +34,7 @@ import PositionBrief from '../component/PositionBrief.vue'
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
+						console.log(result);
 						this.positionDetailMsg=result.data;
 						console.log(JSON.stringify(this.positionDetailMs));
 					},

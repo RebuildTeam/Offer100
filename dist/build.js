@@ -12347,6 +12347,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12815,15 +12818,11 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	},
 	data() {
 		return {
-			//companyName:this.$router.params.companyName,
-			//positionName:this.$router.params.positionName,
-			//positionDetailMsg:{}
+			companyName: "DataHunter",
+			positionName: "web前端工程师",
+			positionDetailMsg: {}
 		};
 	},
-	created: function () {
-		console.log(this.$router);
-	},
-
 	methods: {
 		initPositionData: function () {
 			var jsonObj = {
@@ -12832,11 +12831,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				'positionName': this.positionName
 			};
 			$.ajax({
-				url: './src/api/getPositionDetail',
+				url: './src/api/getPosition',
 				data: JSON.stringify(jsonObj),
 				dataType: 'json',
 				type: 'post',
 				success: result => {
+					console.log(result);
 					this.positionDetailMsg = result.data;
 					console.log(JSON.stringify(this.positionDetailMs));
 				},
@@ -12845,6 +12845,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				}
 			});
 		}
+	},
+	created: function () {
+		this.initPositionData();
 	}
 });
 
@@ -12888,7 +12891,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.PositionBrief[data-v-20ac471e]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 60%;\n}\n.right-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 40%;\n\tposition: relative;\n}\n.send-pr-btn[data-v-20ac471e]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-20ac471e]{\n\tpadding:0;\n}\n.PositionBrief[data-v-20ac471e]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 60%;\n}\n.right-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 40%;\n\tposition: relative;\n}\n.send-pr-btn[data-v-20ac471e]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n", ""]);
 
 // exports
 
@@ -13557,11 +13560,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   return _c('div', {
     attrs: {
       "id": "Position"
-    },
-    on: {
-      "load": function($event) {
-        _vm.initPositionData()
-      }
     }
   }, [_c('Navbar'), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('PositionBrief', {
     attrs: {

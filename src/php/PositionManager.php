@@ -13,6 +13,13 @@ require_once 'tools.php';
     $keyword = $arr['keyword'];
     getCompanyBriefF($keyword);
   }
+  function getPositionDetail(jsonS)
+  {
+    $arr = json_decode($jsonS,true);
+    $companyName = $arr['companyName'];
+    $positionName = $arr['positionName'];
+    getPositionDetailF($companyName,$positionName);
+  }
   function getPositionBrief($jsonS)
   {
     $arr = json_decode($jsonS,true);
@@ -92,6 +99,35 @@ require_once 'tools.php';
     echo $obj;
   }
 
+  function getPositionDetailF($companyName,$positionName)
+  {
+    $reArr = array();
+    $isExist = findCompany($companyName);
+    if($isExist)
+    {
+      $manager = Manager::getManager();
+      $filter = ['companyName' => $companyName];
+      $options = [
+        'projection' => ['_id' => 0],
+      ];
+      $query = new MongoDB\Driver\Query($filter,$options);
+      $cursor = $manager->executeQuery("test.company", $query);
+      foreach($cursor as $document)
+      {
+        $re = object_array($document);
+        if($re['positionName'] == $positionName)
+        {
+          $positionRe = $re['position'];
+        }
+      }
+      // var_dump($positionRe);
+    }
+    $reArr['data'] = $positionRe;
+    $reArr['caller'] = $_SESSION['identity'];
+    $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
+    echo $obj;
+  }
+
   function getPositionBriefF($keyword)
   {
     $reArr = array();
@@ -147,7 +183,6 @@ require_once 'tools.php';
         }
       }
     }
-
     $reArr['data'] = $allPosition;
     $reArr['caller'] = $_SESSION['identity'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
@@ -266,6 +301,6 @@ require_once 'tools.php';
   }
   // getCompanyDetailF("轻松筹");
   // getCompanyBriefF("区");
-  //getPositionBriefF("设计师");
+  // getPositionBriefF("设计师");
   // sendResumeF("S.T.A.R","欧德蒙","文案策划");
  ?>

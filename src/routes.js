@@ -1,4 +1,4 @@
-import Index from './page/index-php.vue'
+import Index from './page/index-go.vue'
 import Login from './page/login.vue'
 import Position from './page/position.vue'
 

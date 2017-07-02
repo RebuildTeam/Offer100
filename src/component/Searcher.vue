@@ -80,11 +80,12 @@ export default{
 			}
 	},
 	methods:{
-		searchPosition:()=>{
+		searchPosition:function(){
 			var jsonObj={
 				'id':"",
 				'keyword':this.searchContent,
 			}
+			alert(this.searchContent);
 			$.ajax({
 				url:'./src/api/getPositionBrief',
 				data:JSON.stringify(jsonObj),

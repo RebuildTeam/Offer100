@@ -12,14 +12,14 @@ $path = array(
 	'getPosition' => 'CompanyInfoManager.php',
 	'setPosition' => 'CompanyInfoManager.php',
 	'dropPosition' => 'CompanyInfoManager.php',
-	'getCompanyDetail' => 'PositionManager.php',
+	// 'getCompanyDetail' => 'PositionManager.php',
 	'getCompanyBrief' => 'PositionManager.php',
 	'getPositionDetail' => 'PositionManager.php',
 	'getPositionBrief' => 'PositionManager.php',
 	'sendResume' => 'PositionManager.php',
 	'getResumeList' => 'ApplyManager.php',
 	'replyResume' => 'ApplyManager.php',
-	'getResume' => 'ApplyManager.php',
+	// 'getResume' => 'ApplyManager.php',
 	);
 
 

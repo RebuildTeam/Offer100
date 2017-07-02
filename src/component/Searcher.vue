@@ -80,7 +80,7 @@ export default{
 			}
 	},
 	methods:{
-		searchPosition:function(){
+		searchPosition:()=>{
 			var jsonObj={
 				'id':"",
 				'keyword':this.searchContent,

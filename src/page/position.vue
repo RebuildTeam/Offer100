@@ -16,20 +16,17 @@ import PositionBrief from '../component/PositionBrief.vue'
 		},
 		data(){
 			return{
-				//companyName:this.$router.params.companyName,
-				//positionName:this.$router.params.positionName,
-				//positionDetailMsg:{}
+				companyName:"DataHunter",
+				positionName:"web前端工程师",
+				positionDetailMsg:{}
 			}
-		},
-		created:function(){
-			initPositionData();
 		},
 		methods:{
 			initPositionData:function(){
 				var jsonObj={
 					'id':"",
-					'companyName':"DataHunter",
-					'positionName':"web前端工程师"
+					'companyName':this.companyName,
+					'positionName':this.positionName
 				};
 				$.ajax({
 					url:'./src/api/getPositionDetail',
@@ -45,6 +42,9 @@ import PositionBrief from '../component/PositionBrief.vue'
 					}
 				})
 			}
+		},
+		created:function(){
+			initPositionData();
 		}
 	}
 </script>

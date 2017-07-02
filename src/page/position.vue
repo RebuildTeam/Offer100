@@ -16,7 +16,7 @@ import PositionBrief from '../component/PositionBrief.vue'
 		},
 		data(){
 			return{
-				companyName:"DataHunter",
+				companyName:"洺信科技",
 				positionName:"web前端工程师",
 				positionDetailMsg:{}
 			}

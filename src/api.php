@@ -24,7 +24,7 @@ $path = array(
 
 
 $pathinfo = explode('/',$_SERVER['REQUEST_URI']);
-$method = $pathinfo[5];
+$method = $pathinfo[3];
 $data = file_get_contents("php://input");
 
 require_once('php/'.''.$path[$method]);

@@ -14,3 +14,6 @@ new Vue({
 	router,
 	render:h=>h(App)
 }).$mount("#MountPoint")
+
+export default router
+

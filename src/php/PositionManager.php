@@ -92,7 +92,7 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function getPositionBriefF($companyName)
+  function getPositionBriefF($keyword)
   {
     $reArr = array();
     $manager = Manager::getManager();
@@ -266,6 +266,6 @@ require_once 'tools.php';
   }
   // getCompanyDetailF("轻松筹");
   // getCompanyBriefF("区");
-  // getPositionBriefF("欧德蒙");
+  getPositionBriefF("设计师");
   // sendResumeF("S.T.A.R","欧德蒙","文案策划");
  ?>

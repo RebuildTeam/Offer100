@@ -2,7 +2,6 @@ import Vue from './js/vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 import routes from './routes.js'
-// import Index from './page/index-php.vue'
 
 Vue.use(VueRouter)
 

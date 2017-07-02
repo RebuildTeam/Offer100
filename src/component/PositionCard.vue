@@ -25,9 +25,9 @@
 
 			    	</div>
 			    </div>
-			    <div v-if="item.CompanyName"><!-- 这是右层div -->
+			    <div v-if="item.CompanyName!=null"><!-- 这是右层div -->
 			    	<div><!-- 那个公司名称的div -->
-			    		<span class="Noborder2">{{item.positionType
+			    		<span class="Noborder2">{{item.CompanyName
 }}</span>
 			    	</div>
 			    	<div align="left">

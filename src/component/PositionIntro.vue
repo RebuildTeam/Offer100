@@ -15,15 +15,15 @@
 		<div class="right-panel" align="center">
 			<h3>{{positionDetail.companyName}}</h3>
 			<div>
-				<img v-bind:src="'./src/img/menu.png'"/>
+				<img class="icon" v-bind:src="'./src/img/menu.png'"/>
 				{{companyDetail.type}}
 			</div>
 			<div>
-				<img v-bind:src="'./src/img/tongji.png'"/>
+				<img class="icon" v-bind:src="'./src/img/tongji.png'"/>
 				{{companyDetail.financing}}
 			</div>
 			<div>
-				<img v-bind:src="'./src/img/address.png'"/>
+				<img class="icon" v-bind:src="'./src/img/address.png'"/>
 				{{companyDetail.province}}
 			</div>
 		</div>
@@ -41,8 +41,7 @@
 .PositionIntro{
 	font-size: 10pt;
 	width: 100%;
-	background-color: #dfdfdf;
-	border:1px solid #dfdfdf;
+	background-color: #fff;
 	padding: 0.5em;
 	overflow: hidden;
 }

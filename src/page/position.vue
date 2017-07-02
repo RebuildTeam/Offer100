@@ -29,7 +29,7 @@ import PositionBrief from '../component/PositionBrief.vue'
 					'positionName':this.positionName
 				};
 				$.ajax({
-					url:'./src/api/getPosition',
+					url:'./src/api/getPositionDetail',
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',

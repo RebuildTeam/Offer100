@@ -36,7 +36,7 @@ import PositionBrief from '../component/PositionBrief.vue'
 					success:(result)=>{
 						console.log(result);
 						this.positionDetailMsg=result.data;
-						console.log(JSON.stringify(this.positionDetailMs));
+						console.log(this.positionDetailMs);
 					},
 					error:function(result,msg,error){
 						console.log(result,msg,error);

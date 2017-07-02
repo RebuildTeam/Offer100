@@ -1,9 +1,6 @@
 <?php
-
 session_start();
-
 require_once 'tools.php';
-
   function getCompanyDetail($jsonS)
   {
     $arr = json_decode($jsonS,true);
@@ -13,14 +10,14 @@ require_once 'tools.php';
   function getCompanyBrief($jsonS)
   {
     $arr = json_decode($jsonS,true);
-    $keyWord = $arr['keyWord'];
-    getCompanyBriefF($keyWord);
+    $keyword = $arr['keyword'];
+    getCompanyBriefF($keyword);
   }
   function getPositionBrief($jsonS)
   {
     $arr = json_decode($jsonS,true);
-    $companyName = $arr['companyName'];
-    getPositionBriefF($companyName);
+    $keyword = $arr['keyword'];
+    getPositionBriefF($keyword);
   }
   function sendResume($jsonS)
   {
@@ -98,23 +95,60 @@ require_once 'tools.php';
   function getPositionBriefF($companyName)
   {
     $reArr = array();
-    $isExist = findCompany($companyName);
-    if($isExist)
+    $manager = Manager::getManager();
+    $filter = [];
+    $options = [
+      'projection' => ['_id' => 0],
+    ];
+    $query = new MongoDB\Driver\Query($filter,$options);
+    $cursor = $manager->executeQuery("test.company", $query);
+    $allPosition = array();
+
+    if($keyword == "")
     {
-      $manager = Manager::getManager();
-      $filter = ['companyName' => $companyName];
-      $options = [
-        'projection' => ['_id' => 0],
-      ];
-      $query = new MongoDB\Driver\Query($filter,$options);
-      $cursor = $manager->executeQuery("test.company", $query);
       foreach($cursor as $document)
       {
         $re = object_array($document);
         $positionArr = $re['position'];
+        $companyName = $re['companyName'];
+        foreach($positionArr as $singlePosition)
+        {
+          $singlePosition['companyName'] = $companyName;
+          // var_dump($singlePosition);
+          array_push($allPosition,$singlePosition);
+        }
       }
     }
-    $reArr['data'] = $positionArr;
+    else
+    {
+      foreach($cursor as $document)
+      {
+        $re = object_array($document);
+        $positionArr = $re['position'];
+        $companyName = $re['companyName'];
+        if(strpos($re['companyName'],$keyword) !== false)
+        {
+          foreach($positionArr as $singlePosition)
+          {
+            $singlePosition['companyName'] = $companyName;
+            array_push($allPosition,$singlePosition);
+          }
+        }
+        else
+        {
+          foreach($positionArr as $singlePosition)
+          {
+            if(strpos($singlePosition['positionName'],$keyword) !== false || strpos($singlePosition['city'],$keyword) !== false)
+            {
+              $singlePosition['companyName'] = $companyName;
+              array_push($allPosition,$singlePosition);
+            }
+          }
+        }
+      }
+    }
+
+    $reArr['data'] = $allPosition;
     $reArr['caller'] = $_SESSION['identity'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
@@ -161,7 +195,6 @@ require_once 'tools.php';
               array_push($p['applicant'],$applicantStatus);
             }
             $positionArr[$i] = $p;
-
             $filter = ['username' => $username];
             $options = [
               'projection' => ['_id' => 0],
@@ -189,24 +222,20 @@ require_once 'tools.php';
             }
             $resume = $resumeArr;
             //var_dump($resume);
-
             $bulk = new MongoDB\Driver\BulkWrite;
             $bulk->update(['username' => $username],
                           ['$set' => ['resume' => $resume]],
                           ['multi' => false, 'upsert' => false]);
             $reModifyUser = $manager->executeBulkWrite('test.user',$bulk);
-
             break;
           }
         }
         //var_dump($positionArr);
-
         $bulk = new MongoDB\Driver\BulkWrite;
         $bulk->update(['companyName' => $companyName],
                       ['$set' => ['position'=> $positionArr,]],
                       ['multi' => false, 'upsert' => false]);
         $reModifyCompany = $manager->executeBulkWrite('test.company',$bulk);
-
         if($reModifyCompany && $reModifyUser)
         {
           $code = 0;
@@ -235,11 +264,8 @@ require_once 'tools.php';
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
-
   // getCompanyDetailF("轻松筹");
   // getCompanyBriefF("区");
   // getPositionBriefF("欧德蒙");
-
   // sendResumeF("S.T.A.R","欧德蒙","文案策划");
-
  ?>

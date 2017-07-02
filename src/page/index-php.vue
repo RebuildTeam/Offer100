@@ -1,5 +1,5 @@
 <template>
-	<div id="App">
+	<div id="Index">
 		<Navbar></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<div class="container">
@@ -21,7 +21,7 @@ import Searcher from '../component/Searcher.vue'
 import RecommendColumn from '../component/RecommendColumn.vue'
 
 	export default{
-		name:'App',
+		name:'Index',
 		components:{
 			Navbar,
 			Searcher,

@@ -44,7 +44,7 @@ import PositionBrief from '../component/PositionBrief.vue'
 			}
 		},
 		created:function(){
-			initPositionData();
+			this.initPositionData();
 		}
 	}
 </script>

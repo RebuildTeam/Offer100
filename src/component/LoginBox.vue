@@ -213,7 +213,7 @@ img
 }
 </style>
 <script type="text/javascript">
-import router from './main.js'
+import router from '../main.js'
 export default{
 	name:'LoginBox',
 	data(){

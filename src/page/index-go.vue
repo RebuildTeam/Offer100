@@ -9,9 +9,9 @@
 	</div>
 </template>
 <script type="text/javascript">
-import Navbar from './Navbar.vue'
-import RecommendRow from './RecommendRow.vue'
-import CompanyFilter from './CompanyFilter.vue'
+import Navbar from '../component/Navbar.vue'
+import RecommendRow from '../component/RecommendRow.vue'
+import CompanyFilter from '../component/CompanyFilter.vue'
 	export default{
 		name:'App',
 		components:{

@@ -1,7 +1,7 @@
 import Vue from './js/vue'
 import VueRouter from 'vue-router'
-import Login from './component/Login.vue'
-import App from './component/index-php.vue'
+import Login from './page/Login.vue'
+import App from './page/index-php.vue'
 
 Vue.use(VueRouter)
 

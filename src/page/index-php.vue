@@ -16,9 +16,9 @@
 	</div>
 </template>
 <script type="text/javascript">
-import Navbar from './Navbar.vue'
-import Searcher from './Searcher.vue'
-import RecommendColumn from './RecommendColumn.vue'
+import Navbar from '../component/Navbar.vue'
+import Searcher from '../component/Searcher.vue'
+import RecommendColumn from '../component/RecommendColumn.vue'
 
 	export default{
 		name:'App',

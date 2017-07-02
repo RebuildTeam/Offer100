@@ -1,6 +1,6 @@
 import Vue from './js/vue'
 import VueRouter from 'vue-router'
-import Login from './page/login.vue'
+// import Login from './page/login.vue'
 import routers from './routers.js'
 import Index from './page/index-php.vue'
 

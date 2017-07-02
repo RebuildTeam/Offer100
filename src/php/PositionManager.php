@@ -13,7 +13,7 @@ require_once 'tools.php';
     $keyword = $arr['keyword'];
     getCompanyBriefF($keyword);
   }
-  function getPositionDetail(jsonS)
+  function getPositionDetail($jsonS)
   {
     $arr = json_decode($jsonS,true);
     $companyName = $arr['companyName'];

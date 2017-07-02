@@ -84,8 +84,8 @@ export default{
 			handler:function(){
 				if(this.isSearching==1){
 					var jsonObj={
-						id:"",
-						keyword:this.searchContent,
+						'id':"",
+						'keyword':this.searchContent,
 					}
 					$.ajax({
 						url:'./src/api/getPositionBrief',

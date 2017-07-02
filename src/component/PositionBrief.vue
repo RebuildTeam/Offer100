@@ -25,6 +25,9 @@
 
 
 <style type="text/css" scoped>
+.container{
+	padding:0;
+}
 .PositionBrief{
 	font-size: 10pt;
 	width: 100%;

@@ -115,9 +115,13 @@ require_once 'tools.php';
       foreach($cursor as $document)
       {
         $re = object_array($document);
-        if($re['positionName'] == $positionName)
+        foreach($re['position'] as $singlePosition)
         {
-          $positionRe = $re['position'];
+          if($singlePosition['positionName'] == $positionName)
+          {
+            $singlePosition['companyName'] = $companyName;
+            $positionRe = $singlePosition;
+          }
         }
       }
       // var_dump($positionRe);

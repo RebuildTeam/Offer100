@@ -12,7 +12,7 @@
 			<h3>工作地址</h3>
 			<p>{{positionDetail.city}}</p><br>
 		</div>
-		<div class="right-panel" align="center">
+		<div class="right-panel" align="left">
 			<h3>{{positionDetail.companyName}}</h3>
 			<div>
 				<img class="icon" v-bind:src="'./src/img/menu.png'"/>
@@ -52,6 +52,7 @@
 .right-panel{
 	float: left;
 	width: 40%;
+	margin:0;
 	position: relative;
 }
 .send-pr-btn{

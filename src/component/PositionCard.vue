@@ -98,7 +98,7 @@ export default{
 	},
 	methods:{
 		linkToPosition:function(){
-			this.$router.push({ path: '/Position', params: { companyName: "DataHunter",positionName:"web前端工程师" }})
+			this.$router.push({ path: '/Position', params: { companyName: "洺信科技",positionName:"web前端工程师" }})
 		},
 		linkeToCompany:function(){
 

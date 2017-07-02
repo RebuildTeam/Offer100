@@ -9,7 +9,7 @@
                    	   <img v-bind:src="'./src/img/'+item.logo" >
 
                     </div>
-                    <div ><!-- 这图片右边的div -->
+                    <div align="left"><!-- 这图片右边的div -->
                         <div><!-- 这是公司标题div -->
                         	<h3>{{item.companyName}}&nbsp;</h3>
 

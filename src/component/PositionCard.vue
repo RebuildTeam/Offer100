@@ -2,7 +2,7 @@
 <div  id="PositionCard">
 	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
-			    <div class="position-panel"><!-- 这是左层div -->
+			    <div class="position-panel" v-on:click="linkToPosition()"><!-- 这是左层div -->
 			    	<h4>{{item.positionName}}</h4>
 
 			    	<div class="middle"><!-- 这是左侧中层div -->
@@ -16,7 +16,7 @@
 			    		<span>{{item.positionType}}</span>			
 			    	</div>
 
-			    </div><div class="company-panel" v-if="item.companyName!=null"><!-- 这是右层div -->
+			    </div><div class="company-panel" v-if="item.companyName!=null" v-on:click="linkToCompany()"><!-- 这是右层div -->
 			    	<div><!-- 那个公司名称的div -->
 			    		<p>{{item.companyName}}</p>
 			    	</div>
@@ -89,11 +89,20 @@ span{
 
 </style>
 <script type="text/javascript">
+import router from '../main.js'
 export default{
 	name:'PositionCard',
 	props:['positionCardList'],
 	data(){
 		return{
+		}
+	},
+	methods:{
+		linkToPosition:function(){
+			router.push("/Position");
+		},
+		linkeToCompany:function(){
+
 		}
 	}
 }

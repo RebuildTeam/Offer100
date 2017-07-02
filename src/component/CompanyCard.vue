@@ -11,7 +11,7 @@
                     </div>
                     <div ><!-- 这图片右边的div -->
                         <div><!-- 这是公司标题div -->
-                        	<h3>{{item.companyName}}</h3>
+                        	<h3>{{item.companyName}}&nbsp;</h3>
 
                         </div>
                         <div><!-- 这是三行字div -->

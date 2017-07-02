@@ -16,8 +16,8 @@ import PositionBrief from '../component/PositionBrief.vue'
 		},
 		data(){
 			return{
-				companyName:"洺信科技",
-				positionName:"web前端工程师",
+				companyName:"欧德蒙",
+				positionName:"java工程师",
 				positionDetailMsg:{}
 			}
 		},

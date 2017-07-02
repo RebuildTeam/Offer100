@@ -1,6 +1,6 @@
 <template>
-<div align="center" id="Filter">
-	<div align="left" class="Filter">
+<div align="center" id="CompanyFilter">
+	<div align="left" class="CompanyFilter">
 		<div v-for="item in filterList">
 			<span><strong>{{item.label}}</strong></span>
 			<a 	v-for="condition in item.conditions" 
@@ -19,7 +19,7 @@
 </template>
 
 <style type="text/css" scoped>
-.Filter{
+.CompanyFilter{
 	font-size: 10pt;
 	max-width: 960px;
 	width: 100%;
@@ -54,7 +54,7 @@ a{
 import CompanyCard from './CompanyCard.vue';
 
 export default{
-	name:'Filter',
+	name:'CompanyFilter',
 	components:{
 		CompanyCard
 	},

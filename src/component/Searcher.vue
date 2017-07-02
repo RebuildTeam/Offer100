@@ -96,8 +96,8 @@ export default{
 					console.log(JSON.stringify(this.positionCardListMsg));
 					this.isSearching=0;
 				},
-				error:function(result){
-					alert(result.message);
+				error:function(result,msg,error){
+					console.log(result,msg,error);
 					this.isSearching=0;
 				}
 			})

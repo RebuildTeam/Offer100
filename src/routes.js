@@ -1,6 +1,6 @@
 import Index from './page/index-php.vue'
 import Login from './page/login.vue'
-import Position from '.page/position.vue'
+import Position from './page/position.vue'
 
 const routes=[
 	{

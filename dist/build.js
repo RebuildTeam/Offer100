@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "/dist/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 16);
+/******/ 	return __webpack_require__(__webpack_require__.s = 18);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -265,7 +265,7 @@ if (typeof DEBUG !== 'undefined' && DEBUG) {
   ) }
 }
 
-var listToStyles = __webpack_require__(35)
+var listToStyles = __webpack_require__(40)
 
 /*
 type StyleObject = {
@@ -473,13 +473,13 @@ function applyToTag (styleElement, obj) {
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(33)
+  __webpack_require__(38)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(10),
+  __webpack_require__(11),
   /* template */
-  __webpack_require__(27),
+  __webpack_require__(31),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -487,7 +487,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/CompanyCard.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\CompanyCard.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] CompanyCard.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9325,7 +9325,7 @@ module.exports = Component.exports
 
   return Vue$3;
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(36)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(41)))
 
 /***/ }),
 /* 5 */
@@ -9334,13 +9334,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(34)
+  __webpack_require__(39)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(11),
+  __webpack_require__(12),
   /* template */
-  __webpack_require__(28),
+  __webpack_require__(32),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9348,7 +9348,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/Filter.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\Filter.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Filter.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9378,13 +9378,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(31)
+  __webpack_require__(35)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(12),
+  __webpack_require__(13),
   /* template */
-  __webpack_require__(25),
+  __webpack_require__(28),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9392,7 +9392,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/Login.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\Login.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Login.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9422,13 +9422,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(30)
+  __webpack_require__(34)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(13),
+  __webpack_require__(14),
   /* template */
-  __webpack_require__(24),
+  __webpack_require__(27),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9436,7 +9436,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/Navbar.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\Navbar.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Navbar.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9466,13 +9466,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(32)
+  __webpack_require__(37)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(14),
+  __webpack_require__(15),
   /* template */
-  __webpack_require__(26),
+  __webpack_require__(30),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9480,7 +9480,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/PositionCard.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\PositionCard.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] PositionCard.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9510,13 +9510,13 @@ module.exports = Component.exports
 var disposed = false
 function injectStyle (ssrContext) {
   if (disposed) return
-  __webpack_require__(29)
+  __webpack_require__(33)
 }
 var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(15),
+  __webpack_require__(16),
   /* template */
-  __webpack_require__(23),
+  __webpack_require__(26),
   /* styles */
   injectStyle,
   /* scopeId */
@@ -9524,7 +9524,7 @@ var Component = __webpack_require__(1)(
   /* moduleIdentifier (server only) */
   null
 )
-Component.options.__file = "/var/www/html/offer100-php/Offer100/src/component/Recommend.vue"
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\Recommend.vue"
 if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] Recommend.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -9549,6 +9549,50 @@ module.exports = Component.exports
 
 /***/ }),
 /* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var disposed = false
+function injectStyle (ssrContext) {
+  if (disposed) return
+  __webpack_require__(36)
+}
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(17),
+  /* template */
+  __webpack_require__(29),
+  /* styles */
+  injectStyle,
+  /* scopeId */
+  "data-v-7babd94e",
+  /* moduleIdentifier (server only) */
+  null
+)
+Component.options.__file = "C:\\Users\\lyy\\Desktop\\Offer100\\src\\component\\Searcher.vue"
+if (Component.esModule && Object.keys(Component.esModule).some(function (key) {return key !== "default" && key.substr(0, 2) !== "__"})) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] Searcher.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-7babd94e", Component.options)
+  } else {
+    hotAPI.reload("data-v-7babd94e", Component.options)
+  }
+  module.hot.dispose(function (data) {
+    disposed = true
+  })
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9708,7 +9752,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9902,7 +9946,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10209,7 +10253,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 13 */
+/* 14 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10254,7 +10298,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10433,7 +10477,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10559,7 +10603,214 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 });
 
 /***/ }),
-/* 16 */
+/* 17 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CompanyCard_vue__ = __webpack_require__(3);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__CompanyCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__CompanyCard_vue__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+	name: 'Searcher',
+	components: {
+		CompanyCard: __WEBPACK_IMPORTED_MODULE_0__CompanyCard_vue___default.a
+	},
+	data() {
+		return {
+			chosenItem: {
+				"Location": "China",
+				"Phase": "No Limitation",
+				"Field": "No Limitation",
+				"Sort Order": "Default"
+			},
+			CompanyCardListMsg: [],
+			filterList: [{
+				label: "Location",
+				conditions: [{
+					label: "China"
+				}, {
+					label: "Beijing"
+				}, {
+					label: "Shanghai"
+				}, {
+					label: "Shenzhen"
+				}, {
+					label: "Guangzhou"
+				}, {
+					label: "Hangzhou"
+				}, {
+					label: "Chengdu"
+				}, {
+					label: "Nanjing"
+				}, {
+					label: "Wuhan"
+				}, {
+					label: "Xiamen"
+				}, {
+					label: "Suzhou"
+				}, {
+					label: "Tianjing"
+				}]
+			}, {
+				label: "Phase",
+				conditions: [{
+					label: "No Limitation"
+				}, {
+					label: "No Financing "
+				}, {
+					label: "AI Round"
+				}, {
+					label: "A Round"
+				}, {
+					label: "B Round"
+				}, {
+					label: "C Round"
+				}, {
+					label: "D+ Round"
+				}, {
+					label: "Quoted"
+				}, {
+					label: "No Need To Financing"
+				}]
+			}, {
+				label: "Field",
+				conditions: [{
+					label: "No Limitation"
+				}, {
+					label: "Mobile Internet"
+				}, {
+					label: "E-Business"
+				}, {
+					label: "Finance"
+				}, {
+					label: "Business Service"
+				}, {
+					label: "Education"
+				}, {
+					label: "Entertainment"
+				}, {
+					label: "Game"
+				}, {
+					label: "O2O"
+				}, {
+					label: "Hardware"
+				}]
+			}, {
+				label: "Sort Order",
+				conditions: [{
+					label: "Default"
+				}, {
+					label: "Jobs Number"
+				}, {
+					label: "Comments Number"
+				}, {
+					label: "PR dealing Rate"
+				}]
+			}]
+		};
+	},
+	watch: {
+		'chosenItem': {
+			handler: function () {
+				// this.CompanyCardListMsg=
+				// [{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
+				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
+				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
+				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
+				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
+				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false}];
+
+				var jsonObj = {
+					keyword: ""
+				};
+				$.ajax({
+					url: './src/api/getCompanyBrief',
+					data: JSON.stringify(jsonObj),
+					dataType: 'json',
+					type: 'post',
+					success: result => {
+						this.CompanyCardListMsg = result.data;
+						console.log(JSON.stringify(this.CompanyCardListMsg));
+					},
+					error: function () {}
+				});
+				//this.CompanyCardListMsg=[{"companyName":"欧德蒙","companyInfoBrief":"致力于打造最先进的智慧健康医疗设备和人工智能软件，让生命健康数据的采集、分析、存储管理更便捷更智能。","type":"移动互联网","financing":"A轮","province":"广东"},{"companyName":"轻松筹","companyInfoBrief":"基于社交的全民众筹平台","type":"移动互联网, 金融","financing":"C轮","province":"北京"},{"companyName":"西安未来国际","companyInfoBrief":"中国专业的信息化全程服务提供商。","type":"移动互联网","financing":"上市公司","province":"陕西"},{"companyName":"洺信科技","companyInfoBrief":"最专业的二次元音乐平台，提供海量原创、翻唱音乐，让二次元音乐爱好者通过音乐互相交流，分享快乐。","type":"数据服务","financing":"天使轮","province":"四川"}];
+			},
+			deep: true
+		}
+	}
+});
+
+/***/ }),
+/* 18 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -10578,6 +10829,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_PositionCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_5__component_PositionCard_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_Login_vue__ = __webpack_require__(6);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__component_Login_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6__component_Login_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_Searcher_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__component_Searcher_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7__component_Searcher_vue__);
+
+
 
 
 
@@ -10593,9 +10848,14 @@ var recommend = new __WEBPACK_IMPORTED_MODULE_0__js_vue___default.a({
 	el: '#Recommend',
 	render: h => h(__WEBPACK_IMPORTED_MODULE_2__component_Recommend_vue___default.a)
 });
-var filter = new __WEBPACK_IMPORTED_MODULE_0__js_vue___default.a({
-	el: '#Filter',
-	render: h => h(__WEBPACK_IMPORTED_MODULE_3__component_Filter_vue___default.a)
+// var filter=new Vue({
+// 	el:'#Filter',
+// 	render:h=>h(Filter)
+// })
+
+var searcher = new __WEBPACK_IMPORTED_MODULE_0__js_vue___default.a({
+	el: '#Searcher',
+	render: h => h(__WEBPACK_IMPORTED_MODULE_7__component_Searcher_vue___default.a)
 });
 
 /*var positionCard=new Vue({
@@ -10608,34 +10868,6 @@ var filter = new __WEBPACK_IMPORTED_MODULE_0__js_vue___default.a({
 // })
 
 /***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\n{\n\ttransition: all 0.5s;/*0.5s的时间内变化*/\n}\nh1[data-v-26507093]    /*标题属性，暂且就设置了一个颜色，大小为h1*/\n{\n\tcolor:white;\n}\n*[data-v-26507093]{\n\t\ttransition: 0.5s all;\n}\n#Recommend[data-v-26507093]/*recommend这个最大的块的属性*/\n{\n\tbackground-color: #33bb93;\n\twidth: 100%;\n\theight: 20em;\n\tmax-width: 300em;\n\toverflow-x: auto;\n\toverflow-y: hidden;\n}\n#Recommend > div[data-v-26507093]/*几个小机器人放在一个盒子里面，这个盒子的属性*/\n{\n\tbackground-color: #33bb93;\n\tmin-width: 1080px;\n}\n#Recommend > div >div[data-v-26507093]/*几个小机器人的模块属性*/\n{\n\tbackground-color: #ccffee;\n\tdisplay: inline-block;\n\tvertical-align:top;\n\tmargin:1.6em;\n\twidth: 9em;\n\theight: 13em;\n\tpadding:0.5em;\n\toverflow: hidden;\n}\n.Recommend-info[data-v-26507093]{\n\toverflow: hidden;\n\tmax-height: 100%;\n}\n.Recommend-detail[data-v-26507093]{\n\toverflow: hidden;\n\tmax-height: 0%;\n}\n#Recommend > div > div:hover > .Recommend-info[data-v-26507093]{\n\toverflow: hidden;\n\tmax-height: 0;\n\t/*background-color: black;*/\n}\n#Recommend > div > div:hover > .Recommend-detail[data-v-26507093]{\n\tmax-height: 100%;\n}\n#Recommend > div > div[data-v-26507093]:hover/*鼠标放在机器人上面显示出的盒子的块属性*/\n{\n\tbackground-color: white;\n\twidth: 9.6em;\n\theight: 13.6em;\n\tmargin: 1em;\n}\n#Recommend img[data-v-26507093]/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/\n{\n\twidth: 9em;\n\theight: 9em;\n\tpadding-top: 0.5em;\n\tpadding-bottom: 0.5em;\n\tbackground-position: center;\n\tbackground-size: 100% 100%;\n\tbackground-repeat: no-repeat;\n}\n#Recommend button[data-v-26507093]/*按钮属性*/\n{\n\tposition: relative;\n\theight: 3em;\n\twidth: 6em;\n\tborder: none;\n\tbackground-color: #33bb93;\n}\n#Recommend span[data-v-26507093]/*span块内字体大小*/\n{\n\tfont-size: 10pt;\n}\n.Recommend-detail > div[data-v-26507093]/*小机器人后面的盒子的属性*/\n{\n\twidth: 9em;\n\theight: 7.5em;\n\tpadding-top: 3em;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(0)(undefined);
-// imports
-
-
-// module
-exports.push([module.i, "\nnav[data-v-2acc886e]{\n\twidth: 100%;\n\tbackground-color: #333;\n\theight: 1.8em;\n\tline-height: 1.8em;\n\tcolor:white;\n}\nnav > span[data-v-2acc886e]{\n\tcolor:#aaa;\n\tfont-size: 10pt;\n\tpadding-right: 0.5em;\n\tpadding-left: 0.5em;\n\tborder-right: 1px solid #aaa;\n}\nnav > span[data-v-2acc886e]:last-child{\n\tborder: none;\n}\na[data-v-2acc886e]{\n\tcolor: #aaa;\n\ttext-decoration: none;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
 /* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -10644,7 +10876,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n#Login[data-v-7824a840]\n{\n\toverflow: hidden;\n\twidth: 70em;\n\theight: 40em;\n\tfont-size: 14px;\n\tborder: 1px solid #d3d3d3;\n}\n.Login-info[data-v-7824a840]\n{\n\theight: 35em;\n\twidth: 66em;\n\tfont-size: 14px;\n\tmargin: 2em;\n}\n.Login-info >div[data-v-7824a840]:nth-child(1)\n{\n\twidth: 60%;\n\theight: 35em;\n\tbackground-color: white;\n\tfloat: left;\n}\nspan[data-v-7824a840]\n{\n\tfont-size: 24px;\n\tfloat: left;\n\tfont-family: \"Hiragino Sans GB\";\n}\n.paslog[data-v-7824a840]\n{\n\twidth: 6em;\n\theight: 2em;\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\tcolor: #00b38a;\n\ttransition: color 0.5s;\n}\n.paslog[data-v-7824a840]:hover\n{\n\tcolor: #00b38a;\n}\n.sign[data-v-7824a840]:hover\n{\n\tcolor: #00b38a;\n}\n.gosign[data-v-7824a840]:hover\n{\n\tborder-bottom: 1px solid #00b38a;\n}\n.sign[data-v-7824a840]\n{\n\twidth: 6em;\n\theight: 2em;\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\ttransition: color 0.5s;\n}\n.triangle-up[data-v-7824a840] { \n    position: absolute;\n    width:0;\n    height:0;\n    border-width:0 12px 12px;\n    border-style:solid;\n    border-color:transparent transparent #00b38a;\n    margin-left: -6px ;\n    left:25%;\n    bottom: 0px;\n    transition:left 0.5s;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(1)\n{\n\twidth: 12em;\n\tfont-size: 24px;\n\tposition: relative;\n\toverflow: hidden;\n\tborder-bottom: 1px solid #00b38a;\n\tmargin-top: 1.5em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(2)\n{\n\tfloat: left;\n\tfont-size: 20px;\n\tmargin-top: 3em;\n\tdisplay: inline-block;\n\twidth: 100%;\n\theight: 2em;\n}\ninput[data-v-7824a840]\n{\n\tfloat: left;\n\tborder: none;\n\tborder-bottom:1px solid #d3d3d3;\n\tmargin-left:4em;\n\tmargin-top: 0.4em;\n\toutline: none;\n\tfont-size: 20px;\n\twidth: 70%;\n\tfont-family: 'MingLiU'\n}\n#hr1[data-v-7824a840]\n{\n\tposition: absolute;\n\ttransition: all 0.5s;\n\twidth: 0em;\n\tleft: 4em;\n\ttop: 1.2em;\n\tbackground-color: #00b38a;\n\theight: 1px;\n\tborder: none;\n}\n#hr2[data-v-7824a840]\n{\n\tposition: absolute;\n\twidth: 0em;\n\ttop: 1.2em;\n\tleft: 4em;\n\tbackground-color: #00b38a;\n\theight: 1px;\n\tborder: none;\n\ttransition: 0.5s;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(3)\n{\n\n\tfloat: left;\n\tfont-size: 20px;\n\tmargin-top: 2em;\n\tdisplay: inline-block;\n\twidth: 100%;\n\theight: 2em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(4)\n{\n\tfloat: right;\n\twidth: 20%;\n\theight: 2em;\n\tmargin-top: 1em;\n}\n.forget[data-v-7824a840]\n{\n\tcolor: #00b38a;\n\tfont-size: 18px;\n\tfloat: right;\n\tmargin-right: 2em;\n\twidth: 10em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(5)\n{\n\twidth: 100%;\n\theight: 11.2em;\n\tfloat: left;\n}\nbutton[data-v-7824a840]\n{\n\twidth: 16em;\n\theight: 2.5em;\n\tmargin-top: 2em;\n\tborder-radius: 5px;\n\tfont-size: 24px;\n\tletter-spacing: 8px;\n\tfont-family: \"Hiragino Sans GB\";\n\tbackground: #00b38a;\n\tborder: none;\n\tcolor: white;\n}\n.Login-info >div[data-v-7824a840]:nth-child(2)\n{\n\tbackground-color: white;\n\theight: 35em;\n\tfloat: left;\n\tdisplay: inline-block;\n\twidth: 40%;\n}\n.Login-info >div:nth-child(2) >div[data-v-7824a840]:nth-child(1)\n{\n\twidth: 100%;\n\tfloat: left;\n\tmargin-top: 5em;\n\tmargin-left: 2em;\n\tfont-family: \"Hiragino Sans GB\";\n\tfont-size: 22px;\n}\n.Login-info >div:nth-child(2) >div[data-v-7824a840]:nth-child(2)\n{\n\twidth: 100%;\n\theight: 5em;\n\tfloat: left;\n\tmargin-left: 2.5em;\n\tfont-family: \"Hiragino Sans GB\";\n\tcolor:#00b38a;\n    font-size: 18px;\n}\nimg[data-v-7824a840]\n{\n\theight: 2.5em;\n\tfloat: left;\n\tmargin-top: -0.5em;\n}\n.gosign[data-v-7824a840]\n{\n\tfont-size: 22px;\n}\n", ""]);
+exports.push([module.i, "\n{\r\n\ttransition: all 0.5s;/*0.5s的时间内变化*/\n}\nh1[data-v-26507093]    /*标题属性，暂且就设置了一个颜色，大小为h1*/\r\n{\r\n\tcolor:white;\n}\n*[data-v-26507093]{\r\n\t\ttransition: 0.5s all;\n}\n#Recommend[data-v-26507093]/*recommend这个最大的块的属性*/\r\n{\r\n\tbackground-color: #33bb93;\r\n\twidth: 100%;\r\n\theight: 20em;\r\n\tmax-width: 300em;\r\n\toverflow-x: auto;\r\n\toverflow-y: hidden;\n}\n#Recommend > div[data-v-26507093]/*几个小机器人放在一个盒子里面，这个盒子的属性*/\r\n{\r\n\tbackground-color: #33bb93;\r\n\tmin-width: 1080px;\n}\n#Recommend > div >div[data-v-26507093]/*几个小机器人的模块属性*/\r\n{\r\n\tbackground-color: #ccffee;\r\n\tdisplay: inline-block;\r\n\tvertical-align:top;\r\n\tmargin:1.6em;\r\n\twidth: 9em;\r\n\theight: 13em;\r\n\tpadding:0.5em;\r\n\toverflow: hidden;\n}\n.Recommend-info[data-v-26507093]{\r\n\toverflow: hidden;\r\n\tmax-height: 100%;\n}\n.Recommend-detail[data-v-26507093]{\r\n\toverflow: hidden;\r\n\tmax-height: 0%;\n}\n#Recommend > div > div:hover > .Recommend-info[data-v-26507093]{\r\n\toverflow: hidden;\r\n\tmax-height: 0;\r\n\t/*background-color: black;*/\n}\n#Recommend > div > div:hover > .Recommend-detail[data-v-26507093]{\r\n\tmax-height: 100%;\n}\n#Recommend > div > div[data-v-26507093]:hover/*鼠标放在机器人上面显示出的盒子的块属性*/\r\n{\r\n\tbackground-color: white;\r\n\twidth: 9.6em;\r\n\theight: 13.6em;\r\n\tmargin: 1em;\n}\n#Recommend img[data-v-26507093]/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/\r\n{\r\n\twidth: 9em;\r\n\theight: 9em;\r\n\tpadding-top: 0.5em;\r\n\tpadding-bottom: 0.5em;\r\n\tbackground-position: center;\r\n\tbackground-size: 100% 100%;\r\n\tbackground-repeat: no-repeat;\n}\n#Recommend button[data-v-26507093]/*按钮属性*/\r\n{\r\n\tposition: relative;\r\n\theight: 3em;\r\n\twidth: 6em;\r\n\tborder: none;\r\n\tbackground-color: #33bb93;\n}\n#Recommend span[data-v-26507093]/*span块内字体大小*/\r\n{\r\n\tfont-size: 10pt;\n}\n.Recommend-detail > div[data-v-26507093]/*小机器人后面的盒子的属性*/\r\n{\r\n\twidth: 9em;\r\n\theight: 7.5em;\r\n\tpadding-top: 3em;\n}\r\n", ""]);
 
 // exports
 
@@ -10658,7 +10890,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n#PositionCard[data-v-7c394252]\n{\n\tmargin: 0 auto;\n\toverflow: hidden;\n\twidth: 70em;\n\theight:70em;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n}\n.PositionCard-info[data-v-7c394252]\n{\n\tmargin: 0 auto;\n\toverflow: hidden;\n\twidth: 44.875em;\n\theight:7.625em;\n\tborder: 1px solid;\n\tborder-color: #d3d3d3;\n}\n.PositionCard-info >div[data-v-7c394252]:nth-child(1)\n{\n\twidth:29.1875em;\n\theight:7.625em;\n\tdisplay: inline-block;\n}\n.PositionCard-info >div[data-v-7c394252]:nth-child(2)\n{\n\twidth:12.5em;\n\theight:5.875em;\n\tdisplay:inline-block;\n\tborder-left: 1px solid;\n\tmargin-bottom:0.875em;\n\tborder-color: #d3d3d3;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(1)\n{\n\t\n\tfloat: left;\n\twidth:60%;\n\theight: 50px;\n\tcolor: #4169E1;\n}\nh6[data-v-7c394252]\n{\n\tfont-size: 21px;\n\tfloat: left;\n\n\tmargin-left:1.25em;\n\tmargin-top: 0.625em;\n\tfont-weight: 300;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(2)\n{\n\tfloat: left;\n\tclear: left;\n}\nspan[data-v-7c394252]\n{\n\tmargin-left:1.5em;\n\twidth: 20%;\n\tborder-left: 1px solid;\n\tborder-color: #d3d3d3;\n}\n.Noborder[data-v-7c394252]\n{\n\tborder: none;\n\tcolor:orange;\n}\n.Noborder1[data-v-7c394252]\n{\n\tborder: none;\n\ttext-align: left;\n\tmargin-left: 1.8em;\n}\n.Noborder2[data-v-7c394252]\n{\n\tborder: none;\n\tmargin-left: 0px;\n}\n.Noborder3[data-v-7c394252]\n{\n\tborder: none;\n\tmargin-left: 0px;\n\ttext-align: left;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(3)\n{\n\tfloat: left;\n\tclear: left;\n\tmargin-top:0.9375em;\n\theight:0.875em;\n}\n.feedback[data-v-7c394252]\n{\n\tfont-size: 14px;\n}\n.PositionCard-info >div:nth-child(2) >div[data-v-7c394252]:nth-child(1)\n{\n\twidth:12.5em;\n\theight:1.25em;\n\tfloat: left;\n\tmargin-left:1em;\n\ttext-align: left;\n\tmargin-top: 0.5em;\n}\n.PositionCard-info >div:nth-child(2) >div[data-v-7c394252]:nth-child(2)\n{\n\twidth:12.5em;\n\theight:1.25em;\n\tfloat: left;\n\tmargin-top:1em;\n\tmargin-left:1em;\n\ttext-align: left;\n}\n", ""]);
+exports.push([module.i, "\nnav[data-v-2acc886e]{\r\n\twidth: 100%;\r\n\tbackground-color: #333;\r\n\theight: 1.8em;\r\n\tline-height: 1.8em;\r\n\tcolor:white;\n}\nnav > span[data-v-2acc886e]{\r\n\tcolor:#aaa;\r\n\tfont-size: 10pt;\r\n\tpadding-right: 0.5em;\r\n\tpadding-left: 0.5em;\r\n\tborder-right: 1px solid #aaa;\n}\nnav > span[data-v-2acc886e]:last-child{\r\n\tborder: none;\n}\na[data-v-2acc886e]{\r\n\tcolor: #aaa;\r\n\ttext-decoration: none;\n}\r\n", ""]);
 
 // exports
 
@@ -10672,7 +10904,7 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n#CompanyCard[data-v-a834de78]\n{\n\tmargin: 0 auto ;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\toverflow: hidden;\n\twidth: 70em;\n\tfont-size: 14px;\n}\n.CompanyCard-info[data-v-a834de78]\n{\n\twidth: 34em;\n\theight: 21em;\n\tfont-size: 14px;\n\tborder:1px solid #eeeeee;\n\tfloat: left;\n\tmargin: 0.5em;\n\tbox-sizing: border-box;\n}\n.CompanyCard-info[data-v-a834de78]:hover\n{\n\tborder: 1px solid #33bb93;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(1)\n{\n\theight: 60%;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(2)\n{\n\theight: 40%;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(1)\n{\n\twidth: 12.6em;\n\t\n\tfloat: left;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(2)\n{\n\t\n\t\n\tmargin-left: 12.6em;\n\ttext-align: left;\n}\nh3[data-v-a834de78]{\n\tfont-size: 24px;\n}\n.CompanyCard-info>div:nth-child(1)>div:nth-child(1)>img[data-v-a834de78]\n{\n\tmargin: 1.5em;\n\twidth: 9.6em;\n\theight: 9.6em;\n}\n.CompanyCard-info>div:nth-child(2)>div[data-v-a834de78]:nth-child(1)\n{\n    \n    \tmargin-left:1.5em;\n\tmargin-right:1.5em;\n}\np[data-v-a834de78]{\n\tfont-size: 16px;\n\tfont-weight: bold;\n\tline-height: 0.7;\n}\np.intro[data-v-a834de78]{\n\n\tfont-size: 14px;\n\tfont-weight: lighter;\n\tline-height: 1.2;\n\theight:3.5em;\n\ttext-align: left;\n}\nbutton[data-v-a834de78]\n{\n\twidth: 33.3%;\n\tfloat: left;\n\theight: 3em;\n\tborder:0;\n\tbackground-color: #fffffa;\n}\nbutton>img[data-v-a834de78]\n{\n    width: 15px;\n    height: 15px;\n    display: inline-block;\n    vertical-align: text-top;\n    margin-top: -1px;\n}\n#CompanyCard >div >div >div >div >div >p[data-v-a834de78]:hover\n{\n color: green;\n}\n", ""]);
+exports.push([module.i, "\n#Login[data-v-7824a840]\r\n{\r\n\toverflow: hidden;\r\n\twidth: 70em;\r\n\theight: 40em;\r\n\tfont-size: 14px;\r\n\tborder: 1px solid #d3d3d3;\n}\n.Login-info[data-v-7824a840]\r\n{\r\n\theight: 35em;\r\n\twidth: 66em;\r\n\tfont-size: 14px;\r\n\tmargin: 2em;\n}\n.Login-info >div[data-v-7824a840]:nth-child(1)\r\n{\r\n\twidth: 60%;\r\n\theight: 35em;\r\n\tbackground-color: white;\r\n\tfloat: left;\n}\nspan[data-v-7824a840]\r\n{\r\n\tfont-size: 24px;\r\n\tfloat: left;\r\n\tfont-family: \"Hiragino Sans GB\";\n}\n.paslog[data-v-7824a840]\r\n{\r\n\twidth: 6em;\r\n\theight: 2em;\r\n\tfloat: left;\r\n\tfont-size: 24px;\r\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\r\n\ttext-align: center;\r\n\tcolor: #00b38a;\r\n\ttransition: color 0.5s;\n}\n.paslog[data-v-7824a840]:hover\r\n{\r\n\tcolor: #00b38a;\n}\n.sign[data-v-7824a840]:hover\r\n{\r\n\tcolor: #00b38a;\n}\n.gosign[data-v-7824a840]:hover\r\n{\r\n\tborder-bottom: 1px solid #00b38a;\n}\n.sign[data-v-7824a840]\r\n{\r\n\twidth: 6em;\r\n\theight: 2em;\r\n\tfloat: left;\r\n\tfont-size: 24px;\r\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\r\n\ttext-align: center;\r\n\ttransition: color 0.5s;\n}\n.triangle-up[data-v-7824a840] { \r\n    position: absolute;\r\n    width:0;\r\n    height:0;\r\n    border-width:0 12px 12px;\r\n    border-style:solid;\r\n    border-color:transparent transparent #00b38a;\r\n    margin-left: -6px ;\r\n    left:25%;\r\n    bottom: 0px;\r\n    transition:left 0.5s;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(1)\r\n{\r\n\twidth: 12em;\r\n\tfont-size: 24px;\r\n\tposition: relative;\r\n\toverflow: hidden;\r\n\tborder-bottom: 1px solid #00b38a;\r\n\tmargin-top: 1.5em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(2)\r\n{\r\n\tfloat: left;\r\n\tfont-size: 20px;\r\n\tmargin-top: 3em;\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 2em;\n}\ninput[data-v-7824a840]\r\n{\r\n\tfloat: left;\r\n\tborder: none;\r\n\tborder-bottom:1px solid #d3d3d3;\r\n\tmargin-left:4em;\r\n\tmargin-top: 0.4em;\r\n\toutline: none;\r\n\tfont-size: 20px;\r\n\twidth: 70%;\r\n\tfont-family: 'MingLiU'\n}\n#hr1[data-v-7824a840]\r\n{\r\n\tposition: absolute;\r\n\ttransition: all 0.5s;\r\n\twidth: 0em;\r\n\tleft: 4em;\r\n\ttop: 1.2em;\r\n\tbackground-color: #00b38a;\r\n\theight: 1px;\r\n\tborder: none;\n}\n#hr2[data-v-7824a840]\r\n{\r\n\tposition: absolute;\r\n\twidth: 0em;\r\n\ttop: 1.2em;\r\n\tleft: 4em;\r\n\tbackground-color: #00b38a;\r\n\theight: 1px;\r\n\tborder: none;\r\n\ttransition: 0.5s;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(3)\r\n{\r\n\r\n\tfloat: left;\r\n\tfont-size: 20px;\r\n\tmargin-top: 2em;\r\n\tdisplay: inline-block;\r\n\twidth: 100%;\r\n\theight: 2em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(4)\r\n{\r\n\tfloat: right;\r\n\twidth: 20%;\r\n\theight: 2em;\r\n\tmargin-top: 1em;\n}\n.forget[data-v-7824a840]\r\n{\r\n\tcolor: #00b38a;\r\n\tfont-size: 18px;\r\n\tfloat: right;\r\n\tmargin-right: 2em;\r\n\twidth: 10em;\n}\n.Login-info >div:nth-child(1) >div[data-v-7824a840]:nth-child(5)\r\n{\r\n\twidth: 100%;\r\n\theight: 11.2em;\r\n\tfloat: left;\n}\nbutton[data-v-7824a840]\r\n{\r\n\twidth: 16em;\r\n\theight: 2.5em;\r\n\tmargin-top: 2em;\r\n\tborder-radius: 5px;\r\n\tfont-size: 24px;\r\n\tletter-spacing: 8px;\r\n\tfont-family: \"Hiragino Sans GB\";\r\n\tbackground: #00b38a;\r\n\tborder: none;\r\n\tcolor: white;\n}\n.Login-info >div[data-v-7824a840]:nth-child(2)\r\n{\r\n\tbackground-color: white;\r\n\theight: 35em;\r\n\tfloat: left;\r\n\tdisplay: inline-block;\r\n\twidth: 40%;\n}\n.Login-info >div:nth-child(2) >div[data-v-7824a840]:nth-child(1)\r\n{\r\n\twidth: 100%;\r\n\tfloat: left;\r\n\tmargin-top: 5em;\r\n\tmargin-left: 2em;\r\n\tfont-family: \"Hiragino Sans GB\";\r\n\tfont-size: 22px;\n}\n.Login-info >div:nth-child(2) >div[data-v-7824a840]:nth-child(2)\r\n{\r\n\twidth: 100%;\r\n\theight: 5em;\r\n\tfloat: left;\r\n\tmargin-left: 2.5em;\r\n\tfont-family: \"Hiragino Sans GB\";\r\n\tcolor:#00b38a;\r\n    font-size: 18px;\n}\nimg[data-v-7824a840]\r\n{\r\n\theight: 2.5em;\r\n\tfloat: left;\r\n\tmargin-top: -0.5em;\n}\n.gosign[data-v-7824a840]\r\n{\r\n\tfont-size: 22px;\n}\r\n", ""]);
 
 // exports
 
@@ -10686,13 +10918,55 @@ exports = module.exports = __webpack_require__(0)(undefined);
 
 
 // module
-exports.push([module.i, "\n.Filter[data-v-caad119e]{\n\tfont-size: 10pt;\n\tmax-width: 960px;\n\twidth: 100%;\n\tbackground-color: #fffff6;\n\tborder:1px solid #dfdfdf;\n\tpadding: 0.5em;\n}\nspan[data-v-caad119e]{\n\tdisplay: inline-block;\n\twidth: 6em;\n\theight: 1em;\n\tmargin: 0.3em;\n\tpadding: 0.2em;\n}\na.active[data-v-caad119e]{\n\tcolor: #fff;\n\tbackground-color: #33bb93;\n}\na[data-v-caad119e]{\n\theight: 1em;\n\tfont-size: 10pt;\n\tline-height: 1em;\n\tdisplay: inline-block;\n\tmargin: 0.2em;\n\tpadding: 0.3em;\n\tcolor: #333;\n\ttext-decoration: none;\n\ttransition: all 0.3s;\n}\n", ""]);
+exports.push([module.i, "\n.Searcher[data-v-7babd94e]{\r\n\tfont-size: 10pt;\r\n\tmax-width: 960px;\r\n\twidth: 100%;\r\n\tbackground-color: #fffff6;\r\n\tborder:1px solid #dfdfdf;\r\n\tpadding: 0.5em;\r\n\toverflow: hidden;\n}\n.Searcher >div> input[data-v-7babd94e] {\r\n\tmargin:-1px;\r\n\twidth: 80%;\r\n\tfloat: left;\r\n\tborder: 1px solid #efefef;\r\n\theight: 2em;\r\n\tpadding: 0;\r\n\tfont-size: 18px;\n}\n.Searcher >div> button[data-v-7babd94e]{\r\n\tpadding:0;\r\n\theight: 2em;\r\n\twidth: 20%;\r\n\tfloat: left;\r\n\tfont-size: 18px;\r\n\tbackground-color: #555;\r\n\tcolor: white;\r\n\tborder: none;\n}\nspan[data-v-7babd94e]{\r\n\tdisplay: inline-block;\r\n\twidth: 6em;\r\n\theight: 1em;\r\n\tmargin: 0.3em;\r\n\tpadding: 0.2em;\n}\na.active[data-v-7babd94e]{\r\n\tcolor: #fff;\r\n\tbackground-color: #33bb93;\n}\na[data-v-7babd94e]{\r\n\theight: 1em;\r\n\tfont-size: 10pt;\r\n\tline-height: 1em;\r\n\tdisplay: inline-block;\r\n\tmargin: 0.2em;\r\n\tpadding: 0.3em;\r\n\tcolor: #333;\r\n\ttext-decoration: none;\r\n\ttransition: all 0.3s;\n}\r\n", ""]);
 
 // exports
 
 
 /***/ }),
 /* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#PositionCard[data-v-7c394252]\r\n{\r\n\tmargin: 0 auto;\r\n\toverflow: hidden;\r\n\twidth: 70em;\r\n\theight:70em;\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\n}\n.PositionCard-info[data-v-7c394252]\r\n{\r\n\tmargin: 0 auto;\r\n\toverflow: hidden;\r\n\twidth: 44.875em;\r\n\theight:7.625em;\r\n\tborder: 1px solid;\r\n\tborder-color: #d3d3d3;\n}\n.PositionCard-info >div[data-v-7c394252]:nth-child(1)\r\n{\r\n\twidth:29.1875em;\r\n\theight:7.625em;\r\n\tdisplay: inline-block;\n}\n.PositionCard-info >div[data-v-7c394252]:nth-child(2)\r\n{\r\n\twidth:12.5em;\r\n\theight:5.875em;\r\n\tdisplay:inline-block;\r\n\tborder-left: 1px solid;\r\n\tmargin-bottom:0.875em;\r\n\tborder-color: #d3d3d3;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(1)\r\n{\r\n\t\r\n\tfloat: left;\r\n\twidth:60%;\r\n\theight: 50px;\r\n\tcolor: #4169E1;\n}\nh6[data-v-7c394252]\r\n{\r\n\tfont-size: 21px;\r\n\tfloat: left;\r\n\r\n\tmargin-left:1.25em;\r\n\tmargin-top: 0.625em;\r\n\tfont-weight: 300;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(2)\r\n{\r\n\tfloat: left;\r\n\tclear: left;\n}\nspan[data-v-7c394252]\r\n{\r\n\tmargin-left:1.5em;\r\n\twidth: 20%;\r\n\tborder-left: 1px solid;\r\n\tborder-color: #d3d3d3;\n}\n.Noborder[data-v-7c394252]\r\n{\r\n\tborder: none;\r\n\tcolor:orange;\n}\n.Noborder1[data-v-7c394252]\r\n{\r\n\tborder: none;\r\n\ttext-align: left;\r\n\tmargin-left: 1.8em;\n}\n.Noborder2[data-v-7c394252]\r\n{\r\n\tborder: none;\r\n\tmargin-left: 0px;\n}\n.Noborder3[data-v-7c394252]\r\n{\r\n\tborder: none;\r\n\tmargin-left: 0px;\r\n\ttext-align: left;\n}\n.PositionCard-info >div:nth-child(1) >div[data-v-7c394252]:nth-child(3)\r\n{\r\n\tfloat: left;\r\n\tclear: left;\r\n\tmargin-top:0.9375em;\r\n\theight:0.875em;\n}\n.feedback[data-v-7c394252]\r\n{\r\n\tfont-size: 14px;\n}\n.PositionCard-info >div:nth-child(2) >div[data-v-7c394252]:nth-child(1)\r\n{\r\n\twidth:12.5em;\r\n\theight:1.25em;\r\n\tfloat: left;\r\n\tmargin-left:1em;\r\n\ttext-align: left;\r\n\tmargin-top: 0.5em;\n}\n.PositionCard-info >div:nth-child(2) >div[data-v-7c394252]:nth-child(2)\r\n{\r\n\twidth:12.5em;\r\n\theight:1.25em;\r\n\tfloat: left;\r\n\tmargin-top:1em;\r\n\tmargin-left:1em;\r\n\ttext-align: left;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n#CompanyCard[data-v-a834de78]\r\n{\r\n\tmargin: 0 auto ;\r\n\tposition: absolute;\r\n\tleft: 0;\r\n\tright: 0;\r\n\toverflow: hidden;\r\n\twidth: 70em;\r\n\tfont-size: 14px;\n}\n.CompanyCard-info[data-v-a834de78]\r\n{\r\n\twidth: 34em;\r\n\theight: 21em;\r\n\tfont-size: 14px;\r\n\tborder:1px solid #eeeeee;\r\n\tfloat: left;\r\n\tmargin: 0.5em;\r\n\tbox-sizing: border-box;\n}\n.CompanyCard-info[data-v-a834de78]:hover\r\n{\r\n\tborder: 1px solid #33bb93;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(1)\r\n{\r\n\theight: 60%;\n}\n.CompanyCard-info>div[data-v-a834de78]:nth-child(2)\r\n{\r\n\theight: 40%;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(1)\r\n{\r\n\twidth: 12.6em;\r\n\t\r\n\tfloat: left;\n}\n.CompanyCard-info>div:nth-child(1)>div[data-v-a834de78]:nth-child(2)\r\n{\r\n\t\r\n\t\r\n\tmargin-left: 12.6em;\r\n\ttext-align: left;\n}\nh3[data-v-a834de78]{\r\n\tfont-size: 24px;\n}\n.CompanyCard-info>div:nth-child(1)>div:nth-child(1)>img[data-v-a834de78]\r\n{\r\n\tmargin: 1.5em;\r\n\twidth: 9.6em;\r\n\theight: 9.6em;\n}\n.CompanyCard-info>div:nth-child(2)>div[data-v-a834de78]:nth-child(1)\r\n{\r\n    \r\n    \tmargin-left:1.5em;\r\n\tmargin-right:1.5em;\n}\np[data-v-a834de78]{\r\n\tfont-size: 16px;\r\n\tfont-weight: bold;\r\n\tline-height: 0.7;\n}\np.intro[data-v-a834de78]{\r\n\r\n\tfont-size: 14px;\r\n\tfont-weight: lighter;\r\n\tline-height: 1.2;\r\n\theight:3.5em;\r\n\ttext-align: left;\n}\nbutton[data-v-a834de78]\r\n{\r\n\twidth: 33.3%;\r\n\tfloat: left;\r\n\theight: 3em;\r\n\tborder:0;\r\n\tbackground-color: #fffffa;\n}\nbutton>img[data-v-a834de78]\r\n{\r\n    width: 15px;\r\n    height: 15px;\r\n    display: inline-block;\r\n    vertical-align: text-top;\r\n    margin-top: -1px;\n}\n#CompanyCard >div >div >div >div >div >p[data-v-a834de78]:hover\r\n{\r\n color: green;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(0)(undefined);
+// imports
+
+
+// module
+exports.push([module.i, "\n.Filter[data-v-caad119e]{\r\n\tfont-size: 10pt;\r\n\tmax-width: 960px;\r\n\twidth: 100%;\r\n\tbackground-color: #fffff6;\r\n\tborder:1px solid #dfdfdf;\r\n\tpadding: 0.5em;\n}\nspan[data-v-caad119e]{\r\n\tdisplay: inline-block;\r\n\twidth: 6em;\r\n\theight: 1em;\r\n\tmargin: 0.3em;\r\n\tpadding: 0.2em;\n}\na.active[data-v-caad119e]{\r\n\tcolor: #fff;\r\n\tbackground-color: #33bb93;\n}\na[data-v-caad119e]{\r\n\theight: 1em;\r\n\tfont-size: 10pt;\r\n\tline-height: 1em;\r\n\tdisplay: inline-block;\r\n\tmargin: 0.2em;\r\n\tpadding: 0.3em;\r\n\tcolor: #333;\r\n\ttext-decoration: none;\r\n\ttransition: all 0.3s;\n}\r\n", ""]);
+
+// exports
+
+
+/***/ }),
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10722,7 +10996,7 @@ if (false) {
 }
 
 /***/ }),
-/* 24 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10748,7 +11022,7 @@ if (false) {
 }
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10773,7 +11047,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.trianglePos = 0
         }
       }
-    }, [_vm._v("密码登录\n\t    \t\t    \t    \n\t                    ")]), _vm._v(" "), _c('div', {
+    }, [_vm._v("密码登录\r\n\t    \t\t    \t    \r\n\t                    ")]), _vm._v(" "), _c('div', {
       staticClass: "sign ",
       attrs: {
         "align": "center"
@@ -10783,7 +11057,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           _vm.trianglePos = 1
         }
       }
-    }, [_vm._v("注册\n\t    \t\t    \t")]), _vm._v(" "), _c('div', {
+    }, [_vm._v("注册\r\n\t    \t\t    \t")]), _vm._v(" "), _c('div', {
       staticClass: "triangle-up"
     })]), _vm._v(" "), _c('div', {
       staticStyle: {
@@ -10858,7 +11132,40 @@ if (false) {
 }
 
 /***/ }),
-/* 26 */
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    attrs: {
+      "align": "center",
+      "id": "Searcher"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+    staticStyle: {
+      "width": "1000px",
+      "margin": "0 auto"
+    }
+  }, [_c('CompanyCard', {
+    attrs: {
+      "CompanyCardList": _vm.CompanyCardListMsg
+    }
+  })], 1)])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "Searcher"
+  }, [_c('div', [_c('input'), _c('button', [_vm._v("寻找Offer")])])])
+}]}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-7babd94e", module.exports)
+  }
+}
+
+/***/ }),
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10882,7 +11189,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }, [_c('span', {
       staticClass: "Noborder3"
-    }, [_vm._v("\n\t\t\t    \t\t\t" + _vm._s(item.duty) + "\n\t\t\t    \t\t")])])]) : _vm._e()])])
+    }, [_vm._v("\r\n\t\t\t    \t\t\t" + _vm._s(item.duty) + "\r\n\t\t\t    \t\t")])])]) : _vm._e()])])
   }))
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', {
@@ -10900,7 +11207,7 @@ if (false) {
 }
 
 /***/ }),
-/* 27 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10925,15 +11232,15 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "src": './src/img/menu.png'
       }
-    }), _vm._v(" " + _vm._s(item.type) + "\n\t\t\t    \t    \t")]), _vm._v(" "), _c('button', [_c('img', {
+    }), _vm._v(" " + _vm._s(item.type) + "\r\n\t\t\t    \t    \t")]), _vm._v(" "), _c('button', [_c('img', {
       attrs: {
         "src": './src/img/tongji.png'
       }
-    }), _vm._v(" " + _vm._s(item.financing) + "\n\t\t\t    \t    \t")]), _vm._v(" "), _c('button', [_c('img', {
+    }), _vm._v(" " + _vm._s(item.financing) + "\r\n\t\t\t    \t    \t")]), _vm._v(" "), _c('button', [_c('img', {
       attrs: {
         "src": './src/img/address.png'
       }
-    }), _vm._v(" " + _vm._s(item.province) + "\n\t\t\t    \t    \t")])])])])])
+    }), _vm._v(" " + _vm._s(item.province) + "\r\n\t\t\t    \t    \t")])])])])])
   }))
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -10945,7 +11252,7 @@ if (false) {
 }
 
 /***/ }),
-/* 28 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -10970,7 +11277,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
             _vm.chosenItem[item.label] = condition.label
           }
         }
-      }, [_vm._v("\n\t\t\t \t" + _vm._s(condition.label) + "\n\t\t\t")])
+      }, [_vm._v("\r\n\t\t\t \t" + _vm._s(condition.label) + "\r\n\t\t\t")])
     })], 2)
   })), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticStyle: {
@@ -10992,13 +11299,13 @@ if (false) {
 }
 
 /***/ }),
-/* 29 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(17);
+var content = __webpack_require__(19);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11018,13 +11325,13 @@ if(false) {
 }
 
 /***/ }),
-/* 30 */
+/* 34 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(18);
+var content = __webpack_require__(20);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11044,13 +11351,13 @@ if(false) {
 }
 
 /***/ }),
-/* 31 */
+/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(19);
+var content = __webpack_require__(21);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11070,13 +11377,39 @@ if(false) {
 }
 
 /***/ }),
-/* 32 */
+/* 36 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(20);
+var content = __webpack_require__(22);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(2)("d1b6f1d6", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7babd94e\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Searcher.vue", function() {
+     var newContent = require("!!../../node_modules/css-loader/index.js!../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-7babd94e\",\"scoped\":true,\"hasInlineConfig\":false}!../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Searcher.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
+
+/***/ }),
+/* 37 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(23);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11096,13 +11429,13 @@ if(false) {
 }
 
 /***/ }),
-/* 33 */
+/* 38 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(21);
+var content = __webpack_require__(24);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11122,13 +11455,13 @@ if(false) {
 }
 
 /***/ }),
-/* 34 */
+/* 39 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(22);
+var content = __webpack_require__(25);
 if(typeof content === 'string') content = [[module.i, content, '']];
 if(content.locals) module.exports = content.locals;
 // add the styles to the DOM
@@ -11148,7 +11481,7 @@ if(false) {
 }
 
 /***/ }),
-/* 35 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /**
@@ -11181,7 +11514,7 @@ module.exports = function listToStyles (parentId, list) {
 
 
 /***/ }),
-/* 36 */
+/* 41 */
 /***/ (function(module, exports) {
 
 var g;

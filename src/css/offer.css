@@ -21,3 +21,13 @@ body{
 	right: 0;
 	margin: 0 auto;
 }
+.left-content{
+	float: left;
+	width: 70%;
+}
+.right-panel{
+	margin-left: 2%;
+	float: left;
+	width: 28%;
+	min-width: 100px;
+}

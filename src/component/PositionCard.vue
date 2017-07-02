@@ -1,32 +1,39 @@
 <template>
 <div  id="PositionCard">
-	    <div v-for="item in PositionCardList">
+	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
 			    <div><!-- 这是左层div -->
 			    	<div><!-- 这是最上层div，那个标题 -->
-			    		<h6>{{item.title}}</h6>
+			    		<h6>{{item.positionName
+}}</h6>
 			    	</div>
 			    	<div><!-- 这是左侧中层div -->
 			    		<div ><!-- 薪水div -->
 			    			<span class ="Noborder">{{item.salary}}</span>
-			    			<span>&nbsp;&nbsp;上海-浦东新区</span>
-			    			<span>&nbsp;&nbsp;本科或以上</span>
-			    			<span>&nbsp;&nbsp;经验不限</span>
+			    			<span>&nbsp;&nbsp;{{item.city}}</span>
+			    			<span>&nbsp;&nbsp;{{item.requiredEducation
+}}</span>
+			    			<span>&nbsp;&nbsp;{{item.requiredExperience
+}}</span>
 			    		</div>
 			    	</div>
 			    	<div class="feedback"><!-- 左侧下层div -->
-			    		<span class="Noborder1">刚刚</span>
-			    		<span>&nbsp;&nbsp;投递后：五天内反馈</span>
+			    		<span class="Noborder1">{{item.releaseTime
+}}</span>
+			    		<span>&nbsp;&nbsp;{{item.priority
+}}</span>
 
 			    	</div>
 			    </div>
 			    <div v-if="item.CompanyName"><!-- 这是右层div -->
 			    	<div><!-- 那个公司名称的div -->
-			    		<span class="Noborder2">{{item.CompanyName}}</span>
+			    		<span class="Noborder2">{{item.positionType
+}}</span>
 			    	</div>
 			    	<div align="left">
 			    		<span class="Noborder3" >
-			    			{{item.duty}}
+			    			{{item.responsibility
+}}
 			    		</span>
 			    	</div>
 			    </div>
@@ -161,12 +168,13 @@ span
 </style>
 <script type="text/javascript">
 export default{
-	name:'CompanyCard',
+	name:'PositionCard',
+	props:['positionCardList'],
 	data(){
 		return{
-			PositionCardList:[
+			//positionCardList:[
 			/*{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"产品经理",salary:"17-35万",hiringJob:"3",CompanyName:"北京北大公学有限公司"，duty:"教育/培训/学术/科研"dealingRate:"99%",hover:false},*/
-			{title:"产品经理",salary:"17-35万",CompanyName:"北京北大公学有限公司",duty:"教育/培训/学术/科研",hover:false}]
+			//{title:"产品经理",salary:"17-35万",CompanyName:"北京北大公学有限公司",duty:"教育/培训/学术/科研",hover:false}]
 		}
 	}
 }

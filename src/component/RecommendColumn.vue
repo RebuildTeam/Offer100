@@ -1,14 +1,14 @@
 <template>
-<div align="center" id="Recommend">
+<div align="center" id="RecommendColumn">
 	<div>
 	<div v-for="item in recommendList">
 
-		<div class="Recommend-info">
+		<div class="RecommendColumn-info">
 			<img v-bind:src="''+item.imgurl" />        
 			<span>{{item.label}}</span>
 		</div>
 
-		<div class="Recommend-detail">
+		<div class="RecommendColumn-detail">
 			<div>
 			<span>{{item.intro}}</span>
 			</div>
@@ -31,24 +31,20 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 *{
 		transition: 0.5s all;
 }
-#Recommend/*recommend这个最大的块的属性*/
+#RecommendColumn/*recommend这个最大的块的属性*/
 {
 	background-color: #33bb93;
 	width: 100%;
-	height: 20em;
-	max-width: 300em;
-	overflow-x: auto;
-	overflow-y: hidden;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
-#Recommend > div/*几个小机器人放在一个盒子里面，这个盒子的属性*/
+#RecommendColumn > div/*几个小机器人放在一个盒子里面，这个盒子的属性*/
 {
 	background-color: #33bb93;
-	min-width: 1080px;
 }
-#Recommend > div >div/*几个小机器人的模块属性*/
+#RecommendColumn > div >div/*几个小机器人的模块属性*/
 {
 	background-color: #ccffee;
-	display: inline-block;
 	vertical-align:top;
 	margin:1.6em;
 	width: 9em;
@@ -56,30 +52,30 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 	padding:0.5em;
 	overflow: hidden;
 }
-.Recommend-info{
+.RecommendColumn-info{
 	overflow: hidden;
 	max-height: 100%;
 }
-.Recommend-detail{
+.RecommendColumn-detail{
 	overflow: hidden;
 	max-height: 0%;
 }
-#Recommend > div > div:hover > .Recommend-info{
+#RecommendColumn > div > div:hover > .RecommendColumn-info{
 	overflow: hidden;
 	max-height: 0;
 	/*background-color: black;*/
 }
-#Recommend > div > div:hover > .Recommend-detail{
+#RecommendColumn > div > div:hover > .RecommendColumn-detail{
 	max-height: 100%;
 }
-#Recommend > div > div:hover/*鼠标放在机器人上面显示出的盒子的块属性*/
+#RecommendColumn > div > div:hover/*鼠标放在机器人上面显示出的盒子的块属性*/
 {
 	background-color: white;
 	width: 9.6em;
 	height: 13.6em;
 	margin: 1em;
 }
-#Recommend img/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/
+#RecommendColumn img/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/
 {
 	width: 9em;
 	height: 9em;
@@ -89,7 +85,7 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
 }
-#Recommend button/*按钮属性*/
+#RecommendColumn button/*按钮属性*/
 {
 	position: relative;
 	height: 3em;
@@ -97,11 +93,11 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 	border: none;
 	background-color: #33bb93;
 }
-#Recommend span/*span块内字体大小*/
+#RecommendColumn span/*span块内字体大小*/
 {
 	font-size: 10pt;
 }
-.Recommend-detail > div/*小机器人后面的盒子的属性*/
+.RecommendColumn-detail > div/*小机器人后面的盒子的属性*/
 {
 	width: 9em;
 	height: 7.5em;
@@ -110,7 +106,7 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 </style>
 <script type="text/javascript">
 export default{
-	name:'Recommend',
+	name:'RecommendColumn',
 	data(){
 		return{
 			recommendList:[

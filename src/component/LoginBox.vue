@@ -243,7 +243,7 @@ export default{
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						if(result.code==1){
+						if(result.code==0){
 							router.push('/Index');
 						}else{
 							alert(result.message);

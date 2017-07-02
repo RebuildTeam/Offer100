@@ -4,7 +4,7 @@
 		<div><input /><button v-bind:click="isSearching=1">寻找Offer</button></div>
 	</div>
 	<br>
-	<div style="width: 1000px;margin:0 auto;">
+	<div>
 		<PositionCard v-bind:positionCardList="positionCardListMsg"></PositionCard>
 	</div>
 </div>
@@ -83,6 +83,7 @@ export default{
 			handler:function(){
 				if(this.isSearching==1){
 					var jsonObj={
+						id:"",
 						keyword:"",
 					}
 					$.ajax({

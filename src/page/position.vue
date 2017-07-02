@@ -16,11 +16,15 @@ import PositionBrief from '../component/PositionBrief.vue'
 		},
 		data(){
 			return{
-				'companyName':this.$router.params.companyName,
-				'positionName':this.$router.params.positionName,
-				'positionDetailMsg':{};
+				//companyName:this.$router.params.companyName,
+				//positionName:this.$router.params.positionName,
+				//positionDetailMsg:{}
 			}
 		},
+		created:function(){
+			console.log(this.$router)
+		}
+		,
 		methods:{
 			initPositionData:function(){
 				var jsonObj={

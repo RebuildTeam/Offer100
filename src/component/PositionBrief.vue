@@ -3,14 +3,14 @@
 	<div align="left" class="PositionBrief">
 		<div class="container">
 		<div class="left-panel">
-			<p>{{positionBrief.companyName}}</p>
-			<h3>{{positionBrief.positionName}}</h3>
-			<span>{{positionBrief.salary}}</span>
-			<span>{{positionBrief.city}}</span>
-			<span>{{positionBrief.requiredExperience}}</span>
-			<span>{{positionBrief.requiredEducation}}</span>
-			<span>{{positionBrief.positionType}}</span>
-			<p>{{positionBrief.releaseTime}}</p>
+			<p>{{positionDetail.companyName}}</p>
+			<h3>{{positionDetail.positionName}}</h3>
+			<span>{{positionDetail.salary}}</span>
+			<span>{{positionDetail.city}}</span>
+			<span>{{positionDetail.requiredExperience}}</span>
+			<span>{{positionDetail.requiredEducation}}</span>
+			<span>{{positionDetail.positionType}}</span>
+			<p>{{positionDetail.releaseTime}}</p>
 		</div>
 		<div class="right-panel" align="center">
 			<br>

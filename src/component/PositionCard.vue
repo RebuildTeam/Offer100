@@ -89,7 +89,6 @@ span{
 
 </style>
 <script type="text/javascript">
-import router from '../main.js'
 export default{
 	name:'PositionCard',
 	props:['positionCardList'],
@@ -99,7 +98,7 @@ export default{
 	},
 	methods:{
 		linkToPosition:function(){
-			router.push({ path: '/Position', params: { 'companyName': this.companyName,'positionName':this.positionName }})
+			this.$router.push({ path: '/Position', params: { companyName: "DataHunter",positionName:"web" }})
 		},
 		linkeToCompany:function(){
 

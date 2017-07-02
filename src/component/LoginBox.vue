@@ -213,7 +213,6 @@ img
 }
 </style>
 <script type="text/javascript">
-import router from '../main.js'
 export default{
 	name:'LoginBox',
 	data(){
@@ -244,7 +243,7 @@ export default{
 					type:'post',
 					success:(result)=>{
 						if(result.code==0){
-							router.push('/Index');
+							this.$router.push('/Index');
 						}else{
 							alert(result.message);
 						}
@@ -273,7 +272,7 @@ export default{
 					type:'post',
 					success:(result)=>{
 						if(result.code==0){
-							router.push('/Index');
+							this.$router.push('/Index');
 						}else{
 							alert(result.message);
 						}

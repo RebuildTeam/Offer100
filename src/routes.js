@@ -14,7 +14,7 @@ const routes=[
 		component:Index,
 	},
 	{
-		path:'Position',
+		path:'/Position',
 		name:'Position',
 		component:Position,
 	}

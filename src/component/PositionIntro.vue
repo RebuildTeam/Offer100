@@ -80,7 +80,7 @@ export default{
 	props:['positionDetail'],
 	data(){
 		return{
-			
+			companyDetail:{}
 		}
 	},
 	methods:{

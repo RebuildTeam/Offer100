@@ -6,25 +6,31 @@
 			<h3>职位诱惑</h3>
 			<p>{{positionDetail.welfare}}</p><br>
 			<h3>职位描述</h3>
-			<p>{{positionDetail.introduction}}</p><br>
+			<p>{{positionDetail.responsibility}}</p><br>
 			<h3>任职要求</h3>
 			<p>{{positionDetail.requiredSkill}}</p><br>
 			<h3>工作地址</h3>
 			<p>{{positionDetail.city}}</p><br>
 		</div>
 		<div class="right-panel" align="left">
-			<h3>{{positionDetail.companyName}}</h3>
-			<div>
-				<img class="icon" v-bind:src="'./src/img/menu.png'"/>
-				{{companyDetail.type}}
+			<div class="panel-1">
+				<router-link :to="{ name: 'Company', params: { companyName: positionDetail.companyName}}"><h3>	{{positionDetail.companyName}}</h3></router-link>
+				<div class="companyInfoItem">
+					<img class="icon" v-bind:src="'./src/img/menu.png'"/>
+					{{companyDetail.type}}
+				</div>
+				<div class="companyInfoItem">
+					<img class="icon" v-bind:src="'./src/img/tongji.png'"/>
+					{{companyDetail.financing}}
+				</div>
+				<div class="companyInfoItem">
+					<img class="icon" v-bind:src="'./src/img/address.png'"/>
+					{{companyDetail.province}}
+				</div>
 			</div>
-			<div>
-				<img class="icon" v-bind:src="'./src/img/tongji.png'"/>
-				{{companyDetail.financing}}
-			</div>
-			<div>
-				<img class="icon" v-bind:src="'./src/img/address.png'"/>
-				{{companyDetail.province}}
+			<div class="panel-2">
+				<h3>公司标签</h3>
+				<button class="companyTag" v-for="tag in companyDetail.companyTag.split(',')">{{tag}}</button>
 			</div>
 		</div>
 		</div>
@@ -48,12 +54,31 @@
 .left-panel{
 	float: left;
 	width: 60%;
+	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
+	padding: 20px;
+	box-sizing: border-box;
 }
 .right-panel{
 	float: left;
-	width: 40%;
-	margin:0;
+	width: 36%;
+	margin-left: 4%;
 	position: relative;
+	
+}
+.panel-1{
+	width: 100%;
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	padding: 20px;
+	box-sizing: border-box;
+	font-size: 16px;
+}
+.panel-2{
+	margin-top: 20px;
+	width: 100%;
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	padding: 20px;
+	box-sizing: border-box;
+	font-size: 16px;
 }
 .send-pr-btn{
 	width: 8em;
@@ -64,13 +89,29 @@
 	background-color: #00b38a;
 	color: white;
 }
+h3{
+	margin:0;
+	color: #666;
+}
 .icon
 {
-    width: 15px;
-    height: 15px;
+    width: 16px;
+    height: 16px;
     display: inline-block;
-    vertical-align: text-top;
-    margin-top: -1px;
+}
+.companyInfoItem{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	color: #666;
+}
+.companyTag{
+	margin:6px;
+	width: 6em;
+	box-sizing: border-box;
+	background-color: inherit;
+	border: 1px solid #bfbfbf;
+	border-radius: 10px;
+	color:#bfbfbf;
 }
 </style>
 <script type="text/javascript">
@@ -80,7 +121,8 @@ export default{
 	props:['positionDetail'],
 	data(){
 		return{
-			companyDetail:{}
+			companyDetail:{},
+			companyName:""
 		}
 	},
 	methods:{
@@ -90,7 +132,7 @@ export default{
 				'companyName':this.companyName,
 				'companyDetail':{}
 			}
-			alert(this.searchContent);
+			console.log(this.companyName);
 			$.ajax({
 				url:'./src/api/getCompanyDetail',
 				data:JSON.stringify(jsonObj),
@@ -107,6 +149,7 @@ export default{
 		}
 	},
 	created:function(){
+		this.companyName=this.$router.currentRoute.params.companyName;
 		this.initCompanyData();
 	}
 }

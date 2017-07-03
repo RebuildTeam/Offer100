@@ -62,6 +62,8 @@ require_once 'tools.php';
     }
     else
     {
+      $logo = "1.png";
+      $picture = "1001.png";
       $dataArr = json_decode($data,true);
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
@@ -76,8 +78,12 @@ require_once 'tools.php';
                      'location' => $dataArr['location'],
                      'size' => $dataArr['size'],
                      'website' => $dataArr['website'],
+                     'logo' => $logo,
+                     'picture' => $picture,
                      'hrAccount' => $dataArr['hrAccount'],
-                     'hrPassword' => $dataArr['hrPassword']]);
+                     'hrPassword' => $dataArr['hrPassword'],
+                     'dealingRate' => $dataArr['dealingRate'],
+                     'evaluateNum' => $dataArr['evaluateNum']]);
       // var_dump($dataArr);
       $re = $manager->executeBulkWrite('test.company',$bulk);
       if($re)
@@ -117,7 +123,9 @@ require_once 'tools.php';
                                 'city' => $dataArr['city'],
                                 'location' => $dataArr['location'],
                                 'size' => $dataArr['size'],
-                                'website' => $dataArr['website']]],
+                                'website' => $dataArr['website'],
+                                'dealingRate' => $dataArr['dealingRate'],
+                                'evaluateNum' => $dataArr['evaluateNum']]],
                     ['multi' => false, 'upsert' => false]);
       // var_dump($dataArr);
       $re = $manager->executeBulkWrite('test.company',$bulk);
@@ -296,10 +304,16 @@ require_once 'tools.php';
       ];
       $query = new MongoDB\Driver\Query($filter,$options);
       $cursor = $manager->executeQuery("test.company", $query);
+      $positionRe = array();
       foreach($cursor as $document)
       {
         $re = object_array($document);
-        $positionRe = $re['position'];
+        // unset($re['position']['applicant']);
+        foreach($re['position'] as $singlePosition)
+        {
+          unset($singlePosition['applicant']);
+          array_push($positionRe,$singlePosition);
+        }
       }
       // var_dump($positionRe);
     }

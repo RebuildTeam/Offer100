@@ -33,11 +33,11 @@ export default{
 	data(){
 		return{
 			navList:[
-				{label:"Messgae",url:"#"},
-				{label:"My PR",url:"#"},
-				{label:"Delivery Box",url:"#"},
-				{label:"Collection",url:"#"},
-				{label:"User",url:"#"}]
+				{label:"消息",url:"#"},
+				{label:"我的简历",url:"#"},
+				{label:"投递箱 Box",url:"#"},
+				//{label:"Collection",url:"#"},
+				{label:"个人中心",url:"#"}]
 		}
 	}
 }

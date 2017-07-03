@@ -51,6 +51,14 @@ require_once 'tools.php';
       foreach($cursor as $document)
       {
         $re = object_array($document);
+        $positionWithoutApplican = array();
+        foreach($re['position'] as $singlePosition)
+        {
+          unset($singlePosition['applicant']);
+          array_push($positionWithoutApplican,$singlePosition);
+        }
+        $re['position'] = $positionWithoutApplican;
+        //unset($re['position']);
         //var_dump($document);
       }
       // var_dump($positionRe);
@@ -120,6 +128,7 @@ require_once 'tools.php';
           if($singlePosition['positionName'] == $positionName)
           {
             $singlePosition['companyName'] = $companyName;
+            unset($singlePosition['applicant']);
             $positionRe = $singlePosition;
           }
         }
@@ -154,6 +163,7 @@ require_once 'tools.php';
         foreach($positionArr as $singlePosition)
         {
           $singlePosition['companyName'] = $companyName;
+          unset($singlePosition['applicant']);
           // var_dump($singlePosition);
           array_push($allPosition,$singlePosition);
         }
@@ -303,8 +313,9 @@ require_once 'tools.php';
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
-  // getCompanyDetailF("轻松筹");
+  // getCompanyDetailF("欧德蒙");
   // getCompanyBriefF("区");
   // getPositionBriefF("设计师");
   // sendResumeF("S.T.A.R","欧德蒙","文案策划");
+  // getPositionDetailF("欧德蒙","软件测试工程师");
  ?>

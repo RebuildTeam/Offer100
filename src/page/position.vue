@@ -10,7 +10,6 @@
 import Navbar from '../component/Navbar.vue'
 import PositionBrief from '../component/PositionBrief.vue'
 import PositionIntro from '../component/PositionIntro.vue'
-
 	export default{
 		name:'Position',
 		components:{
@@ -20,10 +19,15 @@ import PositionIntro from '../component/PositionIntro.vue'
 		},
 		data(){
 			return{
-				companyName:"欧德蒙",
-				positionName:"java工程师",
+				companyName:"",
+				positionName:"",
 				positionDetailMsg:{}
 			}
+		},
+		created:function(){
+				this.companyName=this.$router.currentRoute.params.companyName;
+				this.positionName=this.$router.currentRoute.params.positionName;
+				this.initPositionData();
 		},
 		methods:{
 			initPositionData:function(){
@@ -47,9 +51,6 @@ import PositionIntro from '../component/PositionIntro.vue'
 					}
 				})
 			}
-		},
-		created:function(){
-			this.initPositionData();
 		}
 	}
 </script>

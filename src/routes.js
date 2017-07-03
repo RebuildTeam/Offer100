@@ -1,6 +1,7 @@
 import Index from './page/index-php.vue'
 import Login from './page/login.vue'
 import Position from './page/position.vue'
+import Company from './page/company.vue'
 
 const routes=[
 	{
@@ -17,6 +18,11 @@ const routes=[
 		path:'/Position',
 		name:'Position',
 		component:Position,
+	},
+	{
+		path:'/Company',
+		name:'Company',
+		component:Company,
 	}
 ]
 

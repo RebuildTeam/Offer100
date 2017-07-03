@@ -2,29 +2,28 @@
 <div  id="PositionCard">
 	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
-			    <div class="position-panel" v-on:click="linkToPosition()"><!-- 这是左层div -->
-			    	<h4>{{item.positionName}}</h4>
-
-			    	<div class="middle"><!-- 这是左侧中层div -->
-			    			<span class="salary">{{item.salary}}</span>
-			    			<span>{{item.city}}</span>
-			    			<span>{{item.requiredEducation}}</span>
-			    			<span>{{item.requiredExperience}}</span>
-			    	</div class="footer">
-			    	<div class="feedback"><!-- 左侧下层div -->
-			    		<span>{{item.releaseTime}}</span>
-			    		<span>{{item.positionType}}</span>			
-			    	</div>
-
-			    </div><div class="company-panel" v-if="item.companyName!=null" v-on:click="linkToCompany()"><!-- 这是右层div -->
-			    	<div><!-- 那个公司名称的div -->
-			    		<p>{{item.companyName}}</p>
-			    	</div>
-			    	<div align="left">
-			    		<p>
-			    			{{item.officeHour}}
-			    		</p>
-			    	</div>
+			    <router-link :to="{ name: 'Position', params: { companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
+			    		<h4>{{item.positionName}}</h4>
+	
+			    		<div class="middle"><!-- 这是左侧中层div -->
+			    				<span class="salary">{{item.salary}}</span>
+			    				<span>{{item.city}}</span>
+			    				<span>{{item.requiredEducation}}</span>
+			    				<span>{{item.requiredExperience}}</span>
+			    		</div class="footer">
+			    		<div class="feedback"><!-- 左侧下层div -->
+			    			<span>{{item.releaseTime}}</span>
+			    			<span>{{item.positionType}}</span>			
+			    		</div>
+			    </div></router-link><div class="company-panel" v-if="item.companyName!=null" v-on:click="linkToCompany(e)"><!-- 这是右层div -->
+			    		<div><!-- 那个公司名称的div -->
+			    			<p>{{item.companyName}}</p>
+			    		</div>
+			    		<div align="left">
+			    			<p>
+			    				{{item.officeHour}}
+			    			</p>
+			    		</div>
 			    </div>
 		    </div>
 
@@ -39,7 +38,8 @@
 	cursor: pointer;
 	box-sizing:border-box;
 	width: 100%;
-	border:1px solid #dfdfdf;
+	/*border:1px solid #dfdfdf;*/
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
 	margin-top:0.5em;
 	margin-bottom: 0.5em;
 	padding: 1em;
@@ -48,7 +48,8 @@
 	transition: all 0.6s;
 }
 .PositionCard-info:hover{
-	border:1px solid #00b38a;
+	/*border:1px solid #00b38a;*/
+	box-shadow: 1px 1px 5px 1px #00b38a;
 }
 .position-panel{
 	display: inline-block;
@@ -89,16 +90,23 @@ span{
 
 </style>
 <script type="text/javascript">
+import router from '../main.js'
+
 export default{
 	name:'PositionCard',
 	props:['positionCardList'],
 	data(){
 		return{
+			e:null
 		}
 	},
 	methods:{
-		linkToPosition:function(){
-			this.$router.push({ path: '/Position', params: { companyName: "洺信科技",positionName:"web前端工程师" }})
+		linkToPosition:function(even){
+				// var cn=event.target.getAttribute("cn");
+				// var pn=event.target.getAttribute("pn");
+				// console.log(event.target);
+				// router.push({ name: 'Position', params: { companyName:cn,positionName:pn}})
+				// console.log("router>>>>>"+router.params.companyName);
 		},
 		linkeToCompany:function(){
 

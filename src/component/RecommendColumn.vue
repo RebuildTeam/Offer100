@@ -33,18 +33,23 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 }
 #RecommendColumn/*recommend这个最大的块的属性*/
 {
-	background-color: #33bb93;
+	/*background-color: #33bb93;*/
+	background-color: orange;
 	width: 100%;
+	box-sizing: border-box;
+	border: 1px solid orange;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
 #RecommendColumn > div/*几个小机器人放在一个盒子里面，这个盒子的属性*/
 {
-	background-color: #33bb93;
+	/*background-color: #33bb93;*/
+	background-color: orange;
 }
 #RecommendColumn > div >div/*几个小机器人的模块属性*/
 {
-	background-color: #ccffee;
+	/*background-color: #ccffee;*/
+	background-color: #ffddbb;
 	vertical-align:top;
 	margin:1.6em;
 	width: 9em;

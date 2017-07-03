@@ -44,6 +44,7 @@
 	float: left;
 	width: 40%;
 	position: relative;
+	margin:0;
 }
 .send-pr-btn{
 	width: 8em;

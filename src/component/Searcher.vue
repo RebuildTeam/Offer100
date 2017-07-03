@@ -37,7 +37,7 @@
 	width: 20%;
 	float: left;
 	font-size: 18px;
-	background-color: #555;
+	background-color: orange;
 	color: white;
 	border: none;
 }
@@ -85,7 +85,6 @@ export default{
 				'id':"",
 				'keyword':this.searchContent,
 			}
-			alert(this.searchContent);
 			$.ajax({
 				url:'./src/api/getPositionBrief',
 				data:JSON.stringify(jsonObj),
@@ -101,7 +100,11 @@ export default{
 					this.isSearching=0;
 				}
 			})
-		}	
+		}
+
+	},
+	created:function(){
+		this.searchPosition();		
 	}
 }
 </script>

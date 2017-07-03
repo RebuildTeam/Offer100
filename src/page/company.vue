@@ -1,31 +1,54 @@
 <template>
-	<div id="Index">
+	<div id="Company">
 		<Navbar></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<div class="container">
-			<div class="row">
-				<div class="left-content">
-					<Searcher></Searcher>
-				</div>
-				<div class="right-panel">	
-					<h1  id="recommend-label" align="center">Recommend</h1>
-					<RecommendColumn></RecommendColumn>
-				</div>
-			</div>
-		</div>
+		<CompanyBrief v-bind:companyDetail="companyDetailMsg"></CompanyBrief>
+		<CompanyIntro v-bind:companyDetail="companyDetailMsg"></CompanyIntro>
 	</div>
 </template>
 <script type="text/javascript">
 import Navbar from '../component/Navbar.vue'
-import Searcher from '../component/Searcher.vue'
-import RecommendColumn from '../component/RecommendColumn.vue'
-
+import CompanyBrief from '../component/CompanyBrief.vue'
+import CompanyIntro from '../component/CompanyIntro.vue'
 	export default{
-		name:'Index',
+		name:'Company',
 		components:{
 			Navbar,
-			Searcher,
-			RecommendColumn
+			CompanyBrief,
+			CompanyIntro
 		},
+		data(){
+			return{
+				companyName:"",
+				companyDetailMsg:{}
+			}
+		},
+		created:function(){
+				this.companyName=this.$router.currentRoute.params.companyName;
+				this.initCompanyData();
+		},
+		methods:{
+			initCompanyData:function(){
+				var jsonObj={
+					'id':"",
+					'companyName':this.companyName,
+					'CompanyName':this.CompanyName
+				};
+				$.ajax({
+					url:'./src/api/getCompanyDetail',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						console.log(result);
+						this.companyDetailMsg=result.data;
+						console.log(this.companyDetailMsg);
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
+			}
+		}
 	}
 </script>

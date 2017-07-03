@@ -61,110 +61,128 @@ export default{
 	data(){
 		return{
 			chosenItem:{
-				"Location":"China",
-				"Phase":"No Limitation",
-				"Field":"No Limitation",
-				"Sort Order":"Default"
+				"公司地址":"全国",
+				"融资阶段":"无限制",
+				"行业领域":"无限制",
+				"排序方式":"默认"
 			},
 			CompanyCardListMsg:[],
 			filterList:[
 				{
-					label:"Location",
+					label:"公司地址",
 					conditions:[
 					{
-						label:"China"
+						label:"全国"
 					},{
-						label:"Beijing"
+						label:"北京"
 					},{
-						label:"Shanghai"
+						label:"上海"
 					},{
-						label:"Shenzhen"
+						label:"深圳"
 					},{
-						label:"Guangzhou"
+						label:"广州"
 					},{
-						label:"Hangzhou"
+						label:"杭州"
 					},{
-						label:"Chengdu"
+						label:"成都"
 					},{
-						label:"Nanjing"
+						label:"南京"
 					},{
-						label:"Wuhan"
+						label:"武汉"
 					},{
-						label:"Xiamen"
+						label:"厦门"
 					},{
-						label:"Suzhou"
+						label:"苏州"
 					},{
-						label:"Tianjing"
+						label:"天津"
 					}]
 				},
 				{
-					label:"Phase",
+					label:"融资阶段",
 					conditions:[
 					{
-						label:"No Limitation"
+						label:"无限制"
 					},{
-						label:"No Financing "
+						label:"未融资 "
 					},{
-						label:"AI Round"
+						label:"天使轮"
 					},{
-						label:"A Round"
+						label:"A轮"
 					},{
-						label:"B Round"
+						label:"B轮"
 					},{
-						label:"C Round"
+						label:"C轮"
 					},{
-						label:"D+ Round"
+						label:"D轮及以上"
 					},{
-						label:"Quoted"
+						label:"上市公司"
 					},{
-						label:"No Need To Financing"
+						label:"不需要融资"
 					}]
 				},
 				{
-					label:"Field",
+					label:"行业领域",
 					conditions:[{
-						label:"No Limitation"
+						label:"无限制"
 					},{
-						label:"Mobile Internet"
+						label:"移动互联网"
 					},{
-						label:"E-Business"
+						label:"电子商务"
 					},{
-						label:"Finance"
+						label:"金融"
 					},{
-						label:"Business Service"
+						label:"商务服务"
 					},{
-						label:"Education"
+						label:"教育"
 					},{
-						label:"Entertainment"
+						label:"娱乐"
 					},{
-						label:"Game"
+						label:"游戏"
 					},{
 						label:"O2O"
 					},{
-						label:"Hardware"	
+						label:"硬件"	
 					}]
 				},
 				{
-					label:"Sort Order",
+					label:"排序方式",
 					conditions:[
 					{
-						label:"Default"
+						label:"默认"
 					},{
-						label:"Jobs Number"
+						label:"职位数量"
 					},{
-						label:"Comments Number"
+						label:"评论数量"
 					},{
-						label:"PR dealing Rate"
+						label:"简历处理率"
 					}]
 				}]
 		}
 	},
-	watch:{
-		'chosenItem':{
-			handler:function(){
-				var jsonObj={
-					keyword:"",
-				}
+	methods:{
+		queryCompanyData:function(){
+			var jsonObj={
+				province:this.chosenItem['公司地址'],
+				financing:this.chosenItem['融资阶段'],
+				type:this.chosenItem['行业领域'],
+				sortOrder:this.chosenItem['排序方式'],
+			};
+
+			if(jsonObj.province=="全国"){
+				jsonObj.Province="";
+			}
+			if(jsonObj.financing=="无限制"){
+				jsonObj.Financing="";
+			}
+			if(jsonObj.type=="无限制"){
+				jsonObj.type="";
+			}
+			if(jsonObj.sortOrder=="默认"){
+				jsonObj.sortOrder="";
+			}
+						console.log(jsonObj);
+
+				console.log(this.Location);
 				$.ajax({
 					url:'./src/api/getCompanyBrief',
 					data:JSON.stringify(jsonObj),
@@ -172,15 +190,25 @@ export default{
 					type:'post',
 					success:(result)=>{
 						this.CompanyCardListMsg=result.data;
+						console.log("res",result);
 						console.log(JSON.stringify(this.CompanyCardListMsg));
 					},
 					error:function(){
 
 					}
 				})
+		}
+	},
+	created:function(){
+		this.queryCompanyData();
+	},
+	watch:{
+		'chosenItem':{
+			handler:function(){
+				this.queryCompanyData();
 			},
 			deep:true
 		}
-	}
+	},
 }
 </script>

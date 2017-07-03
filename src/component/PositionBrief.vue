@@ -31,19 +31,25 @@
 .PositionBrief{
 	font-size: 10pt;
 	width: 100%;
-	background-color: #dfdfdf;
-	border:1px solid #dfdfdf;
 	padding: 0.5em;
 	overflow: hidden;
+	background-color: #eeeeee;
+	box-shadow: inset 1px 1px 5px 1px #dfdfdf;
+	color: #666;
 }
 .left-panel{
 	float: left;
 	width: 60%;
+	box-sizing: border-box;
+	padding: 20px;
 }
 .right-panel{
 	float: left;
+	box-sizing: border-box;
+	padding: 20px;
 	width: 40%;
 	position: relative;
+	margin:0;
 }
 .send-pr-btn{
 	width: 8em;

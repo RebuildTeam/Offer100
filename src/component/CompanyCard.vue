@@ -1,7 +1,8 @@
 <template>
 <div  id="CompanyCard">
 	    <div  v-for="item in CompanyCardList">
-	        <div class="CompanyCard-info">
+	       	<router-link :to="{name:'Company',params:{companyName:item.companyName}}">
+		<div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
                     <!-- 这是上层div -->
                     <div >
@@ -9,14 +10,14 @@
                    	   <img v-bind:src="'./src/img/'+item.logo" >
 
                     </div>
-                    <div align="left"><!-- 这图片右边的div -->
+                    <div ><!-- 这图片右边的div -->
                         <div><!-- 这是公司标题div -->
-                        	<h3>{{item.companyName}}&nbsp;</h3>
+                        	<h3>{{item.companyName}}</h3>
 
                         </div>
                         <div><!-- 这是三行字div -->
                         	<p>{{item.evaluateNum}}&nbsp;&nbsp;条面试评价</p>
-                        	<p>{{''+0}}&nbsp;&nbsp;个在招职位</p>
+                        	<p>{{item.positionNum}}&nbsp;&nbsp;个在招职位</p>
                         	<p>{{item.dealingRate}}&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>
@@ -26,7 +27,7 @@
 
 			    	    	<p class="intro">{{item.companyInfoBrief}}</p>
 			    	    </div>
-			    	    <div><!-- 三个按钮那一层 -->
+			    	    <div class="btn-group"><!-- 三个按钮那一层 -->
 			    	    	<button>
 			    	    		<img v-bind:src="'./src/img/menu.png'">&nbsp;{{item.type}}
 			    	    	</button>
@@ -39,7 +40,7 @@
 			    	    </div>
 			    </div>
 		    </div>
-
+		</router-link>
 		</div>
     
 </div>	
@@ -74,11 +75,13 @@
 .CompanyCard-info>div:nth-child(1)
 {
 	height: 60%;
+	position: relative;
 	
 }
 .CompanyCard-info>div:nth-child(2)
 {
 	height: 40%;
+	position: relative;
 	
 }
 .CompanyCard-info>div:nth-child(1)>div:nth-child(1)
@@ -89,8 +92,6 @@
 }
 .CompanyCard-info>div:nth-child(1)>div:nth-child(2)
 {
-	
-	
 	margin-left: 12.6em;
 	text-align: left;
 }
@@ -106,7 +107,7 @@ h3{
 .CompanyCard-info>div:nth-child(2)>div:nth-child(1)
 {
     
-    	margin-left:1.5em;
+    margin-left:1.5em;
 	margin-right:1.5em;
 }
 p{
@@ -141,6 +142,12 @@ button>img
 #CompanyCard >div >div >div >div >div >p:hover
 {
  color: green;
+}
+.btn-group{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
 }
 </style>
 <script type="text/javascript">

@@ -16,7 +16,7 @@ require_once 'checkSession.php';
     $valRes = validateSession($id,$username);
     if($valRes==0)
       return;
-    setResumeF($username,$data);
+    setResumeF($username,$data,$id);
   }
   function getResume($jsonS)
   {
@@ -28,14 +28,14 @@ require_once 'checkSession.php';
     $identity = getIdentity($id);
     if($identity == "hr")
     {
-      getResumeF($username);
+      getResumeF($username,$id);
     }
     else
     {
       $valRes = validateSession($id,$username);
       if($valRes==0)
         return;
-      getResumeF($username);
+      getResumeF($username,$id);
     }
   }
   function getResumeStatus($jsonS)
@@ -47,7 +47,7 @@ require_once 'checkSession.php';
     $valRes = validateSession($id,$username);
     if($valRes==0)
       return;
-    getResumeStatusF($username);
+    getResumeStatusF($username,$id);
   }
   // function personalInfoManagerF($method,$jsonS)
   // {
@@ -67,7 +67,7 @@ require_once 'checkSession.php';
   //   }
   // }
 
-  function setResumeF($username,$data)
+  function setResumeF($username,$data,$id)
   {
     $reArray = array();
     $isExist = findUser($username);
@@ -104,7 +104,7 @@ require_once 'checkSession.php';
     echo $obj;
   }
 
-  function getResumeF($username)
+  function getResumeF($username,$id)
   {
     $caller = $_SESSION['identity'];
     $isExist = findUser($username);
@@ -132,7 +132,7 @@ require_once 'checkSession.php';
     echo $obj;
   }
 
-  function getResumeStatusF($username)
+  function getResumeStatusF($username,$id)
   {
     $isExist = findUser($username);
     if($isExist)

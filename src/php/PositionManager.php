@@ -40,7 +40,7 @@ require_once 'tools.php';
     $valRes = validateSession($id,$username);
     if($valRes==0)
       return;
-    sendResumeF($username,$companyName,$positionName);
+    sendResumeF($username,$companyName,$positionName,$id);
   }
 
   function getCompanyDetailF($companyName)
@@ -72,7 +72,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $re;
-    $reArr['caller'] = $_SESSION["$id"]['caller'];
+    // $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -110,7 +110,7 @@ require_once 'tools.php';
     }
     //var_dump($companyList);
     $reArr['data'] = $companyList;
-    $reArr['caller'] = $_SESSION["$id"]['caller'];
+    // $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -144,7 +144,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $positionRe;
-    $reArr['caller'] = $_SESSION["$id"]['caller'];
+    // $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -206,12 +206,12 @@ require_once 'tools.php';
       }
     }
     $reArr['data'] = $allPosition;
-    $reArr['caller'] = $_SESSION["$id"]['caller'];
+    // $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
 
-  function sendResumeF($username,$companyName,$positionName)
+  function sendResumeF($username,$companyName,$positionName,$id)
   {
     $reArr = array();
     $isExistUsername = findUser($username);

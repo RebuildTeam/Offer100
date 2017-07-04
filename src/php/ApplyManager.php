@@ -14,7 +14,7 @@ require_once 'tools.php';
      //validate whether the user is a hr
    if($_SESSION["$id"]['caller']!='hr')
      return;
-   getResumeListF($companyName,$prStatus);
+   getResumeListF($companyName,$prStatus,$id);
   }
   function replyResume($jsonS)
   {
@@ -23,13 +23,14 @@ require_once 'tools.php';
     $username = $arr['username'];
     $positionName = $arr['positionName'];
     $reply = $arr['reply'];
+    $comment = $arr['comment'];
     //validate whether the user is a hr
     if($_SESSION["$id"]['caller']!='hr')
       return;
-    replyResumeF($companyName,$username,$positionName,$reply);
+    replyResumeF($companyName,$username,$positionName,$reply,$comment,$id);
   }
 
-  function getResumeListF($companyName,$prStatus)
+  function getResumeListF($companyName,$prStatus,$id)
   {
     $reArr = array();
     // if($prStatus == "")
@@ -92,7 +93,7 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function replyResumeF($companyName,$username,$positionName,$reply,$comment)
+  function replyResumeF($companyName,$username,$positionName,$reply,$comment,$id)
   {
     $reArr = array();
     $isExistUsername = findUser($username);

@@ -7,14 +7,14 @@ require_once 'tools.php';
 
   function insertCompanyInfo($jsonS)
   {
-    $arr = json_decode($jsonS,true);
+   $arr = json_decode($jsonS,true);
    $id = $arr['id'];
    $companyName = $arr['companyName'];
    $data = $arr['data'];
      //validate whether the user is a hr
    if($_SESSION["$id"]["caller"]!="hr")
      return;
-   insertCompanyInfoF($companyName,$data);
+   insertCompanyInfoF($companyName,$data,$id);
   }
   function setCompanyInfo($jsonS)
   {
@@ -25,7 +25,7 @@ require_once 'tools.php';
       //validate whether the user is a hr
     if($_SESSION["$id"]["caller"]!="hr")
       return;
-    setCompanyInfoF($companyName,$data);
+    setCompanyInfoF($companyName,$data,$id);
   }
   function setPosition($jsonS)
   {
@@ -36,7 +36,7 @@ require_once 'tools.php';
       //validate whether the user is a hr
     if($_SESSION["$id"]["caller"]!="hr")
       return;
-    setPositionF($companyName,$data);
+    setPositionF($companyName,$data,$id);
   }
   function dropPosition($jsonS)
   {
@@ -47,7 +47,7 @@ require_once 'tools.php';
       //validate whether the user is a hr
     if($_SESSION["$id"]["caller"]!="hr")
       return;
-    dropPositionF($companyName,$positionName);
+    dropPositionF($companyName,$positionName,$id);
   }
   function getPosition($jsonS)
   {
@@ -57,7 +57,7 @@ require_once 'tools.php';
        //validate whether the user is a hr
     if($_SESSION["$id"]["caller"]!="hr")
       return;
-   getPositionF($companyName);
+    getPositionF($companyName,$id);
   }
 
   // function companyInfoManager($method, $jsonS)
@@ -311,7 +311,7 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function getPositionF($companyName)
+  function getPositionF($companyName,$id)
   {
     $reArr = array();
     $isExist = findCompany($companyName);

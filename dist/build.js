@@ -12788,6 +12788,185 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12795,7 +12974,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['PRDetail', 'caller'],
 	data() {
 		return {
-			// PRDetail:this.PRDetail,
+			editable: false,
+			editBtnText: "编辑",
+			PRInfo: {},
 			idMsg: window.localStorage.getItem("id"),
 			usernameMsg: window.localStorage.getItem("username")
 		};
@@ -12803,27 +12984,79 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	methods: {
 		setPRData: function () {
 			var jsonObj = {
-				id: idMsg,
-				username, usernameMsg
+				id: this.idMsg,
+				username: this.usernameMsg,
+				data: this.PRInfo
 			};
+			console.log(jsonObj);
 			$.ajax({
-				url: './src/api/sendResume',
+				url: './src/api/setResume',
 				data: JSON.stringify(jsonObj),
 				dataType: 'json',
 				type: 'post',
 				success: result => {
-					alert("更新成功");
+					if (result.code == 0) {
+						alert("更新成功");
+					} else {
+						alert(result.code + " " + result.message);
+					}
 				},
 				error: function (result, msg, error) {
 					alert("更新失败");
 				}
 			});
+		},
+		addNewExperience: function (label) {
+			var jsonObj = {};
+			if (label == 'educationExperience') {
+				jsonObj.college = "";
+				jsonObj.major = "";
+				jsonObj.experience = "";
+				jsonObj.startTime = "";
+				jsonObj.endTime = "";
+			} else if (label == 'internshipExperience') {
+				jsonObj.companyName = "";
+				jsonObj.position = "";
+				jsonObj.startTime = "";
+				jsonObj.endTime = "";
+				jsonObj.mainWork = "";
+			} else if (label == 'projectExperience') {
+				jsonObj.projectName = "";
+				jsonObj.responsibility = "";
+				jsonObj.startTime = "";
+				jsonObj.endTime = "";
+				jsonObj.projectDescribe = "";
+			} else if (label == 'skillExperience') {
+				jsonObj.skill = "";
+				jsonObj.mastery = "";
+			}
+			this.PRInfo[label].push(jsonObj);
+		},
+		deleteExperienceByIndex(label, i) {
+			this.PRInfo[label].splice(parseInt(i), 1);
+		},
+		scrollTo: function (id) {
+			$('html,body').animate({ scrollTop: document.getElementById(id).offsetTop + 'px' }, 600);
 		}
 	},
-	mounted: function () {
-		// this.PRDetail=JSON.parse(JSON.stringify(this.PRDetail));
-		// console.log("Detail:",JSON.stringify(this.PRDetail));
-		// console.log("Info:",JSON.stringify(this.PRDetail));
+	watch: {
+		'PRDetail': {
+			handler: function () {
+				this.PRInfo = JSON.parse(JSON.stringify(this.PRDetail));
+				console.log("changed>>>>>", this.PRInfo);
+			},
+			deep: true
+		},
+		'editable': {
+			handler: function () {
+				if (this.editable == true) {
+					this.editBtnText = "保存";
+				} else {
+					this.editBtnText = "编辑";
+					this.setPRData();
+				}
+			}
+		}
 	}
 });
 
@@ -13883,7 +14116,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 70%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 26%;\n\tmargin-left: 4%;\n\tposition: relative;\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tmargin-top: 20px;\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: all 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\n#container-right[data-v-70d34b36]{\n\toverflow: hidden;\n\tposition: fixed;\n\ttop: 83px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 45%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\ttransform:translate(0,0) ;\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 70%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\twidth: 26%;\n\tmargin-left: 4%;\n\tfloat: right;\n\tright: 0;\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
 
 // exports
 
@@ -15304,7 +15537,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "left"
     }
   }, [_c('div', {
-    staticClass: "container"
+    staticClass: "container",
+    attrs: {
+      "id": "container-left"
+    }
   }, [_c('div', {
     staticClass: "left-panel",
     attrs: {
@@ -15313,77 +15549,772 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
   }, [_c('div', {
     staticClass: "PR-head"
   }), _vm._v(" "), _c('div', {
-    staticClass: "PR-photo"
+    staticClass: "PR-photo",
+    style: ({
+      backgroundImage: 'url(./src/img/' + _vm.PRInfo.photo + ')'
+    })
   }), _vm._v(" "), _c('div', {
     staticClass: "PR-content"
-  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRDetail.applicantName))]), _vm._v(" "), _c('h4', [_vm._v(_vm._s(_vm.PRDetail.introduce))]), _vm._v(" "), _vm._l((_vm.PRDetail.educationExperience), function(item) {
+  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRInfo.applicantName))]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(_vm.PRInfo.introduce))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.introduce),
+      expression: "PRInfo.introduce"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "一句话介绍自己"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.introduce)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.introduce = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _vm._l((_vm.PRInfo.educationExperience), function(item) {
     return _c('div', [_c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.major) + _vm._s(item.experience) + "-" + _vm._s(item.college))])])
-  }), _vm._v(" "), _c('p', {
+    }, [_c('img', {
+      staticClass: "icon",
+      attrs: {
+        "src": './src/img/school.png'
+      }
+    }), _vm._v("\n\t\t\t\t\t\t" + _vm._s(item.major) + _vm._s(item.experience) + "-" + _vm._s(item.college) + "\n\t\t\t\t\t")])])
+  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
-  }, [_vm._v(_vm._s(_vm.PRDetail.gender) + "," + _vm._s(_vm.PRDetail.province) + "省／直辖市," + _vm._s(_vm.PRDetail.city) + "市")]), _vm._v(" "), _c('p', {
+  }, [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/user.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.gender) + "," + _vm._s(_vm.PRInfo.province) + "省／直辖市," + _vm._s(_vm.PRInfo.city) + "市")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.gender),
+      expression: "PRInfo.gender"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "性别"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.gender)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.gender = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.province),
+      expression: "PRInfo.province"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "省／直辖市"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.province)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.province = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.city),
+      expression: "PRInfo.city"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "地级市"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.city)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.city = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
-  }, [_vm._v(_vm._s(_vm.PRDetail.telephone) + "," + _vm._s(_vm.PRDetail.email))]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("教育经历")]), _vm._v(" "), _vm._l((_vm.PRDetail.educationExperience), function(item) {
+  }, [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/phone.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.telephone) + "\n\t\t\t\t\t"), _c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/email.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.email) + "\n\t\t\t\t")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.telephone),
+      expression: "PRInfo.telephone"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "联系电话"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.telephone)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.telephone = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.email),
+      expression: "PRInfo.email"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "邮箱"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.email)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.email = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', {
+    attrs: {
+      "id": "educationExperience"
+    }
+  }, [_vm._v("教育经历")]), _vm._v(" "), _vm._l((_vm.PRInfo.educationExperience), function(item, index) {
     return _c('div', {
       attrs: {
         "align": "left"
       }
-    }, [_c('h4', {
+    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.college))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_vm._v(_vm._s(item.college))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.college),
+        expression: "item.college"
+      }],
+      attrs: {
+        "placeholder": "院校"
+      },
+      domProps: {
+        "value": (item.college)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.college = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]), _vm._v(" "), _c('span', {
+    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))])]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("实习经历")]), _vm._v(" "), _vm._l((_vm.PRDetail.internshipExperience), function(item) {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.experience),
+        expression: "item.experience"
+      }],
+      attrs: {
+        "placeholder": "学历"
+      },
+      domProps: {
+        "value": (item.experience)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.experience = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.major),
+        expression: "item.major"
+      }],
+      attrs: {
+        "placeholder": "专业"
+      },
+      domProps: {
+        "value": (item.major)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.major = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.startTime),
+        expression: "item.startTime"
+      }],
+      attrs: {
+        "placeholder": "起始时间"
+      },
+      domProps: {
+        "value": (item.startTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.startTime = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.endTime),
+        expression: "item.endTime"
+      }],
+      attrs: {
+        "placeholder": "毕业时间"
+      },
+      domProps: {
+        "value": (item.endTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.endTime = $event.target.value
+        }
+      }
+    }) : _vm._e()]), _vm._v(" "), _c('div', {
+      attrs: {
+        "align": "center"
+      }
+    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+      staticClass: "btn-operation btn-red",
+      on: {
+        "click": function($event) {
+          _vm.deleteExperienceByIndex('educationExperience', index)
+        }
+      }
+    }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
+  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    staticClass: "btn-operation btn-blue",
+    on: {
+      "click": function($event) {
+        _vm.addNewExperience('educationExperience')
+      }
+    }
+  }, [_vm._v("新增教育经历")]) : _vm._e(), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', {
+    attrs: {
+      "id": "internshipExperience"
+    }
+  }, [_vm._v("实习经历")]), _vm._v(" "), _vm._l((_vm.PRInfo.internshipExperience), function(item, index) {
     return _c('div', {
       attrs: {
         "align": "left"
       }
-    }, [_c('h4', [_vm._v(_vm._s(item.companyName))]), _vm._v(" "), _c('p', {
+    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.companyName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.companyName),
+        expression: "item.companyName"
+      }],
+      attrs: {
+        "placeholder": "实习单位名称"
+      },
+      domProps: {
+        "value": (item.companyName)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.companyName = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.position))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_vm._v(_vm._s(item.position))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.position),
+        expression: "item.position"
+      }],
+      attrs: {
+        "placeholder": "职位"
+      },
+      domProps: {
+        "value": (item.position)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.position = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))])]), _vm._v(" "), _c('p', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.startTime),
+        expression: "item.startTime"
+      }],
+      attrs: {
+        "placeholder": "起始时间"
+      },
+      domProps: {
+        "value": (item.startTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.startTime = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.endTime),
+        expression: "item.endTime"
+      }],
+      attrs: {
+        "placeholder": "结束时间"
+      },
+      domProps: {
+        "value": (item.endTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.endTime = $event.target.value
+        }
+      }
+    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.mainWork))]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("项目经历")]), _vm._v(" "), _vm._l((_vm.PRDetail.projectExperience), function(item) {
+    }, [_vm._v(_vm._s(item.mainWork))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.mainWork),
+        expression: "item.mainWork"
+      }],
+      attrs: {
+        "rows": "10",
+        "placeholder": "实习内容描述"
+      },
+      domProps: {
+        "value": (item.mainWork)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.mainWork = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('div', {
+      attrs: {
+        "align": "center"
+      }
+    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+      staticClass: "btn-operation btn-red",
+      on: {
+        "click": function($event) {
+          _vm.deleteExperienceByIndex('internshipExperience', index)
+        }
+      }
+    }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
+  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    staticClass: "btn-operation btn-blue",
+    on: {
+      "click": function($event) {
+        _vm.addNewExperience('internshipExperience')
+      }
+    }
+  }, [_vm._v("新增实习经历")]) : _vm._e(), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', {
+    attrs: {
+      "id": "projectExperience"
+    }
+  }, [_vm._v("项目经历")]), _vm._v(" "), _vm._l((_vm.PRInfo.projectExperience), function(item, index) {
     return _c('div', {
       attrs: {
         "align": "left"
       }
-    }, [_c('h4', [_vm._v(_vm._s(item.projectName))]), _vm._v(" "), _c('p', {
+    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.projectName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.projectName),
+        expression: "item.projectName"
+      }],
+      attrs: {
+        "placeholder": "项目名称"
+      },
+      domProps: {
+        "value": (item.projectName)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.projectName = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.responsibility))]), _vm._v(" "), _c('p', [_c('span', {
+    }, [_vm._v(_vm._s(item.responsibility))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.responsibility),
+        expression: "item.responsibility"
+      }],
+      attrs: {
+        "placeholder": "职责"
+      },
+      domProps: {
+        "value": (item.responsibility)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.responsibility = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))])]), _vm._v(" "), _c('p', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.startTime),
+        expression: "item.startTime"
+      }],
+      attrs: {
+        "placeholder": "起始时间"
+      },
+      domProps: {
+        "value": (item.startTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.startTime = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.endTime),
+        expression: "item.endTime"
+      }],
+      attrs: {
+        "placeholder": "结束时间"
+      },
+      domProps: {
+        "value": (item.endTime)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.endTime = $event.target.value
+        }
+      }
+    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.projectDescribe))]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("个人期望")]), _vm._v(" "), _c('p', {
-    staticClass: "primary-info"
-  }, [_c('span', [_vm._v(_vm._s(_vm.PRDetail.expectPosition))]), _vm._v("  "), _c('span', [_vm._v(_vm._s(_vm.PRDetail.expectCity))]), _vm._v("  "), _c('span', [_vm._v(_vm._s(_vm.PRDetail.expectSalary))])]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', [_vm._v("技能评价")]), _vm._v(" "), _vm._l((_vm.PRDetail.skillExperience), function(item) {
-    return _c('p', {
+    }, [_vm._v(_vm._s(item.projectDescribe))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.projectDescribe),
+        expression: "item.projectDescribe"
+      }],
+      attrs: {
+        "rows": "10",
+        "placeholder": "项目内容描述"
+      },
+      domProps: {
+        "value": (item.projectDescribe)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.projectDescribe = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('div', {
+      attrs: {
+        "align": "center"
+      }
+    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+      staticClass: "btn-operation btn-red",
+      on: {
+        "click": function($event) {
+          _vm.deleteExperienceByIndex('projectExperience', index)
+        }
+      }
+    }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
+  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    staticClass: "btn-operation btn-blue",
+    on: {
+      "click": function($event) {
+        _vm.addNewExperience('projectExperience')
+      }
+    }
+  }, [_vm._v("新增项目经历")]) : _vm._e(), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', {
+    attrs: {
+      "id": "personalExpectation"
+    }
+  }, [_vm._v("个人期望")]), _vm._v(" "), _c('p', {
+    staticClass: "secondary-info"
+  }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/tie.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectPosition) + "\n\t\t\t\t\t\t")]), _vm._v("\n\t\t\t\t\t\t\t  \n\t\t\t\t\t\t"), _c('span', [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/position.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectCity) + "\n\t\t\t\t\t\t")]), _vm._v("\n\t\t\t\t\t\t\t  \n\t\t\t\t\t\t"), _c('span', [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/money.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectSalary) + "\n\t\t\t\t\t\t\t")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.expectPosition),
+      expression: "PRInfo.expectPosition"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "期望岗位"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.expectPosition)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.expectPosition = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.expectCity),
+      expression: "PRInfo.expectCity"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "期望城市"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.expectCity)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.expectCity = $event.target.value
+      }
+    }
+  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    directives: [{
+      name: "model",
+      rawName: "v-model",
+      value: (_vm.PRInfo.expectSalary),
+      expression: "PRInfo.expectSalary"
+    }],
+    staticClass: "alignCenter",
+    attrs: {
+      "placeholder": "期望薪资"
+    },
+    domProps: {
+      "value": (_vm.PRInfo.expectSalary)
+    },
+    on: {
+      "input": function($event) {
+        if ($event.target.composing) { return; }
+        _vm.PRInfo.expectSalary = $event.target.value
+      }
+    }
+  }) : _vm._e()]), _vm._v(" "), _c('hr'), _vm._v(" "), _c('h3', {
+    attrs: {
+      "id": "skillExperience"
+    }
+  }, [_vm._v("技能评价")]), _vm._v(" "), _vm._l((_vm.PRInfo.skillExperience), function(item, index) {
+    return _c('div', {
       staticClass: "secondary-info",
       attrs: {
         "align": "left"
       }
-    }, [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])])
-  }), _vm._v(" "), _c('hr'), _vm._v(" "), (_vm.caller == 'applicant') ? _c('button', [_vm._v("编辑")]) : _vm._e()], 2)]), _vm._v(" "), _vm._m(0)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "right-panel",
+    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.skill),
+        expression: "item.skill"
+      }],
+      attrs: {
+        "placeholder": "技能名称"
+      },
+      domProps: {
+        "value": (item.skill)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.skill = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+      directives: [{
+        name: "model",
+        rawName: "v-model",
+        value: (item.mastery),
+        expression: "item.mastery"
+      }],
+      attrs: {
+        "placeholder": "自我评价(A,B,C,D 或 精通，掌握，熟悉，了解)"
+      },
+      domProps: {
+        "value": (item.mastery)
+      },
+      on: {
+        "input": function($event) {
+          if ($event.target.composing) { return; }
+          item.mastery = $event.target.value
+        }
+      }
+    }) : _vm._e(), _vm._v(" "), _c('div', {
+      attrs: {
+        "align": "center"
+      }
+    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+      staticClass: "btn-operation btn-red",
+      on: {
+        "click": function($event) {
+          _vm.deleteExperienceByIndex('skillExperience', index)
+        }
+      }
+    }, [_vm._v("删除")]) : _vm._e()])])
+  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    staticClass: "btn-operation btn-blue",
+    on: {
+      "click": function($event) {
+        _vm.addNewExperience('skillExperience')
+      }
+    }
+  }, [_vm._v("新增技能评价")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('hr') : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('button', {
     attrs: {
-      "align": "left"
+      "id": "edit-btn"
+    },
+    on: {
+      "click": function($event) {
+        _vm.editable = !_vm.editable
+      }
+    }
+  }, [_c('img', {
+    staticClass: "icon",
+    attrs: {
+      "src": './src/img/pencil.png'
+    }
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.editBtnText) + "\n\t\t\t\t")]) : _vm._e()], 2)])]), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "container-right"
     }
   }, [_c('div', {
-    staticClass: "panel-1"
-  }, [_c('button', [_vm._v("投递箱")]), _vm._v(" "), _c('button', [_vm._v("消息")])]), _vm._v(" "), _c('div', {
+    staticClass: "right-panel",
+    attrs: {
+      "id": "right-panel",
+      "align": "left"
+    }
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "panel-2 PR-quick-label",
     attrs: {
       "align": "center"
     }
-  }, [_c('h3', [_vm._v("基本资料")]), _vm._v(" "), _c('h3', [_vm._v("教育经历")]), _vm._v(" "), _c('h3', [_vm._v("实习经历")]), _vm._v(" "), _c('h3', [_vm._v("项目经历")]), _vm._v(" "), _c('h3', [_vm._v("个人期望")]), _vm._v(" "), _c('h3', [_vm._v("技能评价")])])])
+  }, [_c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('PR')
+      }
+    }
+  }, [_vm._v("基本资料")]), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('educationExperience')
+      }
+    }
+  }, [_vm._v("教育经历")]), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('internshipExperience')
+      }
+    }
+  }, [_vm._v("实习经历")]), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('projectExperience')
+      }
+    }
+  }, [_vm._v("项目经历")]), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('personalExpectation')
+      }
+    }
+  }, [_vm._v("个人期望")]), _vm._v(" "), _c('h3', {
+    on: {
+      "click": function($event) {
+        _vm.scrollTo('skillExperience')
+      }
+    }
+  }, [_vm._v("技能评价")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br')])])])])])
+},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "panel-1"
+  }, [_c('button', {
+    staticClass: "delivery-btn"
+  }, [_vm._v("投递箱")]), _c('button', {
+    staticClass: "msg-btn"
+  }, [_vm._v("消息")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {

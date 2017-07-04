@@ -1,5 +1,6 @@
 <template>
 <div  id="CompanyCard">
+	    <router-link to="{name:'Company',params:{companyName:item.companyName}}">
 	    <div  v-for="item in CompanyCardList">
 	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
@@ -16,7 +17,7 @@
                         </div>
                         <div><!-- 这是三行字div -->
                         	<p>{{item.evaluateNum}}&nbsp;&nbsp;条面试评价</p>
-                        	<p>{{}}&nbsp;&nbsp;个在招职位</p>
+                        	<p>{{item.positionNum}}&nbsp;&nbsp;个在招职位</p>
                         	<p>{{item.dealingRate}}&nbsp;&nbsp;简历处理率</p>
                         </div>
                     </div>
@@ -26,7 +27,7 @@
 
 			    	    	<p class="intro">{{item.companyInfoBrief}}</p>
 			    	    </div>
-			    	    <div><!-- 三个按钮那一层 -->
+			    	    <div class="btn-group"><!-- 三个按钮那一层 -->
 			    	    	<button>
 			    	    		<img v-bind:src="'./src/img/menu.png'">&nbsp;{{item.type}}
 			    	    	</button>
@@ -39,8 +40,9 @@
 			    	    </div>
 			    </div>
 		    </div>
-
 		</div>
+
+		</router-link>
     
 </div>	
 
@@ -49,6 +51,7 @@
 <style type="text/css" scoped>
 #CompanyCard
 {
+	color: #666;
 	margin: 0 auto ;
 	position: absolute;
 	left: 0;
@@ -74,11 +77,13 @@
 .CompanyCard-info>div:nth-child(1)
 {
 	height: 60%;
+	position: relative;
 	
 }
 .CompanyCard-info>div:nth-child(2)
 {
 	height: 40%;
+	position: relative;
 	
 }
 .CompanyCard-info>div:nth-child(1)>div:nth-child(1)
@@ -89,8 +94,6 @@
 }
 .CompanyCard-info>div:nth-child(1)>div:nth-child(2)
 {
-	
-	
 	margin-left: 12.6em;
 	text-align: left;
 }
@@ -106,7 +109,7 @@ h3{
 .CompanyCard-info>div:nth-child(2)>div:nth-child(1)
 {
     
-    	margin-left:1.5em;
+    margin-left:1.5em;
 	margin-right:1.5em;
 }
 p{
@@ -142,6 +145,12 @@ button>img
 {
  color: green;
 }
+.btn-group{
+	position: absolute;
+	width: 100%;
+	bottom: 0;
+	left: 0;
+}
 </style>
 <script type="text/javascript">
 export default{
@@ -149,6 +158,7 @@ export default{
 	props:['CompanyCardList'],
 	data(){
 		return{
+			
 			
 		}
 	}

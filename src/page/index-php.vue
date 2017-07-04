@@ -15,7 +15,7 @@
   	  	<div class="item" v-bind:style="{backgroundImage:'url(./src/img/work3.jpg'}">轻松求职口碑好</div>
   	</div>
   	<!-- Carousel nav -->
-  	
+
   	<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
   	<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 </div>
@@ -35,11 +35,12 @@
 <style type="text/css" scoped>
 .item{
 	color: white;
-	font-size: 20px;
-	height: 25em;
+	font-size: 50px;
+	height: 10em;
 	width: 100%;
 	background-size: 100% auto;
 	background-position: center;
+	line-height: 25em;
 }
 /*.item:nth-child(1){
 	background-image: url('../img/work1.jpg');

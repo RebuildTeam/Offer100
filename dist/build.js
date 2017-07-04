@@ -12572,7 +12572,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	name: 'Navbar',
 	data() {
 		return {
-			navList: [{ label: "消息", url: "#" }, { label: "我的简历", url: "#" }, { label: "投递箱 Box", url: "#" },
+			navList: [{ label: "消息", url: "#" }, { label: "我的简历", url: "#" }, { label: "投递箱", url: "#" },
 			//{label:"Collection",url:"#"},
 			{ label: "个人中心", url: "#" }]
 		};
@@ -13317,6 +13317,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
 
 
 
@@ -13489,7 +13490,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.item[data-v-54e999ce]{\n\tcolor: white;\n\tfont-size: 20px;\n\theight: 25em;\n\twidth: 100%;\n\tbackground-size: 100% auto;\n\tbackground-position: center;\n}\n/*.item:nth-child(1){\n\tbackground-image: url('../img/work1.jpg');\n}\n.item:nth-child(2){\n\tbackground-image: url('../img/work2.jpg');\n}\n.item:nth-child(3){\n\tbackground-image: url('../img/work3.jpg');\n}*/\n", ""]);
+exports.push([module.i, "\n.item[data-v-54e999ce]{\n\tcolor: white;\n\tfont-size: 50px;\n\theight: 10em;\n\twidth: 100%;\n\tbackground-size: 100% auto;\n\tbackground-position: center;\n\tline-height: 25em;\n}\n/*.item:nth-child(1){\n\tbackground-image: url('../img/work1.jpg');\n}\n.item:nth-child(2){\n\tbackground-image: url('../img/work2.jpg');\n}\n.item:nth-child(3){\n\tbackground-image: url('../img/work3.jpg');\n}*/\n", ""]);
 
 // exports
 

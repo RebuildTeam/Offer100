@@ -35,7 +35,7 @@ export default{
 			navList:[
 				{label:"消息",url:"#"},
 				{label:"我的简历",url:"#"},
-				{label:"投递箱 Box",url:"#"},
+				{label:"投递箱",url:"#"},
 				//{label:"Collection",url:"#"},
 				{label:"个人中心",url:"#"}]
 		}

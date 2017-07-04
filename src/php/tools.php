@@ -85,6 +85,6 @@ require_once 'Manager.php';
     return $isNotSend;
   }
 
-  // echo notSend("S.T.A.R","西安未来国际","UI师");
+  // echo notSend("明镜止水","欧德蒙","文案策划");
 
  ?>

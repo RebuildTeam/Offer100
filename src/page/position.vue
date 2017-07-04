@@ -27,8 +27,8 @@ import PositionIntro from '../component/PositionIntro.vue'
 			}
 		},
 		created:function(){
-				this.companyName=this.$router.currentRoute.params.companyName;
-				this.positionName=this.$router.currentRoute.params.positionName;
+				this.companyName=this.$router.currentRoute.query.companyName;
+				this.positionName=this.$router.currentRoute.query.positionName;
 				this.initPositionData();
 		},
 		methods:{

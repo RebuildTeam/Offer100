@@ -12,6 +12,10 @@
 			<p>{{companyDetail.website}}</p><br>
 			<h3>公司地址</h3>
 			<p>{{companyDetail.location}}</p><br>
+			<el-amap vid="amapDemo" id="map" :center="LngLat" :zoom="11">
+				<el-amap-marker :position="LngLat"> </el-amap-marker>
+			</el-amap>
+			<h3>招聘职位</h3>
 			<PositionCard v-bind:positionCardList="companyDetail.position"></PositionCard>
 		</div>
 	</div>
@@ -20,6 +24,9 @@
 
 
 <style type="text/css" scoped>
+#map{
+	height: 400px;
+}
 .container{
 	padding:0;
 }
@@ -69,34 +76,21 @@ export default{
 	props:['companyDetail'],
 	data(){
 		return{
-			// positionCardListMsg:[]
+			LngLat:[0,0],
 		}
 	},
-	// methods:{
-	// 	initPositionListData:function(){
-	// 		var jsonObj={
-	// 			'id':"",
-	// 			'companyName':this.companyName,
-	// 		}
-	// 		console.log(this.companyName);
-	// 		$.ajax({
-	// 			url:'./src/api/getPosition',
-	// 			data:JSON.stringify(jsonObj),
-	// 			dataType:'json',
-	// 			type:'post',
-	// 			success:(result)=>{
-	// 				this.positionCardListMsg=result.data;
-	// 				console.log(JSON.stringify(this.positionCardListMsg));
-	// 			},
-	// 			error:function(result,msg,error){
-	// 				console.log(result,msg,error);
-	// 			}
-	// 		})
-	// 	}
-	// },
-	// created:function(){
-	// 	this.companyName=this.$router.currentRoute.params.companyName;
-	// 	this.initPositionListData();
-	// }
+	mounted:function(){
+		
+	},
+	watch:{
+		'companyDetail':{
+			handler:function(){
+				var lng=parseInt(this.companyDetail.long);
+				var lat=parseInt(this.companyDetail.lat);
+				this.LngLat=[lng,lat];
+				console.log(this.LngLat)
+			},
+		}
+	}
 }
 </script>

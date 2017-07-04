@@ -75,7 +75,7 @@ require_once 'checkSession.php';
     {
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
-      //$dataArr = json_decode($data,true);
+      // $dataArr = json_decode($data,true);
       $bulk->update(['username' => $username],
                     ['$set' => ['resumeName' => $data['resumeName'],
                                 'resume' => $data]],
@@ -90,13 +90,12 @@ require_once 'checkSession.php';
       {
         $code = -1;
         $message = "fail";
-        //$message = $data;
       }
     }
     else
     {
       $code = -1;
-      $message = "no such username";
+      $message = "fail";
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;

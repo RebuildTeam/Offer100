@@ -63,6 +63,7 @@ require_once 'tools.php';
         foreach($re['position'] as $singlePosition)
         {
           unset($singlePosition['applicant']);
+          $singlePosition['companyName'] = $companyName;
           array_push($positionWithoutApplican,$singlePosition);
         }
         $re['position'] = $positionWithoutApplican;
@@ -324,6 +325,6 @@ require_once 'tools.php';
   // getCompanyDetailF("欧德蒙");
   // getCompanyBriefF("区");
   // getPositionBriefF("设计师");
-  // sendResumeF("S.T.A.R","欧德蒙","文案策划");
+  // sendResumeF("明镜止水","欧德蒙","文案策划");
   // getPositionDetailF("欧德蒙","软件测试工程师");
  ?>

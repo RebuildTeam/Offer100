@@ -26,7 +26,7 @@ require_once 'tools.php';
     $hrPassword = $arr['hrPassword'];
     hrLoginF($hrAccount,$hrPassword);
   }
-  
+
   //
   // function userManager($method, $jsonS)
   // {
@@ -68,7 +68,65 @@ require_once 'tools.php';
       //insert new document
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
-      $bulk->insert(['username' => $username, 'name'=> $applicantName, 'password' => $password]);
+      $resume = array();
+      $resume['resumeName'] = "";
+      $resume['applicantName'] = "";
+      $resume['introduce'] = "";
+      $resume['gender'] = "";
+      $resume['photo'] = "100001.png";
+      //$resume['photo'] = "";
+      $resume['age'] = "";
+      $resume['birthYear'] = "";
+      $resume['birthMonth'] = "";
+      $resume['education'] = "";
+      $resume['work'] = "";
+      $resume['province'] = "";
+      $resume['city'] = "";
+      $resume['telephone'] = "";
+      $resume['email'] = "";
+      $internshipExperience = array();
+      $educationExperience = array();
+      $projectExperience = array();
+      $skillExperience = array();
+      $internshipExperienceArr = array();
+      $educationExperienceArr = array();
+      $projectExperienceArr = array();
+      $skillExperienceArr = array();
+      $internshipExperience['companyName'] = "";
+      $internshipExperience['position'] = "";
+      $internshipExperience['startTime'] = "";
+      $internshipExperience['endTime'] = "";
+      $internshipExperience['mainWork'] = "";
+      array_push($internshipExperienceArr,$internshipExperience);
+      $resume['internshipExperience'] = $internshipExperienceArr;
+      $educationExperience['college'] = "";
+      $educationExperience['major'] = "";
+      $educationExperience['experience'] = "";
+      $educationExperience['startTime'] = "";
+      $educationExperience['endTime'] = "";
+      array_push($educationExperienceArr,$educationExperience);
+      $resume['educationExperience'] = $educationExperienceArr;
+      $projectExperience['projectName'] = "";
+      $projectExperience['responsibility'] = "";
+      $projectExperience['startTime'] = "";
+      $projectExperience['endTime'] = "";
+      $projectExperience['projectDescribe'] ="";
+      array_push($projectExperienceArr,$projectExperience);
+      $resume['projectExperience'] = $projectExperienceArr;
+      $skillExperience['skill'] = "";
+      $skillExperience['mastery'] = "";
+      array_push($skillExperienceArr,$skillExperience);
+      $resume['skillExperience'] = $skillExperienceArr;
+      $resume['expectPosition'] = "";
+      $resume['expectCity'] = "";
+      $resume['expectSalary'] ="";
+      $resume['status'] = array();
+      // var_dump($resume);
+      $bulk->insert(['username' => $username,
+                     'name'=> $applicantName,
+                     'password' => $password,
+                     'resumeName' => "",
+                     'resume' => $resume]);
       $re = $manager->executeBulkWrite('test.user', $bulk);
       if($re)
       {
@@ -183,4 +241,5 @@ require_once 'tools.php';
   // applicantRegisterF("明镜止水","12345678","真的名字");
   // applicantLoginF("明镜止水","12345678");
   // hrLoginF("董小姐","oudmon123");
+  // applicantRegisterF("天","sky13579","刘丽");
  ?>

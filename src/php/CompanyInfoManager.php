@@ -84,7 +84,8 @@ require_once 'tools.php';
     {
       $logo = "1.png";
       $picture = "1001.png";
-      $dataArr = json_decode($data,true);
+      // $dataArr = json_decode($data,true);
+      $dataArr = $data;
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
       $bulk->insert(['companyName' => $dataArr['companyName'],
@@ -96,6 +97,8 @@ require_once 'tools.php';
                      'province' => $dataArr['province'],
                      'city' => $dataArr['city'],
                      'location' => $dataArr['location'],
+                     'long' => $dataArr['long'],
+                     'lat' => $dataArr['lat']
                      'size' => $dataArr['size'],
                      'website' => $dataArr['website'],
                      'logo' => $logo,

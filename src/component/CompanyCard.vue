@@ -1,6 +1,6 @@
 <template>
 <div  id="CompanyCard">
-	    <router-link to="{name:'Company',params:{companyName:item.companyName}}">
+	    <router-link to="{name:'Company',query:{companyName:item.companyName}}">
 	    <div  v-for="item in CompanyCardList">
 	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">

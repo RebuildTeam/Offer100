@@ -1,43 +1,63 @@
 <?php
-
-session_start();
-
+if(!isset($_SESSION))
+  session_start();
+require_once 'checkSession.php';
 require_once 'tools.php';
 //require_once 'Manager.php';
 
   function insertCompanyInfo($jsonS)
   {
     $arr = json_decode($jsonS,true);
-    $companyName = $arr['companyName'];
-    $data = $arr['data'];
-    insertCompanyInfoF($companyName,$data);
+   $id = $arr['id'];
+   $companyName = $arr['companyName'];
+   $data = $arr['data'];
+     //validate whether the user is a hr
+   if($_SESSION["$id"]["caller"]!="hr")
+     return;
+   insertCompanyInfoF($companyName,$data);
   }
   function setCompanyInfo($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $companyName = $arr['companyName'];
     $data = $arr['data'];
+      //validate whether the user is a hr
+    if($_SESSION["$id"]["caller"]!="hr")
+      return;
     setCompanyInfoF($companyName,$data);
   }
   function setPosition($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $companyName = $arr['companyName'];
     $data = $arr['data'];
+      //validate whether the user is a hr
+    if($_SESSION["$id"]["caller"]!="hr")
+      return;
     setPositionF($companyName,$data);
   }
   function dropPosition($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $companyName = $arr['companyName'];
     $positionName = $arr['positionName'];
+      //validate whether the user is a hr
+    if($_SESSION["$id"]["caller"]!="hr")
+      return;
     dropPositionF($companyName,$positionName);
   }
   function getPosition($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $companyName = $arr['companyName'];
-    getPositionF($companyName);
+       //validate whether the user is a hr
+    if($_SESSION["$id"]["caller"]!="hr")
+      return;
+   getPositionF($companyName);
   }
 
   // function companyInfoManager($method, $jsonS)
@@ -99,7 +119,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -147,7 +167,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -205,7 +225,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -286,7 +306,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -318,7 +338,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $positionRe;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
     //var_dump(json_decode($obj));

@@ -1,27 +1,52 @@
 <?php
 
-session_start();
+if(!isset($_SESSION))
+  session_start();
 
 require_once 'tools.php';
+require_once 'checkSession.php'
 
   function setResume($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $username = $arr['username'];
     $data = $arr['data'];
+      //validate whether session id and username match
+    $valRes = validateSession($id,$username);
+    if($valRes==0)
+      return;
     setResumeF($username,$data);
   }
   function getResume($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $username = $arr['username'];
     //$caller = $arr['caller'];
-    getResumeF($username);
+      //validate whether session id and username match
+    $identity = getIdentity($id);
+    if($identity == "hr")
+    {
+      getResumeF($username);
+    }
+    else
+    {
+      $valRes = validateSession($id,$username);
+      if($valRes==0)
+        return;
+      getResumeF($username);
+    }
   }
   function getResumeStatus($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $username = $arr['username'];
+      //validate whether session id and username match
+    $valRes = validateSession($id,$username);
+    if($valRes==0)
+      return;
     getResumeStatusF($username);
   }
   // function personalInfoManagerF($method,$jsonS)
@@ -74,7 +99,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] =  $_SESSION["$id"]["caller"];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -95,13 +120,14 @@ require_once 'tools.php';
       foreach($cursor as $document)
       {
         $re = object_array($document);
+        unset($re['resume']['status']);
         $data = $re['resume'];
       }
       // var_dump($data);
       // var_dump(json_decode($data,true));
     }
     $reArr['data'] = $data;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] =  $_SESSION["$id"]["caller"];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -128,7 +154,7 @@ require_once 'tools.php';
       $data = $resumeArr['status'];
     }
     $reArr['data'] = $data;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] =  $_SESSION["$id"]["caller"];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }

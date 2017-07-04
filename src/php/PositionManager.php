@@ -1,6 +1,10 @@
 <?php
-session_start();
+if(!isset($_SESSION))
+  session_start();
+
+require_once 'checkSession.php';
 require_once 'tools.php';
+
   function getCompanyDetail($jsonS)
   {
     $arr = json_decode($jsonS,true);
@@ -29,9 +33,13 @@ require_once 'tools.php';
   function sendResume($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $username = $arr['username'];
     $companyName = $arr['companyName'];
     $positionName = $arr['positionName'];
+    $valRes = validateSession($id,$username);
+    if($valRes==0)
+      return;
     sendResumeF($username,$companyName,$positionName);
   }
 
@@ -64,7 +72,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $re;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -102,7 +110,7 @@ require_once 'tools.php';
     }
     //var_dump($companyList);
     $reArr['data'] = $companyList;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -136,7 +144,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $positionRe;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -198,7 +206,7 @@ require_once 'tools.php';
       }
     }
     $reArr['data'] = $allPosition;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -309,7 +317,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }

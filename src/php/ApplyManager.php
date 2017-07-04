@@ -1,15 +1,20 @@
 <?php
+if(!isset($_SESSION))
+  session_start();
 
-session_start();
-
+require_once 'checkSession.php';
 require_once 'tools.php';
 
   function getResumeList($jsonS)
   {
     $arr = json_decode($jsonS,true);
-    $companyName = $arr['companyName'];
-    $prStatus = $arr['prStatus'];
-    getResumeListF($companyName,$prStatus);
+   $id = $arr['id'];
+   $companyName = $arr['companyName'];
+   $prStatus = $arr['prStatus'];
+     //validate whether the user is a hr
+   if($_SESSION["$id"]['caller']!='hr')
+     return;
+   getResumeListF($companyName,$prStatus);
   }
   function replyResume($jsonS)
   {
@@ -18,6 +23,9 @@ require_once 'tools.php';
     $username = $arr['username'];
     $positionName = $arr['positionName'];
     $reply = $arr['reply'];
+    //validate whether the user is a hr
+    if($_SESSION["$id"]['caller']!='hr')
+      return;
     replyResumeF($companyName,$username,$positionName,$reply);
   }
 
@@ -79,7 +87,7 @@ require_once 'tools.php';
       $message = "fail";
     }
     $reArr['data'] = $dataArr;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -193,7 +201,7 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
-    $reArr['caller'] = $_SESSION['identity'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }

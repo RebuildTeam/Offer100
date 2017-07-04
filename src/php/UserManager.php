@@ -1,10 +1,9 @@
 <?php
-
-session_start();
-
+if(!isset($_SESSION))
+  session_start();
+require_once 'checkSession.php';
 require_once 'tools.php';
 //require_once 'Manager.php';
-
   function applicantRegister($jsonS)
   {
     $arr = json_decode($jsonS,true);
@@ -27,7 +26,7 @@ require_once 'tools.php';
     $hrPassword = $arr['hrPassword'];
     hrLoginF($hrAccount,$hrPassword);
   }
-
+  
   //
   // function userManager($method, $jsonS)
   // {
@@ -67,7 +66,6 @@ require_once 'tools.php';
     else
     {
       //insert new document
-      //$manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
       $bulk->insert(['username' => $username, 'name'=> $applicantName, 'password' => $password]);
@@ -95,7 +93,6 @@ require_once 'tools.php';
     // $manager = new MongoDB\Driver\Manager("mongodb://localhost:27017");
     $manager = Manager::getManager();
     // var_dump($manager);
-
     $filter = ['username' => $username];
     $options = [
       'projection' => ['_id' => 0],
@@ -115,8 +112,8 @@ require_once 'tools.php';
       {
         $code = 0;
         $message = "success";
-        $_SESSION['username'] = $username;
-        $_SESSION['identity'] = "user";
+          //generate session
+        $id = generateSession($username,"applicant");
       }
       else
       {
@@ -131,6 +128,9 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
+      // add session id
+    if(isset($id))
+      $reArr['id'] = $id;
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
@@ -158,8 +158,8 @@ require_once 'tools.php';
       {
         $code = 0;
         $message = "success";
-        $_SESSION['username'] = $hrAccount;
-        $_SESSION['identity'] = "hr";
+          //generate session
+        $id = generateSession($hrAccount,"hr");
       }
       else
       {
@@ -172,13 +172,15 @@ require_once 'tools.php';
       $code = 1;
       $message = "hr account does not exist";
     }
+      // add session id
+    if(isset($id))
+      $reArr['id'] = $id;
     $reArr['code'] = $code;
     $reArr['message'] = $message;
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
-
-  //pplicantLoginF("明镜止水","12345678");
-  //hrLoginF("董小姐","oudmon123");
-
+  // applicantRegisterF("明镜止水","12345678","真的名字");
+  // applicantLoginF("明镜止水","12345678");
+  // hrLoginF("董小姐","oudmon123");
  ?>

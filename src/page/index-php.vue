@@ -64,5 +64,14 @@ import RecommendColumn from '../component/RecommendColumn.vue'
 			Searcher,
 			RecommendColumn
 		},
+		data(){
+			return{
+//				idMsg:window.localStorage.getItem("id"),
+//				usernameMsg:window.localStorage.getItem("username")
+			}
+		},
+		created:function(){
+			console.log("storage>>>>",window.localStorage);
+		}
 	}
 </script>

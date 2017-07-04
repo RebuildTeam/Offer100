@@ -2,51 +2,46 @@
 	<div id="Position">
 		<Navbar></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<PositionBrief v-bind:positionDetail="positionDetailMsg"></PositionBrief>
-		<PositionIntro v-bind:positionDetail="positionDetailMsg"></PositionIntro>
+		<div class="container">
+			<PR v-bind:PRDetail="PRDetailMsg" v-bind:caller="callerMsg"></PR>
+		</div>
 	</div>
 </template>
 <script type="text/javascript">
 import Navbar from '../component/Navbar.vue'
-import PositionBrief from '../component/PositionBrief.vue'
-import PositionIntro from '../component/PositionIntro.vue'
+import PR from '../component/PR.vue'
 	export default{
 		name:'Position',
 		components:{
 			Navbar,
-			PositionBrief,
-			PositionIntro
+			PR,
 		},
 		data(){
 			return{
-				companyName:"",
-				positionName:"",
-				positionDetailMsg:{},
 				idMsg:window.localStorage.getItem("id"),
 				usernameMsg:window.localStorage.getItem("username"),
+				callerMsg:"",
+				PRDetailMsg:{}
 			}
 		},
 		created:function(){
-				this.companyName=this.$router.currentRoute.params.companyName;
-				this.positionName=this.$router.currentRoute.params.positionName;
-				this.initPositionData();
+				this.initPRData();
 		},
 		methods:{
-			initPositionData:function(){
+			initPRData:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'companyName':this.companyName,
-					'positionName':this.positionName
+					'username':this.usernameMsg
 				};
 				$.ajax({
-					url:'./src/api/getPositionDetail',
+					url:'./src/api/getResume',
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
 						console.log(result);
-						this.positionDetailMsg=result.data;
-						console.log(this.positionDetailMs);
+						this.PRDetailMsg=result.data;
+						this.callerMsg=result.caller;
 					},
 					error:function(result,msg,error){
 						console.log(result,msg,error);

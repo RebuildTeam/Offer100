@@ -1,8 +1,8 @@
 <template>
 <div  id="CompanyCard">
 	    <div  v-for="item in CompanyCardList">
-	       	<router-link :to="{name:'Company',params:{companyName:item.companyName}}">
-		<div class="CompanyCard-info">
+	    	    <router-link :to="{name:'Company',params:{companyName:item.companyName}}">
+	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
                     <!-- 这是上层div -->
                     <div >
@@ -40,8 +40,9 @@
 			    	    </div>
 			    </div>
 		    </div>
-		</router-link>
+		    </router-link>
 		</div>
+
     
 </div>	
 
@@ -50,6 +51,7 @@
 <style type="text/css" scoped>
 #CompanyCard
 {
+	color: #666;
 	margin: 0 auto ;
 	position: absolute;
 	left: 0;
@@ -156,6 +158,7 @@ export default{
 	props:['CompanyCardList'],
 	data(){
 		return{
+			
 			
 		}
 	}

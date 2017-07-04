@@ -1,7 +1,7 @@
 <template>
 <div  id="CompanyCard">
+	    <router-link to="{name:'Company',query:{companyName:item.companyName}}">
 	    <div  v-for="item in CompanyCardList">
-	    	    <router-link :to="{name:'Company',params:{companyName:item.companyName}}">
 	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
                     <!-- 这是上层div -->
@@ -40,9 +40,9 @@
 			    	    </div>
 			    </div>
 		    </div>
-		    </router-link>
 		</div>
 
+		</router-link>
     
 </div>	
 

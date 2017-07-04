@@ -2,7 +2,7 @@
 <div  id="PositionCard">
 	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
-			    <router-link :to="{ name: 'Position', params: { companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
+			    <router-link :to="{ name: 'Position', query: { companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
 			    		<h4>{{item.positionName}}</h4>
 	
 			    		<div class="middle"><!-- 这是左侧中层div -->
@@ -98,18 +98,6 @@ export default{
 	data(){
 		return{
 			e:null
-		}
-	},
-	methods:{
-		linkToPosition:function(even){
-				// var cn=event.target.getAttribute("cn");
-				// var pn=event.target.getAttribute("pn");
-				// console.log(event.target);
-				// router.push({ name: 'Position', params: { companyName:cn,positionName:pn}})
-				// console.log("router>>>>>"+router.params.companyName);
-		},
-		linkeToCompany:function(){
-
 		}
 	}
 }

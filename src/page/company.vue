@@ -26,7 +26,7 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 			}
 		},
 		created:function(){
-				this.companyName=this.$router.currentRoute.params.companyName;
+				this.companyName=this.$router.currentRoute.query.companyName;
 				this.initCompanyData();
 		},
 		methods:{

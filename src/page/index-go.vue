@@ -19,7 +19,7 @@ import CompanyFilter from '../component/CompanyFilter.vue'
 				idMsg:window.localStorage.getItem("id"),
 				usernameMsg:window.localStorage.getItem("username"),
 			}
-		},
+		}
 		components:{
 			Navbar,
 			CompanyFilter,

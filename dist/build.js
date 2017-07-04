@@ -12964,9 +12964,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -12974,6 +12971,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	props: ['PRDetail', 'caller'],
 	data() {
 		return {
+			scrollTop: document.body.scrollTop,
 			editable: false,
 			editBtnText: "编辑",
 			PRInfo: {},
@@ -13135,7 +13133,37 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	name: 'PositionBrief',
 	props: ['positionDetail'],
 	data() {
-		return {};
+		return {
+			idMsg: window.localStorage.getItem("id"),
+			usernameMsg: window.localStorage.getItem("username")
+		};
+	},
+	methods: {
+		sendPR: function () {
+			var jsonObj = {
+				id: this.idMsg,
+				username: this.usernameMsg,
+				companyName: this.positionDetail.companyName,
+				positionName: this.positionDetail.positionName
+			};
+			console.log(jsonObj);
+			$.ajax({
+				url: './src/api/sendResume',
+				data: JSON.stringify(jsonObj),
+				dataType: 'json',
+				type: 'post',
+				success: result => {
+					if (result.code == 0) {
+						alert("投递成功");
+					} else {
+						alert(result.code + " " + result.message);
+					}
+				},
+				error: function (result, msg, error) {
+					alert("服务器异常");
+				}
+			});
+		}
 	}
 });
 
@@ -14116,7 +14144,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: all 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\n#container-right[data-v-70d34b36]{\n\toverflow: hidden;\n\tposition: fixed;\n\ttop: 83px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 45%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\ttransform:translate(0,0) ;\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 70%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\twidth: 26%;\n\tmargin-left: 4%;\n\tfloat: right;\n\tright: 0;\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: color,background-color 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 45%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 75%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tposition: fixed;\n\tmargin-top: 83px;\n\twidth: calc(940px * 0.23);\n\tright: calc( ( 100% - 940px ) / 2  );\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tz-index: 98;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\tz-index: 99;\n\tposition: relative;\n\twidth: 100%;\n\tbackground-color: white;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
 
 // exports
 
@@ -14932,17 +14960,20 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "container"
   }, [_c('div', {
     staticClass: "left-panel"
-  }, [_c('p', [_vm._v(_vm._s(_vm.positionDetail.companyName))]), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.positionDetail.positionName))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.salary))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.city))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.requiredExperience))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.requiredEducation))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.positionType))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.positionDetail.releaseTime))])]), _vm._v(" "), _vm._m(0)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
+  }, [_c('p', [_vm._v(_vm._s(_vm.positionDetail.companyName))]), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.positionDetail.positionName))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.salary))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.city))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.requiredExperience))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.requiredEducation))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(_vm.positionDetail.positionType))]), _vm._v(" "), _c('p', [_vm._v(_vm._s(_vm.positionDetail.releaseTime))])]), _vm._v(" "), _c('div', {
     staticClass: "right-panel",
     attrs: {
       "align": "center"
     }
   }, [_c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('button', {
-    staticClass: "send-pr-btn"
-  }, [_vm._v("投个简历")])])
-}]}
+    staticClass: "send-pr-btn",
+    on: {
+      "click": function($event) {
+        _vm.sendPR()
+      }
+    }
+  }, [_vm._v("投个简历")])])])])])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -15537,10 +15568,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "align": "left"
     }
   }, [_c('div', {
-    staticClass: "container",
-    attrs: {
-      "id": "container-left"
-    }
+    staticClass: "container"
   }, [_c('div', {
     staticClass: "left-panel",
     attrs: {
@@ -16254,13 +16282,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/pencil.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.editBtnText) + "\n\t\t\t\t")]) : _vm._e()], 2)])]), _vm._v(" "), _c('div', {
-    staticClass: "container",
-    attrs: {
-      "id": "container-right"
-    }
-  }, [_c('div', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.editBtnText) + "\n\t\t\t\t")]) : _vm._e()], 2)]), _vm._v(" "), _c('div', {
     staticClass: "right-panel",
+    style: ({
+      top: _vm.scrollTop + 'px'
+    }),
     attrs: {
       "id": "right-panel",
       "align": "left"

@@ -1,7 +1,7 @@
 <template>
 <div align="center" id="PR">
 	<div align="left" class="PR">
-		<div class="container" id="container-left">
+		<div class="container">
 		<div class="left-panel" align="center">
 		<!-- <form action=""> -->
 			<div class="PR-head"></div>
@@ -135,9 +135,7 @@
 			</div>
 			<!-- </form> -->
 		</div>
-		</div>
-		<div class="container" id="container-right">
-		<div class="right-panel" id="right-panel"  align="left">
+		<div class="right-panel" id="right-panel" v-bind:style="{top:scrollTop+'px'}" align="left">
 			<div class="panel-1">
 				<button class="delivery-btn">投递箱</button><button class="msg-btn">消息</button>
 			</div>
@@ -165,16 +163,11 @@
 
 <style type="text/css" scoped>
 *{
-	transition: all 0.6s;
+	transition: color,background-color 0.6s;
 }
 .icon{
 	width: 14px;
 	height: 14px;
-}
-#container-right{
-	overflow: hidden;
-	position: fixed;
-	top: 83px;
 }
 input{
 	width: 80%;
@@ -262,7 +255,6 @@ textarea{
 	color: #999;
 }
 .container{
-	transform:translate(0,0) ;
 	padding:0;
 }
 .PR{
@@ -274,7 +266,7 @@ textarea{
 }
 .left-panel{
 	float: left;
-	width: 70%;
+	width: 75%;
 	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
 	padding: 20px;
 	padding-top: 0;
@@ -314,22 +306,27 @@ textarea{
 	color:white;
 }
 .right-panel{
-	width: 26%;
-	margin-left: 4%;
-	float: right;
-	right: 0;
+	position: fixed;
+	margin-top: 83px;
+	width: calc(940px * 0.23);
+	right: calc( ( 100% - 940px ) / 2  );
 }
 .panel-1{
 	width: 100%;
 	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
 	/*padding: 20px;*/
+	z-index: 98;
+	position: relative;
 	box-sizing: border-box;
 	font-size: 16px;
 }
 .panel-2{
 	border-left: 1px solid #dfdfdf;
 	margin-top: 20px;
+	z-index: 99;
+	position: relative;
 	width: 100%;
+	background-color: white;
 	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
 	box-sizing: border-box;
 	font-size: 16px;
@@ -375,6 +372,7 @@ export default{
 	props:['PRDetail','caller'],
 	data(){
 		return{
+			scrollTop:document.body.scrollTop,
 			editable:false,
 			editBtnText:"编辑",
 			PRInfo:{},
@@ -438,7 +436,7 @@ export default{
 		},
 		scrollTo:function(id){
 			$('html,body').animate({scrollTop: document.getElementById(id).offsetTop+'px'}, 600);
-		},
+		}
 	},
 	watch:{
 		'PRDetail':{

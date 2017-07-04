@@ -61,118 +61,128 @@ export default{
 	data(){
 		return{
 			chosenItem:{
-				"Location":"China",
-				"Phase":"No Limitation",
-				"Field":"No Limitation",
-				"Sort Order":"Default"
+				"公司地址":"全国",
+				"融资阶段":"无限制",
+				"行业领域":"无限制",
+				"排序方式":"默认"
 			},
 			CompanyCardListMsg:[],
 			filterList:[
 				{
-					label:"Location",
+					label:"公司地址",
 					conditions:[
 					{
-						label:"China"
+						label:"全国"
 					},{
-						label:"Beijing"
+						label:"北京"
 					},{
-						label:"Shanghai"
+						label:"上海"
 					},{
-						label:"Shenzhen"
+						label:"深圳"
 					},{
-						label:"Guangzhou"
+						label:"广州"
 					},{
-						label:"Hangzhou"
+						label:"杭州"
 					},{
-						label:"Chengdu"
+						label:"成都"
 					},{
-						label:"Nanjing"
+						label:"南京"
 					},{
-						label:"Wuhan"
+						label:"武汉"
 					},{
-						label:"Xiamen"
+						label:"厦门"
 					},{
-						label:"Suzhou"
+						label:"苏州"
 					},{
-						label:"Tianjing"
+						label:"天津"
 					}]
 				},
 				{
-					label:"Phase",
+					label:"融资阶段",
 					conditions:[
 					{
-						label:"No Limitation"
+						label:"无限制"
 					},{
-						label:"No Financing "
+						label:"未融资 "
 					},{
-						label:"AI Round"
+						label:"天使轮"
 					},{
-						label:"A Round"
+						label:"A轮"
 					},{
-						label:"B Round"
+						label:"B轮"
 					},{
-						label:"C Round"
+						label:"C轮"
 					},{
-						label:"D+ Round"
+						label:"D轮及以上"
 					},{
-						label:"Quoted"
+						label:"上市公司"
 					},{
-						label:"No Need To Financing"
+						label:"不需要融资"
 					}]
 				},
 				{
-					label:"Field",
+					label:"行业领域",
 					conditions:[{
-						label:"No Limitation"
+						label:"无限制"
 					},{
-						label:"Mobile Internet"
+						label:"移动互联网"
 					},{
-						label:"E-Business"
+						label:"电子商务"
 					},{
-						label:"Finance"
+						label:"金融"
 					},{
-						label:"Business Service"
+						label:"商务服务"
 					},{
-						label:"Education"
+						label:"教育"
 					},{
-						label:"Entertainment"
+						label:"娱乐"
 					},{
-						label:"Game"
+						label:"游戏"
 					},{
 						label:"O2O"
 					},{
-						label:"Hardware"	
+						label:"硬件"	
 					}]
 				},
 				{
-					label:"Sort Order",
+					label:"排序方式",
 					conditions:[
 					{
-						label:"Default"
+						label:"默认"
 					},{
-						label:"Jobs Number"
+						label:"职位数量"
 					},{
-						label:"Comments Number"
+						label:"评论数量"
 					},{
-						label:"PR dealing Rate"
+						label:"简历处理率"
 					}]
 				}]
 		}
 	},
-	watch:{
-		'chosenItem':{
-			handler:function(){
-				// this.CompanyCardListMsg=
-				// [{label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
-				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
-				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
-				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
-				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false},
-				// {label:"全球同步协作，让成功更近一步，企业云构筑高远广阔的发展平台， 期待与您携手，和梦想一起腾飞！",imgurl:"./src/img/yanmai.png",intro:"Focus on BigData field, devoted to product the health device and software",title:"企业云科技",evaluate:"64",hiringJob:"3",dealingRate:"99%",hover:false}];
-				
-				var jsonObj={
-					keyword:"",
-				}
+	methods:{
+		queryCompanyData:function(){
+			var jsonObj={
+				province:this.chosenItem['公司地址'],
+				financing:this.chosenItem['融资阶段'],
+				type:this.chosenItem['行业领域'],
+				sortOrder:this.chosenItem['排序方式'],
+			};
+
+			if(jsonObj.province=="全国"){
+				jsonObj.Province="";
+			}
+			if(jsonObj.financing=="无限制"){
+				jsonObj.Financing="";
+			}
+			if(jsonObj.type=="无限制"){
+				jsonObj.type="";
+			}
+			if(jsonObj.sortOrder=="默认"){
+				jsonObj.sortOrder="";
+			}
+						console.log(jsonObj);
+
+				console.log(this.Location);
 				$.ajax({
 					url:'./src/api/getCompanyBrief',
 					data:JSON.stringify(jsonObj),
@@ -180,16 +190,25 @@ export default{
 					type:'post',
 					success:(result)=>{
 						this.CompanyCardListMsg=result.data;
+						console.log("res",result);
 						console.log(JSON.stringify(this.CompanyCardListMsg));
 					},
 					error:function(){
 
 					}
 				})
-				//this.CompanyCardListMsg=[{"companyName":"欧德蒙","companyInfoBrief":"致力于打造最先进的智慧健康医疗设备和人工智能软件，让生命健康数据的采集、分析、存储管理更便捷更智能。","type":"移动互联网","financing":"A轮","province":"广东"},{"companyName":"轻松筹","companyInfoBrief":"基于社交的全民众筹平台","type":"移动互联网, 金融","financing":"C轮","province":"北京"},{"companyName":"西安未来国际","companyInfoBrief":"中国专业的信息化全程服务提供商。","type":"移动互联网","financing":"上市公司","province":"陕西"},{"companyName":"洺信科技","companyInfoBrief":"最专业的二次元音乐平台，提供海量原创、翻唱音乐，让二次元音乐爱好者通过音乐互相交流，分享快乐。","type":"数据服务","financing":"天使轮","province":"四川"}];
+		}
+	},
+	created:function(){
+		this.queryCompanyData();
+	},
+	watch:{
+		'chosenItem':{
+			handler:function(){
+				this.queryCompanyData();
 			},
 			deep:true
 		}
-	}
+	},
 }
 </script>

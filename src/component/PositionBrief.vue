@@ -15,7 +15,7 @@
 		<div class="right-panel" align="center">
 			<br>
 			<br>
-			<button class="send-pr-btn">投个简历</button>
+			<button class="send-pr-btn" v-on:click="sendPR()">投个简历</button>
 		</div>
 		</div>
 
@@ -68,8 +68,36 @@ export default{
 	props:['positionDetail'],
 	data(){
 		return{
-			
+			idMsg:window.localStorage.getItem("id"),
+			usernameMsg:window.localStorage.getItem("username"),
 		}
 	},
+	methods:{
+		sendPR:function(){
+			var jsonObj={
+				id:this.idMsg,
+				username:this.usernameMsg,
+				companyName:this.positionDetail.companyName,
+				positionName:this.positionDetail.positionName,
+			}
+			console.log(jsonObj);
+			$.ajax({
+				url:'./src/api/sendResume',
+				data:JSON.stringify(jsonObj),
+				dataType:'json',
+				type:'post',
+				success:(result)=>{
+					if(result.code==0){
+						alert("投递成功")
+					}else{
+						alert(result.code+" "+result.message);
+					}
+				},
+				error:function(result,msg,error){
+					alert("服务器异常")
+				}
+			})
+		}
+	}
 }
 </script>

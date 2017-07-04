@@ -243,13 +243,16 @@ export default{
 					type:'post',
 					success:(result)=>{
 						if(result.code==0){
-							this.$router.push('/Index');
+							window.localStorage.setItem("id",result.id);
+							window.localStorage.setItem("username",this.username);
+							console.log(window.localStorage);
+							this.$router.push({name:'Index'});
 						}else{
-							alert(result.message);
+							console.log(result.message);
 						}
 					},
 					error:(result)=>{
-						alert(result.message);
+						console.log(result);
 					}
 	
     			})
@@ -272,13 +275,17 @@ export default{
 					type:'post',
 					success:(result)=>{
 						if(result.code==0){
-							this.$router.push('/Index');
+							this.id=result.id;
+							window.localStorage.setItem("id",result.id);
+							window.localStorage.setItem("username",this.username);
+							console.log(window.localStorage);
+							this.$router.push({name:'Index'});
 						}else{
-							alert(result.message);
+							console.log(result);
 						}
 					},
 					error:(result)=>{
-						alert(result.message);
+						console.log(result);
 					}
     			})
     		}else{

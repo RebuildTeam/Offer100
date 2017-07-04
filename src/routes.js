@@ -2,7 +2,7 @@ import Index from './page/index-php.vue'
 import Login from './page/login.vue'
 import Position from './page/position.vue'
 import Company from './page/company.vue'
-
+import PersonalResume from './page/personalResume.vue'
 const routes=[
 	{
 		path:'/',
@@ -23,6 +23,11 @@ const routes=[
 		path:'/Company',
 		name:'Company',
 		component:Company,
+	},
+	{
+		path:'/PersonalResume',
+		name:'PersonalResume',
+		component:PersonalResume,
 	}
 ]
 

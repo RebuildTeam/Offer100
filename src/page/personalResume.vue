@@ -18,6 +18,8 @@ import PR from '../component/PR.vue'
 		},
 		data(){
 			return{
+				idMsg:window.localStorage.getItem("id"),
+				usernameMsg:window.localStorage.getItem("username"),
 				callerMsg:"",
 				PRDetailMsg:{}
 			}
@@ -28,7 +30,8 @@ import PR from '../component/PR.vue'
 		methods:{
 			initPRData:function(){
 				var jsonObj={
-					'id':"",
+					'id':this.idMsg,
+					'username':this.usernameMsg
 				};
 				$.ajax({
 					url:'./src/api/getResume',

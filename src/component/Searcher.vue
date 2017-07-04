@@ -92,7 +92,6 @@ export default{
 				type:'post',
 				success:(result)=>{
 					this.positionCardListMsg=result.data;
-					console.log(JSON.stringify(this.positionCardListMsg));
 					this.isSearching=0;
 				},
 				error:function(result,msg,error){

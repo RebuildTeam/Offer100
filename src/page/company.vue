@@ -19,6 +19,8 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 		},
 		data(){
 			return{
+				idMsg:window.localStorage.getItem("id"),
+				usernameMsg:window.localStorage.getItem("username"),
 				companyName:"",
 				companyDetailMsg:{}
 			}
@@ -30,7 +32,7 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 		methods:{
 			initCompanyData:function(){
 				var jsonObj={
-					'id':"",
+					'id':this.idMsg,
 					'companyName':this.companyName,
 					'CompanyName':this.CompanyName
 				};

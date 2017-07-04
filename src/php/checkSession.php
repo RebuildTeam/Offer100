@@ -4,7 +4,7 @@ function generateSession($username,$caller){
         session_start();
     $id = session_id();
     // just for debug
-    echo $id;
+//    echo $id;
     $info = array(
         "username" => $username,
         "caller" => $caller

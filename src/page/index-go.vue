@@ -14,6 +14,12 @@ import RecommendRow from '../component/RecommendRow.vue'
 import CompanyFilter from '../component/CompanyFilter.vue'
 	export default{
 		name:'Index',
+		data(){
+			return{
+				idMsg:window.localStorage.getItem("id"),
+				usernameMsg:window.localStorage.getItem("username"),
+			}
+		}
 		components:{
 			Navbar,
 			CompanyFilter,

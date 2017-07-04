@@ -4,7 +4,7 @@ if(!isset($_SESSION))
   session_start();
 
 require_once 'tools.php';
-require_once 'checkSession.php'
+require_once 'checkSession.php';
 
   function setResume($jsonS)
   {

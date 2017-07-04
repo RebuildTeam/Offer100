@@ -1,6 +1,6 @@
 <template>
 <nav align="right" id="Navbar">
-	<span v-for="item in navList"><a v-bind:href="''+item.url">{{item.label}}</a></span>
+	<span v-for="item in navList"><router-link :to="{name:item.url,params:{id:id,username:username}}">{{item.label}}</router-link></span>
 </nav>
 </template>
 
@@ -30,14 +30,13 @@ a{
 <script type="text/javascript">
 export default{
 	name:'Navbar',
+	props:['id','username'],
 	data(){
 		return{
 			navList:[
 				{label:"消息",url:"#"},
-				{label:"我的简历",url:"#"},
-				{label:"投递箱",url:"#"},
-				//{label:"Collection",url:"#"},
-				{label:"个人中心",url:"#"}]
+				{label:"我的简历",url:"PersonalResume"},
+				{label:"投递箱",url:"#"}]
 		}
 	}
 }

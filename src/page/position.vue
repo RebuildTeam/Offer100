@@ -21,7 +21,9 @@ import PositionIntro from '../component/PositionIntro.vue'
 			return{
 				companyName:"",
 				positionName:"",
-				positionDetailMsg:{}
+				positionDetailMsg:{},
+				idMsg:window.localStorage.getItem("id"),
+				usernameMsg:window.localStorage.getItem("username"),
 			}
 		},
 		created:function(){
@@ -32,7 +34,7 @@ import PositionIntro from '../component/PositionIntro.vue'
 		methods:{
 			initPositionData:function(){
 				var jsonObj={
-					'id':"",
+					'id':this.idMsg,
 					'companyName':this.companyName,
 					'positionName':this.positionName
 				};

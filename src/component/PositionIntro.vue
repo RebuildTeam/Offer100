@@ -14,7 +14,7 @@
 		</div>
 		<div class="right-panel" align="left">
 			<div class="panel-1">
-				<router-link :to="{ name: 'Company', query: { companyName: positionDetail.companyName}}"><h3>	{{positionDetail.companyName}}</h3></router-link>
+				<router-link :to="{ name: 'Company', query: {id:idMsg, companyName: positionDetail.companyName}}"><h3>	{{positionDetail.companyName}}</h3></router-link>
 				<div class="companyInfoItem">
 					<img class="icon" v-bind:src="'./src/img/menu.png'"/>
 					{{companyDetail.type}}

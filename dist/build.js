@@ -20710,6 +20710,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			var jsonObj = {
 				'id': this.idMsg,
 				'username': this.nameMsg,
+				'companyName': this.nameMsg,
 				'prStatus': this.chosenItem
 			};
 			if (jsonObj.prStatus == "全部") {
@@ -21348,7 +21349,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
-			usernameMsg: window.localStorage.getItem(this.idMsg),
+			nameMsg: "",
 			caller: ""
 		};
 	},
@@ -21581,11 +21582,32 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
-			usernameMsg: ""
+			nameMsg: "",
+			caller: ""
 		};
+	},
+	methods: {
+		getCaller: function () {
+			var jsonObj = {
+				'id': this.idMsg
+			};
+			$.ajax({
+				url: './src/api/getCaller',
+				data: JSON.stringify(jsonObj),
+				dataType: 'json',
+				type: 'post',
+				success: result => {
+					this.caller = result.caller;
+				},
+				error: function (result, msg, error) {
+					console.log(result, msg, error);
+				}
+			});
+		}
 	},
 	created: function () {
 		this.nameMsg = window.localStorage.getItem(this.idMsg);
+		this.getCaller();
 	}
 });
 
@@ -23378,6 +23400,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": {
         name: 'Company',
         query: {
+          id: _vm.idMsg,
           companyName: _vm.positionDetail.companyName
         }
       }

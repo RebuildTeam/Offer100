@@ -58,7 +58,7 @@ import RecommendColumn from '../component/RecommendColumn.vue'
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
-				usernameMsg:window.localStorage.getItem(this.idMsg),
+				nameMsg:"",
 				caller:"",
 			}
 		},

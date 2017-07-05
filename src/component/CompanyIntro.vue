@@ -16,6 +16,10 @@
 				<el-amap-marker :position="LngLat"> </el-amap-marker>
 			</el-amap>
 			<h3>招聘职位</h3>
+			<div align="center">
+			<router-link class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
+				新增职位
+			</router-link></div>
 			<PositionCard v-bind:positionCardList="companyDetail.position"></PositionCard>
 		</div>
 	</div>
@@ -26,6 +30,24 @@
 <style type="text/css" scoped>
 #map{
 	height: 400px;
+}
+.add-btn{
+	display:block;
+	line-height: 3em;
+	width: 8em;
+	height: 3em;
+	border-radius: 10px;
+}
+.btn-green{
+	color:#00b38a;
+	background-color: white;
+	border:none;
+	transition:all 0.6s;
+}
+.btn-green:hover{
+	color:white;
+	background-color: #00b38a;
+	border:none;
 }
 .container{
 	padding:0;
@@ -78,9 +100,6 @@ export default{
 		return{
 			LngLat:[0,0],
 		}
-	},
-	mounted:function(){
-		
 	},
 	watch:{
 		'companyDetail':{

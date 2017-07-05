@@ -121,6 +121,8 @@ export default{
 	props:['positionDetail'],
 	data(){
 		return{
+			idMsg:window.localStorage.getItem("id"),
+			usernameMsg:window.localStorage.getItem("username"),
 			companyDetail:{},
 			companyName:""
 		}
@@ -128,7 +130,7 @@ export default{
 	methods:{
 		initCompanyData:function(){
 			var jsonObj={
-				'id':"",
+				'id':this.idMsg,
 				'companyName':this.companyName,
 				'companyDetail':{}
 			}
@@ -143,7 +145,7 @@ export default{
 					console.log(JSON.stringify(this.companyDetail));
 				},
 				error:function(result,msg,error){
-					console.log(result,msg,error);
+					console.log("error>>>>>>",result,msg,error);
 				}
 			})
 		}

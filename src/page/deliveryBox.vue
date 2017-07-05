@@ -1,29 +1,26 @@
 <template>
-	<div id="Index">
+	<div id="DeliveryBox">
 		<Navbar></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<h1  id="recommend-label" align="center">Recommend</h1>
-		<RecommendRow></RecommendRow>
-		<br><br>
-		<CompanyFilter></CompanyFilter>
+		<div class="container">
+			<ResumeFilter ></ResumeFilter>
+		</div>
 	</div>
 </template>
 <script type="text/javascript">
 import Navbar from '../component/Navbar.vue'
-import RecommendRow from '../component/RecommendRow.vue'
-import CompanyFilter from '../component/CompanyFilter.vue'
+import ResumeFilter from '../component/ResumeFilter.vue'
 	export default{
-		name:'Index',
+		name:'DeliveryBox',
+		components:{
+			Navbar,
+			ResumeFilter,
+		},
 		data(){
 			return{
 				idMsg:window.localStorage.getItem("id"),
 				usernameMsg:window.localStorage.getItem("username"),
 			}
-		},
-		components:{
-			Navbar,
-			CompanyFilter,
-			RecommendRow
 		},
 	}
 </script>

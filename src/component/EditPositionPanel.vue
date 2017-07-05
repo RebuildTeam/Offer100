@@ -76,11 +76,11 @@ textarea{
 <script type="text/javascript">
 export default{
 	name:'EditPositionPanel',
-	// props:['positionDetail'],
+	props:['caller'],
 	data(){
 		return{
-			idMsg:window.localStorage.getItem("id"),
-			companyNameMsg:window.localStorage.getItem("companyName"),
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			positionInfo:{
 						"positionName": "",
 						"salary": "",
@@ -107,10 +107,9 @@ export default{
 			this.positionInfo.releaseTime=d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate();
 			var jsonObj={
 				'id':this.idMsg,
-				'companyName':this.companyNameMsg,
+				'companyName':this.nameMsg,
 				'data':this.positionInfo,
 			}
-			console.log(this.companyNameMsg);
 			$.ajax({
 				url:'./src/api/setPosition',
 				data:JSON.stringify(jsonObj),
@@ -129,14 +128,8 @@ export default{
 			})
 		}
 	},
-	// watch:{
-	// 	'positionDetail':{
-	// 		handler:function(){
-	// 			this.positionInfo=JSON.parse(JSON.stringify(this.positionDetail));
-	// 			console.log("get position info !!!!!",this.positionInfo);
-	// 		},
-	// 		deep:true
-	// 	}
-	// }
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
+	}
 }
 </script>

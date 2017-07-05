@@ -376,15 +376,15 @@ export default{
 			editable:false,
 			editBtnText:"编辑",
 			PRInfo:{},
-			idMsg:window.localStorage.getItem("id"),
-			usernameMsg:window.localStorage.getItem("username"),
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 		}
 	},
 	methods:{
 		setPRData:function(){
 			var jsonObj={
 				id:this.idMsg,
-				username:this.usernameMsg,
+				username:this.nameMsg,
 				data:this.PRInfo,
 			}
 			console.log(jsonObj);
@@ -456,6 +456,9 @@ export default{
 				}
 			}
 		}	
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

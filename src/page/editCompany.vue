@@ -1,8 +1,8 @@
 <template>
 	<div id="EditCompany">
-		<HRNavbar></HRNavbar>
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<EditCompanyPanel v-bind:companyDetail="companyDetailMsg"></EditCompanyPanel>
+		<EditCompanyPanel v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></EditCompanyPanel>
 	</div>
 </template>
 <script type="text/javascript">
@@ -16,12 +16,33 @@ import EditCompanyPanel from '../component/EditCompanyPanel.vue'
 		},
 		data(){
 			return{
-				idMsg:window.localStorage.getItem("id"),
-				companyNameMsg:window.localStorage.getItem("companyName"),
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:window.localStorage.getItem(this.idMsg),
+				caller:"",
+			}
+		},
+		methods:{
+			getCaller:function(){
+				var jsonObj={
+					'id':this.idMsg,
+				};
+				$.ajax({
+					url:'./src/api/getCaller',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						this.caller=result.caller;
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
 			}
 		},
 		created:function(){
-
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
+			this.getCaller();
 		},
 	}
 </script>

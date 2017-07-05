@@ -218,6 +218,8 @@ export default{
 	name:'LoginBox',
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			isHR:false,
 			username:"",
 			password:"",
@@ -246,11 +248,8 @@ export default{
 						type:'post',
 						success:(result)=>{
 							if(result.code==0){
-								window.localStorage.setItem("id",result.id);
-								window.localStorage.setItem("username",this.username);
-								window.localStorage.removeItem("companyName");
-								console.log(window.localStorage);
-								this.$router.push({name:'Index'});
+								window.localStorage.setItem(result.id,this.username);
+								this.$router.push({name:'Index',query:{id:result.id}});
 							}else{
 								console.log(result.message);
 							}
@@ -268,11 +267,8 @@ export default{
 						type:'post',
 						success:(result)=>{
 							if(result.code==0){
-								window.localStorage.setItem("id",result.id);
-								window.localStorage.removeItem("username");
-								window.localStorage.setItem("companyName",result.companyName);
-								console.log(window.localStorage);
-								this.$router.push({name:'CompanyManagement'});
+								window.localStorage.setItem(result.id,result.companyName);
+								this.$router.push({name:'CompanyManagement',query:{id:result.id}});
 							}else{
 								console.log(result.message);
 							}
@@ -303,10 +299,8 @@ export default{
 					success:(result)=>{
 						if(result.code==0){
 							this.id=result.id;
-							window.localStorage.setItem("id",result.id);
-							window.localStorage.setItem("username",this.username);
-							console.log(window.localStorage);
-							this.$router.push({name:'Index'});
+							window.localStorage.setItem(result.id,this.username);
+							this.$router.push({name:'Index',query:{id:result.id}});
 						}else{
 							console.log(result);
 						}

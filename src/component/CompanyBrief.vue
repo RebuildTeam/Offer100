@@ -110,11 +110,15 @@
 
 export default{
 	name:'CompanyBrief',
-	props:['companyDetail'],
+	props:['companyDetail','caller'],
 	data(){
 		return{
-			
+			idMsg:this.$router.currentRoute.query.id,
+			usernameMsg:"",
 		}
 	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
+	}
 }
 </script>

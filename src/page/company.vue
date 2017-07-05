@@ -1,9 +1,9 @@
 <template>
 	<div id="Company">
-		<Navbar></Navbar>
+		<Navbar v-bind:caller="caller"></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<CompanyBrief v-bind:companyDetail="companyDetailMsg"></CompanyBrief>
-		<CompanyIntro v-bind:companyDetail="companyDetailMsg"></CompanyIntro>
+		<CompanyBrief v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyBrief>
+		<CompanyIntro v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyIntro>
 	</div>
 </template>
 <script type="text/javascript">
@@ -19,14 +19,15 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 		},
 		data(){
 			return{
-				idMsg:window.localStorage.getItem("id"),
-				usernameMsg:window.localStorage.getItem("username"),
-				companyName:"",
-				companyDetailMsg:{}
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:window.localStorage.getItem(this.idMsg),
+				companyName:this.$router.currentRoute.query.companyName,
+				companyDetailMsg:{},
+				caller:"",
 			}
 		},
 		created:function(){
-				this.companyName=this.$router.currentRoute.query.companyName;
+				this.nameMsg=window.localStorage.getItem(this.idMsg);
 				this.initCompanyData();
 		},
 		methods:{
@@ -34,7 +35,6 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 				var jsonObj={
 					'id':this.idMsg,
 					'companyName':this.companyName,
-					'CompanyName':this.CompanyName
 				};
 				$.ajax({
 					url:'./src/api/getCompanyDetail',
@@ -42,9 +42,8 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						console.log(result);
 						this.companyDetailMsg=result.data;
-						console.log(this.companyDetailMsg);
+						this.caller=result.caller;
 					},
 					error:function(result,msg,error){
 						console.log(result,msg,error);

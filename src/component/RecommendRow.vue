@@ -111,8 +111,11 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 <script type="text/javascript">
 export default{
 	name:'RecommendRow',
+	props:['caller'],
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			recommendList:[
 				{label:"To Manage health data more convenient",imgurl:"./src/img/droid.png",intro:"Focus on BigData field, devoted to product the health device and software",hover:false},
 				{label:"Mobile internet video platform",imgurl:"./src/img/droid.png",intro:"Established on 2012, try to take the best experence for global users",hover:false},
@@ -120,6 +123,9 @@ export default{
 				{label:"Help Chinese cartoonists",imgurl:"./src/img/droid.png",intro:"Located on GuangZhou",hover:false},
 				{label:"Record life like movie",imgurl:"./src/img/droid.png",intro:"An application for sharing pictures and videos",hover:false}]
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
 	<div id="ResumeBox">
-		<HRNavbar></HRNavbar>
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<div class="container">
-			<ResumeFilter ></ResumeFilter>
+			<ResumeFilter v-bind:caller="caller"></ResumeFilter>
 		</div>
 	</div>
 </template>
@@ -18,9 +18,33 @@ import ResumeFilter from '../component/ResumeFilter.vue'
 		},
 		data(){
 			return{
-				idMsg:window.localStorage.getItem("id"),
-				usernameMsg:window.localStorage.getItem("username"),
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:"",
+				caller:"",
 			}
+		},
+		methods:{
+			getCaller:function(){
+				var jsonObj={
+					'id':this.idMsg,
+				};
+				$.ajax({
+					url:'./src/api/getCaller',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						this.caller=result.caller;
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
+			}
+		},
+		created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
+			this.getCaller();
 		},
 	}
 </script>

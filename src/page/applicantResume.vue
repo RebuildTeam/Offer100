@@ -1,6 +1,6 @@
 <template>
-	<div id="PersonalResume">
-		<Navbar v-bind:caller="caller"></Navbar>
+	<div id="ApplicantResume">
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<div class="container">
 			<PR v-bind:PRDetail="PRDetailMsg" v-bind:caller="caller"></PR>
@@ -8,17 +8,18 @@
 	</div>
 </template>
 <script type="text/javascript">
-import Navbar from '../component/Navbar.vue'
+import HRNavbar from '../component/HRNavbar.vue'
 import PR from '../component/PR.vue'
 	export default{
-		name:'PersonalResume',
+		name:'ApplicantResume',
 		components:{
-			Navbar,
+			HRNavbar,
 			PR,
 		},
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
+				applicantName:this.$router.currentRoute.query.applicantName,
 				nameMsg:"",
 				caller:"",
 				PRDetailMsg:{}
@@ -32,7 +33,7 @@ import PR from '../component/PR.vue'
 			initPRData:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'username':this.nameMsg,
+					'username':this.applicantName,
 				};
 				$.ajax({
 					url:'./src/api/getResume',

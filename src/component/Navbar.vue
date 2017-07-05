@@ -1,6 +1,6 @@
 <template>
 <nav align="right" id="Navbar">
-	<span v-for="item in navList"><router-link :to="{name:item.url,params:{id:id,username:username}}">{{item.label}}</router-link></span>
+	<span v-for="item in navList"><router-link :to="{name:item.url,query:{id:idMsg}}">{{item.label}}</router-link></span>
 </nav>
 </template>
 
@@ -30,14 +30,19 @@ a{
 <script type="text/javascript">
 export default{
 	name:'Navbar',
-	props:['id','username'],
+	props:['id','username','caller'],
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			navList:[
 				{label:"消息",url:"#"},
 				{label:"我的简历",url:"PersonalResume"},
-				{label:"投递箱",url:"#"}]
+				{label:"投递箱",url:"DeliveryBox"}]
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

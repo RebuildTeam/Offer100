@@ -1,8 +1,8 @@
 <template>
 	<div id="Position">
-		<HRNavbar></HRNavbar>
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<EditPositionPanel v-bind:positionDetail="positionDetailMsg"></EditPositionPanel>
+		<EditPositionPanel v-bind:positionDetail="positionDetailMsg" v-bind:caller="caller"></EditPositionPanel>
 	</div>
 </template>
 <script type="text/javascript">
@@ -17,19 +17,19 @@ import EditPositionPanel from '../component/EditPositionPanel.vue'
 		data(){
 			return{
 				companyName:"",
-				positionName:"",
 				positionDetailMsg:{},
-				idMsg:window.localStorage.getItem("id"),
-				companyNameMsg:window.localStorage.getItem("companyName"),
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:window.localStorage.getItem(this.idMsg),
+				caller:"",
 			}
 		},
 		created:function(){
-				this.positionName=this.$router.currentRoute.query.positionName;
+				this.nameMsg=window.localStorage.getItem(this.idMsg);
 				this.initPositionData();
+				this.getCaller();
 		},
 		methods:{
 			initPositionData:function(){
-				if(this.positionName==''||this.positionName==null){
 					this.positionDetailMsg={
 						"positionName": "",
 						"salary": "",
@@ -50,28 +50,24 @@ import EditPositionPanel from '../component/EditPositionPanel.vue'
 					}
 					this.positionDetailMsg=JSON.stringify(this.positionDetailMsg);
 					console.log(this.positionDetailMsg);
-				}else{
-					var jsonObj={
-						'id':this.idMsg,
-						'companyName':this.companyName,
-						'positionName':this.positionName
-					};
-					$.ajax({
-						url:'./src/api/getPositionDetail',
-						data:JSON.stringify(jsonObj),
-						dataType:'json',
-						type:'post',
-						success:(result)=>{
-							console.log(result);
-							this.positionDetailMsg=result.data;
-							console.log(this.positionDetailMs);
-						},
-						error:function(result,msg,error){
-							console.log(result,msg,error);
-						}
-					})
-				}
-			}
+			},
+			getCaller:function(){
+				var jsonObj={
+					'id':this.idMsg,
+				};
+				$.ajax({
+					url:'./src/api/getCaller',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						this.caller=result.caller;
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
+			},
 		}
 	}
 </script>

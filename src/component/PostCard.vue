@@ -1,54 +1,59 @@
 <template>
 <div  id="PostCard">
-	<div v-for="item in PostCardList"><!-- 这是下面那个div，存放所有的简历投递情况的块 -->
+	
+	<div v-for="item in PostCardList">
 	 	<div id="ResumeBriefCard">
-					<div v-if="companyNameMsg==''||companyNameMsg==null" class="CompanyLogo" v-bind:style="{backgroundImage:'url(./src/img/'+item.logo+')'}">
+					<div v-if="caller=='applicant'" class="CompanyLogo" v-bind:style="{backgroundImage:'url(./src/img/'+item.logo+')'}">
 					</div>
-					<div v-if="usernameMsg==''||usernameMsg==null" class="CompanyLogo" v-bind:style="{backgroundImage:'url(./src/img/'+item.resume.photo+')'}">
+					<div v-if="caller=='hr'" class="CompanyLogo" v-bind:style="{backgroundImage:'url(./src/img/'+item.resume.photo+')'}">
 					</div>
 				<div class="ResumeBriefPanel" align="left">
-					<div v-if="usernameMsg==''||usernameMsg==null">
-						<p class="companyName">{{item.resume.applicantName}}</p>
+		 			<div v-if="caller=='hr'">
+						<router-link :to="{name:'ApplicantResume',query:{id:idMsg,applicantName:item.resume.applicantName}}">
+							<p class="companyName">{{item.resume.applicantName}}</p>
+						</router-link>
 						<p class="companyInfoBrief">投递岗位:{{item.positionName}}
 							<span v-if="item.resume.gender">,{{item.resume.gender}}</span>
 							<span v-if="item.resume.gender">,{{item.resume.age}}岁</span>
 							<span v-if="item.resume.education">{{item.resume.education}}</span>
 						</p>
 					</div>
-					<div v-if="companyNameMsg==''||companyNameMsg==null" >
+					<div v-if="caller=='applicant'" >
 						<p class="companyName">{{item.sendToCompany}}</p>
 						<p class="companyInfoBrief">{{item.sendToPosition}}</p>
 					</div>
+
 					<div >
-						<div class="resumeInfoItem" v-if="usernameMsg==''||usernameMsg==null" align="center">
+						<div class="resumeInfoItem" v-if="caller=='hr'" align="center">
 							<div>{{item.resume.telephone}}</div>
 							<div>联系电话</div>
 						</div>
-						<div class="resumeInfoItem" v-if="usernameMsg==''||usernameMsg==null" align="center">
+						<div class="resumeInfoItem" v-if="caller=='hr'" align="center">
 							<div>{{item.resume.email}}</div>
 							<div>个人邮箱</div>
 						</div>
-						<div class="resumeInfoItem"  v-if="usernameMsg==''||usernameMsg==null" align="center">
+						<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
 							<button class="reply-btn btn-green">通过</button>
 						</div>
-						<div class="resumeInfoItem"  v-if="usernameMsg==''||usernameMsg==null" align="center">
+						<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
 							<button class="reply-btn btn-red">不合适</button>
 						</div>
-						<div class="resumeInfoItem" v-if="companyNameMsg==''||companyNameMsg==null" align="center">
+						<div class="resumeInfoItem" v-if="caller=='applicant'" align="center">
 							<div>{{item.status}}</div>
 							<div>简历状态</div>
 						</div>
-						<div class="resumeInfoItem" v-if="companyNameMsg==''||companyNameMsg==null" align="center">
-							<div>{{item.resume.telephone}}</div>
+						<div class="resumeInfoItem" v-if="caller=='applicant'" align="center">
+							<div>{{'暂无'}}</div>
 							<div>hr意见</div>
 						</div>
-
-					</div>
+					</div> 
 				</div>
 			</div>
+			<br>
 	 </div>
 </div>	
 
+</template>
 </template>
 <style type="text/css" scoped>
 .reply-btn{
@@ -145,15 +150,17 @@
 <script type="text/javascript">
 export default{
 	name:'PostCard',
-	props:['PostCardList'],
+	props:['PostCardList','caller'],
 	data(){
 		return{
-			idMsg:window.localStorage.getItem("id"),
-			companyNameMsg:window.localStorage.getItem("companyName"),
-			usernameMsg:window.localStorage.getItem("username"),
-
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 		}
-	}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
+	},
+
 
 }
 </script>

@@ -1,9 +1,9 @@
 <template>
 	<div id="Position">
-		<Navbar></Navbar>
+		<Navbar v-bind:caller="caller"></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<PositionBrief v-bind:positionDetail="positionDetailMsg"></PositionBrief>
-		<PositionIntro v-bind:positionDetail="positionDetailMsg"></PositionIntro>
+		<PositionBrief v-bind:positionDetail="positionDetailMsg" v-bind:caller="caller"></PositionBrief>
+		<PositionIntro v-bind:positionDetail="positionDetailMsg" v-bind:caller="caller"></PositionIntro>
 	</div>
 </template>
 <script type="text/javascript">
@@ -19,14 +19,16 @@ import PositionIntro from '../component/PositionIntro.vue'
 		},
 		data(){
 			return{
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:"",
 				companyName:"",
 				positionName:"",
 				positionDetailMsg:{},
-				idMsg:window.localStorage.getItem("id"),
-				usernameMsg:window.localStorage.getItem("username"),
+				caller:"",
 			}
 		},
 		created:function(){
+				this.nameMsg=window.localStorage.getItem(this.idMsg);
 				this.companyName=this.$router.currentRoute.query.companyName;
 				this.positionName=this.$router.currentRoute.query.positionName;
 				this.initPositionData();
@@ -44,9 +46,8 @@ import PositionIntro from '../component/PositionIntro.vue'
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						console.log(result);
 						this.positionDetailMsg=result.data;
-						console.log(this.positionDetailMs);
+						this.caller=result.caller;
 					},
 					error:function(result,msg,error){
 						console.log(result,msg,error);

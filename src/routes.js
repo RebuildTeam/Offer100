@@ -5,7 +5,9 @@ import EditPosition from './page/editPosition.vue'
 import EditCompany from './page/editCompany.vue'
 import Company from './page/company.vue'
 import ResumeBox from './page/resumeBox.vue'
+import DeliveryBox from './page/deliveryBox.vue'
 import PersonalResume from './page/personalResume.vue'
+import ApplicantResume from './page/applicantResume.vue'
 import CompanyManagement from './page/companyManagement.vue'
 
 const routes=[
@@ -45,9 +47,19 @@ const routes=[
 		component:ResumeBox,
 	},
 	{
+		path:'/DeliveryBox',
+		name:'DeliveryBox',
+		component:DeliveryBox,
+	},
+	{
 		path:'/PersonalResume',
 		name:'PersonalResume',
 		component:PersonalResume,
+	},
+	{
+		path:'/ApplicantResume',
+		name:'ApplicantResume',
+		component:ApplicantResume,
 	},
 	{
 		path:'/CompanyManagement',

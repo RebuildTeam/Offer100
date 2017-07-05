@@ -2,7 +2,7 @@
 <div  id="PositionCard">
 	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
-			    <router-link :to="{ name: 'Position', query: { companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
+			    <router-link :to="{ name: 'Position', query: { id:idMsg,companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
 			    		<h4>{{item.positionName}}</h4>
 	
 			    		<div class="middle"><!-- 这是左侧中层div -->
@@ -123,11 +123,13 @@ import router from '../main.js'
 
 export default{
 	name:'PositionCard',
-	props:['positionCardList'],
+	props:['positionCardList','caller'],
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			urlCompanyName:this.$router.currentRoute.query.companyName,
-			storagedCompanyName:window.localStorage.getItem("companyName"),
+			storagedCompanyName:window.localStorage.getItem(this.idMsg),
 		}
 	},
 	methods:{
@@ -157,6 +159,9 @@ export default{
 			})
 			}
 		}
+	},
+	created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
 <div align="center" id="ResumeFilter">
 		<div align="left" class="ResumeFilter">
-			<span	v-for="item in filterList" ><a 
-			 	v-on:click="chosenItem=item.label"
+			<span	v-for="item in filterList" >
+			<a  v-on:click="chosenItem=item.label"
 			 	v-bind:class="{active:item.label==chosenItem}">
 			 	{{item.label}}
 			</a></span>
@@ -11,7 +11,7 @@
 		<br>
 
 	<div style="margin:0 auto;">
-		<PostCard v-bind:PostCardList="PostCardListMsg"></PostCard>
+		<PostCard v-bind:PostCardList="PostCardListMsg" v-bind:caller="caller"></PostCard>
 	</div>
 </div>
 
@@ -48,14 +48,14 @@ import PostCard from './PostCard.vue';
 
 export default{
 	name:'ResumeFilter',
+	props:['caller'],
 	components:{
 		PostCard,
 	},
 	data(){
 		return{
-			idMsg:window.localStorage.getItem("id"),
-			companyNameMsg:window.localStorage.getItem("companyName"),
-			usernameMsg:window.localStorage.getItem("username"),
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			chosenItem:'全部',
 			filterList:[{label:"全部"},{label:"已投递"},{label:"已审阅"},{label:"通过"}],	
 			PostCardListMsg:[]
@@ -65,23 +65,31 @@ export default{
 		queryResumeData:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'username':this.usernameMsg,
-					'companyName':this.companyNameMsg,
+					'username':this.nameMsg,
+					'companyName':this.nameMsg,
 					'prStatus':this.chosenItem,
 				}
 				if(jsonObj.prStatus=="全部"){
 					jsonObj.prStatus="";
 				}
 				console.log(jsonObj);
+				var targetUrl='';
+				if(this.caller=='hr'){
+					targetUrl='./src/api/getResumeList';
+				}else if(this.caller=='applicant'){
+					targetUrl='./src/api/getResumeStatus';
+				}else{
+					targetUrl='./src/api/getResumeStatus';
+				}
+				console.log("caller>>>"+this.caller)
+				console.log("url>>>>"+targetUrl)
 				$.ajax({
-					url:'./src/api/getResumeList',
+					url:targetUrl,
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						this.PostCardListMsg=result.data;
-						console.log(result);
-						// console.log(JSON.stringify(this.PostCardListMsg));
+						this.PostCardListMsg=JSON.parse(JSON.stringify(result.data));
 					},
 					error:function(){
 
@@ -90,7 +98,7 @@ export default{
 		}
 	},
 	created:function(){
-		this.queryResumeData();
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	},
 	watch:{
 		'chosenItem':{
@@ -99,6 +107,9 @@ export default{
 				this.queryResumeData();
 			},
 			deep:true
+		},
+		caller:function(){
+			this.queryResumeData();
 		}
 	},
 }

@@ -102,11 +102,11 @@ textarea{
 <script type="text/javascript">
 export default{
 	name:'EditPositionPanel',
-	// props:['positionDetail'],
+	props:['caller'],
 	data(){
 		return{
-			idMsg:window.localStorage.getItem("id"),
-			companyNameMsg:window.localStorage.getItem("companyName"),
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			companyInfo:{},
 		}
 	},
@@ -115,7 +115,7 @@ export default{
 			var d=new Date();
 			var jsonObj={
 				'id':this.idMsg,
-				'companyName':this.companyNameMsg,
+				'companyName':this.nameMsg,
 				'data':this.companyInfo,
 			}
 			console.log(JSON.stringify(jsonObj));
@@ -140,7 +140,7 @@ export default{
 		initCompanyData:function(){
 			var jsonObj={
 				'id':this.idMsg,
-				'companyName':this.companyNameMsg,
+				'companyName':this.nameMsg,
 			};
 			$.ajax({
 				url:'./src/api/getCompanyDetail',
@@ -159,6 +159,9 @@ export default{
 	},
 	mounted:function(){
 		this.initCompanyData();
+	},
+	created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 	
 }

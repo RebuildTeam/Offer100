@@ -1,6 +1,6 @@
 <template>
 	<div id="Index">
-		<Navbar></Navbar>
+		<Navbar v-bind:caller="caller"></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 <div id="myCarousel" class="carousel slide">
   	<ol class="carousel-indicators">
@@ -22,11 +22,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="left-content">
-					<Searcher></Searcher>
+					<Searcher v-bind:caller="caller"></Searcher>
 				</div>
 				<div class="right-panel">	
 					<h1 class="recommend-label-orange" align="center">Recommend</h1>
-					<RecommendColumn></RecommendColumn>
+					<RecommendColumn v-bind:caller="caller"></RecommendColumn>
 				</div>
 			</div>
 		</div>
@@ -42,15 +42,6 @@
 	background-position: center;
 	line-height: 25em;
 }
-/*.item:nth-child(1){
-	background-image: url('../img/work1.jpg');
-}
-.item:nth-child(2){
-	background-image: url('../img/work2.jpg');
-}
-.item:nth-child(3){
-	background-image: url('../img/work3.jpg');
-}*/
 </style>
 <script type="text/javascript">
 import Navbar from '../component/Navbar.vue'
@@ -66,12 +57,33 @@ import RecommendColumn from '../component/RecommendColumn.vue'
 		},
 		data(){
 			return{
-//				idMsg:window.localStorage.getItem("id"),
-//				usernameMsg:window.localStorage.getItem("username")
+				idMsg:this.$router.currentRoute.query.id,
+				usernameMsg:window.localStorage.getItem(this.idMsg),
+				caller:"",
+			}
+		},
+		methods:{
+			getCaller:function(){
+				var jsonObj={
+					'id':this.idMsg,
+				};
+				$.ajax({
+					url:'./src/api/getCaller',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						this.caller=result.caller;
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
 			}
 		},
 		created:function(){
-			console.log("storage>>>>",window.localStorage);
-		}
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
+			this.getCaller();
+		},
 	}
 </script>

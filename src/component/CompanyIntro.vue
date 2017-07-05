@@ -17,10 +17,10 @@
 			</el-amap>
 			<h3>招聘职位</h3>
 			<div align="center">
-			<router-link class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
+			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
 				新增职位
 			</router-link></div>
-			<PositionCard v-bind:positionCardList="companyDetail.position"></PositionCard>
+			<PositionCard v-bind:positionCardList="companyDetail.position" v-bind:caller="caller"></PositionCard>
 		</div>
 	</div>
 </div>
@@ -95,10 +95,12 @@ export default{
 	components:{
 		PositionCard
 	},
-	props:['companyDetail'],
+	props:['companyDetail','caller'],
 	data(){
 		return{
 			LngLat:[0,0],
+			idMsg:this.$router.currentRoute.query.id,
+			usernameMsg:"",
 		}
 	},
 	watch:{
@@ -110,6 +112,9 @@ export default{
 				console.log(this.LngLat)
 			},
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

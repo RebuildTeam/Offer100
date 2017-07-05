@@ -1,5 +1,5 @@
 <template>
-<nav align="right" id="Navbar">
+<nav align="right" id="HRNavbar">
 	<span v-for="item in navList"><router-link :to="{name:item.url,query:{id:idMsg}}">{{item.label}}</router-link></span>
 </nav>
 </template>
@@ -29,16 +29,16 @@ a{
 </style>
 <script type="text/javascript">
 export default{
-	name:'Navbar',
-	props:['id','username','caller'],
+	name:'HRNavbar',
+	props:['id','username','companyName','caller'],
 	data(){
 		return{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			navList:[
-				{label:"消息",url:"#"},
-				{label:"我的简历",url:"PersonalResume"},
-				{label:"投递箱",url:"DeliveryBox"}]
+				{label:"公司主页",url:"CompanyManagement"},
+				{label:"信息管理",url:"EditCompany"},
+				{label:"简历箱",url:"ResumeBox"}]
 		}
 	},
 	created:function(){

@@ -85,6 +85,24 @@ require_once 'Manager.php';
     return $isNotSend;
   }
 
+  function getCompanyLogo($companyName)
+  {
+    $manager = Manager::getManager();
+    //var_dump($manager);
+    $filter = ['companyName' => $companyName];
+    $options = [
+      'projection' => ['_id' => 0],
+    ];
+    $query = new MongoDB\Driver\Query($filter,$options);
+    $cursor = $manager->executeQuery("test.company", $query);
+    foreach($cursor as $document)
+    {
+      $re = object_array($document);
+      $logo = $re['logo'];
+    }
+    return $logo;
+  }
+    // echo getCompanyLogo("欧德蒙");
   // echo notSend("明镜止水","欧德蒙","文案策划");
 
  ?>

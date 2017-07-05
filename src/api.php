@@ -4,6 +4,7 @@ $path = array(
 	'applicantRegister' => 'UserManager.php',
 	'applicantLogin' => 'UserManager.php',
 	'hrLogin' => 'UserManager.php',
+	'getCaller' => 'PersonalInfoManager.php',
 	'setResume' => 'PersonalInfoManager.php',
 	'getResume' => 'PersonalInfoManager.php',
 	'getResumeStatus' => 'PersonalInfoManager.php',

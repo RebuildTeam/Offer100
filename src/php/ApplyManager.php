@@ -33,10 +33,7 @@ require_once 'tools.php';
   function getResumeListF($companyName,$prStatus,$id)
   {
     $reArr = array();
-    // if($prStatus == "")
-    // {
-    //   $prStatus = "all";
-    // }
+    $prList = array();
     $isExist = findCompany($companyName);
     if($isExist)
     {
@@ -53,41 +50,52 @@ require_once 'tools.php';
         $positionArr = $re['position'];
       }
       $positionNum = count($positionArr);
-      $dataArr = array();
       for($i = 0;$i < $positionNum;$i++)
       {
         $pArr = array();
         // var_dump($positionArr[$i]['positionName']);
         $pArr['positionName'] = $positionArr[$i]['positionName'];
-        $applicantNum = count($positionArr[$i]['applicant']);
-        if($prStatus == "")
+        if($positionArr[$i]['applicant'])
         {
-          $pArr['applicant'] = $positionArr[$i]['applicant'];
-        }
-        else
-        {
-          $newApplicantArr = array();
-          for($j = 0;$j <$applicantNum;$j++)
+          $applicantNum = count($positionArr[$i]['applicant']);
+          if($prStatus == "")
           {
-            if($positionArr[$i]['applicant'][$j]['status'] == $prStatus)
+            //all
+            for($j = 0;$j <$applicantNum;$j++)
             {
-              array_push($newApplicantArr,$positionArr[$i]['applicant'][$j]);
+              $pArr['status'] = $positionArr[$i]['applicant'][$j]['status'];
+              $pArr['applicant'] = $positionArr[$i]['applicant'][$j]['username'];
+              $pArr['resume'] = getPR($positionArr[$i]['applicant'][$j]['username']);
+              array_push($prList,$pArr);
             }
           }
-          $pArr['applicant'] = $newApplicantArr;
+          else
+          {
+            $newApplicantArr = array();
+            for($j = 0;$j <$applicantNum;$j++)
+            {
+              if($positionArr[$i]['applicant'][$j]['status'] == $prStatus)
+              {
+                //array_push($newApplicantArr,$positionArr[$i]['applicant'][$j]);
+                $pArr['status'] = $positionArr[$i]['applicant'][$j]['status'];
+                $pArr['applicant'] = $positionArr[$i]['applicant'][$j]['username'];
+                $pArr['resume'] = getPR($positionArr[$i]['applicant'][$j]['username']);
+                array_push($prList,$pArr);
+              }
+            }
+          }
         }
         // $pArr['applicant'] = $positionArr[$i]['applicant'];
         // var_dump($pArr);
-        array_push($dataArr,$pArr);
       }
-      // var_dump($dataArr);
+      // var_dump($prList);
     }
     else
     {
       $code = -1;
       $message = "fail";
     }
-    $reArr['data'] = $dataArr;
+    $reArr['data'] = $prList;
     $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
@@ -237,7 +245,31 @@ require_once 'tools.php';
     }
   }
 
-  // getResumeListF("欧德蒙","");
+  function getPR($username)
+  {
+    $isExist = findUser($username);
+    if($isExist)
+    {
+      $manager = Manager::getManager();
+      $filter = ['username' => $username];
+      $options = [
+        'projection' => ['_id' => 0],
+      ];
+      $query = new MongoDB\Driver\Query($filter,$options);
+      $cursor = $manager->executeQuery("test.user", $query);
+      foreach($cursor as $document)
+      {
+        $re = object_array($document);
+        unset($re['resume']['status']);
+        $data = $re['resume'];
+      }
+      // var_dump($data);
+      // var_dump(json_decode($data,true));
+    }
+    return $data;
+  }
+
+  // getResumeListF("欧德蒙","已审阅");
   // replyResumeF("欧德蒙","明镜止水","文案策划",0,"留意手机面试短信。");
 
  ?>

@@ -1,46 +1,39 @@
 <template>
-	<div id="PersonalResume">
+	<div id="DeliveryBox">
 		<Navbar v-bind:caller="caller"></Navbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<div class="container">
-			<PR v-bind:PRDetail="PRDetailMsg" v-bind:caller="caller"></PR>
+			<ResumeFilter v-bind:caller="caller"></ResumeFilter>
 		</div>
 	</div>
 </template>
 <script type="text/javascript">
 import Navbar from '../component/Navbar.vue'
-import PR from '../component/PR.vue'
+import ResumeFilter from '../component/ResumeFilter.vue'
 	export default{
-		name:'PersonalResume',
+		name:'DeliveryBox',
 		components:{
 			Navbar,
-			PR,
+			ResumeFilter,
 		},
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
-				nameMsg:"",
+				usernameMsg:"",
 				caller:"",
-				PRDetailMsg:{}
 			}
 		},
-		created:function(){
-				this.nameMsg=window.localStorage.getItem(this.idMsg);
-				this.initPRData();
-		},
 		methods:{
-			initPRData:function(){
+			getCaller:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'username':this.nameMsg,
 				};
 				$.ajax({
-					url:'./src/api/getResume',
+					url:'./src/api/getCaller',
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						this.PRDetailMsg=result.data;
 						this.caller=result.caller;
 					},
 					error:function(result,msg,error){
@@ -48,6 +41,10 @@ import PR from '../component/PR.vue'
 					}
 				})
 			}
+		},
+		created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
+			this.getCaller();
 		}
 	}
 </script>

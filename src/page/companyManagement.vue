@@ -1,19 +1,20 @@
 <template>
-	<div id="Company">
-		<Navbar v-bind:caller="caller"></Navbar>
+	<div id="CompanyManagement">
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
+		{{nameMsg}}
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
 		<CompanyBrief v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyBrief>
 		<CompanyIntro v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyIntro>
 	</div>
 </template>
 <script type="text/javascript">
-import Navbar from '../component/Navbar.vue'
+import HRNavbar from '../component/HRNavbar.vue'
 import CompanyBrief from '../component/CompanyBrief.vue'
 import CompanyIntro from '../component/CompanyIntro.vue'
 	export default{
-		name:'Company',
+		name:'CompanyManagement',
 		components:{
-			Navbar,
+			HRNavbar,
 			CompanyBrief,
 			CompanyIntro
 		},
@@ -21,7 +22,6 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 			return{
 				idMsg:this.$router.currentRoute.query.id,
 				nameMsg:window.localStorage.getItem(this.idMsg),
-				companyName:this.$router.currentRoute.query.companyName,
 				companyDetailMsg:{},
 				caller:"",
 			}
@@ -34,8 +34,9 @@ import CompanyIntro from '../component/CompanyIntro.vue'
 			initCompanyData:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'companyName':this.companyName,
+					'companyName':this.nameMsg,
 				};
+				console.log("idMsg:"+this.idMsg+"  nameMsg:"+this.nameMsg);
 				$.ajax({
 					url:'./src/api/getCompanyDetail',
 					data:JSON.stringify(jsonObj),

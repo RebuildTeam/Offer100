@@ -1,8 +1,11 @@
 <?php
 function generateSession($username,$caller){
-    if(!isset($_SESSION))
-        session_start();
-    $id = session_id();
+    $id = md5(sha1(uniqid(mt_rand(),1)));
+    session_id($id);
+    session_start();
+    // if(!isset($_SESSION))
+    //     session_start();
+    // $id = session_id();
     // just for debug
     // echo $id;
     $info = array(
@@ -11,6 +14,23 @@ function generateSession($username,$caller){
     );
     $_SESSION["$id"] = $info;
     return $id;
+}
+function generateHrSession($hrAccount,$caller,$companyName){
+  $id = md5(sha1(uniqid(mt_rand(),1)));
+  session_id($id);
+  session_start();
+  // if(!isset($_SESSION))
+  //     session_start();
+  // $id = session_id();
+  // just for debug
+  // echo $id;
+  $info = array(
+      "username" => $username,
+      "caller" => $caller,
+      "companyName" => $companyName
+  );
+  $_SESSION["$id"] = $info;
+  return $id;
 }
 function destroySession($id){
     unset($_SESSION["$id"]);

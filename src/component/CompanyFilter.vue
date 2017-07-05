@@ -12,7 +12,7 @@
 	</div>
 	<br>
 	<div style="width: 1000px;margin:0 auto;">
-		<CompanyCard v-bind:CompanyCardList="CompanyCardListMsg"></CompanyCard>
+		<CompanyCard v-bind:CompanyCardList="CompanyCardListMsg" v-bind:caller="caller"></CompanyCard>
 	</div>
 </div>
 
@@ -55,11 +55,14 @@ import CompanyCard from './CompanyCard.vue';
 
 export default{
 	name:'CompanyFilter',
+	props:['caller'],
 	components:{
 		CompanyCard
 	},
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			usernameMsg:"",
 			chosenItem:{
 				"公司地址":"全国",
 				"融资阶段":"无限制",
@@ -180,9 +183,6 @@ export default{
 			if(jsonObj.sortOrder=="默认"){
 				jsonObj.sortOrder="";
 			}
-						console.log(jsonObj);
-
-				console.log(this.Location);
 				$.ajax({
 					url:'./src/api/getCompanyBrief',
 					data:JSON.stringify(jsonObj),
@@ -190,8 +190,6 @@ export default{
 					type:'post',
 					success:(result)=>{
 						this.CompanyCardListMsg=result.data;
-						console.log("res",result);
-						console.log(JSON.stringify(this.CompanyCardListMsg));
 					},
 					error:function(){
 
@@ -200,6 +198,7 @@ export default{
 		}
 	},
 	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 		this.queryCompanyData();
 	},
 	watch:{

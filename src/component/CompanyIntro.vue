@@ -16,7 +16,11 @@
 				<el-amap-marker :position="LngLat"> </el-amap-marker>
 			</el-amap>
 			<h3>招聘职位</h3>
-			<PositionCard v-bind:positionCardList="companyDetail.position"></PositionCard>
+			<div align="center">
+			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
+				新增职位
+			</router-link></div>
+			<PositionCard v-bind:positionCardList="companyDetail.position" v-bind:caller="caller"></PositionCard>
 		</div>
 	</div>
 </div>
@@ -26,6 +30,24 @@
 <style type="text/css" scoped>
 #map{
 	height: 400px;
+}
+.add-btn{
+	display:block;
+	line-height: 3em;
+	width: 8em;
+	height: 3em;
+	border-radius: 10px;
+}
+.btn-green{
+	color:#00b38a;
+	background-color: white;
+	border:none;
+	transition:all 0.6s;
+}
+.btn-green:hover{
+	color:white;
+	background-color: #00b38a;
+	border:none;
 }
 .container{
 	padding:0;
@@ -73,14 +95,13 @@ export default{
 	components:{
 		PositionCard
 	},
-	props:['companyDetail'],
+	props:['companyDetail','caller'],
 	data(){
 		return{
 			LngLat:[0,0],
+			idMsg:this.$router.currentRoute.query.id,
+			usernameMsg:"",
 		}
-	},
-	mounted:function(){
-		
 	},
 	watch:{
 		'companyDetail':{
@@ -91,6 +112,9 @@ export default{
 				console.log(this.LngLat)
 			},
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

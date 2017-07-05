@@ -1,6 +1,6 @@
 <?php
-if(!isset($_SESSION))
-  session_start();
+// if(!isset($_SESSION))
+//   session_start();
 require_once 'checkSession.php';
 require_once 'tools.php';
 //require_once 'Manager.php';
@@ -22,8 +22,8 @@ require_once 'tools.php';
   function hrLogin($jsonS)
   {
     $arr = json_decode($jsonS,true);
-    $hrAccount = $arr['hrAccount'];
-    $hrPassword = $arr['hrPassword'];
+    $hrAccount = $arr['username'];
+    $hrPassword = $arr['password'];
     hrLoginF($hrAccount,$hrPassword);
   }
 
@@ -61,7 +61,8 @@ require_once 'tools.php';
     if($isExist)
     {
       $code = 1;
-      $message = "username already exists";
+      // $message = "username already exists";
+      $message = "该用户名已被使用";
     }
     else
     {
@@ -131,12 +132,14 @@ require_once 'tools.php';
       if($re)
       {
         $code = 0;
-        $message = "success";
+        // $message = "success";
+        $message = "注册成功";
       }
       else
       {
         $code = -1;
-        $message = "fail";
+        // $message = "fail";
+        $message = "注册失败，请重试";
       }
     }
     $reArr['code'] = $code;
@@ -209,6 +212,7 @@ require_once 'tools.php';
       $isExist = 1;
       $re = object_array($document);
       $passwordTrue = $re['hrPassword'];
+      $companyName = $re['companyName'];
     }
     if($isExist)
     {
@@ -217,7 +221,7 @@ require_once 'tools.php';
         $code = 0;
         $message = "success";
           //generate session
-        $id = generateSession($hrAccount,"hr");
+        $id = generateHrSession($hrAccount,"hr",$companyName);
       }
       else
       {
@@ -235,11 +239,12 @@ require_once 'tools.php';
       $reArr['id'] = $id;
     $reArr['code'] = $code;
     $reArr['message'] = $message;
+    $reArr['companyName'] = $companyName;
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }
   // applicantRegisterF("明镜止水","12345678","真的名字");
   // applicantLoginF("明镜止水","12345678");
-  // hrLoginF("董小姐","oudmon123");
+  // hrLoginF("董","oudmon123");
   // applicantRegisterF("天","sky13579","刘丽");
  ?>

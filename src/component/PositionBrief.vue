@@ -65,18 +65,18 @@
 
 export default{
 	name:'PositionBrief',
-	props:['positionDetail'],
+	props:['positionDetail','caller'],
 	data(){
 		return{
-			idMsg:window.localStorage.getItem("id"),
-			usernameMsg:window.localStorage.getItem("username"),
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 		}
 	},
 	methods:{
 		sendPR:function(){
 			var jsonObj={
 				id:this.idMsg,
-				username:this.usernameMsg,
+				username:this.nameMsg,
 				companyName:this.positionDetail.companyName,
 				positionName:this.positionDetail.positionName,
 			}
@@ -98,6 +98,9 @@ export default{
 				}
 			})
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

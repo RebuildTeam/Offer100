@@ -9,7 +9,23 @@ require_once 'tools.php';
   {
     $arr = json_decode($jsonS,true);
     $companyName = $arr['companyName'];
-    getCompanyDetailF($companyName);
+    $id = $arr['id'];
+    // session_id($id);
+    // session_start();
+    if($_SESSION["$id"]["caller"] == "applicant")
+    {
+      getCompanyDetailF($companyName,$id);
+    }
+    if($_SESSION["$id"]["caller"] == "hr")
+    {
+      if($_SESSION["$id"]["companyName"] == $companyName)
+      {
+        getCompanyDetailF($companyName,$id);
+      }
+      else return;
+      // else echo "caller:".$_SESSION["$id"]["caller"];
+    }
+    // else echo "session".$_SESSION["$id"]["caller"];
   }
   function getCompanyBrief($jsonS)
   {
@@ -22,7 +38,21 @@ require_once 'tools.php';
     $arr = json_decode($jsonS,true);
     $companyName = $arr['companyName'];
     $positionName = $arr['positionName'];
-    getPositionDetailF($companyName,$positionName);
+    $id = $arr['id'];
+    // session_id($id);
+    // session_start();
+    if($_SESSION["$id"]["caller"] == "applicant")
+    {
+      getPositionDetailF($companyName,$positionName,$id);
+    }
+    if($_SESSION["$id"]["caller"] == "hr")
+    {
+      if($_SESSION["$id"]["companyName"] == $companyName)
+      {
+        getPositionDetailF($companyName,$positionName,$id);
+      }
+      else return;
+    }
   }
   function getPositionBrief($jsonS)
   {
@@ -43,7 +73,7 @@ require_once 'tools.php';
     sendResumeF($username,$companyName,$positionName,$id);
   }
 
-  function getCompanyDetailF($companyName)
+  function getCompanyDetailF($companyName,$id)
   {
     $reArr = array();
     $isExist = findCompany($companyName);
@@ -73,7 +103,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $re;
-    // $reArr['caller'] = $_SESSION["$id"]['caller'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -116,7 +146,7 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function getPositionDetailF($companyName,$positionName)
+  function getPositionDetailF($companyName,$positionName,$id)
   {
     $reArr = array();
     $isExist = findCompany($companyName);
@@ -145,7 +175,7 @@ require_once 'tools.php';
       // var_dump($positionRe);
     }
     $reArr['data'] = $positionRe;
-    // $reArr['caller'] = $_SESSION["$id"]['caller'];
+    $reArr['caller'] = $_SESSION["$id"]['caller'];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
     echo $obj;
   }
@@ -326,5 +356,5 @@ require_once 'tools.php';
   // getCompanyBriefF("区");
   // getPositionBriefF("设计师");
   // sendResumeF("明镜止水","欧德蒙","文案策划");
-  // getPositionDetailF("欧德蒙","软件测试工程师");
+  // getPositionDetailF("问卷星","高级客服");
  ?>

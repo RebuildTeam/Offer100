@@ -1,7 +1,8 @@
 <template>
 <div  id="CompanyCard">
-	    <router-link to="{name:'Company',query:{companyName:item.companyName}}">
 	    <div  v-for="item in CompanyCardList">
+		<router-link :to="{name:'Company',query:{id:idMsg,companyName:item.companyName}}">
+
 	        <div class="CompanyCard-info">
 			    <div style="overflow: hidden;">
                     <!-- 这是上层div -->
@@ -40,9 +41,7 @@
 			    	    </div>
 			    </div>
 		    </div>
-		</div>
-
-		</router-link>
+		</router-link></div>
     
 </div>	
 
@@ -155,12 +154,16 @@ button>img
 <script type="text/javascript">
 export default{
 	name:'CompanyCard',
-	props:['CompanyCardList'],
+	props:['CompanyCardList','caller'],
 	data(){
 		return{
-			
+			idMsg:this.$router.currentRoute.query.id,
+			usernameMsg:"",
 			
 		}
+	},
+	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

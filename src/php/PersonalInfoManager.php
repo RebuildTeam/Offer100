@@ -42,12 +42,23 @@ require_once 'checkSession.php';
   {
     $arr = json_decode($jsonS,true);
     $id = $arr['id'];
+    $keyword = $arr['prStatus'];
     $username = $arr['username'];
       //validate whether session id and username match
     $valRes = validateSession($id,$username);
     if($valRes==0)
       return;
-    getResumeStatusF($username,$id);
+    getResumeStatusF($username,$keyword,$id);
+  }
+  function getCaller($jsonS)
+  {
+    $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
+    // $caller = getIdentity($id);
+    // $reArr = array();
+    $reArr['caller'] = $_SESSION["$id"]["caller"];
+    $obj = urldecode(json_encode($reArr));
+    echo $obj;
   }
   // function personalInfoManagerF($method,$jsonS)
   // {
@@ -132,7 +143,7 @@ require_once 'checkSession.php';
     echo $obj;
   }
 
-  function getResumeStatusF($username,$id)
+  function getResumeStatusF($username,$keyword,$id)
   {
     $isExist = findUser($username);
     if($isExist)
@@ -149,10 +160,30 @@ require_once 'checkSession.php';
         $re = object_array($document);
         $resumeData = $re['resume'];
       }
-      //$resumeArr = json_decode($resumeData,true);
-      $resumeArr = $resumeData;
-      $data = $resumeArr['status'];
-    }
+      $data = array();
+      if($keyword == "")
+      {
+        $resumeNum = count($resumeData['status']);
+        for($i = 0;$i < $resumeNum;$i++)
+        {
+          $resumeData['status'][$i]['logo'] = getCompanyLogo($resumeData['status'][$i]['sendToCompany']);
+          array_push($data,$resumeData['status'][$i]);
+        }
+      }
+      else
+      {
+        $resumeNum = count($resumeData['status']);
+        for($i = 0;$i < $resumeNum;$i++)
+        {
+          if($resumeData['status'][$i]['status'] == $keyword)
+          {
+            $resumeData['status'][$i]['logo'] = getCompanyLogo($resumeData['status'][$i]['sendToCompany']);
+            array_push($data,$resumeData['status'][$i]);
+          }
+        }
+      }
+        // $data = $resumeData['status'];
+      }
     $reArr['data'] = $data;
     $reArr['caller'] =  $_SESSION["$id"]["caller"];
     $obj = json_encode($reArr,JSON_UNESCAPED_UNICODE);
@@ -163,6 +194,6 @@ require_once 'checkSession.php';
 // $username = $_POST['username'];
 // $data = $_POST['data'];
 // setResumeF($username,$data);
-// getResumeStatusF("明镜止水");
+// getResumeStatusF("明镜止水","已审阅");
 
  ?>

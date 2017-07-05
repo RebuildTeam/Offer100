@@ -98,7 +98,7 @@ require_once 'tools.php';
                      'city' => $dataArr['city'],
                      'location' => $dataArr['location'],
                      'long' => $dataArr['long'],
-                     'lat' => $dataArr['lat']
+                     'lat' => $dataArr['lat'],
                      'size' => $dataArr['size'],
                      'website' => $dataArr['website'],
                      'logo' => $logo,
@@ -127,13 +127,15 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function setCompanyInfoF($companyName,$data)
+  function setCompanyInfoF($companyName,$data,$id)
   {
     $reArr = array();
     $isExist = findCompany($companyName);
     if($isExist)
     {
-      $dataArr = json_decode($data,true);
+      $dataArr = $data;
+      // $dataArr = json_decode($data,true);
+      // var_dump($dataArr);
       $manager = Manager::getManager();
       $bulk = new MongoDB\Driver\BulkWrite;
       $bulk->update(['companyName' => $companyName],
@@ -145,6 +147,8 @@ require_once 'tools.php';
                                 'province' => $dataArr['province'],
                                 'city' => $dataArr['city'],
                                 'location' => $dataArr['location'],
+                                'long' => $dataArr['long'],
+                                'lat' => $dataArr['lat'],
                                 'size' => $dataArr['size'],
                                 'website' => $dataArr['website'],
                                 'dealingRate' => $dataArr['dealingRate'],
@@ -175,7 +179,7 @@ require_once 'tools.php';
     echo $obj;
   }
 
-  function setPositionF($companyName,$data)
+  function setPositionF($companyName,$data,$id)
   {
     $reArr = array();
     $isExist = findCompany($companyName);
@@ -197,12 +201,12 @@ require_once 'tools.php';
       if($positionRe)
       {
         //array_push($positionRe,$data);
-        array_push($positionRe,json_decode($data));
+        array_push($positionRe,$data);
       }
       else
       {
         $positionRe = array();
-        array_push($positionRe,json_decode($data));
+        array_push($positionRe,$data);
       }
       $bulk = new MongoDB\Driver\BulkWrite;
       $bulk->update(['companyName' => $companyName],
@@ -349,10 +353,13 @@ require_once 'tools.php';
 
   // $companyName = $_POST['companyName'];
   // $data = $_POST['data'];
+  // setCompanyInfoF($companyName,$data);
   // $positionName = $_POST['positionName'];
   // setPositionF($companyName,$data);
   // dropPositionF("欧德蒙","java工程师");
   // dropPositionF($companyName,$positionName);
   // getPositionF("欧德蒙");
+  // $jsonS = $_POST['jsonS'];
+  // setCompanyInfo($jsonS)
 
  ?>

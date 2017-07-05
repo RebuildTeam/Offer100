@@ -118,21 +118,21 @@ h3{
 
 export default{
 	name:'PositionIntro',
-	props:['positionDetail'],
+	props:['positionDetail','caller'],
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
 			companyDetail:{},
-			companyName:""
+			companyName:this.$router.currentRoute.query.companyName,
 		}
 	},
 	methods:{
 		initCompanyData:function(){
 			var jsonObj={
-				'id':"",
+				'id':this.idMsg,
 				'companyName':this.companyName,
-				'companyDetail':{}
 			}
-			console.log(this.companyName);
 			$.ajax({
 				url:'./src/api/getCompanyDetail',
 				data:JSON.stringify(jsonObj),
@@ -140,16 +140,15 @@ export default{
 				type:'post',
 				success:(result)=>{
 					this.companyDetail=result.data;
-					console.log(JSON.stringify(this.companyDetail));
 				},
 				error:function(result,msg,error){
-					console.log(result,msg,error);
+					console.log("error>>>>>>",result,msg,error);
 				}
 			})
 		}
 	},
 	created:function(){
-		this.companyName=this.$router.currentRoute.query.companyName;
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 		this.initCompanyData();
 	}
 }

@@ -69,11 +69,14 @@ import PositionCard from './PositionCard.vue';
 
 export default{
 	name:'Searcher',
+	props:['caller'],
 	components:{
 		PositionCard
 	},
 	data(){
 		return{
+				idMsg:this.$router.currentRoute.query.id,
+				nameMsg:"",
 				isSearching:0,
 				positionCardListMsg:[],
 				searchContent:"",
@@ -103,6 +106,7 @@ export default{
 
 	},
 	created:function(){
+		this.nameMsg=window.localStorage.getItem(this.idMsg);
 		this.searchPosition();		
 	}
 }

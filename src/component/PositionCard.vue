@@ -2,7 +2,7 @@
 <div  id="PositionCard">
 	    <div v-for="item in positionCardList">
 	        <div class="PositionCard-info" align="left">
-			    <router-link :to="{ name: 'Position', query: { companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
+			    <router-link :to="{ name: 'Position', query: { id:idMsg,companyName: item.companyName,positionName:item.positionName }}"><div class="position-panel"><!-- 这是左层div -->
 			    		<h4>{{item.positionName}}</h4>
 	
 			    		<div class="middle"><!-- 这是左侧中层div -->
@@ -15,7 +15,8 @@
 			    			<span>{{item.releaseTime}}</span>
 			    			<span>{{item.positionType}}</span>			
 			    		</div>
-			    </div></router-link><div class="company-panel" v-if="item.companyName!=null" v-on:click="linkToCompany(e)"><!-- 这是右层div -->
+			    </div></router-link><div class="company-panel" v-if="(item.companyName!=urlCompanyName)&&(item.companyName!=storagedCompanyName)">
+			    <!-- 这是右层div -->
 			    		<div><!-- 那个公司名称的div -->
 			    			<p>{{item.companyName}}</p>
 			    		</div>
@@ -24,9 +25,12 @@
 			    				{{item.officeHour}}
 			    			</p>
 			    		</div>
+			    </div><div class="company-panel" v-if="storagedCompanyName!=''&&storagedCompanyName!=null">
+			    		<button class="btn-red del-btn" v-on:click="deletePosition(item.positionName)">删除</button>
 			    </div>
-		    </div>
 
+
+		    </div>
 		</div>
     
 </div>	
@@ -47,8 +51,31 @@
 	overflow: hidden;
 	transition: all 0.6s;
 }
+.del-btn{
+	border:none;
+	position: absolute;
+	width: 8em;
+	height: 3em;
+	font-size: 14px;
+	border-radius: 10px;
+	margin:auto auto;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+}
+.btn-red{
+	transition: all 0.6s;
+	background-color: inherit;
+	color: #ff6666;
+}
+.btn-red:hover{
+	background-color: #ff6666;
+	color: white;
+}
 .PositionCard-info:hover{
 	/*border:1px solid #00b38a;*/
+	position: relative;
 	box-shadow: 1px 1px 5px 1px #00b38a;
 }
 .position-panel{
@@ -72,6 +99,8 @@ h4{
 }
 .company-panel{
 	display: inline-block;
+	position: relative;
+	height: 100%;
 	width: 40%;
 	vertical-align: top;
 }
@@ -94,11 +123,45 @@ import router from '../main.js'
 
 export default{
 	name:'PositionCard',
-	props:['positionCardList'],
+	props:['positionCardList','caller'],
 	data(){
 		return{
-			e:null
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
+			urlCompanyName:this.$router.currentRoute.query.companyName,
+			storagedCompanyName:window.localStorage.getItem(this.idMsg),
 		}
+	},
+	methods:{
+		deletePosition:function(posName){
+			if(confirm("确认删除"+posName+"?")){
+				var jsonObj={
+					'id':window.localStorage.getItem("id"),
+					'companyName':this.storagedCompanyName,
+					'positionName':posName,
+				};
+				$.ajax({
+					url:'./src/api/dropPosition',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						if(result.code==0){
+							alert("删除成功");
+							location.replace(location.href)
+						}else{
+							alert(result.code+" "+result.message);
+						}
+					},
+					error:function(result,msg,error){
+						alert("服务器异常")
+					}
+			})
+			}
+		}
+	},
+	created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
 	}
 }
 </script>

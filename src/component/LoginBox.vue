@@ -30,15 +30,16 @@
 	    	<button align='center' v-if="trianglePos==1" v-on:click="register()">注册</button>
 	    </div>
 	</div>
-<!-- 	   <div>
-	   	<div>
-	   	<span>还没有账号？</span>
-	   	</div>
-	   	<div>
-	   	<span class="gosign">立即注册</span>
+	   <div>
+	   	<div align="center">
+	   	<span>招聘更多人才？</span>
+	   	<br>
+	   	<br>
 	   	<img v-bind:src="''+imgurl" >
+	   	<span class="gosign"><input type="checkbox" v-model="isHR">我是hr</span>
+
 	   	</div>
-	   </div> -->
+	   </div>
 	           
 </div>
 </div>
@@ -217,6 +218,9 @@ export default{
 	name:'LoginBox',
 	data(){
 		return{
+			idMsg:this.$router.currentRoute.query.id,
+			nameMsg:"",
+			isHR:false,
 			username:"",
 			password:"",
 			applicantName:"",
@@ -236,26 +240,45 @@ export default{
     				'username':this.username,
     				'password':this.password
     			}
-    			$.ajax({
-    				url:'./src/api/applicantLogin',
-    				data:JSON.stringify(jsonObj),
-					dataType:'json',
-					type:'post',
-					success:(result)=>{
-						if(result.code==0){
-							window.localStorage.setItem("id",result.id);
-							window.localStorage.setItem("username",this.username);
-							console.log(window.localStorage);
-							this.$router.push({name:'Index'});
-						}else{
-							console.log(result.message);
+    			if(this.isHR==false){
+    				$.ajax({
+    					url:'./src/api/applicantLogin',
+    					data:JSON.stringify(jsonObj),
+						dataType:'json',
+						type:'post',
+						success:(result)=>{
+							if(result.code==0){
+								window.localStorage.setItem(result.id,this.username);
+								this.$router.push({name:'Index',query:{id:result.id}});
+							}else{
+								console.log(result.message);
+							}
+						},
+						error:(result)=>{
+							console.log(result);
 						}
-					},
-					error:(result)=>{
-						console.log(result);
-					}
-	
-    			})
+		
+    				})
+    			}else{
+    				$.ajax({
+    					url:'./src/api/hrLogin',
+    					data:JSON.stringify(jsonObj),
+						dataType:'json',
+						type:'post',
+						success:(result)=>{
+							if(result.code==0){
+								window.localStorage.setItem(result.id,result.companyName);
+								this.$router.push({name:'CompanyManagement',query:{id:result.id}});
+							}else{
+								console.log(result.message);
+							}
+						},
+						error:(result)=>{
+							console.log(result);
+						}
+		
+    				})
+    			}
     		}else{
     			alert("请输入用户名密码");
     		}
@@ -276,10 +299,8 @@ export default{
 					success:(result)=>{
 						if(result.code==0){
 							this.id=result.id;
-							window.localStorage.setItem("id",result.id);
-							window.localStorage.setItem("username",this.username);
-							console.log(window.localStorage);
-							this.$router.push({name:'Index'});
+							window.localStorage.setItem(result.id,this.username);
+							this.$router.push({name:'Index',query:{id:result.id}});
 						}else{
 							console.log(result);
 						}

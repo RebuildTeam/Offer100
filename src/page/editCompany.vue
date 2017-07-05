@@ -1,46 +1,37 @@
 <template>
-	<div id="PersonalResume">
-		<Navbar v-bind:caller="caller"></Navbar>
+	<div id="EditCompany">
+		<HRNavbar v-bind:caller="caller"></HRNavbar>
 		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
-		<div class="container">
-			<PR v-bind:PRDetail="PRDetailMsg" v-bind:caller="caller"></PR>
-		</div>
+		<EditCompanyPanel v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></EditCompanyPanel>
 	</div>
 </template>
 <script type="text/javascript">
-import Navbar from '../component/Navbar.vue'
-import PR from '../component/PR.vue'
+import HRNavbar from '../component/HRNavbar.vue'
+import EditCompanyPanel from '../component/EditCompanyPanel.vue'
 	export default{
-		name:'PersonalResume',
+		name:'EditCompany',
 		components:{
-			Navbar,
-			PR,
+			HRNavbar,
+			EditCompanyPanel,
 		},
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
-				nameMsg:"",
+				nameMsg:window.localStorage.getItem(this.idMsg),
 				caller:"",
-				PRDetailMsg:{}
 			}
 		},
-		created:function(){
-				this.nameMsg=window.localStorage.getItem(this.idMsg);
-				this.initPRData();
-		},
 		methods:{
-			initPRData:function(){
+			getCaller:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'username':this.nameMsg,
 				};
 				$.ajax({
-					url:'./src/api/getResume',
+					url:'./src/api/getCaller',
 					data:JSON.stringify(jsonObj),
 					dataType:'json',
 					type:'post',
 					success:(result)=>{
-						this.PRDetailMsg=result.data;
 						this.caller=result.caller;
 					},
 					error:function(result,msg,error){
@@ -48,6 +39,10 @@ import PR from '../component/PR.vue'
 					}
 				})
 			}
-		}
+		},
+		created:function(){
+			this.nameMsg=window.localStorage.getItem(this.idMsg);
+			this.getCaller();
+		},
 	}
 </script>

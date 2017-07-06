@@ -4,6 +4,7 @@
 		<div class="container">
 		<div class="left-panel" align="center">
 		<!-- <form action=""> -->
+			<div class="PR-fact">
 			<div class="PR-head"></div>
 			<div class="PR-photo" v-bind:style="{backgroundImage:'url(./src/img/'+PRInfo.photo+')'}"></div>
 			<div class="PR-content">
@@ -134,6 +135,7 @@
 				</button>
 			</div>
 			<!-- </form> -->
+			</div>
 		</div>
 		<div class="right-panel" id="right-panel" v-bind:style="{top:scrollTop+'px'}" align="left">
 			<div class="panel-1">
@@ -199,10 +201,10 @@ input{
 }
 .btn-blue{
 	background-color: inherit;
-	color: #00b38a;
+	color: orange;
 }
 .btn-blue:hover{
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 textarea{
@@ -216,11 +218,14 @@ textarea{
 }
 .delivery-btn{
 	width: 100%;
-	background-color: #f6f6f6;
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	background-color: orange;
 	border:1px solid #dfdfdf;
 	box-sizing: border-box;
 	border: none;
 	padding: 20px;
+	color: white;
 	box-sizing: border-box;
 	font-size: 16px;
 }
@@ -237,9 +242,10 @@ textarea{
 }
 #edit-btn{
 	width: 8em;
-	background-color: #dfdfdf;
+	border-radius: 10px;
+	background-color: orange;
 	border:1px solid #dfdfdf;
-	color: #999;
+	color: white;
 	box-sizing: border-box;
 	border: none;
 	padding: 20px;
@@ -264,6 +270,11 @@ textarea{
 	padding: 0.5em;
 	overflow: hidden;
 }
+.PR-fact{
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	overflow: hidden;
+	border-radius: 10px;
+}
 .left-panel{
 	float: left;
 	width: 75%;
@@ -273,7 +284,7 @@ textarea{
 	box-sizing: border-box;
 }
 .PR-head{
-	background-color: #00b38a;
+	background-color: orange;
 	height: 10em;
 }
 .PR-photo{
@@ -291,7 +302,7 @@ textarea{
 }
 .PR-content{
 	background-color: #f6f6f6;
-	border:1px solid #dfdfdf;
+	/*border:1px solid #dfdfdf;*/
 	box-sizing: border-box;
 	padding: 20px;
 	box-sizing: border-box;
@@ -301,7 +312,7 @@ textarea{
 	font-weight: lighter;
 }
 .PR-quick-label>h3:hover{
-	background-color:#666;
+	background-color:orange;
 	font-weight: lighter;
 	color:white;
 }
@@ -321,7 +332,7 @@ textarea{
 	font-size: 16px;
 }
 .panel-2{
-	border-left: 1px solid #dfdfdf;
+	border-left: 1px solid orange;
 	margin-top: 20px;
 	z-index: 99;
 	position: relative;
@@ -337,7 +348,7 @@ textarea{
 	font-size: 1.5em;
 	border:none;
 	border-radius: 5px;
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 h3{

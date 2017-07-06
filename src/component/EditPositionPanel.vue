@@ -65,11 +65,11 @@ textarea{
 }
 .btn-green{
 	background-color: inherit;
-	color: #00b38a;
+	color: orange;
 	transition:all 0.6s;
 }
 .btn-green:hover{
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 </style>

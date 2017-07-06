@@ -18,7 +18,8 @@
 	width: 100%;
 	box-sizing:border-box;
 	background-color: #fffff6;
-	border:1px solid #dfdfdf;
+	/*border:1px solid #dfdfdf;*/
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
 	padding: 0.5em;
 	overflow: hidden;
 }

@@ -57,7 +57,7 @@
 	font-size: 1.5em;
 	border:none;
 	border-radius: 5px;
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 </style>

@@ -91,11 +91,11 @@ textarea{
 }
 .btn-green{
 	background-color: inherit;
-	color: #00b38a;
+	color: orange;
 	transition:all 0.6s;
 }
 .btn-green:hover{
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 </style>
@@ -127,7 +127,7 @@ export default{
 				success:(result)=>{
 					if(result.code==0){
 						alert("修改成功");
-						this.$router.push({name:'CompanyManagement'});
+						this.$router.push({name:'CompanyManagement',query:{id:idMsg}});
 					}else{
 						alert("修改失败，因为"+result.message);
 					}

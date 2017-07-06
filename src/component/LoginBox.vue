@@ -18,9 +18,9 @@
 	    	<input type="password" v-model="password" placeholder="请输入密码" />
 	    </div>
 		
-<!-- 	    <div>
-	    	<span class="forget">忘记密码？</span>
-	    </div> -->
+	    <div>
+	    	<span class="forget"><input type="checkbox" style="width:20px;height:20px:color" v-model="isHR">我是hr</span>
+	    </div>
 	    <br>
 	    <br>
 	    <br>
@@ -30,30 +30,35 @@
 	    	<button align='center' v-if="trianglePos==0" v-on:click="login()">登录</button>
 	    	<button align='center' v-if="trianglePos==1" v-on:click="register()">注册</button>
 	    </div>
+	    <div id="loginPanel" v-bind:style="{backgroundImage:'url(./src/img/loginbg.png)'}">
+	
+		</div>
 	</div>
-	   <div>
-	   	<div align="center">
-	   	<span>招聘更多人才？</span>
-	   	<br>
-	   	<br>
-	   	<img v-bind:src="''+imgurl" >
-	   	<span class="gosign"><input type="checkbox" v-model="isHR">我是hr</span>
 
-	   	</div>
-	   </div>
 	           
 </div>
 </div>
 </template>
 <style type="text/css" scoped>
+#loginPanel{
+	width: 40%;
+	height: 100%;
+	position: absolute;
+	right: 0;
+	top: 0;
+
+	background-size: 100% 100%;
+	background-position: center;
+}
 #LoginBox
 {
 	overflow: hidden;
 	width: 70em;
 	max-height: 27.5em;
 	font-size: 14px;
-	border: 1px solid #d3d3d3;
-
+	/*border: 1px solid #d3d3d3;*/
+	border-radius: 10px;
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -89,29 +94,32 @@ span
 {
 	width: 50%;
 	height: 2em;
+	line-height:2em;
 	float: left;
 	font-size: 24px;
 	font-family:'方正兰亭超细黑简体';
 	text-align: center;
-	color: #00b38a;
+	color: orange;
 	transition: color 0.5s;
 }
 .paslog:hover
 {
-	color: #00b38a;
+	color: orange;
 }
 .sign:hover
 {
-	color: #00b38a;
+	color: orange;
 }
 .gosign:hover
 {
-	border-bottom: 1px solid #00b38a;
+	border-bottom: 1px solid orange;
 }
 .sign
 {
 	width: 50%;
 	height: 2em;
+	line-height:2em;
+
 	float: left;
 	font-size: 24px;
 	font-family:'方正兰亭超细黑简体';
@@ -124,7 +132,7 @@ span
     height:0;
     border-width:0 12px 12px;
     border-style:solid;
-    border-color:transparent transparent #00b38a;
+    border-color:transparent transparent orange;
     margin-left: -6px ;
     left:25%;
     bottom: 0px;
@@ -136,7 +144,7 @@ span
 	font-size: 20px;
 	position: relative;
 	overflow: hidden;
-	border-bottom: 1px solid #00b38a;
+	border-bottom: 1px solid orange;
 }
 
 .form-input{
@@ -157,7 +165,7 @@ span
 }
 .forget
 {
-	color: #00b38a;
+	color: orange;
 	font-size: 18px;
 	float: right;
 	margin-right: 2em;
@@ -171,7 +179,7 @@ button
 	font-size: 24px;
 	letter-spacing: 8px;
 	font-family: "Hiragino Sans GB";
-	background: #00b38a;
+	background: orange;
 	border: none;
 	color: white;
 }
@@ -199,7 +207,7 @@ button
 	float: left;
 	margin-left: 2.5em;
 	font-family: "Hiragino Sans GB";
-	color:#00b38a;
+	color:orange;
     font-size: 18px;
 }
 
@@ -319,13 +327,13 @@ export default{
             trianglePos:function (){
                 if (this.trianglePos == 0){
                     document.getElementsByClassName('triangle-up')[0].style.left='25%';
-                    document.getElementsByClassName('paslog')[0].style.color='#00b38a';
+                    document.getElementsByClassName('paslog')[0].style.color='orange';
                     document.getElementsByClassName('sign')[0].style.color='black';
                     document.getElementsByClassName('forget')[0].style.display='block';
                 }
                 else{
                     document.getElementsByClassName('triangle-up')[0].style.left='75%';
-                     document.getElementsByClassName('sign')[0].style.color='#00b38a';
+                     document.getElementsByClassName('sign')[0].style.color='orange';
                      document.getElementsByClassName('paslog')[0].style.color='black';
                      document.getElementsByClassName('forget')[0].style.display='none';
                 }

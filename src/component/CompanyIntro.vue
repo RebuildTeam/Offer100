@@ -17,7 +17,7 @@
 			</el-amap>
 			<h3>招聘职位</h3>
 			<div align="center">
-			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
+			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ id:idMsg, positionName:''}}">
 				新增职位
 			</router-link></div>
 			<PositionCard v-bind:positionCardList="companyDetail.position" v-bind:caller="caller"></PositionCard>
@@ -39,14 +39,14 @@
 	border-radius: 10px;
 }
 .btn-green{
-	color:#00b38a;
+	color:orange;
 	background-color: white;
 	border:none;
 	transition:all 0.6s;
 }
 .btn-green:hover{
 	color:white;
-	background-color: #00b38a;
+	background-color: orange;
 	border:none;
 }
 .container{
@@ -75,7 +75,7 @@
 	font-size: 1.5em;
 	border:none;
 	border-radius: 5px;
-	background-color: #00b38a;
+	background-color: orange;
 	color: white;
 }
 .icon

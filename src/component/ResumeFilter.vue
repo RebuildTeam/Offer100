@@ -23,13 +23,14 @@
 	max-width: 960px;
 	width: 100%;
 	background-color: #fffff6;
-	border:1px solid #dfdfdf;
+	/*border:1px solid #dfdfdf;*/
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
 	padding: 0.5em;
 	box-sizing:border-box;
 }
 a.active{
 	color: #fff;
-	background-color: #33bb93;
+	background-color: orange;
 }
 a{
 	height: 1em;

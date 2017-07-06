@@ -33,10 +33,12 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 #RecommendColumn/*recommend这个最大的块的属性*/
 {
 	/*background-color: #33bb93;*/
+	border-radius: 10px;
 	background-color: orange;
 	width: 100%;
 	box-sizing: border-box;
-	border: 1px solid orange;
+	/*border: 1px solid orange;*/
+	box-shadow: 1px 1px 5px 1px #dfdfdf;
 	overflow-x: hidden;
 	overflow-y: auto;
 }
@@ -117,11 +119,11 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			recommendList:[
-				{label:"To Manage health data more convenient",imgurl:"./src/img/droid.png",intro:"Focus on BigData field, devoted to product the health device and software",hover:false,companyName:"欧德蒙"},
-				{label:"Mobile internet video platform",imgurl:"./src/img/droid.png",intro:"Established on 2012, try to take the best experence for global users",hover:false,companyName:"欧德蒙"},
-				{label:"Make people more healthy and happy",imgurl:"./src/img/droid.png",intro:"Change the world. Make the money",hover:false,companyName:"欧德蒙"},
-				{label:"Help Chinese cartoonists",imgurl:"./src/img/droid.png",intro:"Located on GuangZhou",hover:false,companyName:"欧德蒙"},
-				{label:"Record life like movie",imgurl:"./src/img/droid.png",intro:"An application for sharing pictures and videos",hover:false,companyName:"欧德蒙"}]
+				{label:"欧德蒙",imgurl:"./src/img/1.png",intro:"致力于打造最先进的智慧健康医疗设备和人工智能软件",hover:false,companyName:"欧德蒙"},
+				{label:"洺信科技",imgurl:"./src/img/4.png",intro:"让二次元音乐爱好者通过音乐互相交流，分享快乐",hover:false,companyName:"洺信科技"},
+				{label:"斗象科技",imgurl:"./src/img/6.png",intro:"最具性价比的互联网安全专家服务",hover:false,companyName:"斗象科技"},
+				{label:"梅卡曼德",imgurl:"./src/img/9.png",intro:"将智能赋予工业机器人",hover:false,companyName:"梅卡曼德"},
+				{label:"数族融合",imgurl:"./src/img/10.png",intro:"让天下没有复杂难做的互联网生意",hover:false,companyName:"数族融合"}]
 		}
 	},
 	created:function(){

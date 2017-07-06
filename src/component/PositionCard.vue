@@ -74,9 +74,9 @@
 	color: white;
 }
 .PositionCard-info:hover{
-	/*border:1px solid #00b38a;*/
+	/*border:1px solid orange;*/
 	position: relative;
-	box-shadow: 1px 1px 5px 1px #00b38a;
+	box-shadow: 1px 1px 5px 1px orange;
 }
 .position-panel{
 	display: inline-block;
@@ -85,7 +85,7 @@
 }
 h4{
 	margin: 0.5em;
-	color: #55aaaa;
+	color: #eeaaaa;
 	font-weight: bold;
 }
 .salary{

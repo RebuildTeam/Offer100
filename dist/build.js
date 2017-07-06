@@ -18791,7 +18791,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 				success: result => {
 					if (result.code == 0) {
 						alert("修改成功");
-						this.$router.push({ name: 'CompanyManagement' });
+						this.$router.push({ name: 'CompanyManagement', query: { id: idMsg } });
 					} else {
 						alert("修改失败，因为" + result.message);
 					}
@@ -19244,6 +19244,14 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'LoginBox',
@@ -19348,12 +19356,12 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		trianglePos: function () {
 			if (this.trianglePos == 0) {
 				document.getElementsByClassName('triangle-up')[0].style.left = '25%';
-				document.getElementsByClassName('paslog')[0].style.color = '#00b38a';
+				document.getElementsByClassName('paslog')[0].style.color = 'orange';
 				document.getElementsByClassName('sign')[0].style.color = 'black';
 				document.getElementsByClassName('forget')[0].style.display = 'block';
 			} else {
 				document.getElementsByClassName('triangle-up')[0].style.left = '75%';
-				document.getElementsByClassName('sign')[0].style.color = '#00b38a';
+				document.getElementsByClassName('sign')[0].style.color = 'orange';
 				document.getElementsByClassName('paslog')[0].style.color = 'black';
 				document.getElementsByClassName('forget')[0].style.display = 'none';
 			}
@@ -19420,6 +19428,17 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -20649,6 +20668,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'RecommendColumn',
@@ -20657,7 +20678,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: "",
-			recommendList: [{ label: "To Manage health data more convenient", imgurl: "./src/img/droid.png", intro: "Focus on BigData field, devoted to product the health device and software", hover: false, companyName: "欧德蒙" }, { label: "Mobile internet video platform", imgurl: "./src/img/droid.png", intro: "Established on 2012, try to take the best experence for global users", hover: false, companyName: "欧德蒙" }, { label: "Make people more healthy and happy", imgurl: "./src/img/droid.png", intro: "Change the world. Make the money", hover: false, companyName: "欧德蒙" }, { label: "Help Chinese cartoonists", imgurl: "./src/img/droid.png", intro: "Located on GuangZhou", hover: false, companyName: "欧德蒙" }, { label: "Record life like movie", imgurl: "./src/img/droid.png", intro: "An application for sharing pictures and videos", hover: false, companyName: "欧德蒙" }]
+			recommendList: [{ label: "欧德蒙", imgurl: "./src/img/1.png", intro: "致力于打造最先进的智慧健康医疗设备和人工智能软件", hover: false, companyName: "欧德蒙" }, { label: "洺信科技", imgurl: "./src/img/4.png", intro: "让二次元音乐爱好者通过音乐互相交流，分享快乐", hover: false, companyName: "洺信科技" }, { label: "斗象科技", imgurl: "./src/img/6.png", intro: "最具性价比的互联网安全专家服务", hover: false, companyName: "斗象科技" }, { label: "梅卡曼德", imgurl: "./src/img/9.png", intro: "将智能赋予工业机器人", hover: false, companyName: "梅卡曼德" }, { label: "数族融合", imgurl: "./src/img/10.png", intro: "让天下没有复杂难做的互联网生意", hover: false, companyName: "数族融合" }]
 		};
 	},
 	created: function () {
@@ -20673,6 +20694,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PostCard_vue__ = __webpack_require__(66);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PostCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__PostCard_vue__);
+//
 //
 //
 //
@@ -20795,6 +20817,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PositionCard_vue__ = __webpack_require__(9);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__PositionCard_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__PositionCard_vue__);
+//
 //
 //
 //
@@ -21650,7 +21673,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-01797c74]{\n\tbackground-color: #f6f6f6;\n}\nselect[data-v-01797c74]{\n\twidth: 80%;\n\tmax-width:800px;\n\theight: 2em;\n}\ninput[data-v-01797c74]{\n\tborder-radius: 10px;\n\theight: 2em;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\ntextarea[data-v-01797c74]{\n\tborder-radius: 10px;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tresize: none;\n\tpadding:10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\n.submit-btn[data-v-01797c74]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-01797c74]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-01797c74]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-01797c74]{\n\tbackground-color: #f6f6f6;\n}\nselect[data-v-01797c74]{\n\twidth: 80%;\n\tmax-width:800px;\n\theight: 2em;\n}\ninput[data-v-01797c74]{\n\tborder-radius: 10px;\n\theight: 2em;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\ntextarea[data-v-01797c74]{\n\tborder-radius: 10px;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tresize: none;\n\tpadding:10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\n.submit-btn[data-v-01797c74]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-01797c74]{\n\tbackground-color: inherit;\n\tcolor: orange;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-01797c74]:hover{\n\tbackground-color: orange;\n\tcolor: white;\n}\n", ""]);
 
 // exports
 
@@ -21664,7 +21687,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-20ac471e]{\n\tpadding:0;\n}\n.PositionBrief[data-v-20ac471e]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tpadding: 0.5em;\n\toverflow: hidden;\n\tbackground-color: #eeeeee;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tcolor: #666;\n}\n.left-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 60%;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n}\n.right-panel[data-v-20ac471e]{\n\tfloat: left;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\twidth: 40%;\n\tposition: relative;\n\tmargin:0;\n}\n.send-pr-btn[data-v-20ac471e]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-20ac471e]{\n\tpadding:0;\n}\n.PositionBrief[data-v-20ac471e]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tpadding: 0.5em;\n\toverflow: hidden;\n\tbackground-color: #eeeeee;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tcolor: #666;\n}\n.left-panel[data-v-20ac471e]{\n\tfloat: left;\n\twidth: 60%;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n}\n.right-panel[data-v-20ac471e]{\n\tfloat: left;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\twidth: 40%;\n\tposition: relative;\n\tmargin:0;\n}\n.send-pr-btn[data-v-20ac471e]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: orange;\n\tcolor: white;\n}\n", ""]);
 
 // exports
 
@@ -21678,7 +21701,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.ResumeFilter[data-v-267b0348]{\n\tfont-size: 10pt;\n\tmax-width: 960px;\n\twidth: 100%;\n\tbackground-color: #fffff6;\n\tborder:1px solid #dfdfdf;\n\tpadding: 0.5em;\n\tbox-sizing:border-box;\n}\na.active[data-v-267b0348]{\n\tcolor: #fff;\n\tbackground-color: #33bb93;\n}\na[data-v-267b0348]{\n\theight: 1em;\n\tfont-size: 10pt;\n\tline-height: 1em;\n\t/*display: inline-block;*/\n\tbox-sizing: border-box;\n\tpadding: 0.5em;\n\tcolor: #333;\n\ttext-decoration: none;\n\ttransition: all 0.3s;\n}\n", ""]);
+exports.push([module.i, "\n.ResumeFilter[data-v-267b0348]{\n\tfont-size: 10pt;\n\tmax-width: 960px;\n\twidth: 100%;\n\tbackground-color: #fffff6;\n\t/*border:1px solid #dfdfdf;*/\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 0.5em;\n\tbox-sizing:border-box;\n}\na.active[data-v-267b0348]{\n\tcolor: #fff;\n\tbackground-color: orange;\n}\na[data-v-267b0348]{\n\theight: 1em;\n\tfont-size: 10pt;\n\tline-height: 1em;\n\t/*display: inline-block;*/\n\tbox-sizing: border-box;\n\tpadding: 0.5em;\n\tcolor: #333;\n\ttext-decoration: none;\n\ttransition: all 0.3s;\n}\n", ""]);
 
 // exports
 
@@ -21692,7 +21715,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-28ce07e0]{\n\tpadding:0;\n}\n.PositionIntro[data-v-28ce07e0]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-28ce07e0]{\n\tfloat: left;\n\twidth: 60%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.right-panel[data-v-28ce07e0]{\n\tfloat: left;\n\twidth: 36%;\n\tmargin-left: 4%;\n\tposition: relative;\n}\n.panel-1[data-v-28ce07e0]{\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-28ce07e0]{\n\tmargin-top: 20px;\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-28ce07e0]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-28ce07e0]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-28ce07e0]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-28ce07e0]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-28ce07e0]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-28ce07e0]{\n\tpadding:0;\n}\n.PositionIntro[data-v-28ce07e0]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-28ce07e0]{\n\tfloat: left;\n\twidth: 60%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.right-panel[data-v-28ce07e0]{\n\tfloat: left;\n\twidth: 36%;\n\tmargin-left: 4%;\n\tposition: relative;\n}\n.panel-1[data-v-28ce07e0]{\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-28ce07e0]{\n\tmargin-top: 20px;\n\twidth: 100%;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-28ce07e0]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: orange;\n\tcolor: white;\n}\nh3[data-v-28ce07e0]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-28ce07e0]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-28ce07e0]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-28ce07e0]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
 
 // exports
 
@@ -21720,7 +21743,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.container[data-v-45cc583e]{\n\tbackground-color: #f6f6f6;\n}\ninput[data-v-45cc583e]{\n\tborder-radius: 10px;\n\theight: 2em;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\ntextarea[data-v-45cc583e]{\n\tborder-radius: 10px;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tresize: none;\n\tpadding:10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\n.submit-btn[data-v-45cc583e]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-45cc583e]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-45cc583e]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n", ""]);
+exports.push([module.i, "\n.container[data-v-45cc583e]{\n\tbackground-color: #f6f6f6;\n}\ninput[data-v-45cc583e]{\n\tborder-radius: 10px;\n\theight: 2em;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\ntextarea[data-v-45cc583e]{\n\tborder-radius: 10px;\n\twidth: 80%;\n\tmax-width: 800px;\n\tborder: none;\n\tbox-shadow:inset 1px 1px 5px 1px #dfdfdf;\n\tresize: none;\n\tpadding:10px;\n\tbox-sizing: border-box;\n\tmargin-bottom: 10px;\n}\n.submit-btn[data-v-45cc583e]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-45cc583e]{\n\tbackground-color: inherit;\n\tcolor: orange;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-45cc583e]:hover{\n\tbackground-color: orange;\n\tcolor: white;\n}\n", ""]);
 
 // exports
 
@@ -21734,7 +21757,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.reply-btn[data-v-4677c113]{\n\twidth: 6em;\n\theight: 3em;\n\tborder-radius: 10px;\n\tborder: none;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-4677c113]{\n\tbackground-color: inherit;\n\tcolor:#00b38a;\n}\n.btn-green[data-v-4677c113]:hover{\n\tbackground-color: #00b38a;\n\tcolor:white;\n}\n.btn-red[data-v-4677c113]{\n\tbackground-color: inherit;\n\tcolor: #ff6666\n}\n.btn-red[data-v-4677c113]:hover{\n\tbackground-color: #ff6666;\n\tcolor:white;\n}\n#ResumeBriefCard[data-v-4677c113]{\n\theight: 10em;\n\twidth: 90%;\n\tbox-sizing: border-box;\n\toverflow: hidden;\n\tposition: relative;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.CompanyLogo[data-v-4677c113]{\n\tbackground-color: gray;\n\theight: 10em;\n\twidth: 10em;\n\tfloat:left;\n\tbackground-size: 100% 100%;\n}\n.ResumeBriefPanel[data-v-4677c113]{\n\tposition: relative;\n\tmargin-left: 10em;\n\theight: 100%;\n}\n.ResumeBriefPanel>div[data-v-4677c113]:nth-child(1){\n\theight: 6em;\n\tbackground-color: white;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n}\n.ResumeBriefPanel>div[data-v-4677c113]:nth-child(2){\n\theight: 4em;\n\tbackground-color: #ffffee;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n}\n.companyName[data-v-4677c113]{\n\tfont-size: 16pt;\n\tmargin: 10px;\n}\n.companyInfoBrief[data-v-4677c113]{\n\tfont-size: 12pt;\n\tmargin: 10px;\n}\n.resumeInfoItem[data-v-4677c113]{\n\tborder-left: 1px solid #dfdfdf;\n\tfloat: left;\n\twidth: 10em;\n\theight: 100%;\n\tmargin-left: 5px;\n\tmargin-right: 5px;\n\tcolor: #666;\n\tbox-sizing: border-box;\n}\n.resumeInfoItem[data-v-4677c113]:nth-child(1){\n\tborder-left: none;\n}\n#PostCard[data-v-4677c113]\n{\n\tfont-size: 14px;\n}\n.PostCard-info[data-v-4677c113]\n{\n\tmargin-bottom: 0.5em;\n\theight: 3em;\n\twidth: 100%;\n   \tbackground-color:#f1f4f6;\n   \tpadding: 1em;\n   \tbox-sizing: border-box;\n}\n", ""]);
+exports.push([module.i, "\n.reply-btn[data-v-4677c113]{\n\twidth: 6em;\n\theight: 3em;\n\tborder-radius: 10px;\n\tborder: none;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-4677c113]{\n\tbackground-color: inherit;\n\tcolor:orange;\n}\n.btn-green[data-v-4677c113]:hover{\n\tbackground-color: orange;\n\tcolor:white;\n}\n.btn-red[data-v-4677c113]{\n\tbackground-color: inherit;\n\tcolor: #ff6666\n}\n.btn-red[data-v-4677c113]:hover{\n\tbackground-color: #ff6666;\n\tcolor:white;\n}\n#ResumeBriefCard[data-v-4677c113]{\n\theight: 10em;\n\twidth: 90%;\n\tbox-sizing: border-box;\n\toverflow: hidden;\n\tposition: relative;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.CompanyLogo[data-v-4677c113]{\n\tbackground-color: gray;\n\theight: 10em;\n\twidth: 10em;\n\tfloat:left;\n\tbackground-size: 100% 100%;\n}\n.ResumeBriefPanel[data-v-4677c113]{\n\tposition: relative;\n\tmargin-left: 10em;\n\theight: 100%;\n}\n.ResumeBriefPanel>div[data-v-4677c113]:nth-child(1){\n\theight: 6em;\n\tbackground-color: white;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n}\n.ResumeBriefPanel>div[data-v-4677c113]:nth-child(2){\n\theight: 4em;\n\tbackground-color: #ffffee;\n\tpadding: 10px;\n\tbox-sizing: border-box;\n}\n.companyName[data-v-4677c113]{\n\tfont-size: 16pt;\n\tmargin: 10px;\n}\n.companyInfoBrief[data-v-4677c113]{\n\tfont-size: 12pt;\n\tmargin: 10px;\n}\n.resumeInfoItem[data-v-4677c113]{\n\tborder-left: 1px solid #dfdfdf;\n\tfloat: left;\n\twidth: 10em;\n\theight: 100%;\n\tmargin-left: 5px;\n\tmargin-right: 5px;\n\tcolor: #666;\n\tbox-sizing: border-box;\n}\n.resumeInfoItem[data-v-4677c113]:nth-child(1){\n\tborder-left: none;\n}\n#PostCard[data-v-4677c113]\n{\n\tfont-size: 14px;\n}\n.PostCard-info[data-v-4677c113]\n{\n\tmargin-bottom: 0.5em;\n\theight: 3em;\n\twidth: 100%;\n   \tbackground-color:#f1f4f6;\n   \tpadding: 1em;\n   \tbox-sizing: border-box;\n}\n", ""]);
 
 // exports
 
@@ -21762,7 +21785,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n{\n\ttransition: all 0.5s;/*0.5s的时间内变化*/\n}\nh1[data-v-569417bf]    /*标题属性，暂且就设置了一个颜色，大小为h1*/\n{\n\tcolor:white;\n}\n*[data-v-569417bf]{\n\t\ttransition: 0.5s all;\n}\n#RecommendColumn[data-v-569417bf]/*recommend这个最大的块的属性*/\n{\n\t/*background-color: #33bb93;*/\n\tbackground-color: orange;\n\twidth: 100%;\n\tbox-sizing: border-box;\n\tborder: 1px solid orange;\n\toverflow-x: hidden;\n\toverflow-y: auto;\n}\n#RecommendColumn > div[data-v-569417bf]/*几个小机器人放在一个盒子里面，这个盒子的属性*/\n{\n\t/*background-color: #33bb93;*/\n\tbackground-color: orange;\n}\n#RecommendColumn > div >div[data-v-569417bf]/*几个小机器人的模块属性*/\n{\n\t/*background-color: #ccffee;*/\n\tbackground-color: #ffddbb;\n\tvertical-align:top;\n\tmargin:1.6em;\n\twidth: 9em;\n\theight: 13em;\n\tpadding:0.5em;\n\toverflow: hidden;\n}\n.RecommendColumn-info[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 100%;\n}\n.RecommendColumn-detail[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 0%;\n}\n#RecommendColumn > div > div:hover > .RecommendColumn-info[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 0;\n\t/*background-color: black;*/\n}\n#RecommendColumn > div > div:hover > .RecommendColumn-detail[data-v-569417bf]{\n\tmax-height: 100%;\n}\n#RecommendColumn > div > div[data-v-569417bf]:hover/*鼠标放在机器人上面显示出的盒子的块属性*/\n{\n\tbackground-color: white;\n\twidth: 9.6em;\n\theight: 13.6em;\n\tmargin: 1em;\n}\n#RecommendColumn img[data-v-569417bf]/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/\n{\n\twidth: 9em;\n\theight: 9em;\n\tpadding-top: 0.5em;\n\tpadding-bottom: 0.5em;\n\tbackground-position: center;\n\tbackground-size: 100% 100%;\n\tbackground-repeat: no-repeat;\n}\n#RecommendColumn button[data-v-569417bf]/*按钮属性*/\n{\n\tposition: relative;\n\theight: 3em;\n\twidth: 6em;\n\tborder: none;\n\tbackground-color: #33bb93;\n}\n#RecommendColumn span[data-v-569417bf]/*span块内字体大小*/\n{\n\tfont-size: 10pt;\n}\n.RecommendColumn-detail > div[data-v-569417bf]/*小机器人后面的盒子的属性*/\n{\n\twidth: 9em;\n\theight: 7.5em;\n\tpadding-top: 3em;\n}\n", ""]);
+exports.push([module.i, "\n{\n\ttransition: all 0.5s;/*0.5s的时间内变化*/\n}\nh1[data-v-569417bf]    /*标题属性，暂且就设置了一个颜色，大小为h1*/\n{\n\tcolor:white;\n}\n*[data-v-569417bf]{\n\t\ttransition: 0.5s all;\n}\n#RecommendColumn[data-v-569417bf]/*recommend这个最大的块的属性*/\n{\n\t/*background-color: #33bb93;*/\n\tborder-radius: 10px;\n\tbackground-color: orange;\n\twidth: 100%;\n\tbox-sizing: border-box;\n\t/*border: 1px solid orange;*/\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\toverflow-x: hidden;\n\toverflow-y: auto;\n}\n#RecommendColumn > div[data-v-569417bf]/*几个小机器人放在一个盒子里面，这个盒子的属性*/\n{\n\t/*background-color: #33bb93;*/\n\tbackground-color: orange;\n}\n#RecommendColumn > div >div[data-v-569417bf]/*几个小机器人的模块属性*/\n{\n\t/*background-color: #ccffee;*/\n\tbackground-color: #ffddbb;\n\tvertical-align:top;\n\tmargin:1.6em;\n\twidth: 9em;\n\theight: 13em;\n\tpadding:0.5em;\n\toverflow: hidden;\n}\n.RecommendColumn-info[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 100%;\n}\n.RecommendColumn-detail[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 0%;\n}\n#RecommendColumn > div > div:hover > .RecommendColumn-info[data-v-569417bf]{\n\toverflow: hidden;\n\tmax-height: 0;\n\t/*background-color: black;*/\n}\n#RecommendColumn > div > div:hover > .RecommendColumn-detail[data-v-569417bf]{\n\tmax-height: 100%;\n}\n#RecommendColumn > div > div[data-v-569417bf]:hover/*鼠标放在机器人上面显示出的盒子的块属性*/\n{\n\tbackground-color: white;\n\twidth: 9.6em;\n\theight: 13.6em;\n\tmargin: 1em;\n}\n#RecommendColumn img[data-v-569417bf]/*小机器人图片属性，一个模块框框放进去图片，padding也就是图片和框框的边距*/\n{\n\twidth: 9em;\n\theight: 9em;\n\tpadding-top: 0.5em;\n\tpadding-bottom: 0.5em;\n\tbackground-position: center;\n\tbackground-size: 100% 100%;\n\tbackground-repeat: no-repeat;\n}\n#RecommendColumn button[data-v-569417bf]/*按钮属性*/\n{\n\tposition: relative;\n\theight: 3em;\n\twidth: 6em;\n\tborder: none;\n\tbackground-color: #33bb93;\n}\n#RecommendColumn span[data-v-569417bf]/*span块内字体大小*/\n{\n\tfont-size: 10pt;\n}\n.RecommendColumn-detail > div[data-v-569417bf]/*小机器人后面的盒子的属性*/\n{\n\twidth: 9em;\n\theight: 7.5em;\n\tpadding-top: 3em;\n}\n", ""]);
 
 // exports
 
@@ -21776,7 +21799,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#LoginBox[data-v-5c3bc1e5]\n{\n\toverflow: hidden;\n\twidth: 70em;\n\tmax-height: 27.5em;\n\tfont-size: 14px;\n\tborder: 1px solid #d3d3d3;\n\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\ttop: 0;\n\tbottom: 0;\n\tmargin:auto auto;\n\ttransition: all 0.6s;\n}\n#LoginBox.register[data-v-5c3bc1e5]{\n\tmax-height: 32em;\n}\n.LoginBox-info[data-v-5c3bc1e5]\n{\n\theight: 100%;\n\twidth: 100%;\n\tpadding: 2em;\n\tbox-sizing:border-box;\n}\n.LoginBox-info >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 60%;\n\tbackground-color: white;\n\tfloat: left;\n}\nspan[data-v-5c3bc1e5]\n{\n\tfont-size: 24px;\n\tfloat: left;\n\tfont-family: \"Hiragino Sans GB\";\n}\n.paslog[data-v-5c3bc1e5]\n{\n\twidth: 50%;\n\theight: 2em;\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\tcolor: #00b38a;\n\ttransition: color 0.5s;\n}\n.paslog[data-v-5c3bc1e5]:hover\n{\n\tcolor: #00b38a;\n}\n.sign[data-v-5c3bc1e5]:hover\n{\n\tcolor: #00b38a;\n}\n.gosign[data-v-5c3bc1e5]:hover\n{\n\tborder-bottom: 1px solid #00b38a;\n}\n.sign[data-v-5c3bc1e5]\n{\n\twidth: 50%;\n\theight: 2em;\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\ttransition: color 0.5s;\n}\n.triangle-up[data-v-5c3bc1e5] { \n    position: absolute;\n    width:0;\n    height:0;\n    border-width:0 12px 12px;\n    border-style:solid;\n    border-color:transparent transparent #00b38a;\n    margin-left: -6px ;\n    left:25%;\n    bottom: 0px;\n    transition:left 0.5s;\n}\n.LoginBox-info >div:nth-child(1) >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 18em;\n\tfont-size: 20px;\n\tposition: relative;\n\toverflow: hidden;\n\tborder-bottom: 1px solid #00b38a;\n}\n.form-input[data-v-5c3bc1e5]{\n\tposition: relative;\n\twidth: 70%;\n}\n.form-input > input[data-v-5c3bc1e5]\n{\n\toutline: none;\n\tborder: none;\n\twidth: 18em;\n\tborder-bottom:1px solid #d3d3d3;\n\tmargin-top: 1em;\n\theight: 1.5em;\n\toutline: none;\n\tfont-size: 20px;\n\tfont-family: 'MingLiU'\n}\n.forget[data-v-5c3bc1e5]\n{\n\tcolor: #00b38a;\n\tfont-size: 18px;\n\tfloat: right;\n\tmargin-right: 2em;\n\twidth: 10em;\n}\nbutton[data-v-5c3bc1e5]\n{\n\twidth: 16em;\n\theight: 2.5em;\n\tborder-radius: 5px;\n\tfont-size: 24px;\n\tletter-spacing: 8px;\n\tfont-family: \"Hiragino Sans GB\";\n\tbackground: #00b38a;\n\tborder: none;\n\tcolor: white;\n}\n.LoginBox-info >div[data-v-5c3bc1e5]:nth-child(2)\n{\n\tbackground-color: white;\n\theight: 35em;\n\tfloat: left;\n\tdisplay: inline-block;\n\twidth: 40%;\n}\n.LoginBox-info >div:nth-child(2) >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 100%;\n\tfloat: left;\n\tmargin-top: 5em;\n\tmargin-left: 2em;\n\tfont-family: \"Hiragino Sans GB\";\n\tfont-size: 22px;\n}\n.LoginBox-info >div:nth-child(2) >div[data-v-5c3bc1e5]:nth-child(2)\n{\n\twidth: 100%;\n\theight: 5em;\n\tfloat: left;\n\tmargin-left: 2.5em;\n\tfont-family: \"Hiragino Sans GB\";\n\tcolor:#00b38a;\n    font-size: 18px;\n}\nimg[data-v-5c3bc1e5]\n{\n\theight: 2.5em;\n\tfloat: left;\n\tmargin-top: -0.5em;\n}\n.gosign[data-v-5c3bc1e5]\n{\n\tfont-size: 22px;\n}\n", ""]);
+exports.push([module.i, "\n#loginPanel[data-v-5c3bc1e5]{\n\twidth: 40%;\n\theight: 100%;\n\tposition: absolute;\n\tright: 0;\n\ttop: 0;\n\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n}\n#LoginBox[data-v-5c3bc1e5]\n{\n\toverflow: hidden;\n\twidth: 70em;\n\tmax-height: 27.5em;\n\tfont-size: 14px;\n\t/*border: 1px solid #d3d3d3;*/\n\tborder-radius: 10px;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tposition: absolute;\n\tleft: 0;\n\tright: 0;\n\ttop: 0;\n\tbottom: 0;\n\tmargin:auto auto;\n\ttransition: all 0.6s;\n}\n#LoginBox.register[data-v-5c3bc1e5]{\n\tmax-height: 32em;\n}\n.LoginBox-info[data-v-5c3bc1e5]\n{\n\theight: 100%;\n\twidth: 100%;\n\tpadding: 2em;\n\tbox-sizing:border-box;\n}\n.LoginBox-info >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 60%;\n\tbackground-color: white;\n\tfloat: left;\n}\nspan[data-v-5c3bc1e5]\n{\n\tfont-size: 24px;\n\tfloat: left;\n\tfont-family: \"Hiragino Sans GB\";\n}\n.paslog[data-v-5c3bc1e5]\n{\n\twidth: 50%;\n\theight: 2em;\n\tline-height:2em;\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\tcolor: orange;\n\ttransition: color 0.5s;\n}\n.paslog[data-v-5c3bc1e5]:hover\n{\n\tcolor: orange;\n}\n.sign[data-v-5c3bc1e5]:hover\n{\n\tcolor: orange;\n}\n.gosign[data-v-5c3bc1e5]:hover\n{\n\tborder-bottom: 1px solid orange;\n}\n.sign[data-v-5c3bc1e5]\n{\n\twidth: 50%;\n\theight: 2em;\n\tline-height:2em;\n\n\tfloat: left;\n\tfont-size: 24px;\n\tfont-family:'\\65B9\\6B63\\5170\\4EAD\\8D85\\7EC6\\9ED1\\7B80\\4F53';\n\ttext-align: center;\n\ttransition: color 0.5s;\n}\n.triangle-up[data-v-5c3bc1e5] { \n    position: absolute;\n    width:0;\n    height:0;\n    border-width:0 12px 12px;\n    border-style:solid;\n    border-color:transparent transparent orange;\n    margin-left: -6px ;\n    left:25%;\n    bottom: 0px;\n    transition:left 0.5s;\n}\n.LoginBox-info >div:nth-child(1) >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 18em;\n\tfont-size: 20px;\n\tposition: relative;\n\toverflow: hidden;\n\tborder-bottom: 1px solid orange;\n}\n.form-input[data-v-5c3bc1e5]{\n\tposition: relative;\n\twidth: 70%;\n}\n.form-input > input[data-v-5c3bc1e5]\n{\n\toutline: none;\n\tborder: none;\n\twidth: 18em;\n\tborder-bottom:1px solid #d3d3d3;\n\tmargin-top: 1em;\n\theight: 1.5em;\n\toutline: none;\n\tfont-size: 20px;\n\tfont-family: 'MingLiU'\n}\n.forget[data-v-5c3bc1e5]\n{\n\tcolor: orange;\n\tfont-size: 18px;\n\tfloat: right;\n\tmargin-right: 2em;\n\twidth: 10em;\n}\nbutton[data-v-5c3bc1e5]\n{\n\twidth: 16em;\n\theight: 2.5em;\n\tborder-radius: 5px;\n\tfont-size: 24px;\n\tletter-spacing: 8px;\n\tfont-family: \"Hiragino Sans GB\";\n\tbackground: orange;\n\tborder: none;\n\tcolor: white;\n}\n.LoginBox-info >div[data-v-5c3bc1e5]:nth-child(2)\n{\n\tbackground-color: white;\n\theight: 35em;\n\tfloat: left;\n\tdisplay: inline-block;\n\twidth: 40%;\n}\n.LoginBox-info >div:nth-child(2) >div[data-v-5c3bc1e5]:nth-child(1)\n{\n\twidth: 100%;\n\tfloat: left;\n\tmargin-top: 5em;\n\tmargin-left: 2em;\n\tfont-family: \"Hiragino Sans GB\";\n\tfont-size: 22px;\n}\n.LoginBox-info >div:nth-child(2) >div[data-v-5c3bc1e5]:nth-child(2)\n{\n\twidth: 100%;\n\theight: 5em;\n\tfloat: left;\n\tmargin-left: 2.5em;\n\tfont-family: \"Hiragino Sans GB\";\n\tcolor:orange;\n    font-size: 18px;\n}\nimg[data-v-5c3bc1e5]\n{\n\theight: 2.5em;\n\tfloat: left;\n\tmargin-top: -0.5em;\n}\n.gosign[data-v-5c3bc1e5]\n{\n\tfont-size: 22px;\n}\n", ""]);
 
 // exports
 
@@ -21790,7 +21813,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n#map[data-v-65509432]{\n\theight: 400px;\n}\n.add-btn[data-v-65509432]{\n\tdisplay:block;\n\tline-height: 3em;\n\twidth: 8em;\n\theight: 3em;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-65509432]{\n\tcolor:#00b38a;\n\tbackground-color: white;\n\tborder:none;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-65509432]:hover{\n\tcolor:white;\n\tbackground-color: #00b38a;\n\tborder:none;\n}\n.container[data-v-65509432]{\n\tpadding:0;\n}\n.CompanyIntro[data-v-65509432]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-65509432]{\n\tfloat: left;\n\twidth: 60%;\n}\n.right-panel[data-v-65509432]{\n\tfloat: left;\n\twidth: 40%;\n\tmargin:0;\n\tposition: relative;\n}\n.send-pr-btn[data-v-65509432]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\n.icon[data-v-65509432]\n{\n    width: 15px;\n    height: 15px;\n    display: inline-block;\n    vertical-align: text-top;\n    margin-top: -1px;\n}\n", ""]);
+exports.push([module.i, "\n#map[data-v-65509432]{\n\theight: 400px;\n}\n.add-btn[data-v-65509432]{\n\tdisplay:block;\n\tline-height: 3em;\n\twidth: 8em;\n\theight: 3em;\n\tborder-radius: 10px;\n}\n.btn-green[data-v-65509432]{\n\tcolor:orange;\n\tbackground-color: white;\n\tborder:none;\n\ttransition:all 0.6s;\n}\n.btn-green[data-v-65509432]:hover{\n\tcolor:white;\n\tbackground-color: orange;\n\tborder:none;\n}\n.container[data-v-65509432]{\n\tpadding:0;\n}\n.CompanyIntro[data-v-65509432]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-65509432]{\n\tfloat: left;\n\twidth: 60%;\n}\n.right-panel[data-v-65509432]{\n\tfloat: left;\n\twidth: 40%;\n\tmargin:0;\n\tposition: relative;\n}\n.send-pr-btn[data-v-65509432]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: orange;\n\tcolor: white;\n}\n.icon[data-v-65509432]\n{\n    width: 15px;\n    height: 15px;\n    display: inline-block;\n    vertical-align: text-top;\n    margin-top: -1px;\n}\n", ""]);
 
 // exports
 
@@ -21804,7 +21827,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.PositionCard-info[data-v-68e049c8]{\n\tcursor: pointer;\n\tbox-sizing:border-box;\n\twidth: 100%;\n\t/*border:1px solid #dfdfdf;*/\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tmargin-top:0.5em;\n\tmargin-bottom: 0.5em;\n\tpadding: 1em;\n\theight: 8em;\n\toverflow: hidden;\n\ttransition: all 0.6s;\n}\n.del-btn[data-v-68e049c8]{\n\tborder:none;\n\tposition: absolute;\n\twidth: 8em;\n\theight: 3em;\n\tfont-size: 14px;\n\tborder-radius: 10px;\n\tmargin:auto auto;\n\tleft: 0;\n\tright: 0;\n\ttop: 0;\n\tbottom: 0;\n}\n.btn-red[data-v-68e049c8]{\n\ttransition: all 0.6s;\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-68e049c8]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.PositionCard-info[data-v-68e049c8]:hover{\n\t/*border:1px solid #00b38a;*/\n\tposition: relative;\n\tbox-shadow: 1px 1px 5px 1px #00b38a;\n}\n.position-panel[data-v-68e049c8]{\n\tdisplay: inline-block;\n\twidth: 60%;\n\tvertical-align: top;\n}\nh4[data-v-68e049c8]{\n\tmargin: 0.5em;\n\tcolor: #55aaaa;\n\tfont-weight: bold;\n}\n.salary[data-v-68e049c8]{\n\tcolor: orange;\n}\n.middle[data-v-68e049c8]{\n\toverflow: hidden;\n}\n.footer[data-v-68e049c8]{\n\toverflow: hidden;\n}\n.company-panel[data-v-68e049c8]{\n\tdisplay: inline-block;\n\tposition: relative;\n\theight: 100%;\n\twidth: 40%;\n\tvertical-align: top;\n}\n.feedback[data-v-68e049c8]{\n\tmargin-top: 0.5em;\n}\nspan[data-v-68e049c8]{\n\tpadding-left:0.5em;\n\tpadding-right:0.5em;\n\n\tfloat: left;\n\tdisplay: inline-block;\n\twidth: auto;\n\tborder-right: 1px solid #dfdfdf;\n}\n\n", ""]);
+exports.push([module.i, "\n.PositionCard-info[data-v-68e049c8]{\n\tcursor: pointer;\n\tbox-sizing:border-box;\n\twidth: 100%;\n\t/*border:1px solid #dfdfdf;*/\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tmargin-top:0.5em;\n\tmargin-bottom: 0.5em;\n\tpadding: 1em;\n\theight: 8em;\n\toverflow: hidden;\n\ttransition: all 0.6s;\n}\n.del-btn[data-v-68e049c8]{\n\tborder:none;\n\tposition: absolute;\n\twidth: 8em;\n\theight: 3em;\n\tfont-size: 14px;\n\tborder-radius: 10px;\n\tmargin:auto auto;\n\tleft: 0;\n\tright: 0;\n\ttop: 0;\n\tbottom: 0;\n}\n.btn-red[data-v-68e049c8]{\n\ttransition: all 0.6s;\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-68e049c8]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.PositionCard-info[data-v-68e049c8]:hover{\n\t/*border:1px solid orange;*/\n\tposition: relative;\n\tbox-shadow: 1px 1px 5px 1px orange;\n}\n.position-panel[data-v-68e049c8]{\n\tdisplay: inline-block;\n\twidth: 60%;\n\tvertical-align: top;\n}\nh4[data-v-68e049c8]{\n\tmargin: 0.5em;\n\tcolor: #eeaaaa;\n\tfont-weight: bold;\n}\n.salary[data-v-68e049c8]{\n\tcolor: orange;\n}\n.middle[data-v-68e049c8]{\n\toverflow: hidden;\n}\n.footer[data-v-68e049c8]{\n\toverflow: hidden;\n}\n.company-panel[data-v-68e049c8]{\n\tdisplay: inline-block;\n\tposition: relative;\n\theight: 100%;\n\twidth: 40%;\n\tvertical-align: top;\n}\n.feedback[data-v-68e049c8]{\n\tmargin-top: 0.5em;\n}\nspan[data-v-68e049c8]{\n\tpadding-left:0.5em;\n\tpadding-right:0.5em;\n\n\tfloat: left;\n\tdisplay: inline-block;\n\twidth: auto;\n\tborder-right: 1px solid #dfdfdf;\n}\n\n", ""]);
 
 // exports
 
@@ -21818,7 +21841,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: color,background-color 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 100%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 75%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tposition: fixed;\n\tmargin-top: 83px;\n\twidth: calc(940px * 0.23);\n\tright: calc( ( 100% - 940px ) / 2  );\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tz-index: 98;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\tz-index: 99;\n\tposition: relative;\n\twidth: 100%;\n\tbackground-color: white;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: color,background-color 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: orange;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: orange;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 100%;\n\tborder-radius: 10px;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: orange;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tcolor: white;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tborder-radius: 10px;\n\tbackground-color: orange;\n\tborder:1px solid #dfdfdf;\n\tcolor: white;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.PR-fact[data-v-70d34b36]{\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\toverflow: hidden;\n\tborder-radius: 10px;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 75%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: orange;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\t/*border:1px solid #dfdfdf;*/\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:orange;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tposition: fixed;\n\tmargin-top: 83px;\n\twidth: calc(940px * 0.23);\n\tright: calc( ( 100% - 940px ) / 2  );\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tz-index: 98;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid orange;\n\tmargin-top: 20px;\n\tz-index: 99;\n\tposition: relative;\n\twidth: 100%;\n\tbackground-color: white;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: orange;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
 
 // exports
 
@@ -21874,7 +21897,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n.Searcher[data-v-e01b31d0]{\n\tfont-size: 10pt;\n\tmax-width: 960px;\n\twidth: 100%;\n\tbox-sizing:border-box;\n\tbackground-color: #fffff6;\n\tborder:1px solid #dfdfdf;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.Searcher >div> input[data-v-e01b31d0] {\n\tmargin:-1px;\n\twidth: 80%;\n\tfloat: left;\n\tborder: 1px solid #efefef;\n\theight: 2em;\n\tpadding: 0;\n\tfont-size: 18px;\n}\n.Searcher >div> button[data-v-e01b31d0]{\n\tpadding:0;\n\theight: 2em;\n\twidth: 20%;\n\tfloat: left;\n\tfont-size: 18px;\n\tbackground-color: orange;\n\tcolor: white;\n\tborder: none;\n}\nspan[data-v-e01b31d0]{\n\tdisplay: inline-block;\n\twidth: 6em;\n\theight: 1em;\n\tmargin: 0.3em;\n\tpadding: 0.2em;\n}\na.active[data-v-e01b31d0]{\n\tcolor: #fff;\n\tbackground-color: #33bb93;\n}\na[data-v-e01b31d0]{\n\theight: 1em;\n\tfont-size: 10pt;\n\tline-height: 1em;\n\tdisplay: inline-block;\n\tmargin: 0.2em;\n\tpadding: 0.3em;\n\tcolor: #333;\n\ttext-decoration: none;\n\ttransition: all 0.3s;\n}\n", ""]);
+exports.push([module.i, "\n.Searcher[data-v-e01b31d0]{\n\tfont-size: 10pt;\n\tmax-width: 960px;\n\twidth: 100%;\n\tbox-sizing:border-box;\n\tbackground-color: #fffff6;\n\t/*border:1px solid #dfdfdf;*/\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.Searcher >div> input[data-v-e01b31d0] {\n\tmargin:-1px;\n\twidth: 80%;\n\tfloat: left;\n\tborder: 1px solid #efefef;\n\theight: 2em;\n\tpadding: 0;\n\tfont-size: 18px;\n}\n.Searcher >div> button[data-v-e01b31d0]{\n\tpadding:0;\n\theight: 2em;\n\twidth: 20%;\n\tfloat: left;\n\tfont-size: 18px;\n\tbackground-color: orange;\n\tcolor: white;\n\tborder: none;\n}\nspan[data-v-e01b31d0]{\n\tdisplay: inline-block;\n\twidth: 6em;\n\theight: 1em;\n\tmargin: 0.3em;\n\tpadding: 0.2em;\n}\na.active[data-v-e01b31d0]{\n\tcolor: #fff;\n\tbackground-color: #33bb93;\n}\na[data-v-e01b31d0]{\n\theight: 1em;\n\tfont-size: 10pt;\n\tline-height: 1em;\n\tdisplay: inline-block;\n\tmargin: 0.2em;\n\tpadding: 0.3em;\n\tcolor: #333;\n\ttext-decoration: none;\n\ttransition: all 0.3s;\n}\n", ""]);
 
 // exports
 
@@ -24351,36 +24374,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.password = $event.target.value
       }
     }
-  })]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
-    staticClass: "btn-group"
-  }, [(_vm.trianglePos == 0) ? _c('button', {
-    attrs: {
-      "align": "center"
-    },
-    on: {
-      "click": function($event) {
-        _vm.login()
-      }
-    }
-  }, [_vm._v("登录")]) : _vm._e(), _vm._v(" "), (_vm.trianglePos == 1) ? _c('button', {
-    attrs: {
-      "align": "center"
-    },
-    on: {
-      "click": function($event) {
-        _vm.register()
-      }
-    }
-  }, [_vm._v("注册")]) : _vm._e()])]), _vm._v(" "), _c('div', [_c('div', {
-    attrs: {
-      "align": "center"
-    }
-  }, [_c('span', [_vm._v("招聘更多人才？")]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('img', {
-    attrs: {
-      "src": '' + _vm.imgurl
-    }
-  }), _vm._v(" "), _c('span', {
-    staticClass: "gosign"
+  })]), _vm._v(" "), _c('div', [_c('span', {
+    staticClass: "forget"
   }, [_c('input', {
     directives: [{
       name: "model",
@@ -24388,6 +24383,10 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       value: (_vm.isHR),
       expression: "isHR"
     }],
+    staticStyle: {
+      "width": "20px",
+      "height": "20px:color"
+    },
     attrs: {
       "type": "checkbox"
     },
@@ -24412,7 +24411,34 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }
-  }), _vm._v("我是hr")])])])])])
+  }), _vm._v("我是hr")])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+    staticClass: "btn-group"
+  }, [(_vm.trianglePos == 0) ? _c('button', {
+    attrs: {
+      "align": "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.login()
+      }
+    }
+  }, [_vm._v("登录")]) : _vm._e(), _vm._v(" "), (_vm.trianglePos == 1) ? _c('button', {
+    attrs: {
+      "align": "center"
+    },
+    on: {
+      "click": function($event) {
+        _vm.register()
+      }
+    }
+  }, [_vm._v("注册")]) : _vm._e()]), _vm._v(" "), _c('div', {
+    style: ({
+      backgroundImage: 'url(./src/img/loginbg.png)'
+    }),
+    attrs: {
+      "id": "loginPanel"
+    }
+  })])])])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
@@ -24464,6 +24490,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": {
         name: 'EditPosition',
         query: {
+          id: _vm.idMsg,
           positionName: ''
         }
       }
@@ -24565,6 +24592,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "align": "center"
     }
+  }, [_c('div', {
+    staticClass: "PR-fact"
   }, [_c('div', {
     staticClass: "PR-head"
   }), _vm._v(" "), _c('div', {
@@ -25273,7 +25302,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/pencil.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.editBtnText) + "\n\t\t\t\t")]) : _vm._e()], 2)]), _vm._v(" "), _c('div', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.editBtnText) + "\n\t\t\t\t")]) : _vm._e()], 2)])]), _vm._v(" "), _c('div', {
     staticClass: "right-panel",
     style: ({
       top: _vm.scrollTop + 'px'

@@ -68,10 +68,10 @@
 
 .btn-green{
 	background-color: inherit;
-	color:#00b38a;
+	color:orange;
 }
 .btn-green:hover{
-	background-color: #00b38a;
+	background-color: orange;
 	color:white;
 }
 .btn-red{

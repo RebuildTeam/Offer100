@@ -1,7 +1,7 @@
 <template>
 	<div id="DeliveryBox">
 		<Navbar v-bind:caller="caller"></Navbar>
-		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
+		<div id="offer-100-label" align="left" class="container"><router-link :to="{name:'Index',query:{id:idMsg}}"><strong>Offer 100</strong></router-link></div>
 		<div class="container">
 			<ResumeFilter v-bind:caller="caller"></ResumeFilter>
 		</div>

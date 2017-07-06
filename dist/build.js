@@ -19352,7 +19352,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'HRNavbar',
-	props: ['id', 'username', 'companyName', 'caller'],
+	props: ['caller'],
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
@@ -20828,6 +20828,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'PostCard',
@@ -20837,6 +20839,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: ""
 		};
+	},
+	methods: {
+		replyPR: function (usn, pst, val) {
+			var jsonObj = {
+				id: this.idMsg,
+				companyName: this.nameMsg,
+				username: usn,
+				positionName: pst,
+				reply: val,
+				comment: "暂无处理意见"
+			};
+			$.ajax({
+				url: './src/api/replyResume',
+				data: JSON.stringify(jsonObj),
+				dataType: 'json',
+				type: 'post',
+				success: result => {
+					if (result.code == 0) {
+						alert("反馈成功");
+						window.location.reload();
+					} else {
+						alert("反馈失败");
+					}
+				},
+				error: function (result, msg, error) {
+					console.log(result, msg, error);
+				}
+			});
+		}
 	},
 	created: function () {
 		this.nameMsg = window.localStorage.getItem(this.idMsg);
@@ -21043,7 +21074,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: "",
 			chosenItem: '全部',
-			filterList: [{ label: "全部" }, { label: "已投递" }, { label: "已审阅" }, { label: "通过" }],
+			filterList: [{ label: "全部" }, { label: "已投递" }, { label: "已审阅" }, { label: "通过" }, { label: "未通过" }],
 			PostCardListMsg: []
 		};
 	},
@@ -21129,7 +21160,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
-			applicantName: this.$router.currentRoute.query.applicantName,
+			username: this.$router.currentRoute.query.username,
 			nameMsg: "",
 			caller: "",
 			PRDetailMsg: {}
@@ -21143,7 +21174,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		initPRData: function () {
 			var jsonObj = {
 				'id': this.idMsg,
-				'username': this.applicantName
+				'username': this.username
 			};
 			$.ajax({
 				url: './src/api/getResume',
@@ -21241,7 +21272,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_CompanyBrief_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__component_CompanyBrief_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue__);
-//
 //
 //
 //
@@ -23139,6 +23169,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "to": {
         name: 'Company',
         query: {
+          id: _vm.idMsg,
           companyName: _vm.positionDetail.companyName
         }
       }
@@ -23250,7 +23281,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('CompanyBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('CompanyBrief', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
@@ -23261,14 +23307,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23351,20 +23390,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('EditCompanyPanel', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('EditCompanyPanel', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23447,7 +23494,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v("\n\t" + _vm._s(_vm.nameMsg) + "\n\t"), _vm._m(0), _vm._v(" "), _c('CompanyBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('CompanyBrief', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
@@ -23458,14 +23520,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23910,7 +23965,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('PR', {
     attrs: {
@@ -23918,14 +23988,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23947,7 +24010,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('PR', {
     attrs: {
@@ -23955,14 +24033,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23984,21 +24055,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('ResumeFilter', {
     attrs: {
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24074,21 +24153,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('ResumeFilter', {
     attrs: {
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24110,20 +24197,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('EditPositionPanel', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('EditPositionPanel', {
     attrs: {
       "positionDetail": _vm.positionDetailMsg,
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24145,7 +24240,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('h1', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('h1', {
     attrs: {
       "id": "recommend-label",
       "align": "center"
@@ -24159,14 +24269,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24550,7 +24653,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('PositionBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('PositionBrief', {
     attrs: {
       "positionDetail": _vm.positionDetailMsg,
       "caller": _vm.caller
@@ -24561,14 +24679,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24795,7 +24906,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           name: 'ApplicantResume',
           query: {
             id: _vm.idMsg,
-            applicantName: item.resume.applicantName
+            username: item.username
           }
         }
       }
@@ -24817,21 +24928,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_c('div', [_vm._v(_vm._s(item.resume.email))]), _vm._v(" "), _c('div', [_vm._v("个人邮箱")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'hr') ? _c('div', {
+    }, [_c('div', [_vm._v(_vm._s(item.resume.email))]), _vm._v(" "), _c('div', [_vm._v("个人邮箱")])]) : _vm._e(), _vm._v(" "), (item.status != '通过' && item.status != '未通过') ? _c('span', [(_vm.caller == 'hr') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
       }
     }, [_c('button', {
-      staticClass: "reply-btn btn-green"
+      staticClass: "reply-btn btn-green",
+      on: {
+        "click": function($event) {
+          _vm.replyPR(item.username, item.positionName, '0')
+        }
+      }
     }, [_vm._v("通过")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'hr') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
       }
     }, [_c('button', {
-      staticClass: "reply-btn btn-red"
-    }, [_vm._v("不合适")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('div', {
+      staticClass: "reply-btn btn-red",
+      on: {
+        "click": function($event) {
+          _vm.replyPR(item.username, item.positionName, '-1')
+        }
+      }
+    }, [_vm._v("不合适")])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
@@ -24886,13 +25007,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "salary"
     }, [_vm._v(_vm._s(item.salary))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.city))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.requiredEducation))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.requiredExperience))])]), _vm._v(" "), _c('div', {
       staticClass: "feedback"
-    }, [_c('span', [_vm._v(_vm._s(item.releaseTime))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.positionType))])])])]), ((item.companyName != _vm.urlCompanyName) && (item.companyName != _vm.storagedCompanyName)) ? _c('div', {
+    }, [_c('span', [_vm._v(_vm._s(item.releaseTime))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.positionType))])])])]), ((item.companyName != _vm.urlCompanyName) && (_vm.caller == 'applicant')) ? _c('div', {
       staticClass: "company-panel"
     }, [_c('div', [_c('p', [_vm._v(_vm._s(item.companyName))])]), _vm._v(" "), _c('div', {
       attrs: {
         "align": "left"
       }
-    }, [_c('p', [_vm._v("\n\t\t\t    \t\t\t\t" + _vm._s(item.officeHour) + "\n\t\t\t    \t\t\t")])])]) : _vm._e(), (_vm.storagedCompanyName != '' && _vm.storagedCompanyName != null) ? _c('div', {
+    }, [_c('p', [_vm._v("\n\t\t\t    \t\t\t\t" + _vm._s(item.officeHour) + "\n\t\t\t    \t\t\t")])])]) : _vm._e(), (_vm.caller == 'hr') ? _c('div', {
       staticClass: "company-panel"
     }, [_c('button', {
       staticClass: "btn-red del-btn",
@@ -24943,7 +25064,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }), _vm._v(" "), _c('div', {
     staticClass: "PR-content"
-  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRInfo.applicantName))]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(_vm.PRInfo.introduce))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRInfo.applicantName))]), _vm._v(" "), (_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(_vm.PRInfo.introduce))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24972,14 +25093,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": './src/img/school.png'
       }
     }), _vm._v("\n\t\t\t\t\t\t" + _vm._s(item.major) + _vm._s(item.experience) + "-" + _vm._s(item.college) + "\n\t\t\t\t\t")])])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+  }), _vm._v(" "), (_vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
   }, [_c('img', {
     staticClass: "icon",
     attrs: {
       "src": './src/img/user.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.gender) + "," + _vm._s(_vm.PRInfo.province) + "省／直辖市," + _vm._s(_vm.PRInfo.city) + "市")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.gender) + "," + _vm._s(_vm.PRInfo.province) + "省／直辖市," + _vm._s(_vm.PRInfo.city) + "市")]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24999,7 +25120,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.gender = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25019,7 +25140,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.province = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25039,7 +25160,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.city = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
   }, [_c('img', {
     staticClass: "icon",
@@ -25051,7 +25172,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/email.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.email) + "\n\t\t\t\t")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.email) + "\n\t\t\t\t")]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25071,7 +25192,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.telephone = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25100,9 +25221,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', {
+    }, [(_vm.editable == false) ? _c('h4', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.college))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.college))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25121,11 +25242,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.college = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25144,7 +25265,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.experience = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25163,7 +25284,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.major = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25182,7 +25303,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25205,7 +25326,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -25213,7 +25334,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -25229,7 +25350,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.companyName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.companyName))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25248,9 +25369,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.companyName = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.position))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.position))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25269,9 +25390,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.position = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25290,7 +25411,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25309,9 +25430,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.endTime = $event.target.value
         }
       }
-    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e()]), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.mainWork))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+    }, [_vm._v(_vm._s(item.mainWork))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('textarea', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25335,7 +25456,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -25343,7 +25464,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -25359,7 +25480,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.projectName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.projectName))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25378,9 +25499,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.projectName = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.responsibility))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.responsibility))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25399,9 +25520,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.responsibility = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25420,7 +25541,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25439,9 +25560,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.endTime = $event.target.value
         }
       }
-    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e()]), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.projectDescribe))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+    }, [_vm._v(_vm._s(item.projectDescribe))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('textarea', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25465,7 +25586,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -25473,7 +25594,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -25486,7 +25607,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("个人期望")]), _vm._v(" "), _c('p', {
     staticClass: "secondary-info"
-  }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_c('img', {
+  }, [(_vm.editable == false) ? _c('span', [_c('span', [_c('img', {
     staticClass: "icon",
     attrs: {
       "src": './src/img/tie.png'
@@ -25501,7 +25622,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/money.png'
     }
-  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectSalary) + "\n\t\t\t\t\t\t\t")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectSalary) + "\n\t\t\t\t\t\t\t")])]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25521,7 +25642,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.expectPosition = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25541,7 +25662,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.expectCity = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25571,7 +25692,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('span', [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25590,7 +25711,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.skill = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25613,7 +25734,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -25621,7 +25742,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()])])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {

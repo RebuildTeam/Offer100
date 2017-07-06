@@ -1,7 +1,7 @@
 <template>
 	<div id="Index">
 		<Navbar v-bind:caller="caller"></Navbar>
-		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
+		<div id="offer-100-label" align="left" class="container"><router-link :to="{name:'Index',query:{id:idMsg}}"><strong>Offer 100</strong></router-link></div>
 <div id="myCarousel" class="carousel slide">
   	<ol class="carousel-indicators">
   	  	<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
@@ -58,7 +58,7 @@ import RecommendColumn from '../component/RecommendColumn.vue'
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
-				usernameMsg:window.localStorage.getItem(this.idMsg),
+				nameMsg:"",
 				caller:"",
 			}
 		},

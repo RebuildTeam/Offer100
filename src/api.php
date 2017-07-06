@@ -19,6 +19,7 @@ $path = array(
 	'sendResume' => 'PositionManager.php',
 	'getResumeList' => 'ApplyManager.php',
 	'replyResume' => 'ApplyManager.php',
+	'uploadImg' => 'uploadImg.php',
 	// 'getResume' => 'ApplyManager.php',
 	);
 

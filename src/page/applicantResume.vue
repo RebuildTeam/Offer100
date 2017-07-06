@@ -1,7 +1,7 @@
 <template>
 	<div id="ApplicantResume">
 		<HRNavbar v-bind:caller="caller"></HRNavbar>
-		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
+		<div id="offer-100-label" align="left" class="container"><router-link :to="{name:'CompanyManagement',query:{id:idMsg}}"><strong>Offer 100</strong></router-link></div>
 		<div class="container">
 			<PR v-bind:PRDetail="PRDetailMsg" v-bind:caller="caller"></PR>
 		</div>
@@ -19,7 +19,7 @@ import PR from '../component/PR.vue'
 		data(){
 			return{
 				idMsg:this.$router.currentRoute.query.id,
-				applicantName:this.$router.currentRoute.query.applicantName,
+				username:this.$router.currentRoute.query.username,
 				nameMsg:"",
 				caller:"",
 				PRDetailMsg:{}
@@ -33,7 +33,7 @@ import PR from '../component/PR.vue'
 			initPRData:function(){
 				var jsonObj={
 					'id':this.idMsg,
-					'username':this.applicantName,
+					'username':this.username,
 				};
 				$.ajax({
 					url:'./src/api/getResume',

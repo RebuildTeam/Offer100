@@ -4,7 +4,6 @@ import App from './App.vue'
 import routes from './routes.js'
 import AMap from 'vue-amap';
 
-
 Vue.use(VueRouter)
 Vue.use(AMap);
 

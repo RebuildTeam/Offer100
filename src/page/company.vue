@@ -1,7 +1,7 @@
 <template>
 	<div id="Company">
 		<Navbar v-bind:caller="caller"></Navbar>
-		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
+		<div id="offer-100-label" align="left" class="container"><router-link :to="{name:'Index',query:{id:idMsg}}"><strong>Offer 100</strong></router-link></div>
 		<CompanyBrief v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyBrief>
 		<CompanyIntro v-bind:companyDetail="companyDetailMsg" v-bind:caller="caller"></CompanyIntro>
 	</div>

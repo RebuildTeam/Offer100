@@ -12,7 +12,7 @@
 			<div>
 			<span>{{item.intro}}</span>
 			</div>
-			<button>Enter</button>
+			<router-link :to="{name:'Company',query:{id:idMsg,companyName:item.companyName}}"><button>Enter</button></router-link>
 		</div>
 
 	</div>
@@ -117,11 +117,11 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			recommendList:[
-				{label:"To Manage health data more convenient",imgurl:"./src/img/droid.png",intro:"Focus on BigData field, devoted to product the health device and software",hover:false},
-				{label:"Mobile internet video platform",imgurl:"./src/img/droid.png",intro:"Established on 2012, try to take the best experence for global users",hover:false},
-				{label:"Make people more healthy and happy",imgurl:"./src/img/droid.png",intro:"Change the world. Make the money",hover:false},
-				{label:"Help Chinese cartoonists",imgurl:"./src/img/droid.png",intro:"Located on GuangZhou",hover:false},
-				{label:"Record life like movie",imgurl:"./src/img/droid.png",intro:"An application for sharing pictures and videos",hover:false}]
+				{label:"To Manage health data more convenient",imgurl:"./src/img/droid.png",intro:"Focus on BigData field, devoted to product the health device and software",hover:false,companyName:"欧德蒙"},
+				{label:"Mobile internet video platform",imgurl:"./src/img/droid.png",intro:"Established on 2012, try to take the best experence for global users",hover:false,companyName:"欧德蒙"},
+				{label:"Make people more healthy and happy",imgurl:"./src/img/droid.png",intro:"Change the world. Make the money",hover:false,companyName:"欧德蒙"},
+				{label:"Help Chinese cartoonists",imgurl:"./src/img/droid.png",intro:"Located on GuangZhou",hover:false,companyName:"欧德蒙"},
+				{label:"Record life like movie",imgurl:"./src/img/droid.png",intro:"An application for sharing pictures and videos",hover:false,companyName:"欧德蒙"}]
 		}
 	},
 	created:function(){

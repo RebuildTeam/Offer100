@@ -9,7 +9,7 @@
 					</div>
 				<div class="ResumeBriefPanel" align="left">
 		 			<div v-if="caller=='hr'">
-						<router-link :to="{name:'ApplicantResume',query:{id:idMsg,applicantName:item.resume.applicantName}}">
+						<router-link :to="{name:'ApplicantResume',query:{ id:idMsg , username:item.username }}">
 							<p class="companyName">{{item.resume.applicantName}}</p>
 						</router-link>
 						<p class="companyInfoBrief">投递岗位:{{item.positionName}}
@@ -32,12 +32,14 @@
 							<div>{{item.resume.email}}</div>
 							<div>个人邮箱</div>
 						</div>
-						<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
-							<button class="reply-btn btn-green">通过</button>
-						</div>
-						<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
-							<button class="reply-btn btn-red">不合适</button>
-						</div>
+						<span v-if="item.status!='通过'&&item.status!='未通过'">
+							<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
+								<button class="reply-btn btn-green" v-on:click="replyPR(item.username,item.positionName,'0')">通过</button>
+							</div>
+							<div class="resumeInfoItem"  v-if="caller=='hr'" align="center">
+								<button class="reply-btn btn-red" v-on:click="replyPR(item.username,item.positionName,'-1')">不合适</button>
+							</div>
+						</span>
 						<div class="resumeInfoItem" v-if="caller=='applicant'" align="center">
 							<div>{{item.status}}</div>
 							<div>简历状态</div>
@@ -155,6 +157,35 @@ export default{
 		return{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
+		}
+	},
+	methods:{
+		replyPR:function(usn,pst,val){
+			var jsonObj={
+				id:this.idMsg,
+				companyName:this.nameMsg,
+				username:usn,
+				positionName:pst,
+				reply:val,
+				comment:"暂无处理意见",
+			}
+			$.ajax({
+					url:'./src/api/replyResume',
+					data:JSON.stringify(jsonObj),
+					dataType:'json',
+					type:'post',
+					success:(result)=>{
+						if(result.code==0){
+							alert("反馈成功");
+							window.location.reload();
+						}else{
+							alert("反馈失败");
+						}
+					},
+					error:function(result,msg,error){
+						console.log(result,msg,error);
+					}
+				})
 		}
 	},
 	created:function(){

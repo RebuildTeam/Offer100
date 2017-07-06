@@ -19009,7 +19009,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'HRNavbar',
-	props: ['id', 'username', 'companyName', 'caller'],
+	props: ['caller'],
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
@@ -19028,6 +19028,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+//
 //
 //
 //
@@ -19405,7 +19406,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: "",
-			navList: [{ label: "消息", url: "#" }, { label: "我的简历", url: "PersonalResume" }, { label: "投递箱", url: "DeliveryBox" }]
+			navList: [{ label: "我的简历", url: "PersonalResume" }, { label: "投递箱", url: "DeliveryBox" }]
 		};
 	},
 	created: function () {
@@ -20485,6 +20486,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'PostCard',
@@ -20494,6 +20497,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: ""
 		};
+	},
+	methods: {
+		replyPR: function (usn, pst, val) {
+			var jsonObj = {
+				id: this.idMsg,
+				companyName: this.nameMsg,
+				username: usn,
+				positionName: pst,
+				reply: val,
+				comment: "暂无处理意见"
+			};
+			$.ajax({
+				url: './src/api/replyResume',
+				data: JSON.stringify(jsonObj),
+				dataType: 'json',
+				type: 'post',
+				success: result => {
+					if (result.code == 0) {
+						alert("反馈成功");
+						window.location.reload();
+					} else {
+						alert("反馈失败");
+					}
+				},
+				error: function (result, msg, error) {
+					console.log(result, msg, error);
+				}
+			});
+		}
 	},
 	created: function () {
 		this.nameMsg = window.localStorage.getItem(this.idMsg);
@@ -20617,7 +20649,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
 	name: 'RecommendColumn',
@@ -20626,7 +20657,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		return {
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: "",
-			recommendList: [{ label: "To Manage health data more convenient", imgurl: "./src/img/droid.png", intro: "Focus on BigData field, devoted to product the health device and software", hover: false }, { label: "Mobile internet video platform", imgurl: "./src/img/droid.png", intro: "Established on 2012, try to take the best experence for global users", hover: false }, { label: "Make people more healthy and happy", imgurl: "./src/img/droid.png", intro: "Change the world. Make the money", hover: false }, { label: "Help Chinese cartoonists", imgurl: "./src/img/droid.png", intro: "Located on GuangZhou", hover: false }, { label: "Record life like movie", imgurl: "./src/img/droid.png", intro: "An application for sharing pictures and videos", hover: false }]
+			recommendList: [{ label: "To Manage health data more convenient", imgurl: "./src/img/droid.png", intro: "Focus on BigData field, devoted to product the health device and software", hover: false, companyName: "欧德蒙" }, { label: "Mobile internet video platform", imgurl: "./src/img/droid.png", intro: "Established on 2012, try to take the best experence for global users", hover: false, companyName: "欧德蒙" }, { label: "Make people more healthy and happy", imgurl: "./src/img/droid.png", intro: "Change the world. Make the money", hover: false, companyName: "欧德蒙" }, { label: "Help Chinese cartoonists", imgurl: "./src/img/droid.png", intro: "Located on GuangZhou", hover: false, companyName: "欧德蒙" }, { label: "Record life like movie", imgurl: "./src/img/droid.png", intro: "An application for sharing pictures and videos", hover: false, companyName: "欧德蒙" }]
 		};
 	},
 	created: function () {
@@ -20701,7 +20732,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 			idMsg: this.$router.currentRoute.query.id,
 			nameMsg: "",
 			chosenItem: '全部',
-			filterList: [{ label: "全部" }, { label: "已投递" }, { label: "已审阅" }, { label: "通过" }],
+			filterList: [{ label: "全部" }, { label: "已投递" }, { label: "已审阅" }, { label: "通过" }, { label: "未通过" }],
 			PostCardListMsg: []
 		};
 	},
@@ -20908,7 +20939,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 	data() {
 		return {
 			idMsg: this.$router.currentRoute.query.id,
-			applicantName: this.$router.currentRoute.query.applicantName,
+			username: this.$router.currentRoute.query.username,
 			nameMsg: "",
 			caller: "",
 			PRDetailMsg: {}
@@ -20922,7 +20953,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 		initPRData: function () {
 			var jsonObj = {
 				'id': this.idMsg,
-				'username': this.applicantName
+				'username': this.username
 			};
 			$.ajax({
 				url: './src/api/getResume',
@@ -21020,7 +21051,6 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__component_CompanyBrief_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__component_CompanyBrief_vue__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__component_CompanyIntro_vue__);
-//
 //
 //
 //
@@ -21788,7 +21818,7 @@ exports = module.exports = __webpack_require__(1)(undefined);
 
 
 // module
-exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: color,background-color 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 45%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 75%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tposition: fixed;\n\tmargin-top: 83px;\n\twidth: calc(940px * 0.23);\n\tright: calc( ( 100% - 940px ) / 2  );\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tz-index: 98;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\tz-index: 99;\n\tposition: relative;\n\twidth: 100%;\n\tbackground-color: white;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
+exports.push([module.i, "\n*[data-v-70d34b36]{\n\ttransition: color,background-color 0.6s;\n}\n.icon[data-v-70d34b36]{\n\twidth: 14px;\n\theight: 14px;\n}\ninput[data-v-70d34b36]{\n\twidth: 80%;\n\tmargin-left: 10%;\n\tmargin-bottom: 20px;\n\theight: 2em;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder: none;\n\tborder-right: 10px;\n}\n.alignCenter[data-v-70d34b36]{\n\tmargin-left: 0;\n}\n.btn-operation[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 3em;\n\tborder: none;\n\tborder-radius: 10px;\n\ttransition:all 0.6s;\n}\n.btn-red[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #ff6666;\n}\n.btn-red[data-v-70d34b36]:hover{\n\tbackground-color: #ff6666;\n\tcolor: white;\n}\n.btn-blue[data-v-70d34b36]{\n\tbackground-color: inherit;\n\tcolor: #00b38a;\n}\n.btn-blue[data-v-70d34b36]:hover{\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\ntextarea[data-v-70d34b36]{\n\tresize:none;\n\twidth:80%;\n\tmargin-left: 10%;\n\tborder: none;\n\tbox-shadow: inset 1px 1px 5px 1px #dfdfdf;\n\tbackground-color: rgba(255,255,255,0.4);\n\tborder-right: 10px;\n}\n.delivery-btn[data-v-70d34b36]{\n\twidth: 100%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.msg-btn[data-v-70d34b36]{\n\twidth: 49%;\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tmargin-left: 2%;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n#edit-btn[data-v-70d34b36]{\n\twidth: 8em;\n\tbackground-color: #dfdfdf;\n\tborder:1px solid #dfdfdf;\n\tcolor: #999;\n\tbox-sizing: border-box;\n\tborder: none;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.primary-info[data-v-70d34b36]{\n\tfont-size: 16px;\n\tcolor:#333;\n}\n.secondary-info[data-v-70d34b36]{\n\tfont-size: 14px;\n\tcolor: #999;\n}\n.container[data-v-70d34b36]{\n\tpadding:0;\n}\n.PR[data-v-70d34b36]{\n\tfont-size: 10pt;\n\twidth: 100%;\n\tbackground-color: #fff;\n\tpadding: 0.5em;\n\toverflow: hidden;\n}\n.left-panel[data-v-70d34b36]{\n\tfloat: left;\n\twidth: 75%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tpadding: 20px;\n\tpadding-top: 0;\n\tbox-sizing: border-box;\n}\n.PR-head[data-v-70d34b36]{\n\tbackground-color: #00b38a;\n\theight: 10em;\n}\n.PR-photo[data-v-70d34b36]{\n\tborder-radius: 50%;\n\tbackground-size: 100% 100%;\n\tbackground-position: center;\n\twidth: 8em;\n\theight: 8em;\n\tbackground-color: white;\n\tmargin-top: -4em;\n\tmargin-bottom: -4em;\n\tposition: relative;\n\tz-index: 99;\n\tbox-shadow: 1px 1px 5px 1px #dfdfdf;\n}\n.PR-content[data-v-70d34b36]{\n\tbackground-color: #f6f6f6;\n\tborder:1px solid #dfdfdf;\n\tbox-sizing: border-box;\n\tpadding: 20px;\n\tbox-sizing: border-box;\n}\n.PR-quick-label>h3[data-v-70d34b36]{\n\ttransition:all 0.6s;\n\tfont-weight: lighter;\n}\n.PR-quick-label>h3[data-v-70d34b36]:hover{\n\tbackground-color:#666;\n\tfont-weight: lighter;\n\tcolor:white;\n}\n.right-panel[data-v-70d34b36]{\n\tposition: fixed;\n\tmargin-top: 83px;\n\twidth: calc(940px * 0.23);\n\tright: calc( ( 100% - 940px ) / 2  );\n}\n.panel-1[data-v-70d34b36]{\n\twidth: 100%;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\t/*padding: 20px;*/\n\tz-index: 98;\n\tposition: relative;\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.panel-2[data-v-70d34b36]{\n\tborder-left: 1px solid #dfdfdf;\n\tmargin-top: 20px;\n\tz-index: 99;\n\tposition: relative;\n\twidth: 100%;\n\tbackground-color: white;\n\t/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/\n\tbox-sizing: border-box;\n\tfont-size: 16px;\n}\n.send-pr-btn[data-v-70d34b36]{\n\twidth: 8em;\n\theight: 2.5em;\n\tfont-size: 1.5em;\n\tborder:none;\n\tborder-radius: 5px;\n\tbackground-color: #00b38a;\n\tcolor: white;\n}\nh3[data-v-70d34b36]{\n\tmargin:0;\n\tcolor: #666;\n}\n.icon[data-v-70d34b36]\n{\n    width: 16px;\n    height: 16px;\n    display: inline-block;\n}\n.companyInfoItem[data-v-70d34b36]{\n\tmargin-top: 20px;\n\tmargin-bottom: 20px;\n\tcolor: #666;\n}\n.companyTag[data-v-70d34b36]{\n\tmargin:6px;\n\twidth: 6em;\n\tbox-sizing: border-box;\n\tbackground-color: inherit;\n\tborder: 1px solid #bfbfbf;\n\tborder-radius: 10px;\n\tcolor:#bfbfbf;\n}\n", ""]);
 
 // exports
 
@@ -23147,20 +23177,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('EditPositionPanel', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('EditPositionPanel', {
     attrs: {
       "positionDetail": _vm.positionDetailMsg,
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23223,7 +23261,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('PositionBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('PositionBrief', {
     attrs: {
       "positionDetail": _vm.positionDetailMsg,
       "caller": _vm.caller
@@ -23234,14 +23287,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23263,7 +23309,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('PR', {
     attrs: {
@@ -23271,14 +23332,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23345,7 +23399,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('PR', {
     attrs: {
@@ -23353,14 +23422,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23478,21 +23540,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('ResumeFilter', {
     attrs: {
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -23861,7 +23931,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           name: 'ApplicantResume',
           query: {
             id: _vm.idMsg,
-            applicantName: item.resume.applicantName
+            username: item.username
           }
         }
       }
@@ -23883,21 +23953,31 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [_c('div', [_vm._v(_vm._s(item.resume.email))]), _vm._v(" "), _c('div', [_vm._v("个人邮箱")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'hr') ? _c('div', {
+    }, [_c('div', [_vm._v(_vm._s(item.resume.email))]), _vm._v(" "), _c('div', [_vm._v("个人邮箱")])]) : _vm._e(), _vm._v(" "), (item.status != '通过' && item.status != '未通过') ? _c('span', [(_vm.caller == 'hr') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
       }
     }, [_c('button', {
-      staticClass: "reply-btn btn-green"
+      staticClass: "reply-btn btn-green",
+      on: {
+        "click": function($event) {
+          _vm.replyPR(item.username, item.positionName, '0')
+        }
+      }
     }, [_vm._v("通过")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'hr') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
       }
     }, [_c('button', {
-      staticClass: "reply-btn btn-red"
-    }, [_vm._v("不合适")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('div', {
+      staticClass: "reply-btn btn-red",
+      on: {
+        "click": function($event) {
+          _vm.replyPR(item.username, item.positionName, '-1')
+        }
+      }
+    }, [_vm._v("不合适")])]) : _vm._e()]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant') ? _c('div', {
       staticClass: "resumeInfoItem",
       attrs: {
         "align": "center"
@@ -23931,12 +24011,27 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "carousel slide",
     attrs: {
       "id": "myCarousel"
     }
-  }, [_vm._m(1), _vm._v(" "), _c('div', {
+  }, [_vm._m(0), _vm._v(" "), _c('div', {
     staticClass: "carousel-inner"
   }, [_c('div', {
     staticClass: "active item",
@@ -23988,13 +24083,6 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   })], 1)])])], 1)
 },staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('ol', {
     staticClass: "carousel-indicators"
   }, [_c('li', {
@@ -24036,21 +24124,29 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('div', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('div', {
     staticClass: "container"
   }, [_c('ResumeFilter', {
     attrs: {
       "caller": _vm.caller
     }
   })], 1)], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24072,7 +24168,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('CompanyBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'Index',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('CompanyBrief', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
@@ -24083,14 +24194,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24118,7 +24222,17 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.label))])]), _vm._v(" "), _c('div', {
       staticClass: "RecommendColumn-detail"
-    }, [_c('div', [_c('span', [_vm._v(_vm._s(item.intro))])]), _vm._v(" "), _c('button', [_vm._v("Enter")])])])
+    }, [_c('div', [_c('span', [_vm._v(_vm._s(item.intro))])]), _vm._v(" "), _c('router-link', {
+      attrs: {
+        "to": {
+          name: 'Company',
+          query: {
+            id: _vm.idMsg,
+            companyName: item.companyName
+          }
+        }
+      }
+    }, [_c('button', [_vm._v("Enter")])])], 1)])
   }))])
 },staticRenderFns: []}
 module.exports.render._withStripped = true
@@ -24237,7 +24351,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.password = $event.target.value
       }
     }
-  })]), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
+  })]), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', {
     staticClass: "btn-group"
   }, [(_vm.trianglePos == 0) ? _c('button', {
     attrs: {
@@ -24299,11 +24413,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       }
     }
   }), _vm._v("我是hr")])])])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('span', {
-    staticClass: "forget"
-  }, [_vm._v("忘记密码？")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -24407,13 +24517,13 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       staticClass: "salary"
     }, [_vm._v(_vm._s(item.salary))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.city))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.requiredEducation))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.requiredExperience))])]), _vm._v(" "), _c('div', {
       staticClass: "feedback"
-    }, [_c('span', [_vm._v(_vm._s(item.releaseTime))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.positionType))])])])]), ((item.companyName != _vm.urlCompanyName) && (item.companyName != _vm.storagedCompanyName)) ? _c('div', {
+    }, [_c('span', [_vm._v(_vm._s(item.releaseTime))]), _vm._v(" "), _c('span', [_vm._v(_vm._s(item.positionType))])])])]), ((item.companyName != _vm.urlCompanyName) && (_vm.caller == 'applicant')) ? _c('div', {
       staticClass: "company-panel"
     }, [_c('div', [_c('p', [_vm._v(_vm._s(item.companyName))])]), _vm._v(" "), _c('div', {
       attrs: {
         "align": "left"
       }
-    }, [_c('p', [_vm._v("\n\t\t\t    \t\t\t\t" + _vm._s(item.officeHour) + "\n\t\t\t    \t\t\t")])])]) : _vm._e(), (_vm.storagedCompanyName != '' && _vm.storagedCompanyName != null) ? _c('div', {
+    }, [_c('p', [_vm._v("\n\t\t\t    \t\t\t\t" + _vm._s(item.officeHour) + "\n\t\t\t    \t\t\t")])])]) : _vm._e(), (_vm.caller == 'hr') ? _c('div', {
       staticClass: "company-panel"
     }, [_c('button', {
       staticClass: "btn-red del-btn",
@@ -24464,7 +24574,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     })
   }), _vm._v(" "), _c('div', {
     staticClass: "PR-content"
-  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRInfo.applicantName))]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(_vm.PRInfo.introduce))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }, [_c('br'), _c('br'), _c('br'), _vm._v(" "), _c('h3', [_vm._v(_vm._s(_vm.PRInfo.applicantName))]), _vm._v(" "), (_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(_vm.PRInfo.introduce))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24493,14 +24603,14 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         "src": './src/img/school.png'
       }
     }), _vm._v("\n\t\t\t\t\t\t" + _vm._s(item.major) + _vm._s(item.experience) + "-" + _vm._s(item.college) + "\n\t\t\t\t\t")])])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+  }), _vm._v(" "), (_vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
   }, [_c('img', {
     staticClass: "icon",
     attrs: {
       "src": './src/img/user.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.gender) + "," + _vm._s(_vm.PRInfo.province) + "省／直辖市," + _vm._s(_vm.PRInfo.city) + "市")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.gender) + "," + _vm._s(_vm.PRInfo.province) + "省／直辖市," + _vm._s(_vm.PRInfo.city) + "市")]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24520,7 +24630,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.gender = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24540,7 +24650,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.province = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24560,7 +24670,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.city = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
     staticClass: "secondary-info"
   }, [_c('img', {
     staticClass: "icon",
@@ -24572,7 +24682,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/email.png'
     }
-  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.email) + "\n\t\t\t\t")]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t" + _vm._s(_vm.PRInfo.email) + "\n\t\t\t\t")]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24592,7 +24702,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.telephone = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -24621,9 +24731,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', {
+    }, [(_vm.editable == false) ? _c('h4', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.college))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.college))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24642,11 +24752,11 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.college = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }, [_vm._v(_vm._s(item.experience) + "," + _vm._s(item.major))]) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24665,7 +24775,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.experience = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24684,7 +24794,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.major = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24703,7 +24813,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24726,7 +24836,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -24734,7 +24844,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -24750,7 +24860,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.companyName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.companyName))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24769,9 +24879,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.companyName = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.position))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.position))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24790,9 +24900,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.position = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24811,7 +24921,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24830,9 +24940,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.endTime = $event.target.value
         }
       }
-    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e()]), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.mainWork))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+    }, [_vm._v(_vm._s(item.mainWork))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('textarea', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24856,7 +24966,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -24864,7 +24974,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -24880,7 +24990,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.projectName))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('h4', [_vm._v(_vm._s(item.projectName))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24899,9 +25009,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.projectName = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "primary-info"
-    }, [_vm._v(_vm._s(item.responsibility))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.responsibility))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24920,9 +25030,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.responsibility = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', {
+    }) : _vm._e(), _vm._v(" "), _c('p', [(_vm.editable == false) ? _c('span', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [_vm._v(_vm._s(item.startTime) + "~" + _vm._s(item.endTime))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24941,7 +25051,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.startTime = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24960,9 +25070,9 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.endTime = $event.target.value
         }
       }
-    }) : _vm._e()]), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == false) ? _c('p', {
+    }) : _vm._e()]), _vm._v(" "), (_vm.editable == false) ? _c('p', {
       staticClass: "secondary-info"
-    }, [_vm._v(_vm._s(item.projectDescribe))]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('textarea', {
+    }, [_vm._v(_vm._s(item.projectDescribe))]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('textarea', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -24986,7 +25096,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -24994,7 +25104,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()]), _vm._v(" "), _c('br')])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -25007,7 +25117,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("个人期望")]), _vm._v(" "), _c('p', {
     staticClass: "secondary-info"
-  }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_c('img', {
+  }, [(_vm.editable == false) ? _c('span', [_c('span', [_c('img', {
     staticClass: "icon",
     attrs: {
       "src": './src/img/tie.png'
@@ -25022,7 +25132,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "src": './src/img/money.png'
     }
-  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectSalary) + "\n\t\t\t\t\t\t\t")])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }), _vm._v("\n\t\t\t\t\t\t\t" + _vm._s(_vm.PRInfo.expectSalary) + "\n\t\t\t\t\t\t\t")])]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25042,7 +25152,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.expectPosition = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25062,7 +25172,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         _vm.PRInfo.expectCity = $event.target.value
       }
     }
-  }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+  }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
     directives: [{
       name: "model",
       rawName: "v-model",
@@ -25092,7 +25202,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "left"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == false) ? _c('span', [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])]) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }, [(_vm.editable == false) ? _c('span', [_c('span', [_vm._v(_vm._s(item.skill))]), _vm._v("     "), _c('span', [_vm._v(_vm._s(item.mastery))])]) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25111,7 +25221,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
           item.skill = $event.target.value
         }
       }
-    }) : _vm._e(), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('input', {
+    }) : _vm._e(), _vm._v(" "), (_vm.editable == true) ? _c('input', {
       directives: [{
         name: "model",
         rawName: "v-model",
@@ -25134,7 +25244,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       attrs: {
         "align": "center"
       }
-    }, [(_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+    }, [(_vm.editable == true) ? _c('button', {
       staticClass: "btn-operation btn-red",
       on: {
         "click": function($event) {
@@ -25142,7 +25252,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
         }
       }
     }, [_vm._v("删除")]) : _vm._e()])])
-  }), _vm._v(" "), (_vm.caller == 'applicant' && _vm.editable == true) ? _c('button', {
+  }), _vm._v(" "), (_vm.editable == true) ? _c('button', {
     staticClass: "btn-operation btn-blue",
     on: {
       "click": function($event) {
@@ -25219,9 +25329,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     staticClass: "panel-1"
   }, [_c('button', {
     staticClass: "delivery-btn"
-  }, [_vm._v("投递箱")]), _c('button', {
-    staticClass: "msg-btn"
-  }, [_vm._v("消息")])])
+  }, [_vm._v("投递箱")])])
 }]}
 module.exports.render._withStripped = true
 if (false) {
@@ -25244,7 +25352,22 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v("\n\t" + _vm._s(_vm.nameMsg) + "\n\t"), _vm._m(0), _vm._v(" "), _c('CompanyBrief', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('CompanyBrief', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
@@ -25255,14 +25378,7 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -25346,20 +25462,28 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     attrs: {
       "caller": _vm.caller
     }
-  }), _vm._v(" "), _vm._m(0), _vm._v(" "), _c('EditCompanyPanel', {
+  }), _vm._v(" "), _c('div', {
+    staticClass: "container",
+    attrs: {
+      "id": "offer-100-label",
+      "align": "left"
+    }
+  }, [_c('router-link', {
+    attrs: {
+      "to": {
+        name: 'CompanyManagement',
+        query: {
+          id: _vm.idMsg
+        }
+      }
+    }
+  }, [_c('strong', [_vm._v("Offer 100")])])], 1), _vm._v(" "), _c('EditCompanyPanel', {
     attrs: {
       "companyDetail": _vm.companyDetailMsg,
       "caller": _vm.caller
     }
   })], 1)
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    attrs: {
-      "id": "offer-100-label",
-      "align": "left"
-    }
-  }, [_c('strong', [_vm._v("Offer 100")])])
-}]}
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
@@ -25458,7 +25582,8 @@ module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c
     }
   }, [_vm._v("寻找Offer")])])]), _vm._v(" "), _c('br'), _vm._v(" "), _c('div', [_c('PositionCard', {
     attrs: {
-      "positionCardList": _vm.positionCardListMsg
+      "positionCardList": _vm.positionCardListMsg,
+      "caller": _vm.caller
     }
   })], 1)])
 },staticRenderFns: []}

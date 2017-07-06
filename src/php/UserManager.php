@@ -71,7 +71,7 @@ require_once 'tools.php';
       $bulk = new MongoDB\Driver\BulkWrite;
       $resume = array();
       $resume['resumeName'] = "";
-      $resume['applicantName'] = "";
+      $resume['applicantName'] = $applicantName;
       $resume['introduce'] = "";
       $resume['gender'] = "";
       $resume['photo'] = "100001.png";
@@ -134,6 +134,7 @@ require_once 'tools.php';
         $code = 0;
         // $message = "success";
         $message = "注册成功";
+        $id = generateSession($username,"applicant");
       }
       else
       {
@@ -144,6 +145,8 @@ require_once 'tools.php';
     }
     $reArr['code'] = $code;
     $reArr['message'] = $message;
+    if(isset($id))
+      $reArr['id'] = $id;
     $obj = urldecode(json_encode($reArr));
     echo $obj;
   }

@@ -18,9 +18,10 @@
 	    	<input type="password" v-model="password" placeholder="请输入密码" />
 	    </div>
 		
-	    <div><!-- 忘记密码那个块 -->
+<!-- 	    <div>
 	    	<span class="forget">忘记密码？</span>
-	    </div>
+	    </div> -->
+	    <br>
 	    <br>
 	    <br>
 	    <br>

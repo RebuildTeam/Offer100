@@ -15,7 +15,7 @@
 			    			<span>{{item.releaseTime}}</span>
 			    			<span>{{item.positionType}}</span>			
 			    		</div>
-			    </div></router-link><div class="company-panel" v-if="(item.companyName!=urlCompanyName)&&(item.companyName!=storagedCompanyName)">
+			    </div></router-link><div class="company-panel" v-if="(item.companyName!=urlCompanyName)&&(caller=='applicant')">
 			    <!-- 这是右层div -->
 			    		<div><!-- 那个公司名称的div -->
 			    			<p>{{item.companyName}}</p>
@@ -25,7 +25,7 @@
 			    				{{item.officeHour}}
 			    			</p>
 			    		</div>
-			    </div><div class="company-panel" v-if="storagedCompanyName!=''&&storagedCompanyName!=null">
+			    </div><div class="company-panel" v-if="caller=='hr'">
 			    		<button class="btn-red del-btn" v-on:click="deletePosition(item.positionName)">删除</button>
 			    </div>
 

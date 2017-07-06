@@ -36,7 +36,6 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			navList:[
-				{label:"消息",url:"#"},
 				{label:"我的简历",url:"PersonalResume"},
 				{label:"投递箱",url:"DeliveryBox"}]
 		}

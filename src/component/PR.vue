@@ -9,93 +9,93 @@
 			<div class="PR-content">
 				<br><br><br>
 				<h3>{{PRInfo.applicantName}}</h3>
-				<h4 v-if="caller=='applicant'&&editable==false">{{PRInfo.introduce}}</h4>
-				<input class="alignCenter" v-model="PRInfo.introduce" v-if="caller=='applicant'&&editable==true" placeholder="一句话介绍自己" />
+				<h4 v-if="editable==false">{{PRInfo.introduce}}</h4>
+				<input class="alignCenter" v-model="PRInfo.introduce" v-if="editable==true" placeholder="一句话介绍自己" />
 				<div v-for="item in PRInfo.educationExperience">
 					<p class="secondary-info">
 						<img class="icon" v-bind:src="'./src/img/school.png'">
 						{{item.major}}{{item.experience}}-{{item.college}}
 					</p>
 				</div>
-				<p v-if="caller=='applicant'&&editable==false" class="secondary-info">
+				<p v-if="editable==false" class="secondary-info">
 					<img class="icon" v-bind:src="'./src/img/user.png'">
 					{{PRInfo.gender}},{{PRInfo.province}}省／直辖市,{{PRInfo.city}}市</p>
-				<input class="alignCenter" v-model="PRInfo.gender" v-if="caller=='applicant'&&editable==true" placeholder="性别" />
-				<input class="alignCenter" v-model="PRInfo.province" v-if="caller=='applicant'&&editable==true" placeholder="省／直辖市" />
-				<input class="alignCenter" v-model="PRInfo.city" v-if="caller=='applicant'&&editable==true" placeholder="地级市" />
+				<input class="alignCenter" v-model="PRInfo.gender" v-if="editable==true" placeholder="性别" />
+				<input class="alignCenter" v-model="PRInfo.province" v-if="editable==true" placeholder="省／直辖市" />
+				<input class="alignCenter" v-model="PRInfo.city" v-if="editable==true" placeholder="地级市" />
 
-				<p v-if="caller=='applicant'&&editable==false" class="secondary-info">
+				<p v-if="editable==false" class="secondary-info">
 					<img class="icon" v-bind:src="'./src/img/phone.png'">
 					{{PRInfo.telephone}}
 					<img class="icon" v-bind:src="'./src/img/email.png'">
 					{{PRInfo.email}}
 				</p>
-				<input class="alignCenter" v-model="PRInfo.telephone" v-if="caller=='applicant'&&editable==true" placeholder="联系电话" />
-				<input class="alignCenter" v-model="PRInfo.email" v-if="caller=='applicant'&&editable==true" placeholder="邮箱"/>
+				<input class="alignCenter" v-model="PRInfo.telephone" v-if="editable==true" placeholder="联系电话" />
+				<input class="alignCenter" v-model="PRInfo.email" v-if="editable==true" placeholder="邮箱"/>
 
 				<hr>
 				<h3 id="educationExperience">教育经历</h3>
 				<div v-for="(item,index) in PRInfo.educationExperience" align="left">
-					<h4 v-if="caller=='applicant'&&editable==false" class="primary-info">{{item.college}}</h4>
-					<input v-model="item.college" v-if="caller=='applicant'&&editable==true" placeholder="院校"/>
+					<h4 v-if="editable==false" class="primary-info">{{item.college}}</h4>
+					<input v-model="item.college" v-if="editable==true" placeholder="院校"/>
 
 					<p>
-						<span v-if="caller=='applicant'&&editable==false" class="secondary-info">{{item.experience}},{{item.major}}</span>
+						<span v-if="editable==false" class="secondary-info">{{item.experience}},{{item.major}}</span>
 
-						<span v-if="caller=='applicant'&&editable==false" class="secondary-info">{{item.startTime}}~{{item.endTime}}</span>
-						<input v-model="item.experience" v-if="caller=='applicant'&&editable==true" placeholder="学历"/>
-						<input v-model="item.major" v-if="caller=='applicant'&&editable==true" placeholder="专业"/>
-						<input v-model="item.startTime" v-if="caller=='applicant'&&editable==true" placeholder="起始时间"/>
-						<input v-model="item.endTime" v-if="caller=='applicant'&&editable==true" placeholder="毕业时间" />
+						<span v-if="editable==false" class="secondary-info">{{item.startTime}}~{{item.endTime}}</span>
+						<input v-model="item.experience" v-if="editable==true" placeholder="学历"/>
+						<input v-model="item.major" v-if="editable==true" placeholder="专业"/>
+						<input v-model="item.startTime" v-if="editable==true" placeholder="起始时间"/>
+						<input v-model="item.endTime" v-if="editable==true" placeholder="毕业时间" />
 					</p>
-					<div align="center"><button class="btn-operation btn-red" v-if="caller=='applicant'&&editable==true" v-on:click="deleteExperienceByIndex('educationExperience',index)">删除</button></div>
+					<div align="center"><button class="btn-operation btn-red" v-if="editable==true" v-on:click="deleteExperienceByIndex('educationExperience',index)">删除</button></div>
 					<br>
 				</div>
-				<button class="btn-operation btn-blue" v-if="caller=='applicant'&&editable==true" v-on:click="addNewExperience('educationExperience')">新增教育经历</button>
+				<button class="btn-operation btn-blue" v-if="editable==true" v-on:click="addNewExperience('educationExperience')">新增教育经历</button>
 				<hr>
 				<h3 id="internshipExperience">实习经历</h3>
 				<div v-for="(item,index) in PRInfo.internshipExperience" align="left">
-					<h4 v-if="caller=='applicant'&&editable==false">{{item.companyName}}</h4>
-					<input v-model="item.companyName" v-if="caller=='applicant'&&editable==true" placeholder="实习单位名称"/>
+					<h4 v-if="editable==false">{{item.companyName}}</h4>
+					<input v-model="item.companyName" v-if="editable==true" placeholder="实习单位名称"/>
 
-					<p v-if="caller=='applicant'&&editable==false" class="primary-info">{{item.position}}</p>
-					<input v-model="item.position" v-if="caller=='applicant'&&editable==true" placeholder="职位"/>
+					<p v-if="editable==false" class="primary-info">{{item.position}}</p>
+					<input v-model="item.position" v-if="editable==true" placeholder="职位"/>
 					<p>
-						<span class="secondary-info" v-if="caller=='applicant'&&editable==false">{{item.startTime}}~{{item.endTime}}</span>
-						<input v-model="item.startTime" v-if="caller=='applicant'&&editable==true" placeholder="起始时间"/>
-						<input v-model="item.endTime" v-if="caller=='applicant'&&editable==true" placeholder="结束时间"/>
+						<span class="secondary-info" v-if="editable==false">{{item.startTime}}~{{item.endTime}}</span>
+						<input v-model="item.startTime" v-if="editable==true" placeholder="起始时间"/>
+						<input v-model="item.endTime" v-if="editable==true" placeholder="结束时间"/>
 					</p>
-					<p v-if="caller=='applicant'&&editable==false" class="secondary-info">{{item.mainWork}}</p>
-						<textarea v-model="item.mainWork" v-if="caller=='applicant'&&editable==true" rows="10" placeholder="实习内容描述"></textarea> 
-					<div align="center"><button class="btn-operation btn-red" v-if="caller=='applicant'&&editable==true" v-on:click="deleteExperienceByIndex('internshipExperience',index)">删除</button></div>
+					<p v-if="editable==false" class="secondary-info">{{item.mainWork}}</p>
+						<textarea v-model="item.mainWork" v-if="editable==true" rows="10" placeholder="实习内容描述"></textarea> 
+					<div align="center"><button class="btn-operation btn-red" v-if="editable==true" v-on:click="deleteExperienceByIndex('internshipExperience',index)">删除</button></div>
 					<br>
 				</div>
-				<button class="btn-operation btn-blue" v-if="caller=='applicant'&&editable==true" v-on:click="addNewExperience('internshipExperience')">新增实习经历</button>
+				<button class="btn-operation btn-blue" v-if="editable==true" v-on:click="addNewExperience('internshipExperience')">新增实习经历</button>
 				<hr>
 				<h3 id="projectExperience">项目经历</h3>
 				<div v-for="(item,index) in PRInfo.projectExperience" align="left">
-					<h4 v-if="caller=='applicant'&&editable==false">{{item.projectName}}</h4>
-					<input v-model="item.projectName" v-if="caller=='applicant'&&editable==true" placeholder="项目名称"/>
+					<h4 v-if="editable==false">{{item.projectName}}</h4>
+					<input v-model="item.projectName" v-if="editable==true" placeholder="项目名称"/>
 
-					<p v-if="caller=='applicant'&&editable==false"  class="primary-info">{{item.responsibility}}</p>
-					<input v-model="item.responsibility" v-if="caller=='applicant'&&editable==true" placeholder="职责"/>
+					<p v-if="editable==false"  class="primary-info">{{item.responsibility}}</p>
+					<input v-model="item.responsibility" v-if="editable==true" placeholder="职责"/>
 
 					<p>
-						<span v-if="caller=='applicant'&&editable==false" class="secondary-info">{{item.startTime}}~{{item.endTime}}</span>
-						<input v-model="item.startTime" v-if="caller=='applicant'&&editable==true" placeholder="起始时间"/>
-						<input v-model="item.endTime" v-if="caller=='applicant'&&editable==true" placeholder="结束时间"/>
+						<span v-if="editable==false" class="secondary-info">{{item.startTime}}~{{item.endTime}}</span>
+						<input v-model="item.startTime" v-if="editable==true" placeholder="起始时间"/>
+						<input v-model="item.endTime" v-if="editable==true" placeholder="结束时间"/>
 					</p>
-					<p v-if="caller=='applicant'&&editable==false" class="secondary-info">{{item.projectDescribe}}</p>
-					<textarea v-model="item.projectDescribe" v-if="caller=='applicant'&&editable==true"  rows="10" placeholder="项目内容描述"></textarea> 
-					<div align="center"><button class="btn-operation btn-red" v-if="caller=='applicant'&&editable==true" v-on:click="deleteExperienceByIndex('projectExperience',index)">删除</button></div>
+					<p v-if="editable==false" class="secondary-info">{{item.projectDescribe}}</p>
+					<textarea v-model="item.projectDescribe" v-if="editable==true"  rows="10" placeholder="项目内容描述"></textarea> 
+					<div align="center"><button class="btn-operation btn-red" v-if="editable==true" v-on:click="deleteExperienceByIndex('projectExperience',index)">删除</button></div>
 
 					<br>
 				</div>
-				<button class="btn-operation btn-blue" v-if="caller=='applicant'&&editable==true" v-on:click="addNewExperience('projectExperience')">新增项目经历</button>
+				<button class="btn-operation btn-blue" v-if="editable==true" v-on:click="addNewExperience('projectExperience')">新增项目经历</button>
 				<hr>
 				<h3 id="personalExpectation">个人期望</h3>
 				<p class="secondary-info">
-					<span v-if="caller=='applicant'&&editable==false">
+					<span v-if="editable==false">
 						<span >
 							<img class="icon" v-bind:src="'./src/img/tie.png'">
 							{{PRInfo.expectPosition}}
@@ -111,22 +111,22 @@
 							{{PRInfo.expectSalary}}
 							</span>
 					</span>
-						<input class="alignCenter" v-model="PRInfo.expectPosition" v-if="caller=='applicant'&&editable==true" placeholder="期望岗位"/>
-						<input class="alignCenter" v-model="PRInfo.expectCity" v-if="caller=='applicant'&&editable==true" placeholder="期望城市"/>
-						<input class="alignCenter" v-model="PRInfo.expectSalary" v-if="caller=='applicant'&&editable==true" placeholder="期望薪资"/>
+						<input class="alignCenter" v-model="PRInfo.expectPosition" v-if="editable==true" placeholder="期望岗位"/>
+						<input class="alignCenter" v-model="PRInfo.expectCity" v-if="editable==true" placeholder="期望城市"/>
+						<input class="alignCenter" v-model="PRInfo.expectSalary" v-if="editable==true" placeholder="期望薪资"/>
 
 				</p>
 				<hr>
 				<h3 id="skillExperience">技能评价</h3>
 				<div v-for="(item,index) in PRInfo.skillExperience" align="left" class="secondary-info">
-					<span  v-if="caller=='applicant'&&editable==false">
+					<span  v-if="editable==false">
 						<span>{{item.skill}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>{{item.mastery}}</span>
 					</span>
-					<input v-model="item.skill" v-if="caller=='applicant'&&editable==true" placeholder="技能名称"/>
-					<input v-model="item.mastery" v-if="caller=='applicant'&&editable==true" placeholder="自我评价(A,B,C,D 或 精通，掌握，熟悉，了解)"/>
-					<div align="center"><button class="btn-operation btn-red" v-if="caller=='applicant'&&editable==true" v-on:click="deleteExperienceByIndex('skillExperience',index)">删除</button></div>
+					<input v-model="item.skill" v-if="editable==true" placeholder="技能名称"/>
+					<input v-model="item.mastery" v-if="editable==true" placeholder="自我评价(A,B,C,D 或 精通，掌握，熟悉，了解)"/>
+					<div align="center"><button class="btn-operation btn-red" v-if="editable==true" v-on:click="deleteExperienceByIndex('skillExperience',index)">删除</button></div>
 				</div>
-				<button class="btn-operation btn-blue" v-if="caller=='applicant'&&editable==true" v-on:click="addNewExperience('skillExperience')">新增技能评价</button>
+				<button class="btn-operation btn-blue" v-if="editable==true" v-on:click="addNewExperience('skillExperience')">新增技能评价</button>
 				<hr v-if="caller=='applicant'">
 				<button v-if="caller=='applicant'" id="edit-btn" v-on:click="editable=!editable">
 					<img class="icon" v-bind:src="'./src/img/pencil.png'">
@@ -137,7 +137,7 @@
 		</div>
 		<div class="right-panel" id="right-panel" v-bind:style="{top:scrollTop+'px'}" align="left">
 			<div class="panel-1">
-				<button class="delivery-btn">投递箱</button><button class="msg-btn">消息</button>
+				<button class="delivery-btn">投递箱</button>
 			</div>
 			<div class="panel-2 PR-quick-label" align="center">
 				<br>
@@ -215,7 +215,7 @@ textarea{
 	border-right: 10px;
 }
 .delivery-btn{
-	width: 45%;
+	width: 100%;
 	background-color: #f6f6f6;
 	border:1px solid #dfdfdf;
 	box-sizing: border-box;

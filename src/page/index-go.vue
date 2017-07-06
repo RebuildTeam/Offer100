@@ -1,7 +1,7 @@
 <template>
 	<div id="Index">
 		<Navbar v-bind:caller="caller"></Navbar>
-		<div id="offer-100-label" align="left"><strong>Offer 100</strong></div>
+		<div id="offer-100-label" align="left" class="container"><router-link :to="{name:'Index',query:{id:idMsg}}"><strong>Offer 100</strong></router-link></div>
 		<h1  id="recommend-label" align="center">Recommend</h1>
 		<RecommendRow v-bind:caller="caller"></RecommendRow>
 		<br><br>

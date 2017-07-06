@@ -57,7 +57,7 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			chosenItem:'全部',
-			filterList:[{label:"全部"},{label:"已投递"},{label:"已审阅"},{label:"通过"}],	
+			filterList:[{label:"全部"},{label:"已投递"},{label:"已审阅"},{label:"通过"},{label:"未通过"}],
 			PostCardListMsg:[]
 		}
 	},

@@ -19,14 +19,24 @@ require_once 'tools.php';
   function replyResume($jsonS)
   {
     $arr = json_decode($jsonS,true);
+    $id = $arr['id'];
     $companyName = $arr['companyName'];
     $username = $arr['username'];
     $positionName = $arr['positionName'];
     $reply = $arr['reply'];
     $comment = $arr['comment'];
     //validate whether the user is a hr
-    if($_SESSION["$id"]['caller']!='hr')
+    // if($_SESSION["$id"]['caller']!='hr')
+    // {
+    //   echo "wrong";
+    //   return;
+    // }
+    if($_SESSION["$id"]['companyName']!=$companyName)
+    {
+      echo "wrong".$_SESSION["$id"]['companyName'];
       return;
+    }
+      // return;
     replyResumeF($companyName,$username,$positionName,$reply,$comment,$id);
   }
 
@@ -64,7 +74,7 @@ require_once 'tools.php';
             for($j = 0;$j <$applicantNum;$j++)
             {
               $pArr['status'] = $positionArr[$i]['applicant'][$j]['status'];
-              $pArr['applicant'] = $positionArr[$i]['applicant'][$j]['username'];
+              $pArr['username'] = $positionArr[$i]['applicant'][$j]['username'];
               $pArr['resume'] = getPR($positionArr[$i]['applicant'][$j]['username']);
               array_push($prList,$pArr);
             }
@@ -78,7 +88,7 @@ require_once 'tools.php';
               {
                 //array_push($newApplicantArr,$positionArr[$i]['applicant'][$j]);
                 $pArr['status'] = $positionArr[$i]['applicant'][$j]['status'];
-                $pArr['applicant'] = $positionArr[$i]['applicant'][$j]['username'];
+                $pArr['username'] = $positionArr[$i]['applicant'][$j]['username'];
                 $pArr['resume'] = getPR($positionArr[$i]['applicant'][$j]['username']);
                 array_push($prList,$pArr);
               }
@@ -124,65 +134,70 @@ require_once 'tools.php';
       for($i = 0;$i < $positionNum;$i++)
       {
         $applicantNum = count($positionArr[$i]['applicant']);
-        for($j = 0;$j <$applicantNum;$j++)
+        if($positionArr[$i]['positionName'] == $positionName)
         {
-          if($positionArr[$i]['applicant'][$j]['username'] == $username)
+          for($j = 0;$j <$applicantNum;$j++)
           {
-            $nowStatus = nextStatus($positionArr[$i]['applicant'][$j]['status'],$reply);
-            $positionArr[$i]['applicant'][$j]['status'] =$nowStatus;
-            //$positionArr[$i]['applicant'][$j]['status'] = nextStatus($positionArr[$i]['applicant'][$j]['status'],$reply);
-            //上面还没完
-            $manager = Manager::getManager();
-            $filter = ['username' => $username];
-            $options = [
-              'projection' => ['_id' => 0],
-            ];
-            $query = new MongoDB\Driver\Query($filter,$options);
-            $cursor = $manager->executeQuery("test.user", $query);
-            foreach($cursor as $document)
+            if($positionArr[$i]['applicant'][$j]['username'] == $username)
             {
-              $re = object_array($document);
-              $resumeStatusArr = $re['resume']['status'];
-              // var_dump($resumeStatusArr);
-              for($k = 0;$k < count($resumeStatusArr);$k++)
-              // foreach($resumeStatusArr as $resumeData)
+              $nowStatus = nextStatus($positionArr[$i]['applicant'][$j]['status'],$reply);
+              $positionArr[$i]['applicant'][$j]['status'] = $nowStatus;
+              //$positionArr[$i]['applicant'][$j]['status'] = nextStatus($positionArr[$i]['applicant'][$j]['status'],$reply);
+              //上面还没完
+              $manager = Manager::getManager();
+              $filter = ['username' => $username];
+              $options = [
+                'projection' => ['_id' => 0],
+              ];
+              $query = new MongoDB\Driver\Query($filter,$options);
+              $cursor2 = $manager->executeQuery("test.user", $query);
+              foreach($cursor2 as $document2)
               {
-                $resumeData = $resumeStatusArr[$k];
-                if($resumeData['sendToCompany'] == $companyName && $resumeData['sendToPosition'] == $positionName)
+                $re2 = object_array($document2);
+                $resumeStatusArr = $re2['resume']['status'];
+                // var_dump($resumeStatusArr);
+                for($k = 0;$k < count($resumeStatusArr);$k++)
+                // foreach($resumeStatusArr as $resumeData)
                 {
-                  // echo 1;
-                  $resumeData['status'] = $nowStatus;
-                  if($reply == 0)
+                  $resumeData = $resumeStatusArr[$k];
+                  if($resumeData['sendToCompany'] == $companyName && $resumeData['sendToPosition'] == $positionName)
                   {
-                    $resumeData['result'] = "通过";
+                    // echo 1;
+                    // var_dump($positionName);
+                    $resumeData['status'] = $nowStatus;
+                    if($reply == 0)
+                    {
+                      $resumeData['result'] = "通过";
+                    }
+                    else
+                    {
+                      $resumeData['result'] = "未通过";
+                    }
+                    $resumeData['comment'] = $comment;
+                    $companyNo = $k;
                   }
-                  else
-                  {
-                    $resumeData['result'] = "未通过";
-                  }
-                  $resumeData['comment'] = $comment;
-                  $companyNo = $k;
+                  $resumeStatusArr["$k"] = $resumeData;
+                  // var_dump($resumeData);
                 }
-                // var_dump($resumeData);
+                // var_dump($resumeStatusArr["$companyNo"]);
+                // var_dump($companyNo);
+                // if($companyNo >= 0)
+                // {
+                //   $resumeStatusArr["$companyNo"] = $resumeData;
+                // }
+                // var_dump($resumeStatusArr);
               }
-              // var_dump($resumeData);
-              // var_dump($companyNo);
-              if($companyNo >= 0)
-              {
-                $resumeStatusArr[$companyNo] = $resumeData;
-              }
-              //var_dump($resumeStatusArr);
-            }
-            $re['resume']['status'] = $resumeStatusArr;
-            // var_dump($re['resume']);
+              $re2['resume']['status'] = $resumeStatusArr;
+              // var_dump($re['resume']);
 
-            $manager = Manager::getManager();
-            $bulk = new MongoDB\Driver\BulkWrite;
-            $bulk->update(['username' => $username],
-                          ['$set' => ['resume' => $re['resume']]],
-                          ['multi' => false, 'upsert' => false]);
-            $reUser = $manager->executeBulkWrite('test.user',$bulk);
-          }
+              $manager = Manager::getManager();
+              $bulk = new MongoDB\Driver\BulkWrite;
+              $bulk->update(['username' => $username],
+                            ['$set' => ['resume' => $re2['resume']]],
+                            ['multi' => false, 'upsert' => false]);
+              $reUser = $manager->executeBulkWrite('test.user',$bulk);
+            }
+          }//this!!!!!
         }
       }
       // var_dump($positionArr[2]);
@@ -219,9 +234,9 @@ require_once 'tools.php';
   {
     if($nowStatus == "已投递")
     {
-      if($reply == 0)
+      if($reply == "0")
       {
-        return "已审阅";
+        return "通过";
       }
       else
       {
@@ -230,7 +245,7 @@ require_once 'tools.php';
     }
     elseif ($nowStatus == "已审阅")
     {
-      if($reply == 0)
+      if($reply == "0")
       {
         return "通过";
       }
@@ -269,7 +284,8 @@ require_once 'tools.php';
     return $data;
   }
 
-  // getResumeListF("欧德蒙","已审阅");
-  // replyResumeF("欧德蒙","明镜止水","文案策划",0,"留意手机面试短信。");
+  // getResumeListF("欧德蒙","");
+  // replyResumeF("欧德蒙","明镜止水","软件测试工程师","-1","不符合");
+  // replyResumeF("欧德蒙","明镜止水","java工程师","0","好");
 
  ?>

@@ -30,7 +30,7 @@ a{
 <script type="text/javascript">
 export default{
 	name:'HRNavbar',
-	props:['id','username','companyName','caller'],
+	props:['caller'],
 	data(){
 		return{
 			idMsg:this.$router.currentRoute.query.id,

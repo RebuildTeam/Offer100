@@ -5,7 +5,7 @@
 	</div>
 	<br>
 	<div>
-		<PositionCard v-bind:positionCardList="positionCardListMsg"></PositionCard>
+		<PositionCard v-bind:positionCardList="positionCardListMsg" v-bind:caller="caller"></PositionCard>
 	</div>
 </div>
 

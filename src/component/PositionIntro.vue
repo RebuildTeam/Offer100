@@ -67,7 +67,10 @@
 }
 .panel-1{
 	width: 100%;
-	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
+	border:1px solid #dfdfdf;
+	border-left: 5px solid #66cccc;
+	background-color: white;
 	padding: 20px;
 	box-sizing: border-box;
 	font-size: 16px;
@@ -75,7 +78,9 @@
 .panel-2{
 	margin-top: 20px;
 	width: 100%;
-	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	border:1px solid #dfdfdf;
+	border-left: 5px solid #66cccc;
+	background-color: white;
 	padding: 20px;
 	box-sizing: border-box;
 	font-size: 16px;

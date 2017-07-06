@@ -15,7 +15,7 @@
 		<div class="right-panel" align="center">
 			<br>
 			<br>
-			<button class="send-pr-btn" v-on:click="sendPR()">投个简历</button>
+			<button class="send-pr-btn" v-if="caller=='applicant'" v-on:click="sendPR()">投个简历</button>
 		</div>
 		</div>
 
@@ -57,7 +57,7 @@
 	font-size: 1.5em;
 	border:none;
 	border-radius: 5px;
-	background-color: #00b38a;
+	background-color: #66cccc;
 	color: white;
 }
 </style>

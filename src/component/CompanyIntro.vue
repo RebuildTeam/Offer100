@@ -17,7 +17,7 @@
 			</el-amap>
 			<h3>招聘职位</h3>
 			<div align="center">
-			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ positionName:''}}">
+			<router-link v-if="caller=='hr'" class="btn-green add-btn" :to="{ name :'EditPosition' , query:{ id:idMsg,positionName:''}}">
 				新增职位
 			</router-link></div>
 			<PositionCard v-bind:positionCardList="companyDetail.position" v-bind:caller="caller"></PositionCard>

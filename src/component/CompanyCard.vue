@@ -65,13 +65,16 @@
 	height: 21em;
 	font-size: 14px;
 	border:1px solid #eeeeee;
+	border-left: 5px solid #dfdfdf;
 	float: left;
 	margin: 0.5em;
 	box-sizing: border-box;
+	transition: all 0.6s;
 }
 .CompanyCard-info:hover
 {
 	border: 1px solid #33bb93;
+	border-left: 10px solid #ccffcc;
 }
 .CompanyCard-info>div:nth-child(1)
 {

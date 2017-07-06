@@ -1,59 +1,55 @@
 <template>
 <div  id="LoginBox" v-bind:class="{'register':trianglePos==1}">
-	<div class="LoginBox-info" >
-	<div  align="center" > <!-- 这是左层div</div> -->
+	<div class="LoginBox-info" align="center">
 	    <div class="form-input"><!-- 这是左边最上面写offer100那个块 -->
-	    	<div class="paslog" align="center" v-on:click="trianglePos=0">密码登录</div>
-	    	<div class="sign " align="center" v-on:click="trianglePos=1" >注册</div>
+	    	<div class="switchBox" align="center" v-on:click="trianglePos=0">登录
+	    	</div><div class="switchBox " align="center" v-on:click="trianglePos=1" >注册</div>
 	    	<div class="triangle-up" > </div>
 	    </div>
-
+	    <br>
 	    <div class="form-input"><!-- 这是左边输入用户名的那一个块 -->
-	    	<input type="text" v-model="username"  placeholder="请输入用户名"  />
+	    	<input type="text" class="mInput" v-model="username"  placeholder="请输入用户名"  />
+	    	<br>
+	    	<br>
 	    </div>
-	    <div class="form-input">
-	    	<input type="text" v-model="applicantName" v-if="trianglePos==1" placeholder="请输入真实姓名"  />
+	   
+	    <div class="form-input" v-if="trianglePos==1">
+	    	<input type="text" class="mInput" v-model="applicantName"  placeholder="请输入真实姓名"  />
+	    	<br>
+	    	<br>
 	    </div>
+
 	    <div  class="form-input"><!-- 这是左边输入密码的那一个块 -->
-	    	<input type="password" v-model="password" placeholder="请输入密码" />
+	    	<input type="password" class="mInput" v-model="password" placeholder="请输入密码" />
+	    	<br>
+	    <br>
 	    </div>
-		
-<!-- 	    <div>
-	    	<span class="forget">忘记密码？</span>
-	    </div> -->
-	    <br>
-	    <br>
-	    <br>
-	    <br>
+	    
+	    <div>
+	    	<span class="IAmHR" align="right"><input type="checkbox" v-model="isHR">我是hr</span>
+	    </div> 
+	    	<br>
 	    <br>
 	    <div class="btn-group"><!-- 登录按钮 -->
 	    	<button align='center' v-if="trianglePos==0" v-on:click="login()">登录</button>
 	    	<button align='center' v-if="trianglePos==1" v-on:click="register()">注册</button>
-	    </div>
+	    </div>   
 	</div>
-	   <div>
-	   	<div align="center">
-	   	<span>招聘更多人才？</span>
-	   	<br>
-	   	<br>
-	   	<img v-bind:src="''+imgurl" >
-	   	<span class="gosign"><input type="checkbox" v-model="isHR">我是hr</span>
-
-	   	</div>
-	   </div>
-	           
-</div>
 </div>
 </template>
 <style type="text/css" scoped>
 #LoginBox
 {
+	box-sizing: border-box;
+	padding-top: 2em;
+	padding-bottom: 2em;
 	overflow: hidden;
-	width: 70em;
-	max-height: 27.5em;
+	width: 40em;
+	height: 100%;
+	max-height: 30em;
 	font-size: 14px;
 	border: 1px solid #d3d3d3;
-
+	/*background-color: rgba(0,0,0,0.5);*/
 	position: absolute;
 	left: 0;
 	right: 0;
@@ -65,58 +61,8 @@
 #LoginBox.register{
 	max-height: 32em;
 }
-.LoginBox-info
-{
-	height: 100%;
-	width: 100%;
-	padding: 2em;
-	box-sizing:border-box;
-}
-.LoginBox-info >div:nth-child(1)
-{
-	width: 60%;
-	background-color: white;
-	float: left;
-}
-span
-{
-	font-size: 24px;
-	float: left;
-	font-family: "Hiragino Sans GB";
-	
-}
-.paslog
-{
-	width: 50%;
-	height: 2em;
-	float: left;
-	font-size: 24px;
-	font-family:'方正兰亭超细黑简体';
-	text-align: center;
-	color: #00b38a;
-	transition: color 0.5s;
-}
-.paslog:hover
-{
-	color: #00b38a;
-}
-.sign:hover
-{
-	color: #00b38a;
-}
-.gosign:hover
-{
-	border-bottom: 1px solid #00b38a;
-}
-.sign
-{
-	width: 50%;
-	height: 2em;
-	float: left;
-	font-size: 24px;
-	font-family:'方正兰亭超细黑简体';
-	text-align: center;
-	transition: color 0.5s;
+.form-input{
+	overflow: hidden;
 }
 .triangle-up { 
     position: absolute;
@@ -124,94 +70,39 @@ span
     height:0;
     border-width:0 12px 12px;
     border-style:solid;
-    border-color:transparent transparent #00b38a;
+    border-color:transparent transparent #66CCCC;
     margin-left: -6px ;
     left:25%;
-    bottom: 0px;
+    top:0;
+    margin-top: 5em;
     transition:left 0.5s;
 }
-.LoginBox-info >div:nth-child(1) >div:nth-child(1)
-{
-	width: 18em;
-	font-size: 20px;
-	position: relative;
-	overflow: hidden;
-	border-bottom: 1px solid #00b38a;
-}
-
-.form-input{
-	position: relative;
-	width: 70%;
-}
-.form-input > input
-{
-	outline: none;
-	border: none;
-	width: 18em;
-	border-bottom:1px solid #d3d3d3;
-	margin-top: 1em;
-	height: 1.5em;
-	outline: none;
-	font-size: 20px;
-	font-family: 'MingLiU'
-}
-.forget
-{
-	color: #00b38a;
+.switchBox{
+	width: 50%;
+	height: 3em;
 	font-size: 18px;
-	float: right;
-	margin-right: 2em;
-	width: 10em;
+	line-height: 3em;
+	float: left;
+	border-bottom: 1px solid #66CCCC;
 }
-button
-{
-	width: 16em;
-	height: 2.5em;
-	border-radius: 5px;
-	font-size: 24px;
-	letter-spacing: 8px;
-	font-family: "Hiragino Sans GB";
-	background: #00b38a;
+input.mInput{
+	width: 60%;
+	height: 2em;
+	font-size: 14px;
 	border: none;
+	border-radius: 10px;
+	border:1px solid #66CCCC;
+}
+.IAmHR{
+	color: #66CCCC;
+}
+.btn-group>button{
+	background-color: #66CCCC;
 	color: white;
-}
-.LoginBox-info >div:nth-child(2)
-{
-	background-color: white;
-	height: 35em;
-	float: left;
-	display: inline-block;
-	width: 40%;
-}
-.LoginBox-info >div:nth-child(2) >div:nth-child(1)
-{
-	width: 100%;
-	float: left;
-	margin-top: 5em;
-	margin-left: 2em;
-	font-family: "Hiragino Sans GB";
-	font-size: 22px;
-}
-.LoginBox-info >div:nth-child(2) >div:nth-child(2)
-{
-	width: 100%;
-	height: 5em;
-	float: left;
-	margin-left: 2.5em;
-	font-family: "Hiragino Sans GB";
-	color:#00b38a;
-    font-size: 18px;
-}
-
-img
-{
-	height: 2.5em;
-	float: left;
-	margin-top: -0.5em;
-}
-.gosign
-{
-	font-size: 22px;
+	border-radius: 10px;
+	border:none;
+	width: 12em;
+	height: 4em;
 }
 </style>
 <script type="text/javascript">

@@ -41,6 +41,16 @@
 			<input placeholder="公司规模" v-model="companyInfo.size" maxlength="20" />
 			<p v-if="companyInfo.size==''||companyInfo.size==null">请输入有效的规模</p>
 			
+
+		<!-- 	<vue-core-image-upload
+  				:class="['btn', 'btn-primary']"
+  				:crop="false"
+  				@imageuploaded="imageuploaded"
+  				:data="{a:123}"
+  				:max-file-size="5242880"
+  				url="/src/api/uploadPhoto" >上传图片
+			</vue-core-image-upload> -->
+
 			<input placeholder="公司主页" v-model="companyInfo.website" maxlength="20" />
 			<div align="center">
 				<button 
@@ -100,6 +110,9 @@ textarea{
 }
 </style>
 <script type="text/javascript">
+import VueCoreImageUpload  from 'vue-core-image-upload';
+
+
 export default{
 	name:'EditPositionPanel',
 	props:['caller'],
@@ -108,9 +121,18 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			companyInfo:{},
+			photoSrc: '/src/img/100001.png',
 		}
 	},
+	components: {
+    	'vue-core-image-upload': VueCoreImageUpload
+  	},
 	methods:{
+		imageuploaded(res) {
+      		if (res.errcode == 0) {
+        		this.photoSrc = res.src;
+      		}
+      	},
 		setCompanyData:function(){
 			var d=new Date();
 			var jsonObj={
@@ -127,7 +149,7 @@ export default{
 				success:(result)=>{
 					if(result.code==0){
 						alert("修改成功");
-						this.$router.push({name:'CompanyManagement'});
+						this.$router.push({name:'CompanyManagement',query:{id:idMsg}});
 					}else{
 						alert("修改失败，因为"+result.message);
 					}

@@ -41,9 +41,10 @@
 .PositionCard-info{
 	cursor: pointer;
 	box-sizing:border-box;
+	border:1px solid #dfdfdf;
+	border-left: 5px solid #dfdfdf;
 	width: 100%;
-	/*border:1px solid #dfdfdf;*/
-	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	/*box-shadow: 1px 1px 5px 1px #dfdfdf;*/
 	margin-top:0.5em;
 	margin-bottom: 0.5em;
 	padding: 1em;
@@ -74,9 +75,11 @@
 	color: white;
 }
 .PositionCard-info:hover{
-	/*border:1px solid #00b38a;*/
+	border:1px solid #dfdfdf;
+	border-left: 10px solid #66cccc;
 	position: relative;
-	box-shadow: 1px 1px 5px 1px #00b38a;
+
+	/*box-shadow: 1px 1px 5px 1px #00b38a;*/
 }
 .position-panel{
 	display: inline-block;
@@ -137,7 +140,7 @@ export default{
 			if(confirm("确认删除"+posName+"?")){
 				var jsonObj={
 					'id':window.localStorage.getItem("id"),
-					'companyName':this.storagedCompanyName,
+					'companyName':this.nameMsg,
 					'positionName':posName,
 				};
 				$.ajax({

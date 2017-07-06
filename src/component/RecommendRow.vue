@@ -33,7 +33,7 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 }
 #RecommendRow/*recommend这个最大的块的属性*/
 {
-	background-color: #33bb93;
+	background-color: #ccffcc;
 	width: 100%;
 	height: 20em;
 	max-width: 300em;
@@ -42,7 +42,7 @@ h1    /*标题属性，暂且就设置了一个颜色，大小为h1*/
 }
 #RecommendRow > div/*几个小机器人放在一个盒子里面，这个盒子的属性*/
 {
-	background-color: #33bb93;
+	background-color: #ccffcc;
 	min-width: 1080px;
 }
 #RecommendRow > div >div/*几个小机器人的模块属性*/
@@ -117,11 +117,11 @@ export default{
 			idMsg:this.$router.currentRoute.query.id,
 			nameMsg:"",
 			recommendList:[
-				{label:"To Manage health data more convenient",imgurl:"./src/img/droid.png",intro:"Focus on BigData field, devoted to product the health device and software",hover:false,companyName:"欧德蒙"},
-				{label:"Mobile internet video platform",imgurl:"./src/img/droid.png",intro:"Established on 2012, try to take the best experence for global users",hover:false,companyName:"欧德蒙"},
-				{label:"Make people more healthy and happy",imgurl:"./src/img/droid.png",intro:"Change the world. Make the money",hover:false,companyName:"欧德蒙"},
-				{label:"Help Chinese cartoonists",imgurl:"./src/img/droid.png",intro:"Located on GuangZhou",hover:false,companyName:"欧德蒙"},
-				{label:"Record life like movie",imgurl:"./src/img/droid.png",intro:"An application for sharing pictures and videos",hover:false,companyName:"欧德蒙"}]
+				{label:"书链（“教育图书+互联网”行业解决方案，bookln.cn）",imgurl:"./src/img/云梯科技.png",intro:"正式创建于2016年2月，为杭州云梯科技有限公司旗下产品",hover:false,companyName:"云梯科技"},
+				{label:"国内首款运动健身减肥App",imgurl:"./src/img/咕咚.png",intro:"全国首款GPS运动社交手机软件，追踪运动路线，邂逅运动好友，发现运动资讯与趣闻",hover:false,companyName:"咕咚"},
+				{label:"网络媒体平台，拥有海盗电台、摇滚客、头文字 B等节目",imgurl:"./src/img/果酱音乐.png",intro:"果酱音乐是中国领先的音乐新媒体,为您提供最新音乐资讯、演出视频、摇滚、民谣、流行音乐、电音、HipHop等资讯",hover:false,companyName:"果酱音乐"},
+				{label:"致力于深耕海外目的地",imgurl:"./src/img/奇遇旅行.png",intro:"现已覆盖泰国、菲律宾、马来西亚、印度尼西亚、新加坡等东南亚国家的旅游胜地",hover:false,companyName:"奇遇旅行"},
+				{label:"专业优质的国际租车网站",imgurl:"./src/img/惠租车.png",intro:"为适应国人出境自驾需求而打造的全球租车垂直搜索比价网站",hover:false,companyName:"惠租车"}]
 		}
 	},
 	created:function(){

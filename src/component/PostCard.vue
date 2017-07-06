@@ -88,7 +88,8 @@
 	box-sizing: border-box;
 	overflow: hidden;
 	position: relative;
-	box-shadow: 1px 1px 5px 1px #dfdfdf;
+	/*box-shadow: 1px 1px 2px 1px #dfdfdf;*/
+	border:1px solid #dfdfdf;
 }
 .CompanyLogo{
 	background-color: gray;
@@ -110,7 +111,7 @@
 }
 .ResumeBriefPanel>div:nth-child(2){
 	height: 4em;
-	background-color: #ffffee;
+	background-color: #f6fff6;
 	padding: 10px;
 	box-sizing: border-box;
 }

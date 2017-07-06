@@ -22,7 +22,7 @@
 	font-size: 10pt;
 	max-width: 960px;
 	width: 100%;
-	background-color: #fffff6;
+	background-color: #f6fff6;
 	border:1px solid #dfdfdf;
 	padding: 0.5em;
 	box-sizing:border-box;

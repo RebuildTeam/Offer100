@@ -1,5 +1,5 @@
 <template>
-	<div id="Login">
+	<div id="Login" v-bind:style="{backgoundImage:'url(/src/img/loginbg.jpg)'}">
 		<div class="panel"></div>
 		<div class="panel"></div>
 		<LoginBox></LoginBox>
@@ -10,6 +10,8 @@
 #Login{
 	height: 100%;
 	width: 100%;
+	background-size: 100% 100%;
+	background-position: center;
 }
 .panel{
 	height: 50%;

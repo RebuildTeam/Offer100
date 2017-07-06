@@ -273,7 +273,10 @@ textarea{
 	box-sizing: border-box;
 }
 .PR-head{
-	background-color: #00b38a;
+	background-color: #ccffcc;
+	box-sizing: border-box;
+	border:1px solid #dfdfdf;
+	border-bottom: none;
 	height: 10em;
 }
 .PR-photo{
@@ -290,11 +293,11 @@ textarea{
 	box-shadow: 1px 1px 5px 1px #dfdfdf;
 }
 .PR-content{
-	background-color: #f6f6f6;
+	background-color: #fffff6;
 	border:1px solid #dfdfdf;
 	box-sizing: border-box;
 	padding: 20px;
-	box-sizing: border-box;
+
 }
 .PR-quick-label>h3{
 	transition:all 0.6s;
